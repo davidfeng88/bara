@@ -1,58 +1,64 @@
-This is your Development README, which will:
+# bara
 
-show wireframes,
-describe features, and
-outline a development timeline for your application.
+[Heroku link][heroku] **Note:** To be updated later
 
-The Development README of your project repo MUST include the following:
+[Trello link][trello]
 
-Heroku Link
+[heroku]: http://www.herokuapp.com
+[trello]: https://trello.com/b/r3jSqdQ4/bara
 
-At the end of the first day of full-stack projects, you should have a link to the live version of your site. It doesn't have to be pretty, but it has to be there. Push to Heroku ASAP!
+## Minimum Viable Product
 
-Minimum Viable Product
+Bara is a web application inspired by Yelp built using Ruby on Rails
+and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
+following criteria with smooth, bug-free navigation, adequate seed data and
+sufficient CSS styling:
 
-Write a one-sentence summary of the project and a list of the features that would be absolutely necessary for the app to be marketable. Your MVP section must follow the format outlined here.
+- [ ] Hosting on Heroku
+- [ ] New account creation, login, and guest/demo login
+- [ ] Business Pages
+- [ ] Search / filters
+- [ ] Reviews / ratings
+- [ ] Map
+- [ ] Production README [sample](../README.md) **Note:** To be updated later
 
-Wireframes
+## Design Docs
+* [View Wireframes][wireframes]
+* [React Components][component]
+* [API endpoints][api-endpoints]
+* [DB schema][schema]
+* [Sample State][sample-state]
 
-Annotate your wireframes. Which React component corresponds to each element? Keep grids in mind while roughly drafting your layout.
+[wireframes]: docs/wireframes
+[components]: docs/component-hierarchy.md
+[sample-state]: docs/sample-state.md
+[api-endpoints]: docs/api-endpoints.md
+[schema]: docs/schema.md
 
-/wireframes
-Links to wireframes of your application's UI views. Each wireframe should be a basic representation of the layout and information presented in a view. Since you will certainly use nested React components, clearly indicate the hierarchy in your wireframes. We should be able to see every view of your website using your wireframes, and how each view is reached.
+## Implementation Timeline
 
-NB: Your wireframes will be viewed not only by yourself and the App Academy staff, but potentially future employers. If you are going to use pen and paper, it should look great. Otherwise, we recommend draw.io.
+### Phase 1: Backend setup and Front End User Authentication (2 days)
 
-React Components
+**Objective:** Functioning rails project with front-end Authentication
 
-component-hierarchy.md
-In addition to the wireframes, you should diagram a tree indicating your application's overall component structure.
+### Phase 2: Businesses Model, API, and components (2 days)
 
-Discuss how you will nest your components. If components will need containers, indicate what state and dispatch props they will need. For presentational components, discuss what props and state they will need.
+**Objective:** Businesses can be created, read, edited and destroyed through
+the API.
 
-Map out your React Routes with their respective components and paths.
+### Phase 3: Search / filters (2 day)
 
-See the sample project proposal for an example of this.
+**Objective:** Businesses can be searched and filtered.
 
-Sample State
+### Phase 4: Reviews / ratings (2 days)
 
-sample-state.md
-Create a basic illustration of your state shape. Think about what information you need to store for your app to work, and how best to organize it to minimize duplication and maximize ease of access.
+**Objective:** Reviews belong to Businesses that can be created, read, edited and destroyed through the API.
 
-DB Schema
+### Phase 5: Map (1 day, W2 Th 6pm)
 
-schema.md
-Link to a document outlining the database schema for your app. Build up the schema by walking through your app's wireframes. Think carefully about what data will be needed for each view and the best way to store that data. Make note of any database-level validations and foreign key relationships.
+**Objective:** Businesses can be searched in map.
 
-API Endpoints
-
-api-endpoints.md
-Link to a page that lists your Rails API endpoints. Break these up between HTML and JSON endpoints. Discuss what params, if any, will be needed for each endpoint, and what information will be returned.
-
-Implementation Timeline
-
-Create a section in your proposal README for each phase of your project to develop an implementation timeline.
-
-Refer back to your MVP and group the features into logical phases. Rather than building the entire project all at once, you're going to implement one feature at a time. You should have a working app at the end of each phase (even if not all of your features are in yet).
-
-This is crucial both here and in the industry. The truth is, one never knows how long implementing any particular phase will take. Constraints change. Timelines are shortened without warning. An app after any phase must be able to stand on it's on. We call this building in 'slices' instead of 'layers'.
+### Bonus Features (TBD)
+- [ ] Mark reviews funny, cool, useful etc.
+- [ ] Profile
+- [ ] Friends
