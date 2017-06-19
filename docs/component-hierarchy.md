@@ -44,5 +44,5 @@
 | "/home" | "HomeContainer" |
 | "/new-business" | "NewBusinessContainer" |
 | "/search-results" | "SearchResultContainer" |
-| "/business/:businessId" | "BusinessContainer" |
-| "/business/:businessId/new-review" | "NewReviewContainer" |
+| "/business/:business_id" | "BusinessContainer" |
+| "/business/:business_id/new-review" | "NewReviewContainer" |
