@@ -39,21 +39,22 @@
     3: "Tacos",
     4: "Salad"
   },
-
+  businessTagFilters: [1, 3], // Used to track selected Tags for filtering of businesses
+  
   reviews: {
     1: {
       rating: 4,
       body: "This place has good pizza",
       author_id: 1,
       business_id: 1
-      tags: [1, 2]
+      review_tags: [1, 2]
     },
     2: {
       rating: 5,
       body: "This place has great pizza",
       author_id: 1,
       business_id: 2
-      tags: [1]
+      review_tags: [1]
     }
   },
 
@@ -61,9 +62,7 @@
     1: "Useful",
     2: "Funny",
     3: "Cool"
-  },
-
-  businessTagFilters: [1, 3] // Used to track selected Tags for filtering of businesses
+  }
 }
 
 ```

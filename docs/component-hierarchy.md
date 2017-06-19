@@ -1,37 +1,37 @@
 ## Component Hierarchy
 
 **AuthFormContainer**
- - AuthForm
+- AuthForm
 
 **HomeContainer**
- - Business Search
+- Business Search
   * Business Search Bar
- - Business Category index
+- Business Category index
   * Business Category index item
 
 **NewBusinessContainer**
- - Business Form
+- Business Form
   - Review Form (optional)
 
 **BusinessContainer**
- - Map Component
- - Gallery Component
+- Map Component
+- Gallery Component
   * Picture Component
- - Review Form Component
- - Review Index Component
+- Review Form Component
+- Review Index Component
   * Review Index Item Component
- - Business Detail Component
+- Business Detail Component
 
 **SearchResultsContainer**
- - Business Search Result Component
+- Business Search Result Component
   * Business Search Result Item Component
- - Map Component
+- Map Component
 
 **NewReviewContainer**
- - Review Creation Component
+- Review Creation Component
   * Business Information Component
   * Review Form
- - Review Index Component
+- Review Index Component
   * Review Index Item Component
 
 
