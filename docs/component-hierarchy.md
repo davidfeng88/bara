@@ -4,35 +4,35 @@
 - AuthForm
 
 **HomeContainer**
-- Business Search
-  * Business Search Bar
-- Business Category index
-  * Business Category index item
+- BusinessSearch
+  * BusinessSearchBar
+- BusinessCategoryIndex
+  * BusinessCategoryIndexItem
 
 **NewBusinessContainer**
-- Business Form
-  - Review Form (optional)
+- BusinessForm
+  - ReviewForm (optional)
 
 **BusinessContainer**
-- Map Component
-- Gallery Component
-  * Picture Component
-- Review Form Component
-- Review Index Component
-  * Review Index Item Component
-- Business Detail Component
+- Map
+- Gallery
+  * Picture
+- ReviewForm
+- ReviewIndex
+  * ReviewIndexItem
+- BusinessDetail
 
-**SearchResultsContainer**
-- Business Search Result Component
-  * Business Search Result Item Component
-- Map Component
+**SearchResultContainer**
+- BusinessSearchResult
+  * BusinessSearchResultItem
+- Map
 
 **NewReviewContainer**
-- Review Creation Component
-  * Business Information Component
-  * Review Form
-- Review Index Component
-  * Review Index Item Component
+- ReviewCreation
+  * BusinessInformation
+  * ReviewForm
+- ReviewIndex
+  * ReviewIndexItem
 
 
 ## Routes
@@ -43,6 +43,6 @@
 | "/log-in" | "AuthFormContainer" |
 | "/home" | "HomeContainer" |
 | "/new-business" | "NewBusinessContainer" |
-| "/search-results" | "SearchResultsContainer" |
+| "/search-results" | "SearchResultContainer" |
 | "/business/:businessId" | "BusinessContainer" |
 | "/business/:businessId/new-review" | "NewReviewContainer" |

@@ -27,13 +27,13 @@
 - `GET /api/businesses/:id`
 - `DELETE /api/businesses/:id`
 - `GET /api/businesses/:id/reviews`
-  - index of all reviews for a business
-  - accepts pagination params (if I get there)
 
 ### Reviews
 
-- `GET /api/reviews`
-- `POST /api/reviews`
-- `GET /api/reviews/:id`
-- `PATCH /api/reviews/:id`
-- `DELETE /api/reviews/:id`
+- `GET /api/businesses/business_id/reviews`
+  - index of all reviews for a business
+  - accepts pagination params (if I get there)
+- `POST /api/businesses/business_id/reviews`
+- `GET /api/businesses/:id/reviews/:id`
+- `PATCH /api/businesses/:id/reviews/:id`
+- `DELETE /api/businesses/:id/reviews/:id`
