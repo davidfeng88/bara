@@ -27,10 +27,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     if !current_user
-    render (
-      json: ['You need to log in to access this section'],
-      status: 401
-    )
+      render json: ['No current User to log out'], status: 401
     end
   end
 

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ActiveRecord::Base
 
 	attr_reader :password
@@ -38,7 +50,7 @@ class User < ActiveRecord::Base
 	private
 
   def self.generate_session_token
-    SecureRandom::urlsafe64(16)
+    SecureRandom::urlsafe_base64(16)
   end
 
 	def ensure_session_token

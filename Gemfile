@@ -26,7 +26,18 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
+
+# the following gems were added during development
+gem 'jquery-rails'
+# add these lines to the end of application.js as well
+# //= require jquery
+# //= require jquery_ujs
+
 gem 'bcrypt', '~> 3.1.7'
+
+gem "paperclip", "~> 5.0.0"
+gem 'figaro'
+gem 'aws-sdk'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
