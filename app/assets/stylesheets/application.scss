@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+/*CSS Reset*/
+@import "base/normalize.css";
+
+/*Core*/
+@import "base/colors.scss";
+@import "base/layout.scss";
+
+/*Grid*/
+// @import "base/grid.scss";
+
+/*Components*/
+@import "components/*";
