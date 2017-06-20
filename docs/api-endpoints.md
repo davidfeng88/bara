@@ -11,7 +11,7 @@
 ### Users
 
 - `POST /api/users`
-- `PATCH /api/users`
+- `PATCH /api/users/:id`
 
 ### Session
 
@@ -22,18 +22,16 @@
 
 - `GET /api/businesses`
   - Businesses index/search
-  - accepts pagination params (if I get there)
+  - Accepts pagination params (if I get there)
 - `POST /api/businesses`
 - `GET /api/businesses/:id`
+  - All reviews for the business will also be present
+  - accepts pagination params (if I get there)
 - `DELETE /api/businesses/:id`
-- `GET /api/businesses/:id/reviews`
 
 ### Reviews
 
-- `GET /api/businesses/:business_id/reviews`
-  - index of all reviews for a business
-  - accepts pagination params (if I get there)
-- `POST /api/businesses/:business_id/reviews`
-- `GET /api/businesses/:business_id/reviews/:id`
-- `PATCH /api/businesses/:business_id/reviews/:id`
-- `DELETE /api/businesses/:business_id/reviews/:id`
+- `POST /api/reviews`
+- `GET /api/reviews/:id`
+- `PATCH /api/reviews/:id`
+- `DELETE /api/reviews/:id`

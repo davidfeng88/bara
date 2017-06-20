@@ -42,7 +42,7 @@
 | "/sign-up" | "AuthFormContainer" |
 | "/log-in" | "AuthFormContainer" |
 | "/home" | "HomeContainer" |
-| "/new-business" | "NewBusinessContainer" |
+| "/businesses/new" | "NewBusinessContainer" |
 | "/search-results" | "SearchResultContainer" |
-| "/business/:business_id" | "BusinessContainer" |
-| "/business/:business_id/new-review" | "NewReviewContainer" |
+| "/businesses/:id" | "BusinessContainer" |
+| "/businesses/:id/reviews/new" | "NewReviewContainer" |

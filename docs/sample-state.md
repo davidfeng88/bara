@@ -17,7 +17,8 @@
       zip: 60637,
       phone: "111-111-1111",
       price: 1,
-      business_tags: [1]
+      business_tags: [1],
+      reviews: [1]
     },
 
     2: {
@@ -29,7 +30,8 @@
       zip: 60637,
       phone: "222-222-2222",
       price: 2,
-      business_tags: [1, 4]
+      business_tags: [1, 4],
+      reviews: [2]
     }
   },
 
@@ -40,7 +42,7 @@
     4: "Salad"
   },
   businessTagFilters: [1, 3], // Used to track selected Tags for filtering of businesses
-  
+
   reviews: {
     1: {
       rating: 4,
