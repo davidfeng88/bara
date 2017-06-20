@@ -34,7 +34,6 @@
 - ReviewIndex
   * ReviewIndexItem
 
-
 ## Routes
 
 |Path   | Component   |
