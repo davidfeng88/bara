@@ -1,3 +1,70 @@
 // Place all the styles related to the Api::Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+button, a {
+  font: inherit;
+  color: inherit;
+}
+
+.home-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 80%;
+  font-size: 14px;
+  font-weight: bold;
+  font: sans-serif;
+  margin: auto;
+  background-color: #d32323;
+
+}
+
+.login-signup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.login, .signup, .demo-login {
+  margin: 0 24px;
+  padding: 8px 24px;
+}
+
+.signup > a, .login > a {
+  text-decoration: none;
+  color: white;
+}
+
+.demo-login > button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.signup, .demo-login {
+  border: 2px solid white;
+  border-radius: 2px;
+}
+
+.login {
+  box-sizing: border-box;
+}
+
+.signup:hover, .demo-login:hover {
+  background: white;
+  cursor: pointer;
+  color: #666;
+}
+
+.login:hover {
+  border-bottom: 2px solid white;
+  cursor: pointer;
+}
+
+.signup > a:hover, .demo-login > button:hover {
+  color: #666;
+}
