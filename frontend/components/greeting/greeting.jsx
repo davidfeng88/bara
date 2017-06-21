@@ -21,6 +21,7 @@ const sessionLinks = (demoLogin) => (
 const personalGreeting = (currentUser, logout) => (
 	<hgroup className="personal-greeting">
     <h2 className="header-name">Hi, {currentUser.username}!</h2>
+    <img src={currentUser.avatar_url} />
     <button className="header-button" onClick={logout}>Log Out</button>
 	</hgroup>
 );

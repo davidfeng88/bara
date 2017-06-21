@@ -17,11 +17,12 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
+
     <header>
+      <GreetingContainer />
       <Link to="/" className="header-link">
         <h1>Bara</h1>
       </Link>
-      <GreetingContainer />
     </header>
 
     <Switch>
@@ -32,6 +33,13 @@ const App = () => (
 );
 
 export default App;
+
+// <Switch>
+//   <Route exact path='/' component={HomeHeaderContainer} />
+// HomeHeader
+//  AuthHeader
+//  default header!
+
 
 // <ProtectedRoute path="/benches/new" component={BenchFormContainer} />
 // <Route path="/benches/:benchId" component={BenchShowContainer} />
