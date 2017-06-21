@@ -1,10 +1,10 @@
 # bara
 
-[Heroku link][heroku] **Note:** To be updated later
+[Heroku link][heroku]
 
 [Trello link][trello]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://bara-.herokuapp.com/#/
 [trello]: https://trello.com/b/r3jSqdQ4/bara
 
 ## Minimum Viable Product

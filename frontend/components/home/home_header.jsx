@@ -26,8 +26,8 @@ const personalGreeting = (currentUser, logout) => (
 	</hgroup>
 );
 
-const Greeting = ({ currentUser, demoLogin, logout }) => (
+const HomeHeader = ({ currentUser, demoLogin, logout }) => (
   currentUser ? personalGreeting(currentUser, logout) : sessionLinks(demoLogin)
 );
 
-export default Greeting;
+export default HomeHeader;
