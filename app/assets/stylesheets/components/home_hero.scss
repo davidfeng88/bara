@@ -1,0 +1,29 @@
+.home-hero {
+  background-image: asset-url("home.jpeg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  opacity : 0.9;
+  height: 600px;
+}
+
+
+.logo {
+  margin: 50px 0 50px 0;
+}
+
+.logo img {
+  display: block;
+  height: 80px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.home-search {
+  margin: 0 auto;
+  height: 45px;
+  width: 80%;
+  font-size: 14px;
+  background-color: white;
+  text-align: center;
+}

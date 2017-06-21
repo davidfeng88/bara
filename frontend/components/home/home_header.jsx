@@ -19,11 +19,16 @@ const sessionLinks = (demoLogin) => (
 );
 
 const personalGreeting = (currentUser, logout) => (
-	<hgroup className="personal-greeting">
+  <nav className='home-nav'>
+    <div className='home-nav-left'>
+    </div>
+    <div className='home-nav-right'>
+    <img className='home-avatar' src={currentUser.avatar_url} />
     <h2 className="header-name">Hi, {currentUser.username}!</h2>
-    <img src={currentUser.avatar_url} />
     <button className="header-button" onClick={logout}>Log Out</button>
-	</hgroup>
+    </div>
+  </nav>
+
 );
 
 const HomeHeader = ({ currentUser, demoLogin, logout }) => (

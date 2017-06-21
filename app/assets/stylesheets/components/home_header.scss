@@ -50,8 +50,6 @@
   background: white;
 }
 
-
-
 .signup:hover a, .demo:hover button {
   color: #666;
 }
@@ -60,10 +58,7 @@
   border-bottom: 2px solid white;
 }
 
-.home-hero {
-  background-image: asset-url("home.jpeg");
-  background-size:     cover;
-  background-repeat:   no-repeat;
-  background-position: center center;
-  height: 600px;
+.home-avatar {
+  height: 38px;
+  width: auto;
 }
