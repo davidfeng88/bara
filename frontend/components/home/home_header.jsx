@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const sessionLinks = (demoLogin) => (
   <nav className="home-nav">
-    <div className='demo-login'>
+    <div className='demo'>
       <button onClick={demoLogin}>Demo Login</button>
     </div>
 
-    <div className='login-signup'>
+    <div className='home-nav-right'>
       <div className='login'>
         <Link to="/login">Log In</Link>
       </div>

@@ -8,7 +8,7 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-import HomeHeaderContainer from './home/home_header_container';
+import Home from './home/home';
 
 import SessionPage from './session_page/session_page';
 
@@ -19,7 +19,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
   <div>
 
-    <Route exact path='/' component={HomeHeaderContainer} />
+    <Route exact path='/' component={Home} />
 
     <Switch>
       <AuthRoute path="/login" component={SessionPage} />

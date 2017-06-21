@@ -1,66 +1,69 @@
-// Place all the styles related to the Api::Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
-
 .home-nav {
+  margin: 0 auto;
+  padding: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 36px;
   font-size: 14px;
   font-weight: bolder;
-  font: sans-serif;
   color: white;
-  background-color: $yelpy-red;
-
-
 }
 
-.login-signup {
+.demo, .login, .signup {
+  border-radius: 4px;
+  border: 2px solid;
+}
+
+.demo, .signup {
+  padding: 8px 24px;
+  border-color: white;
+}
+
+.login {
+  padding: 9px 12px;
+  border-color: transparent;
+  margin-right: 10px;
+}
+
+.demo > button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.home-nav-right {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.login, .signup, .demo-login {
-
-  padding: 8px 24px;
-}
-
-.signup , .login > a {
+.login > a, .signup > a {
   text-decoration: none;
   color: white;
-}
-
-.demo-login > button {
-  background: none;
-  border: none;
-  color: white;
-}
-
-.signup, .demo-login {
-  border: 2px solid white;
-  border-radius: 2px;
-}
-
-.login {
-  box-sizing: border-box;
-}
-
-.signup:hover, .demo-login:hover {
-  background: white;
   cursor: pointer;
+}
+
+.signup:hover, .demo:hover {
+  background: white;
+}
+
+
+
+.signup:hover a, .demo:hover button {
   color: #666;
 }
 
 .login:hover {
   border-bottom: 2px solid white;
-  cursor: pointer;
 }
 
-.signup > a:hover, .demo-login > button:hover {
-  color: #666;
+.home-hero {
+  background-image: asset-url("home.jpeg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  height: 600px;
 }
