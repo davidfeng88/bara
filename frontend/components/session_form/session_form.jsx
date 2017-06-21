@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import ErrorList from '../error_list';
+// import SessionHeader from '../headers/session_header';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -39,36 +40,53 @@ class SessionForm extends React.Component {
     }
   }
 
-
+        // <SessionHeader />
   render() {
     return (
-      <div className="login-form-container">
-        <ErrorList errors={ this.props.errors } />
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to Bara!
-          <br/>
-          Please {this.props.formType} or {this.navLink()}
-          <div className="login-form">
-            <br/>
-            <label>Username:
-              <input type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            <input type="submit" value="Submit" />
+      <div>
+
+        <div className='session-page-main'>
+          <div className="login-form-container col-1-2">
+            <ErrorList errors={ this.props.errors } />
+            <form onSubmit={this.handleSubmit} className="login-form-box">
+              <h2>
+                {this.props.formType === 'login' ?
+                'Log In to Bara'
+                : 'Sign Up for Bara'}
+              </h2>
+              <p className='subheading'>
+                {this.props.formType === 'login' ?
+                'New to Bara? Sign Up'
+                : 'Connect with great local businesses'}
+              </p>
+
+              Please {this.props.formType} or {this.navLink()}
+              <div className="login-form">
+                <br/>
+                <label>Username:
+                  <input type="text"
+                    value={this.state.username}
+                    onChange={this.update('username')}
+                    className="login-input"
+                  />
+                </label>
+                <br/>
+                <label>Password:
+                  <input type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="login-input"
+                  />
+                </label>
+                <br/>
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
           </div>
-        </form>
+          <div className='col-1-2'>
+            <img src='./assets/images/session-form.png' />
+          </div>
+        </div>
       </div>
     );
   }

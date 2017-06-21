@@ -20,9 +20,7 @@ const App = () => (
 
     <header>
       <GreetingContainer />
-      <Link to="/" className="header-link">
-        <h1>Bara</h1>
-      </Link>
+
     </header>
 
     <Switch>
@@ -39,7 +37,9 @@ export default App;
 // HomeHeader
 //  AuthHeader
 //  default header!
-
+// <Link to="/" className="header-link">
+//   <h1>Bara</h1>
+// </Link>
 
 // <ProtectedRoute path="/benches/new" component={BenchFormContainer} />
 // <Route path="/benches/:benchId" component={BenchShowContainer} />

@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+
 .home-nav {
   display: flex;
   justify-content: space-between;
@@ -12,8 +14,8 @@
   font-weight: bolder;
   font: sans-serif;
   color: white;
+  background-color: $yelpy-red;
 
-  background-color: #d32323;
 
 }
 

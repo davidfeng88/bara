@@ -1,13 +1,8 @@
 html {
 	position: relative;
 	height: 100%;
-	background-color: #f5f5f5;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-body {
-	width: 960px;
-	margin: 0 auto;
+	background-color: white;
+	font-family: $sans-serif;
 	font-size: 12px;
 }
 
@@ -26,20 +21,23 @@ a:hover {
 	Font Elements
 */
 
-h1 {
-	font-size: 24px;
-	font-style: italic;
-	font-weight: bold;
-}
+// h1 {
+// 	font-size: 24px;
+// 	font-style: italic;
+// 	font-weight: bold;
+// }
 
 h2 {
 	text-align: center;
-	margin-bottom: 10px;
+	font-size: 22px;
 	font-weight: bold;
+	color: $yelpy-red;
 }
 
-p {
-	line-height: 16px;
+p.subheading {
+	font-weight: bold;
+	margin-bottom: 12px;
+	display: block;
 }
 
 img {
@@ -63,27 +61,27 @@ img {
 /*
 	Inputs
 */
-
-.input-wrapper {
-	display: flex;
-	margin: 5px 0;
-}
-
-.input-wrapper input {
-	flex: 1;
-	font-family: sans-serif;
-	padding: 0 10px;
-	// border: 1px solid $gray;
-	border-right: none;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-.input-wrapper button {
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
-input[type="search"] {
-	padding: 5px;
-}
+// 
+// .input-wrapper {
+// 	display: flex;
+// 	margin: 5px 0;
+// }
+//
+// .input-wrapper input {
+// 	flex: 1;
+// 	font-family: sans-serif;
+// 	padding: 0 10px;
+// 	// border: 1px solid $gray;
+// 	border-right: none;
+// 	border-top-right-radius: 0;
+// 	border-bottom-right-radius: 0;
+// }
+//
+// .input-wrapper button {
+// 	border-top-left-radius: 0;
+// 	border-bottom-left-radius: 0;
+// }
+//
+// input[type="search"] {
+// 	padding: 5px;
+// }
