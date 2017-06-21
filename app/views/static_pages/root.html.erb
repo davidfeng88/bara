@@ -1,8 +1,20 @@
+
 <script id="bootstrap-current-user" type="text/javascript">
+
+
   <% if logged_in? %>
   	window.currentUser = <%= render("api/users/user.json.jbuilder",
   		user: current_user).html_safe %>
   <% end %>
+
+
+  window.staticImages = {
+    headerLogo: "<%= asset_path('bara-logo-small.png') %>",
+    HomeLogo: "<%= asset_path('bara-logo-large.png') %>",
+    sessionPic: "<%= asset_path('session-pic.png') %>",
+    footerPic: "<%= asset_path('footer-pic.png') %>"
+  };
+
 </script>
 
 <main id="root"></main>

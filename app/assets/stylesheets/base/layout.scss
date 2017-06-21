@@ -6,9 +6,23 @@ html {
 	font-size: 12px;
 }
 
+.container {
+	width: 960px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 a {
+	color: $blue;	
 	text-decoration: none;
 }
+
+a:visited {
+	color: $blue;
+}
+
 a:hover {
 	text-decoration: underline;
 }
@@ -32,6 +46,14 @@ h2 {
 	font-size: 22px;
 	font-weight: bold;
 	color: $yelpy-red;
+}
+
+h3 {
+	text-align: left;
+	font-size: 16px;
+	font-weight: bold;
+	color: $yelpy-red;
+	margin-bottom: 12px;
 }
 
 p.subheading {
@@ -61,7 +83,7 @@ img {
 /*
 	Inputs
 */
-// 
+//
 // .input-wrapper {
 // 	display: flex;
 // 	margin: 5px 0;

@@ -6,7 +6,7 @@ const SessionHeader = () => {
     <div className='session-header'>
       <div className='session-header-logo'>
         <Link to="/">
-          <img src='app/assets/images/bara-logo-small.png' />
+        <img src={window.staticImages.headerLogo} />
         </Link>
       </div>
     </div>

@@ -9,10 +9,15 @@ import {
 } from 'react-router-dom';
 
 import GreetingContainer from './greeting/greeting_container';
-import SessionFormContainer from './session_form/session_form_container';
+
+import SessionPage from './session_page/session_page';
+// import SessionFormContainer from './session_form/session_form_container';
 // import SearchContainer from './search/search_container';
 // import BenchShowContainer from './bench_show/bench_show_container';
 // import BenchFormContainer from './bench_form/bench_form_container';
+
+import Footer from './footer.jsx';
+
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -24,9 +29,11 @@ const App = () => (
     </header>
 
     <Switch>
-      <AuthRoute path="/login" component={SessionFormContainer} />
-      <AuthRoute path="/signup" component={SessionFormContainer} />
+      <AuthRoute path="/login" component={SessionPage} />
+      <AuthRoute path="/signup" component={SessionPage} />
     </Switch>
+
+    <Footer />
   </div>
 );
 

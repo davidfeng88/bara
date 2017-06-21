@@ -1,0 +1,26 @@
+.footer-container {
+  display: block;
+	// flex-direction: column;
+	// align-items: flex-start;
+}
+
+.footer {
+	padding: 30px;
+	border-top: 1px solid $border-color;
+	background-color: $background-color;
+}
+
+.footer a {
+	font-size: 14px;
+}
+
+.footer img {
+  display: block;
+  height: 120px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.about {
+  padding: 0 20px;
+}

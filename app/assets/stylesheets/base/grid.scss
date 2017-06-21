@@ -6,18 +6,24 @@
 with a class attribute containing 'col-' */
 [class*='col-'] {
   padding-right: 20px;
+  box-sizing: border-box;
+
+
 }
 
-[class*='col-']:last-of-type {
-  padding-right: 0;
-}
+// [class*='col-']:last-of-type {
+//   padding-right: 0;
+// }
 
 .col-2-3 {
   width: 66.6666%;
 }
 
+
 .col-1-2 {
   width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .col-1-3 {
