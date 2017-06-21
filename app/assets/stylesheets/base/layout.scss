@@ -15,7 +15,7 @@ html {
 }
 
 a {
-	color: $blue;	
+	color: $blue;
 	text-decoration: none;
 }
 
@@ -46,6 +46,7 @@ h2 {
 	font-size: 22px;
 	font-weight: bold;
 	color: $yelpy-red;
+	margin-bottom: 6px;
 }
 
 h3 {
@@ -60,6 +61,7 @@ p.subheading {
 	font-weight: bold;
 	margin-bottom: 12px;
 	display: block;
+	margin: 0;
 }
 
 img {
@@ -84,25 +86,45 @@ img {
 	Inputs
 */
 //
-// .input-wrapper {
-// 	display: flex;
-// 	margin: 5px 0;
-// }
-//
-// .input-wrapper input {
-// 	flex: 1;
-// 	font-family: sans-serif;
-// 	padding: 0 10px;
-// 	// border: 1px solid $gray;
-// 	border-right: none;
-// 	border-top-right-radius: 0;
-// 	border-bottom-right-radius: 0;
-// }
-//
-// .input-wrapper button {
-// 	border-top-left-radius: 0;
-// 	border-bottom-left-radius: 0;
-// }
+.input-wrapper {
+	display: flex;
+	margin: 1px;
+	width: 100%;
+	// border: 1px solid $border-color;
+	// padding: 5px 9px;
+}
+
+.input-wrapper input {
+	flex: 1;
+	border: 1px solid $border-color;
+	border-radius: 3px;
+	margin: 0 0 9px 0;
+	font-size: 14px;
+	padding: 5px 9px;
+}
+
+.input-wrapper button {
+	flex: 1;
+	border: 1px solid #4D4D4D;
+	border-radius: 3px;
+	margin: 0 0 9px 0;
+	font-size: 14px;
+	padding: 8px 19px;
+
+	font-weight: bold;
+	color: white;
+	background-color: $yelpy-red;
+}
+
+.input-wrapper button:hover {
+	cursor: pointer;
+	background-color: #ed0008;
+}
+
+.subtle-text {
+	color: #999;
+	text-align: right;
+}
 //
 // input[type="search"] {
 // 	padding: 5px;

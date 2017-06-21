@@ -1,3 +1,4 @@
+// session header
 .session-header {
   background-color: $yelpy-red;
   height: 60px;
@@ -5,16 +6,30 @@
   box-sizing: border-box;
 }
 
-
-
 .session-header-logo {
   margin: 0 auto;
   height: 36px;
   width: 77px;
 }
 
+// session side picture
 .session-pic {
 	width: 382px;
 	height: auto;
-	margin: 117px 0;
+	margin: 60px 0;
+}
+
+// session form
+.session-form-container {
+  width: 70%;
+}
+
+p.subheading {
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
+
+.session-form {
+  margin: 30px auto;
 }

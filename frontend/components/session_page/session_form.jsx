@@ -39,42 +39,86 @@ class SessionForm extends React.Component {
     }
   }
 
+  titleText() {
+    if (this.props.formType === 'login') {
+      return 'Log In to Bara';
+    } else {
+      return 'Sign Up for Bara';
+    }
+  }
+
+  subheadingText() {
+    if (this.props.formType === 'login') {
+      return (
+        <p className='subheading'>New to Bara?&nbsp;
+          <Link to='/signup'>Sign up</Link>
+        </p>
+      );
+    } else {
+      return (
+        <p className='subheading'>Connect with great local businesses</p>
+      );
+    }
+  }
+
+  submitText() {
+    return this.props.formType === 'login' ? 'Log In' : 'Sign Up';
+  }
+
+  endText() {
+    if (this.props.formType === 'login') {
+      return (
+        <p className='subtle-text'>New to Bara?&nbsp;
+          <Link to='/signup'>Sign up</Link>
+        </p>
+      );
+    } else {
+      return (
+        <p className='subtle-text'>Already on Bara?&nbsp;
+          <Link to='/login'>Log in</Link>
+        </p>
+      );
+    }
+  }
+
   render() {
     return (
-      <div className="login-form-container col-1-2">
+      <div className="session-form-container">
         <ErrorList errors={ this.props.errors } />
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h2>
-            {this.props.formType === 'login' ?
-            'Log In to Bara'
-            : 'Sign Up for Bara'}
-          </h2>
-          <p className='subheading'>
-            {this.props.formType === 'login' ?
-            'New to Bara? Sign Up'
-            : 'Connect with great local businesses'}
-          </p>
+        <form onSubmit={this.handleSubmit} className="session-form-box">
 
-          Please {this.props.formType} or {this.navLink()}
-          <div className="login-form">
-            <br/>
-            <label>Username:
+          <h2>{this.titleText()}</h2>
+          {this.subheadingText()}
+
+          <div className="session-form">
+            <div className='input-wrapper'>
+              <label htmlFor='username' className='hidden'>Username</label>
               <input type="text"
+                id="username"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
+                placeholder="Username"
               />
-            </label>
-            <br/>
-            <label>Password:
+            </div>
+
+            <div className='input-wrapper'>
+              <label htmlFor='password' className='hidden'>Password</label>
               <input type="password"
+                id="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
+                placeholder="Password"
               />
-            </label>
-            <br/>
-            <input type="submit" value="Submit" />
+            </div>
+
+            <div className='input-wrapper'>
+              <button type="submit" >{this.submitText()}</button>
+            </div>
+
+            {this.endText()}
+
           </div>
         </form>
       </div>
