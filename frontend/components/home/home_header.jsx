@@ -23,9 +23,9 @@ const personalGreeting = (currentUser, logout) => (
     <div className='home-nav-left'>
     </div>
     <div className='home-nav-right'>
-    <img className='home-avatar' src={currentUser.avatar_url} />
-    <h2 className="header-name">Hi, {currentUser.username}!</h2>
-    <button className="header-button" onClick={logout}>Log Out</button>
+      <img className='home-avatar' src={currentUser.avatar_url} />
+      <h2 className="header-name">Hi, {currentUser.username}!</h2>
+      <button className="header-button" onClick={logout}>Log Out</button>
     </div>
   </nav>
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HomeHeaderContainer from './home_header_container';
-import HomeSearchContainer from './home_search_container';
+import SearchContainer from '../search/search_container';
+import LinksContainer from '../link/link_container';
 
 const HomeHero = () => {
   return(
@@ -13,10 +14,13 @@ const HomeHero = () => {
           <img src={window.staticImages.homeLogo} />
         </Link>
       </div>
-      <HomeSearchContainer />
-      
+
+      <div className='home-search'>
+        <SearchContainer />
+      </div>
+
       <div className='home-hero-links'>
-        <Link to="/businesses">Businesses</Link>
+        <LinksContainer />
       </div>
 
     </div>
