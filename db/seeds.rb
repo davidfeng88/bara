@@ -9,7 +9,7 @@ User.destroy_all
 User.create(username: 'guest', password: 'password')
 
 Business.destroy_all
-3.times do
+10.times do
   Business.create(
     author_id: 1,
     name: Faker::Company.name,
