@@ -10,7 +10,9 @@ class SessionForm extends React.Component {
       username: '',
       password: ''
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.switchForm = this.switchForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,12 +33,13 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
-  navLink() {
-    if (this.props.formType === 'login') {
-      return <Link to="/signup">sign up instead</Link>;
-    } else {
-      return <Link to="/login">log in instead</Link>;
-    }
+  switchForm(e) {
+    e.preventDefault();
+    this.setState({
+      username: '',
+      password: ''
+    });
+    this.props.clearErrors();
   }
 
   titleText() {
@@ -69,13 +72,13 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'login') {
       return (
         <p className='subtle-text'>New to Bara?&nbsp;
-          <Link to='/signup'>Sign up</Link>
+          <Link onClick={this.switchForm} to='/signup'>Sign up</Link>
         </p>
       );
     } else {
       return (
         <p className='subtle-text'>Already on Bara?&nbsp;
-          <Link to='/login'>Log in</Link>
+          <Link onClick={this.switchForm} to='/login'>Log in</Link>
         </p>
       );
     }
