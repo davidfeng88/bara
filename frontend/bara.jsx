@@ -7,10 +7,18 @@ import configureStore from './store/store';
 
 // for test only
 // 1 ajax
-// import { login, signup, logout } from './util/session_api_util';
-// window.login = login;
-// window.logout = logout;
-// window.signup = signup;
+import {
+  fetchAllBusinesses,
+  fetchOneBusiness,
+  createBusiness,
+  editBusiness,
+  deleteBusiness
+} from './util/business_api_util';
+window.fetchAllBusinesses = fetchAllBusinesses;
+window.fetchOneBusiness = fetchOneBusiness;
+window.createBusiness = createBusiness;
+window.editBusiness = editBusiness;
+window.deleteBusiness = deleteBusiness;
 
 // 2 actions
 // import * as SActions from './actions/session_actions';

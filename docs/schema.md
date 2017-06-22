@@ -17,10 +17,10 @@ name        | string    | not null, indexed
 address     | string    | not null, indexed
 city        | string    | not null, indexed
 state       | string    | not null, indexed
-zip         | string    | not null, indexed
+zipcode     | integer   | not null, indexed
+price       | integer   | not null, indexed
 phone       | string    |
 url         | string    |
-price       | integer   | not null, indexed
 
 ## business_tags
 column name | data type | details

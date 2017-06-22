@@ -38,8 +38,7 @@ sufficient CSS styling:
 
 ### Phase 2: Businesses Model, API, and components (2 days, W1D4-W1D5)
 
-**Objective:** Businesses can be created, read, edited and destroyed through
-the API.
+**Objective:** Businesses can be created, read, edited and destroyed through the API.
 
 ### Phase 3: Search / filters (1 day, W2D1)
 
