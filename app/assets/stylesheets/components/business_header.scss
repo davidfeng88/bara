@@ -1,0 +1,15 @@
+.business-header-row1-wrapper {
+  background-color: $yelpy-red;
+}
+
+.business-header-row2-wrapper {
+  background-color: rgb(189, 31, 31);
+}
+
+
+.business-header-row1, .business-header-row2 {
+  display: flex;
+  justify-content: space-between;
+  width: 960px;
+  margin: 0 auto;
+}

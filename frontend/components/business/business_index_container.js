@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchAllBusinesses } from '../../actions/business_actions';
-import { businessesToArray } from '../../util/selectors';
+import { businessesToArray } from '../../reducers/selectors';
 import BusinessIndex from './business_index';
 
 const mapStateToProps = state => ({

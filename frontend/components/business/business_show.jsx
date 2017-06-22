@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BusinessIndexItem = ({ business }) => {
+import BusinessHeaderContainer from './business_header_container';
+
+const BusinessShow = ({ business }) => {
   return(
-    <li>
+    <div>
+      <BusinessHeaderContainer />
       <Link to={`/businesses/${business.id}`}>{business.name}</Link>
       <p>{business.address}</p>
       <p>{`${business.city}, ${business.state} ${business.zipcode}`}</p>
       <p>{business.phone}</p>
-    </li>
+      <Link to='/businesses'> back to all businesses </Link>
+    </div>
   );
 };
 
-export default BusinessIndexItem;
+export default BusinessShow;

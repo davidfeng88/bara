@@ -23,16 +23,18 @@ const avatarOrSignUp = (currentUser, logout) => {
 
 const login = (currentUser, demoLogin) => {
   if (currentUser) {
+    return <div></div>;
+  } else {
     return (
       <div>
         <div className='demo'>
           <button onClick={demoLogin}>Demo Login</button>
         </div>
-        <Link to="/login">Log In</Link>
+        <div>
+          <Link to="/login">Log In</Link>
+        </div>
       </div>
     );
-  } else {
-    return null;
   }
 };
 
@@ -51,11 +53,12 @@ const HomeHeader = ({ currentUser, demoLogin, logout }) => {
         </div>
       </div>
 
-      <div className='business-header-row2'>
-        <LinksContainer />
-        {login(currentUser, demoLogin)}
+      <div className='business-header-row2-wrapper' >
+        <div className='business-header-row2'>
+          <LinksContainer />
+          {login(currentUser, demoLogin)}
+        </div>
       </div>
-
     </div>
   );
 };

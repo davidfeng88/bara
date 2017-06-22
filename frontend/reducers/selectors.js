@@ -5,6 +5,6 @@ export const businessesToArray = state => {
   return businessesArray;
 };
 
-// export const selectCurrentPost = (state, id) => {
-//   return state.posts[parseInt(id)];
-// };
+export const selectCurrentBusiness = (state, id) => {
+  return state.businesses[parseInt(id)];
+};
