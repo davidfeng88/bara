@@ -7,30 +7,36 @@ import configureStore from './store/store';
 
 // for test only
 // 1 ajax
-import {
-  fetchAllBusinesses,
-  fetchOneBusiness,
-  createBusiness,
-  editBusiness,
-  deleteBusiness
-} from './util/business_api_util';
-window.fetchAllBusinesses = fetchAllBusinesses;
-window.fetchOneBusiness = fetchOneBusiness;
-window.createBusiness = createBusiness;
-window.editBusiness = editBusiness;
-window.deleteBusiness = deleteBusiness;
+// import {
+//   fetchAllBusinesses,
+//   fetchBusiness,
+//   createBusiness,
+//   editBusiness,
+//   deleteBusiness
+// } from './util/business_api_util';
+// window.fetchAllBusinesses = fetchAllBusinesses;
+// window.fetchBusiness = fetchBusiness;
+// window.createBusiness = createBusiness;
+// window.editBusiness = editBusiness;
+// window.deleteBusiness = deleteBusiness;
 
-// 2 actions
-// import * as SActions from './actions/session_actions';
+// 2 actions dispatch them!
+import * as BActions from './actions/business_actions';
 // import * as EActions from './actions/error_actions';
 // sync actions
-// window.receiveCurrentUser = SActions.receiveCurrentUser;
+window.receiveAllBusinesses = BActions.receiveAllBusinesses;
+window.receiveBusiness = BActions.receiveBusiness;
+window.removeBusiness = BActions.removeBusiness;
+
 // window.receiveErrors = EActions.receiveErrors;
 // window.clearErrors = EActions.clearErrors;
 // async actions
-// window.signup = SActions.signup;
-// window.login = SActions.login;
-// window.logout = SActions.logout;
+window.fetchAllBusinesses = BActions.fetchAllBusinesses;
+window.fetchBusiness = BActions.fetchBusiness;
+window.createBusiness = BActions.createBusiness;
+window.editBusiness = BActions.editBusiness;
+window.deleteBusiness = BActions.deleteBusiness;
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

@@ -14,7 +14,7 @@ export const createBusiness = business => (
 );
 
 
-export const fetchOneBusiness = (id) => (
+export const fetchBusiness = (id) => (
   $.ajax({
     method: 'GET',
     url: `/api/businesses/${id}`

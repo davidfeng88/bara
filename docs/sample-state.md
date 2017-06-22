@@ -15,7 +15,7 @@
       city: "Chicago",
       state: "IL",
       zip: 60637,
-      phone: "111-111-1111",
+      phone: "(111)111-1111",
       price: 1,
       business_tags: [1],
       reviews: [1] // potentially could indicate orders of reviews (e.g. new to old)
@@ -28,7 +28,7 @@
       city: "Chicago",
       state: "IL",
       zip: 60637,
-      phone: "222-222-2222",
+      phone: "(222)222-2222",
       price: 2,
       business_tags: [1, 4],
       reviews: [2]

@@ -17,7 +17,7 @@
 #
 
 class Business < ActiveRecord::Base
-  validates :author_id,
+  validates :author,
             :name,
             :address,
             :city,
@@ -31,5 +31,5 @@ class Business < ActiveRecord::Base
 		foreign_key: :author_id,
 		class_name: :User
 
-    
+
 end

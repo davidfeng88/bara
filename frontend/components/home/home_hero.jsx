@@ -14,6 +14,10 @@ const HomeHero = () => {
         </Link>
       </div>
       <HomeSearchContainer />
+      
+      <div className='home-hero-links'>
+        <Link to="/businesses">Businesses</Link>
+      </div>
 
     </div>
   );
