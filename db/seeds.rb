@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.destroy_all
+User.destroy_all
 User.create(username: 'guest', password: 'password')
 
-# Business.destroy_all
+Business.destroy_all
 10.times do
   Business.create(
-    author_id: 1,
+    author_id: User.first.id,
     name: Faker::Company.name,
     address: "#{rand(101..599)} W #{rand(25..34).ordinalize} St",
     city: 'New York',

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import HomeHeaderContainer from './home_header_container';
+import HomeBarContainer from './home_bar_container';
 import SearchContainer from '../search/search_container';
 import LinksContainer from '../link/link_container';
 
-const HomeHero = () => {
+const HomeHeader = () => {
   return(
     <div className='home-hero'>
-      <HomeHeaderContainer />
+      <HomeBarContainer />
       <div className='logo'>
         <Link to="/">
           <img src={window.staticImages.homeLogo} />
@@ -27,7 +27,7 @@ const HomeHero = () => {
   );
 };
 
-export default HomeHero;
+export default HomeHeader;
 
 
 // sesarch bar<>

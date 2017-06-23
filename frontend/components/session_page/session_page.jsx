@@ -1,12 +1,10 @@
 import React from 'react';
 
-import SessionHeader from './session_header';
 import SessionFormContainer from './session_form_container';
 
 const SessionPage = () => {
   return(
     <div>
-      <SessionHeader />
       <div className='page-main'>
         <div className='container'>
 

@@ -12,12 +12,15 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.switchForm = this.switchForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.history.push('/');
+    if (nextProps.formType !== this.props.formType) {
+      this.setState({
+        username: '',
+        password: ''
+      });
+      this.props.clearErrors();
     }
   }
 
@@ -30,16 +33,8 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user);
-  }
-
-  switchForm(e) {
-    e.preventDefault();
-    this.setState({
-      username: '',
-      password: ''
-    });
-    this.props.clearErrors();
+    this.props.processForm(user)
+      .then(() => this.props.history.push('/'));
   }
 
   titleText() {
@@ -72,13 +67,13 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'login') {
       return (
         <p className='subtle-text'>New to Bara?&nbsp;
-          <Link onClick={this.switchForm} to='/signup'>Sign up</Link>
+          <Link to='/signup'>Sign up</Link>
         </p>
       );
     } else {
       return (
         <p className='subtle-text'>Already on Bara?&nbsp;
-          <Link onClick={this.switchForm} to='/login'>Log in</Link>
+          <Link to='/login'>Log in</Link>
         </p>
       );
     }

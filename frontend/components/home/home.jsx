@@ -1,11 +1,10 @@
 import React from 'react';
 
-import HomeHero from './home_hero';
 
 const Home = () => {
   return(
     <div>
-      <HomeHero />
+      This is the main content of homepage
     </div>
   );
 };

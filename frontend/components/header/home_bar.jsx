@@ -31,8 +31,8 @@ const personalGreeting = (currentUser, logout) => (
 
 );
 
-const HomeHeader = ({ currentUser, demoLogin, logout }) => (
+const HomeBar = ({ currentUser, demoLogin, logout }) => (
   currentUser ? personalGreeting(currentUser, logout) : sessionLinks(demoLogin)
 );
 
-export default HomeHeader;
+export default HomeBar;

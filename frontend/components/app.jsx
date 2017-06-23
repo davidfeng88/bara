@@ -10,6 +10,14 @@ import {
 
 import Home from './home/home';
 
+// headers
+import HomeHeader from './header/home_header';
+
+import SessionHeader from './header/session_header';
+
+
+// bodies
+
 import SessionPage from './session_page/session_page';
 import BusinessShowContainer from './business/business_show_container';
 import BusinessIndexContainer from './business/business_index_container';
@@ -21,6 +29,15 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
+    <header>
+      <Switch>
+
+        <Route exact path='/' component={HomeHeader} />
+        <AuthRoute path="/login" component={SessionHeader} />
+        <AuthRoute path="/signup" component={SessionHeader} />
+
+      </Switch>
+    </header>
 
     <Route exact path='/' component={Home} />
 
