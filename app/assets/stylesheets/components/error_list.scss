@@ -1,0 +1,23 @@
+.error-list {
+  border-radius: 3px;
+  background-color: rgb(252, 214, 211);
+  margin: 16px auto;
+  padding: 18px 18px 18px 24px;
+  font-size: 16px;
+  width: 960px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.error-list ul {
+  padding: 0 20px;
+  margin: 0;
+}
+
+.error-list li {
+  padding: 10px 0;
+  margin: 0;
+  list-style: none;
+}

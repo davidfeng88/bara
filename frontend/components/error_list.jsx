@@ -7,9 +7,14 @@ const ErrorList = ({ errors }) => {
   ));
 
   return (
-    <ul className="error-list">
-      { errorItems }
-    </ul>
+    <div className="error-list">
+      <ul >
+        { errorItems }
+      </ul>
+      <div className='dismiss-error'>
+      X
+      </div>
+    </div>
   );
 };
 

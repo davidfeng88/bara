@@ -103,7 +103,8 @@ class SessionForm extends React.Component {
 
                 <div className="session-form">
                   <div className='input-wrapper'>
-                    <label htmlFor='username' className='hidden'>Username</label>
+                    <label htmlFor='username'
+                      className='hidden'>Username</label>
                     <input type="text"
                       id="username"
                       value={this.state.username}
@@ -114,7 +115,8 @@ class SessionForm extends React.Component {
                   </div>
 
                   <div className='input-wrapper'>
-                    <label htmlFor='password' className='hidden'>Password</label>
+                    <label htmlFor='password'
+                      className='hidden'>Password</label>
                     <input type="password"
                       id="password"
                       value={this.state.password}

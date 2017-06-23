@@ -7,7 +7,7 @@ import Home from './home/home';
 
 // bodies
 
-import SessionFormContainer from './session_page/session_form_container';
+import SessionFormContainer from './session/session_form_container';
 import BusinessShowContainer from './business/business_show_container';
 import BusinessIndexContainer from './business/business_index_container';
 import BusinessFormPage from './business/business_form_page';
