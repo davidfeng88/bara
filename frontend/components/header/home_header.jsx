@@ -7,7 +7,7 @@ import LinksContainer from '../link/link_container';
 
 const HomeHeader = () => {
   return(
-    <div className='home-hero'>
+    <div className='home-header'>
       <HomeBarContainer />
       <div className='logo'>
         <Link to="/">
@@ -19,7 +19,7 @@ const HomeHeader = () => {
         <SearchContainer />
       </div>
 
-      <div className='home-hero-links'>
+      <div className='home-header-links'>
         <LinksContainer />
       </div>
 
@@ -28,7 +28,3 @@ const HomeHeader = () => {
 };
 
 export default HomeHeader;
-
-
-// sesarch bar<>
-// links

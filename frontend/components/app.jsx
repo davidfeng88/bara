@@ -17,26 +17,27 @@ import Footer from './footer';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
+  <div className='page-container'>
     <HeaderRouter />
 
-    <Route exact path='/' component={Home} />
+    <div className='body'>
+      <Route exact path='/' component={Home} />
 
-    <Switch>
-      <ProtectedRoute path="/businesses/new" component={BusinessFormPage} />
-      <ProtectedRoute path="/businesses/:id/edit"
-        component={BusinessFormPage} />
-      <Route path='/businesses/:id' component={BusinessShowContainer} />
-      <Route path='/businesses' component={BusinessIndexContainer} />
-    </Switch>
+      <Switch>
+        <ProtectedRoute path="/businesses/new" component={BusinessFormPage} />
+        <ProtectedRoute path="/businesses/:id/edit"
+          component={BusinessFormPage} />
+        <Route path='/businesses/:id' component={BusinessShowContainer} />
+        <Route path='/businesses' component={BusinessIndexContainer} />
+      </Switch>
 
 
 
-    <Switch>
-      <AuthRoute path="/login" component={SessionPage} />
-      <AuthRoute path="/signup" component={SessionPage} />
-    </Switch>
-
+      <Switch>
+        <AuthRoute path="/login" component={SessionPage} />
+        <AuthRoute path="/signup" component={SessionPage} />
+      </Switch>
+    </div>
     <Footer />
   </div>
 );

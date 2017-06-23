@@ -1,0 +1,81 @@
+.home-bar {
+  width: 960px;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  font-size: 14px;
+  font-weight: bolder;
+  color: white;
+}
+
+// group css
+
+.home-bar-right {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home-demo, .home-login, .home-signup {
+  border-radius: 4px;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+.home-login > a, .home-signup > a {
+  text-decoration: none;
+  color: white;
+}
+
+// individual divs
+.home-demo {
+  padding: 8px 24px;
+  border-color: white;
+}
+
+.home-login {
+  border-color: transparent;
+  margin-right: 10px;
+}
+
+.home-login > a {
+  display: block; // need it for vertical padding
+  padding: 9px 12px;
+}
+
+.home-signup {
+  border-color: white;
+}
+
+.home-signup > a {
+  display: block; // need it for vertical padding
+  padding: 8px 24px;
+}
+
+// hover
+.home-demo:hover, .home-signup:hover {
+  background: white;
+}
+
+.home-demo:hover, .home-signup:hover a {
+  color: #666;
+}
+
+.home-login:hover {
+  border-bottom: 2px solid white;
+}
+
+// active
+.home-demo:active, .home-login:active a, .home-signup:active a {
+  color: #999;
+}
+
+
+// when logged in
+.home-avatar {
+  height: 38px;
+  width: auto;
+}

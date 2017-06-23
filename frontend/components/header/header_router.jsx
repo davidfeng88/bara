@@ -11,7 +11,7 @@ const HeaderRouter = () => (
   <header>
     <Switch>
       <Route path='/businesses' component={BusinessHeaderContainer} />
-      <Route path='/' component={HomeHeader} />
+      <Route exact path='/' component={HomeHeader} />
       <AuthRoute path="/login" component={SessionHeader} />
       <AuthRoute path="/signup" component={SessionHeader} />
     </Switch>
