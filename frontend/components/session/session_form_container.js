@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { login, logout, signup } from '../../actions/session_actions';
-import { receiveErrors, clearErrors } from '../../actions/error_actions';
+import { clearErrors } from '../../actions/error_actions';
 import SessionForm from './session_form';
 
 
@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch, { location }) => {
     processForm: user => dispatch(processForm(user)),
     formType,
     login: user => dispatch(login(user)),
-    receiveErrors: errors => dispatch(receiveErrors(errors)),
     clearErrors: () => dispatch(clearErrors())
   };
 };

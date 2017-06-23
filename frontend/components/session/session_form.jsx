@@ -91,7 +91,8 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div>
-        <ErrorList errors={ this.props.errors } />
+        <ErrorList errors={ this.props.errors }
+          clearErrors={this.props.clearErrors} />
         <div className='container'>
           <div className='col-1-2'>
             <div className="session-form-container">

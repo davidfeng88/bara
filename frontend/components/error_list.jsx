@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ErrorList = ({ errors }) => {
+const ErrorList = ({ errors, clearErrors }) => {
   if (errors.length === 0) return null;
   const errorItems = JSON.parse(errors).map((error, idx) => (
     <li key={ `error-${idx}` }>{ error }</li>
@@ -11,7 +11,7 @@ const ErrorList = ({ errors }) => {
       <ul >
         { errorItems }
       </ul>
-      <div className='dismiss-error'>
+      <div onClick={clearErrors} className='dismiss-error'>
       X
       </div>
     </div>
