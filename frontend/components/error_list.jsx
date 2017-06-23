@@ -12,7 +12,7 @@ const ErrorList = ({ errors, clearErrors }) => {
         { errorItems }
       </ul>
       <div onClick={clearErrors} className='dismiss-error'>
-      X
+      ×
       </div>
     </div>
   );

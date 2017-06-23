@@ -12,6 +12,7 @@
 }
 
 .error-list ul {
+  display: block;
   padding: 0 20px;
   margin: 0;
 }
@@ -22,8 +23,13 @@
   list-style: none;
 }
 
-.dissmiss-error {
-  background-color: black;
+.dismiss-error {
   cursor: pointer;
-  padding: 10px;
+  font-size: 24px;
+  color: rgb(102, 102, 102);
+  opacity: 0.5;
+}
+
+.dismiss-error:hover {
+  opacity: 0.7;
 }
