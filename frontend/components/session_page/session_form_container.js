@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch, { location }) => {
   return {
     processForm: user => dispatch(processForm(user)),
     formType,
+    login: user => dispatch(login(user)),
     receiveErrors: errors => dispatch(receiveErrors(errors)),
     clearErrors: () => dispatch(clearErrors())
   };

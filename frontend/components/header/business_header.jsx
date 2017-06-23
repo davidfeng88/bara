@@ -51,7 +51,7 @@ const BusinessHeader = ({ currentUser, demoLogin, logout }) => {
           <div className='business-search'>
             <SearchContainer />
           </div>
-          {avatarOrSignUp(currentUser)}
+          {avatarOrSignUp(currentUser, logout)}
         </div>
       </div>
 

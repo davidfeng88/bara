@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -35,6 +36,14 @@ class SessionForm extends React.Component {
     const user = this.state;
     this.props.processForm(user)
       .then(() => this.props.history.push('/'));
+  }
+
+  demoLogin(e) {
+    e.preventDefault();
+    const guestUser = {username: 'guest', password: 'password'};
+    this.props.login(guestUser)
+      .then(() => this.props.history.push('/'));
+
   }
 
   titleText() {
@@ -113,6 +122,12 @@ class SessionForm extends React.Component {
 
             <div className='input-wrapper'>
               <button type="submit" >{this.submitText()}</button>
+            </div>
+
+            <div className='input-wrapper'>
+              <button onClick={this.demoLogin} type="submit" >
+                Demo Login
+              </button>
             </div>
 
             {this.endText()}
