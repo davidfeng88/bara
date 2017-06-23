@@ -90,52 +90,62 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="session-form-container">
+      <div>
         <ErrorList errors={ this.props.errors } />
-        <form onSubmit={this.handleSubmit} className="session-form-box">
+        <div className='container'>
+          <div className='col-1-2'>
+            <div className="session-form-container">
 
-          <h2>{this.titleText()}</h2>
-          {this.subheadingText()}
+              <form onSubmit={this.handleSubmit} className="session-form-box">
 
-          <div className="session-form">
-            <div className='input-wrapper'>
-              <label htmlFor='username' className='hidden'>Username</label>
-              <input type="text"
-                id="username"
-                value={this.state.username}
-                onChange={this.update('username')}
-                className="login-input"
-                placeholder="Username"
-              />
+                <h2>{this.titleText()}</h2>
+                {this.subheadingText()}
+
+                <div className="session-form">
+                  <div className='input-wrapper'>
+                    <label htmlFor='username' className='hidden'>Username</label>
+                    <input type="text"
+                      id="username"
+                      value={this.state.username}
+                      onChange={this.update('username')}
+                      className="login-input"
+                      placeholder="Username"
+                    />
+                  </div>
+
+                  <div className='input-wrapper'>
+                    <label htmlFor='password' className='hidden'>Password</label>
+                    <input type="password"
+                      id="password"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                      className="login-input"
+                      placeholder="Password"
+                    />
+                  </div>
+
+                  <div className='input-wrapper'>
+                    <button type="submit" >{this.submitText()}</button>
+                  </div>
+
+                  <div className='input-wrapper'>
+                    <button onClick={this.demoLogin} type="submit" >
+                      Demo Login
+                    </button>
+                  </div>
+
+                  {this.endText()}
+
+                </div>
+              </form>
             </div>
-
-            <div className='input-wrapper'>
-              <label htmlFor='password' className='hidden'>Password</label>
-              <input type="password"
-                id="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-                placeholder="Password"
-              />
-            </div>
-
-            <div className='input-wrapper'>
-              <button type="submit" >{this.submitText()}</button>
-            </div>
-
-            <div className='input-wrapper'>
-              <button onClick={this.demoLogin} type="submit" >
-                Demo Login
-              </button>
-            </div>
-
-            {this.endText()}
-
           </div>
-        </form>
-      </div>
 
+          <div className='col-1-2 session-pic'>
+            <img src={window.staticImages.sessionPic} />
+          </div>
+        </div>
+      </div>
     );
   }
 }

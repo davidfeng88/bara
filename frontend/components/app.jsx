@@ -7,7 +7,7 @@ import Home from './home/home';
 
 // bodies
 
-import SessionPage from './session_page/session_page';
+import SessionFormContainer from './session_page/session_form_container';
 import BusinessShowContainer from './business/business_show_container';
 import BusinessIndexContainer from './business/business_index_container';
 import BusinessFormPage from './business/business_form_page';
@@ -34,8 +34,8 @@ const App = () => (
 
 
       <Switch>
-        <AuthRoute path="/login" component={SessionPage} />
-        <AuthRoute path="/signup" component={SessionPage} />
+        <AuthRoute path="/login" component={SessionFormContainer} />
+        <AuthRoute path="/signup" component={SessionFormContainer} />
       </Switch>
     </div>
     <Footer />
