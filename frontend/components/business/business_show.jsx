@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import BusinessHeaderContainer from './business_header_container';
-
 const BusinessShow = ({ business }) => {
   return(
     <div>
@@ -17,5 +15,3 @@ const BusinessShow = ({ business }) => {
 };
 
 export default BusinessShow;
-
-      // <BusinessHeaderContainer />

@@ -1,20 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
+import HeaderRouter from './header/header_router';
 
 import Home from './home/home';
-
-// headers
-import HomeHeader from './header/home_header';
-
-import SessionHeader from './header/session_header';
-
 
 // bodies
 
@@ -29,15 +18,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
   <div>
-    <header>
-      <Switch>
-
-        <Route exact path='/' component={HomeHeader} />
-        <AuthRoute path="/login" component={SessionHeader} />
-        <AuthRoute path="/signup" component={SessionHeader} />
-
-      </Switch>
-    </header>
+    <HeaderRouter />
 
     <Route exact path='/' component={Home} />
 

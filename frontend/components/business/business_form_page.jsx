@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import BusinessHeaderContainer from './business_header_container';
 // import BusinessFormContainer from './business_form_container';
 
 const BusinessFormPage = () => {
@@ -13,7 +12,7 @@ const BusinessFormPage = () => {
 };
 
 export default BusinessFormPage;
-      // <BusinessHeaderContainer />
+
 // <SessionHeader />
 // <div className='page-main'>
 //   <div className='container'>

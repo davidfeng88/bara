@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import BusinessHeaderContainer from './business_header_container';
 import BusinessIndexItem from './business_index_item';
 
 class BusinessIndex extends React.Component {
@@ -32,4 +31,3 @@ class BusinessIndex extends React.Component {
 }
 
 export default BusinessIndex;
-        // <BusinessHeaderContainer />
