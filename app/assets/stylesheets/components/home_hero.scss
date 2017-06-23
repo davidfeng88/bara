@@ -30,9 +30,15 @@
 }
 
 .home-header-links {
-  margin: 0 auto;
+  margin: 20px auto;
   width: 40%;
   font-size: 14px;
+  color: white;
   text-align: center;
   background-color: $yelpy-red;
+}
+
+.home-header-links a {
+  font-weight: bold;
+  color: white;
 }

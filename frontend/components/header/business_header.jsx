@@ -14,7 +14,7 @@ const avatarOrSignUp = (currentUser, logout) => {
       );
     } else {
       return (
-        <div className='signup'>
+        <div className='business-signup'>
           <Link to="/signup">Sign up</Link>
         </div>
       );
@@ -26,11 +26,11 @@ const login = (currentUser, demoLogin) => {
     return <div></div>;
   } else {
     return (
-      <div>
-        <div className='demo'>
+      <div className='business-header-row2-right'>
+        <div className='business-demo'>
           <button onClick={demoLogin}>Demo Login</button>
         </div>
-        <div>
+        <div className="business-login">
           <Link to="/login">Log In</Link>
         </div>
       </div>
@@ -38,24 +38,28 @@ const login = (currentUser, demoLogin) => {
   }
 };
 
-const HomeHeader = ({ currentUser, demoLogin, logout }) => {
+const BusinessHeader = ({ currentUser, demoLogin, logout }) => {
   return(
     <div className='business-header'>
       <div className='business-header-row1-wrapper' >
         <div className='business-header-row1'>
-          <div className='small-logo'>
+          <div className='business-logo'>
             <Link to="/">
               <img src={window.staticImages.headerLogo} />
             </Link>
           </div>
-          <SearchContainer />
+          <div className='business-search'>
+            <SearchContainer />
+          </div>
           {avatarOrSignUp(currentUser)}
         </div>
       </div>
 
       <div className='business-header-row2-wrapper' >
         <div className='business-header-row2'>
-          <LinksContainer />
+          <div className='business-header-links'>
+            <LinksContainer />
+          </div>
           {login(currentUser, demoLogin)}
         </div>
       </div>
@@ -63,4 +67,4 @@ const HomeHeader = ({ currentUser, demoLogin, logout }) => {
   );
 };
 
-export default HomeHeader;
+export default BusinessHeader;

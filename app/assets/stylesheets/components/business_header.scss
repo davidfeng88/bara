@@ -1,15 +1,81 @@
 .business-header-row1-wrapper {
+  padding: 12px 0;
   background-color: $yelpy-red;
 }
 
 .business-header-row2-wrapper {
+  vertical-align: middle;
+  height: 27px;
   background-color: rgb(189, 31, 31);
 }
-
 
 .business-header-row1, .business-header-row2 {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 960px;
   margin: 0 auto;
+}
+
+business-logo {
+  margin: 0 4px;
+}
+
+.business-search {
+  width: 754px;
+  height: 36px;
+  background-color: white;
+  margin: 0 20px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+business-signup {
+  padding: 10% 0;
+}
+
+.business-signup a {
+  text-align: center;
+  width: 80px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  display: block;
+  padding: 10px 12px;
+  background-color: rgb(189, 31, 31);
+  border-radius: 4px;
+  margin: auto;
+}
+
+.business-signup:hover a {
+  background-color: #a71c1c;
+  text-decoration: none;
+}
+
+.business-header-row2-right {
+  display: flex;
+}
+
+.business-login a {
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 3px 12px;
+}
+
+.business-login a:hover {
+  text-decoration: none;
+  background-color: rgba(51,51,51,0.3);
+}
+
+.business-header-links {
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+
+.business-header-links a {
+  font-weight: bold;
+  color: white;
 }
