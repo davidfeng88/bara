@@ -27,8 +27,8 @@ const login = (currentUser, demoLogin) => {
   } else {
     return (
       <div className='business-header-row2-right'>
-        <div className='business-demo'>
-          <button onClick={demoLogin}>Demo Login</button>
+        <div onClick={demoLogin} className='business-demo'>
+          Demo Login
         </div>
         <div className="business-login">
           <Link to="/login">Log In</Link>

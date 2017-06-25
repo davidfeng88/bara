@@ -1,20 +1,16 @@
-.business-header-row1-wrapper {
-  padding: 12px 0;
-  background-color: $yelpy-red;
-}
-
-.business-header-row2-wrapper {
-  vertical-align: middle;
-  height: 27px;
-  background-color: rgb(189, 31, 31);
-}
-
 .business-header-row1, .business-header-row2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 960px;
   margin: 0 auto;
+  height: 100%;
+}
+
+// row 1
+.business-header-row1-wrapper {
+  padding: 12px 0;
+  background-color: $yelpy-red;
 }
 
 business-logo {
@@ -45,7 +41,7 @@ business-signup {
   padding: 10px 12px;
   background-color: rgb(189, 31, 31);
   border-radius: 4px;
-  margin: auto;
+  vertical-align: middle;
 }
 
 .business-signup:hover a {
@@ -53,29 +49,58 @@ business-signup {
   text-decoration: none;
 }
 
+// row 2
+
+.business-header-row2-wrapper {
+  vertical-align: middle;
+  height: 27px;
+  background-color: rgb(189, 31, 31);
+}
+
+.business-header-row2 {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  height: 100%;
+}
+
 .business-header-row2-right {
   display: flex;
+  height: 100%;
+}
+
+.business-login {
+  line-height: 27px;
 }
 
 .business-login a {
+  display: block;
+  padding: 0 12px;
+  width: 80px;
   color: white;
   font-weight: bold;
-  font-size: 13px;
-  padding: 3px 12px;
+  text-align: center;
 }
 
-.business-login a:hover {
+.business-demo:hover, .business-login a:hover {
   text-decoration: none;
   background-color: rgba(51,51,51,0.3);
 }
 
 .business-header-links {
-  font-size: 14px;
   color: white;
-  text-align: center;
+  line-height: 27px;
 }
 
 .business-header-links a {
-  font-weight: bold;
   color: white;
+}
+
+.business-demo {
+  padding: auto;
+  width: 120px;
+  cursor: pointer;
+  margin-right: 20px;
+  text-align: center;
+  line-height: 27px;
 }

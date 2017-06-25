@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const LinksContainer = () => {
   return(
     <div>
-      The links will be here <Link to="/businesses">Businesses</Link>
+      <Link to="/businesses">Businesses</Link>
     </div>
   );
 };
