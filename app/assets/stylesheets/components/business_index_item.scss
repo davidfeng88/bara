@@ -1,0 +1,45 @@
+.index-item {
+  padding: 18px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.index-item:first-child {
+  border-top: 1px solid #e6e6e6;  
+}
+
+.index-item-row1 {
+  display: flex;
+
+}
+
+.index-pic {
+  border-radius: 3px;
+  overflow: hidden;
+  height: 90px;
+  width: 90px;
+  margin-right: 12px;
+  margin-bottom: 15px;
+}
+
+.index-pic img {
+  width: 100%;
+  height: auto;
+}
+
+.index-li {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.index-li li {
+  font-size: 16px;
+}
+
+.col2 {
+  font-size: 14px;
+}
+
+.index-item-row2 {
+  border: 1px solid $yelpy-red;
+}
