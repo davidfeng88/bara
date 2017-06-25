@@ -1,0 +1,84 @@
+.center {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.title {
+  background-color: rgb(245, 245, 245);
+  margin: 0;
+  padding: 40px 0 20px 0;
+}
+
+.title h1 {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.business-index-main {
+  background-color: white;
+  padding: 20px 0;
+}
+
+.center ol {
+  margin-left: 20px;
+  padding: 0;
+}
+
+.index-grid {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.index-grid-col1 {
+  width: 630px;
+}
+
+.add-business {
+  margin-top: 24px;
+  position: absolute;
+  width: 276px;
+  height: 125px;
+  right: 0;
+  down: 250px;
+  padding: 11px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 3px;
+  border: 1px solid rgb(230, 230, 230);
+}
+
+.add-business h3 {
+  font-size: 16px;
+  margin-top: 0;
+
+}
+
+.add-business p {
+  font-size: 14px;
+  display: block;
+  margin: 15px 0;
+}
+
+.add-business-link a {
+	flex: 1;
+  margin: 10px 0;
+	border: 1px solid #4D4D4D;
+	border-radius: 3px;
+	font-size: 12px;
+  font-weight: bold;
+	padding: 7px 8px;
+
+	font-weight: bold;
+	color: white;
+	background-color: $yelpy-red;
+}
+
+.add-business-link a:hover {
+	cursor: pointer;
+	background-color: #ed0008;
+  text-decoration: none;
+}
