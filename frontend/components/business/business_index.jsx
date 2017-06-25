@@ -19,7 +19,7 @@ class BusinessIndex extends React.Component {
         <div className='title'>
           <div className='center'>
             <h1>The Best 10 Restaurants
-              <span className='normal'>in New York, NY</span></h1>
+              <span className='normal'> in New York, NY</span></h1>
           </div>
         </div>
 
@@ -31,14 +31,20 @@ class BusinessIndex extends React.Component {
               </ol>
             </div>
 
-            <div className='add-business'>
-              <h3>Not here? Tell us what we're missing.</h3>
-              <p>If the business you're looking for isn't here, add it!</p>
-              <div className='add-business-link'>
-                <Link to='/businesses/new'>Add A Business</Link>
+            <div className='index-grid-col2'>
+              <div className='index-map'>
+                Map goes here
               </div>
-            </div>
 
+              <div className='add-business'>
+                <h3>Not here? Tell us what we're missing.</h3>
+                <p>If the business you're looking for isn't here, add it!</p>
+                <div className='add-business-link'>
+                  <Link to='/businesses/new'>Add A Business</Link>
+                </div>
+              </div>
+              
+            </div>
           </div>
 
         </div>

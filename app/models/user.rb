@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
 	has_many :businesses,
 		primary_key: :id,
 		foreign_key: :author_id,
-		class_name: :Business
+		class_name: :Business,
+		dependent: :destroy
 
 	def password=(arg)
     @password = arg
