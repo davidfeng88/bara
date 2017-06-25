@@ -17,6 +17,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 }
 
 .home-demo, .home-login, .home-signup {
@@ -73,9 +74,79 @@
   color: #999;
 }
 
-
 // when logged in
+.dropdown {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.dropdown:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.dropdown:active {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
 .home-avatar {
   height: 38px;
   width: auto;
+}
+
+.down-icon {
+  height: 100%;
+}
+
+.down-icon {
+  display: block;
+  height: 5px;
+  width: 5px;
+  padding: 5px;
+}
+
+// dropdown box
+.dropdown-box {
+  background-color: white;
+  border-radius: 3px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #0073bb;
+  width: 190px;
+
+  position: absolute;
+  top: 30px;
+  right: 0;
+  z-index: 1;
+}
+
+.dropdown-box-row1 {
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.dropdown-avatar-wrapper {
+  border-radius: 3px;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.dropdown-avatar {
+  width: 100%;
+  height: auto;
+
+}
+
+.dropdown-name {
+  margin-left: 10px;
+}
+.dropdown-box-row2 {
+  font-weight: normal;
+  padding-top: 10px;
 }

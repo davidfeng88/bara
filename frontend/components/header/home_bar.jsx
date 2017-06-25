@@ -17,21 +17,73 @@ const sessionLinks = (demoLogin) => (
   </nav>
 );
 
-const personalGreeting = (currentUser, logout) => (
+const personalGreeting = (dropdown, toggleDropdown, currentUser, logout) => (
   <nav className='home-bar'>
     <div className='home-bar-left'>
     </div>
     <div className='home-bar-right'>
-      <img className='home-avatar' src={currentUser.avatar_url} />
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+      <div onClick={toggleDropdown} className='dropdown' >
+        <img className='home-avatar' src={currentUser.avatar_url} />
+        <img className='down-icon' src={window.staticImages.downIcon} />
+      </div>
+      {dropdown(currentUser, logout)}
     </div>
+
   </nav>
 
 );
 
-const HomeBar = ({ currentUser, demoLogin, logout }) => (
-  currentUser ? personalGreeting(currentUser, logout) : sessionLinks(demoLogin)
-);
+class HomeBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { showDropdown: false };
+
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+  }
+
+  toggleDropdown(e) {
+    e.preventDefault();
+    // if (e.currentTarget !=) {
+  //   this.setState = {showDropdown: false }
+  // } else {
+  //
+  // }
+
+    this.setState({showDropdown: !this.state.showDropdown });
+  }
+
+  dropdown(currentUser, logout) {
+    // debugger;
+    // if (this.state.showDropdown) {
+      return(
+        <div className='dropdown-box'>
+          <div className='dropdown-box-row1' >
+            <div className='dropdown-avatar-wrapper'>
+              <img className='dropdown-avatar' src={currentUser.avatar_url} />
+            </div>
+            <div className='dropdown-name'>{currentUser.username}</div>
+          </div>
+
+          <div className='dropdown-box-row2' >
+            <a href='#' onClick={logout}>Log Out</a>
+          </div>
+        </div>
+      );
+    // } else {
+    //   return null;
+    // }
+  }
+
+  render() {
+    let { currentUser, demoLogin, logout } = this.props;
+    if (currentUser) {
+      return personalGreeting(this.dropdown,
+        this.toggleDropdown, currentUser, logout);
+    } else {
+      return sessionLinks(demoLogin);
+    }
+  }
+}
+
 
 export default HomeBar;
