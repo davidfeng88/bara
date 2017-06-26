@@ -48,9 +48,10 @@ class BusinessShow extends React.Component {
                 </div>
                 <div className='text-info'>
                   {business.address}<br/>
-                  {`${business.city}, ${business.state} ${business.zipcode}`}<br/>
+                  {`${business.city}, ${business.state} ${business.zipcode}`}
+                  <br/>
                   {business.phone}<br/>
-                  {business.url}<br/>
+                  <a>{business.url}</a><br/>
                   Edit Business Link here
                 </div>
               </div>
