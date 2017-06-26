@@ -35,6 +35,11 @@ class Business < ActiveRecord::Base
 		foreign_key: :author_id,
 		class_name: :User
 
+  has_many :reviews,
+    primary_key: :id,
+    foreign_key: :business_id,
+    class_name: :Reviews
+
     has_attached_file :image, default_url: "business-default.jpeg"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 end

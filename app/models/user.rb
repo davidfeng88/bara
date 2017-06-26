@@ -34,6 +34,12 @@ class User < ActiveRecord::Base
 		class_name: :Business,
 		dependent: :destroy
 
+	has_many :reviews,
+    primary_key: :id,
+    foreign_key: :business_id,
+    class_name: :Reviews,
+		dependent: :destroy
+
 	def password=(arg)
     @password = arg
 		self.password_digest = BCrypt::Password.create(arg)

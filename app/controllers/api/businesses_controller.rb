@@ -50,7 +50,8 @@ class Api::BusinessesController < ApplicationController
         :city,
         :state,
         :zipcode,
-        :price
+        :price,
+        :image
       )
   end
 
