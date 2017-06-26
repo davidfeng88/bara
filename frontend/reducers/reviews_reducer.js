@@ -1,26 +1,32 @@
-import { merge, values } from 'lodash';
+import { merge } from 'lodash';
 
 import {
-  RECEIVE_ALL_BUSINESSES,
   RECEIVE_BUSINESS,
-  REMOVE_BUSINESS
+  RECEIVE_REVIEW,
+  REMOVE_REVIEW
 } from '../actions/business_actions.js';
 
 const BusinessesReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = merge({}, state);
 
   switch(action.type) {
-    case RECEIVE_ALL_BUSINESSES:
-      return action.businesses;
 
     case RECEIVE_BUSINESS:
-      const newBusiness = {[action.business.id]: action.business};
-      return merge({}, state, newBusiness);
+      // action.business.reviews is an array
+      // convert an array to an object
+      action.business.reviews.forEach( review => {
+        newState[review.id] = review;
+      });
+      return newState;
 
-    case REMOVE_BUSINESS:
-      let nextState = merge({}, state);
-      delete nextState[action.business.id];
-      return nextState;
+    case RECEIVE_REVIEW:
+      newState[action.review.id] = action.review;
+      return newState;
+
+    case REMOVE_REVIEW:
+      delete newState[action.review.id];
+      return newState;
 
     default:
       return state;

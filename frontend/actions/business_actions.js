@@ -30,6 +30,7 @@ export const removeBusiness = business => {
 };
 
 export const receiveReview = review => {
+
   return {
     type: RECEIVE_REVIEW,
     review

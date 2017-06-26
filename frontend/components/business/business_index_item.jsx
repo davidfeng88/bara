@@ -19,6 +19,26 @@ class BusinessIndexItem extends React.Component {
     }
   }
 
+  topReviewPicture(business) {
+    if (business.reviews.length >= 1) {
+      const url = `${business.reviews[business.reviews.length - 1].author.avatar_url}`;
+      return <img src={url} />;
+    }
+    else {
+      return null;
+    }
+
+
+  }
+
+
+  topReviewBody(business) {
+    if (business.reviews.length >= 1)
+      return business.reviews[business.reviews.length - 1].body;
+    else
+      return null;
+  }
+
   render() {
     const { business } = this.props;
     return (
@@ -50,7 +70,14 @@ class BusinessIndexItem extends React.Component {
         </div>
 
         <div className='index-item-row2'>
-          Top review for this business goes here
+          <div className='index-item-review-pic'>
+            {this.topReviewPicture(business)}
+          </div>
+
+          <div className='top-review'>
+            {this.topReviewBody(business)}
+          </div>
+
         </div>
       </div>
     );
@@ -59,3 +86,6 @@ class BusinessIndexItem extends React.Component {
 }
 
 export default BusinessIndexItem;
+
+            // <img src={business.reviews[1].author.avatar} />
+            // {business.reviews.slice(-1).body}

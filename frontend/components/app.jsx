@@ -21,6 +21,7 @@ const App = () => (
     <HeaderRouter />
 
     <div className='body'>
+    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
       <Route exact path='/' component={Home} />
 
       <Switch>

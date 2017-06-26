@@ -7,31 +7,24 @@ import configureStore from './store/store';
 
 // for test only
 // 1 ajax
+// import {
+//   createReview,
+//   editReview,
+//   deleteReview,
+// } from './util/business_api_util';
+
+
+// 2 actions dispatch them!
 import {
   createReview,
   editReview,
   deleteReview,
-} from './util/business_api_util';
+} from './actions/business_actions';
+
+// sync actions
 window.createReview = createReview;
 window.editReview = editReview;
 window.deleteReview = deleteReview;
-
-// 2 actions dispatch them!
-// import * as BActions from './actions/business_actions';
-// import * as EActions from './actions/error_actions';
-// sync actions
-// window.receiveAllBusinesses = BActions.receiveAllBusinesses;
-// window.receiveBusiness = BActions.receiveBusiness;
-// window.removeBusiness = BActions.removeBusiness;
-
-// window.receiveErrors = EActions.receiveErrors;
-// window.clearErrors = EActions.clearErrors;
-// async actions
-// window.fetchAllBusinesses = BActions.fetchAllBusinesses;
-// window.fetchBusiness = BActions.fetchBusiness;
-// window.createBusiness = BActions.createBusiness;
-// window.editBusiness = BActions.editBusiness;
-// window.deleteBusiness = BActions.deleteBusiness;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // for test only
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

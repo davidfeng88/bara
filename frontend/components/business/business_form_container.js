@@ -3,13 +3,15 @@ import { withRouter } from 'react-router-dom';
 
 import { createBusiness, editBusiness } from '../../actions/business_actions';
 import { clearErrors } from '../../actions/error_actions';
+import { selectCurrentBusiness } from '../../reducers/selectors';
+
 import BusinessForm from './business_form';
 
 
-const mapStateToProps = ({ currentBusiness, errors }) => {
+const mapStateToProps = (state) => {
   return {
-    // selector currentBusiness (null for new form)
-    errors: errors
+    business: selectCurrentBusiness(state),
+    errors: state.errors
   };
 };
 

@@ -3,7 +3,9 @@ import { merge, values } from 'lodash';
 import {
   RECEIVE_ALL_BUSINESSES,
   RECEIVE_BUSINESS,
-  REMOVE_BUSINESS
+  REMOVE_BUSINESS,
+  RECEIVE_REVIEW,
+  REMOVE_REVIEW
 } from '../actions/business_actions.js';
 
 const defaultState = {
@@ -13,23 +15,45 @@ const defaultState = {
 
 const BusinessesReducer = (state = defaultState, action) => {
   Object.freeze(state);
+  let newState = merge({}, state);
 
   switch(action.type) {
     case RECEIVE_ALL_BUSINESSES:
-      return merge({}, state, { entities: action.businesses });
+      return merge({}, state, { entities: action.businesses,  });
 
     case RECEIVE_BUSINESS:
-      const business = action.business;
-      const newState = merge({}, state);
-      newState.entities[business.id] = business;
-      newState.currentBusiness = business.id;
-      debugger;
+    // action.business.reviews is an array. Extract the id information
+      newState.entities[action.business.id] = action.business;
+      newState.currentBusiness = action.business.id;
+      const reviewIDs = action.business.reviews.map( review => review.id);
+      newState.entities[action.business.id].reviews = reviewIDs;
       return newState;
 
     case REMOVE_BUSINESS:
-      let nextState = merge({}, state);
-      delete nextState.entities[action.business.id];
-      return nextState;
+      delete newState.entities[action.business.id];
+      return newState;
+
+    case RECEIVE_REVIEW:
+    // check if this is an edit or a create action.
+    // if edit, move the latest one to the top.
+      let array1 = newState.entities[newState.currentBusiness].reviews;
+      let id1 = action.review.id;
+      let idx1 = array1.indexOf(id);
+      if (idx1 > -1) {
+        array1.splice(idx1, 1);
+      }
+      newState.entities[newState.currentBusiness].reviews
+        .push(action.review.id);
+      return newState;
+
+    case REMOVE_REVIEW:
+      let array = newState.entities[newState.currentBusiness].reviews;
+      let id = action.review.id;
+      let idx = array.indexOf(id);
+      if (idx > -1) {
+        array.splice(idx, 1);
+      }
+      return newState;
 
     default:
       return state;

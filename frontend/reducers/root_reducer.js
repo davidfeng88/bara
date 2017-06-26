@@ -8,8 +8,8 @@ import ReviewsReducer from './reviews_reducer';
 const RootReducer = combineReducers({
   currentUser: SessionReducer,
   errors: ErrorsReducer,
-  businesses: BusinessesReducer,
-  reviews: ReviewsReducer
+  reviews: ReviewsReducer,
+  businesses: BusinessesReducer
 });
 
 export default RootReducer;

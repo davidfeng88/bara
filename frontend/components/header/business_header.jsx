@@ -51,7 +51,7 @@ class BusinessHeader extends React.Component {
 
   toggleDropdown(e) {
     e.preventDefault();
-    // if (e.currentTarget !=) {
+    // if (e.currentTarget != ) {
   //   this.setState = {showDropdown: false }
   // } else {
   //
@@ -64,7 +64,7 @@ class BusinessHeader extends React.Component {
     // debugger;
     // if (this.state.showDropdown) {
       return(
-        <div className='dropdown-box'>
+        <div onClick={ e => e.stopPropagation() } className='dropdown-box'>
           <div className='dropdown-box-row1' >
             <div className='dropdown-avatar-wrapper'>
               <img className='dropdown-avatar' src={currentUser.avatar_url} />
