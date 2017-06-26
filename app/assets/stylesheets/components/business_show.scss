@@ -1,0 +1,60 @@
+.business-show-title {
+  background-color: rgb(245, 245, 245);
+  margin: 0;
+  padding: 40px 0 20px 0;
+  font-size: 16px;
+	border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.business-show-title h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.business-show-title-row1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.business-show-title-col {
+  width: 40%;
+}
+
+.business-show-title-row2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  width: 300px;
+  padding: 5px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(204, 204, 204);
+  font-size: 14px;
+}
+
+.show-map {
+  width: 286px;
+  height: 135px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.text-info {
+  margin: 10px;
+  line-height: 20px;
+}
+
+.pictures img {
+  width: 200px;
+  height: auto;
+  transition: 0.5s;
+}
+
+.pictures img:hover {
+  width: 230px;
+  height: auto;
+  transition: 0.5s;
+}
