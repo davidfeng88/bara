@@ -10,7 +10,7 @@ import Home from './home/home';
 import SessionFormContainer from './session/session_form_container';
 import BusinessShowContainer from './business/business_show_container';
 import BusinessIndexContainer from './business/business_index_container';
-import BusinessFormPage from './business/business_form_page';
+import BusinessForm from './business/business_form';
 
 import Footer from './footer';
 
@@ -24,9 +24,9 @@ const App = () => (
       <Route exact path='/' component={Home} />
 
       <Switch>
-        <ProtectedRoute path="/businesses/new" component={BusinessFormPage} />
+        <ProtectedRoute path="/businesses/new" component={BusinessForm} />
         <ProtectedRoute path="/businesses/:id/edit"
-          component={BusinessFormPage} />
+          component={BusinessForm} />
         <Route path='/businesses/:id' component={BusinessShowContainer} />
         <Route path='/businesses' component={BusinessIndexContainer} />
       </Switch>

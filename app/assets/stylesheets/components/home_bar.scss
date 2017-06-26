@@ -145,8 +145,19 @@
 
 .dropdown-name {
   margin-left: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
+
 .dropdown-box-row2 {
   font-weight: normal;
   padding-top: 10px;
+  color: #0073bb;
+  font-size: 14px;
+  width: 51px;
+}
+
+.dropdown-box-row2:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

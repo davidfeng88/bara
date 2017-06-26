@@ -41,8 +41,8 @@ export default BusinessesReducer;
 //     zip: 60637,
 //     phone: "(111)111-1111",
 //     price: 1,
-//     TODO: business_tags: [1],
-//     TODO: reviews: [1]
+//     business_tags: [1],
+//     reviews: [1]
         // potentially could indicate orders of reviews (e.g. new to old)
 //   },
 //

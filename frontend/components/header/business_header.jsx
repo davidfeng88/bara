@@ -72,8 +72,8 @@ class BusinessHeader extends React.Component {
             <div className='dropdown-name'>{currentUser.username}</div>
           </div>
 
-          <div className='dropdown-box-row2' >
-            <a href='#' onClick={logout}>Log Out</a>
+          <div onClick={logout} className='dropdown-box-row2' >
+            Log Out
           </div>
         </div>
       );
