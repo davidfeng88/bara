@@ -7,15 +7,14 @@ import configureStore from './store/store';
 
 // for test only
 // 1 ajax
-// import {
-//   createReview,
-//   editReview,
-//   deleteReview,
-// } from './util/review_api_util';
-// window.createReview = createReview;
-// window.editReview = editReview;
-// window.deleteReview = deleteReview;
-
+import {
+  createReview,
+  editReview,
+  deleteReview,
+} from './util/business_api_util';
+window.createReview = createReview;
+window.editReview = editReview;
+window.deleteReview = deleteReview;
 
 // 2 actions dispatch them!
 // import * as BActions from './actions/business_actions';

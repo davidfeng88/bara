@@ -1,16 +1,5 @@
 class Api::ReviewsController < ApplicationController
 
-  def index
-    business = Business.find(params[:id])
-    @reviews = business.reviews
-    render "api/reviews/index"
-  end
-
-  def show
-    @review = Review.find(params[:id])
-    render "api/reviews/show"
-  end
-
   def create
     @review = Review.new(review_params)
 

@@ -43,7 +43,7 @@ class BusinessIndex extends React.Component {
                   <Link to='/businesses/new'>Add A Business</Link>
                 </div>
               </div>
-              
+
             </div>
           </div>
 

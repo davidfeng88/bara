@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 	has_many :reviews,
     primary_key: :id,
     foreign_key: :business_id,
-    class_name: :Reviews,
+    class_name: :Review,
 		dependent: :destroy
 
 	def password=(arg)
