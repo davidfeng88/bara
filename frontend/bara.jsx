@@ -8,17 +8,14 @@ import configureStore from './store/store';
 // for test only
 // 1 ajax
 // import {
-//   fetchAllBusinesses,
-//   fetchBusiness,
-//   createBusiness,
-//   editBusiness,
-//   deleteBusiness
-// } from './util/business_api_util';
-// window.fetchAllBusinesses = fetchAllBusinesses;
-// window.fetchBusiness = fetchBusiness;
-// window.createBusiness = createBusiness;
-// window.editBusiness = editBusiness;
-// window.deleteBusiness = deleteBusiness;
+//   createReview,
+//   editReview,
+//   deleteReview,
+// } from './util/review_api_util';
+// window.createReview = createReview;
+// window.editReview = editReview;
+// window.deleteReview = deleteReview;
+
 
 // 2 actions dispatch them!
 // import * as BActions from './actions/business_actions';

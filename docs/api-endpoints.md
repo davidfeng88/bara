@@ -27,11 +27,9 @@
 - `GET /api/businesses/:id`
   - All reviews for the business will also be present
   - accepts pagination params (if I get there)
-- `DELETE /api/businesses/:id`
 
 ### Reviews
 
 - `POST /api/reviews`
-- `GET /api/reviews/:id`
 - `PATCH /api/reviews/:id`
 - `DELETE /api/reviews/:id`

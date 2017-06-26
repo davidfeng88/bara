@@ -1,7 +1,7 @@
 class Api::BusinessesController < ApplicationController
 
   def index
-    @businesses = Business.all
+    @businesses = Business.all.includes(:reviews)
     render "api/businesses/index"
   end
 
