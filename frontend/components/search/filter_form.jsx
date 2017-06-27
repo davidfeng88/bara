@@ -1,10 +1,10 @@
 import React from 'react';
 
 const handleChange = (filter, updateFilter) => e => (
-  updateFilter(filter, e.currentTarget.value)
+  updateFilter({ [filter]: e.currentTarget.value })
 );
 
-const FilterForm = ({ minPrice, maxPrice, updateFilter }) => (
+const FilterForm = ({ minPrice, maxPrice, updateFilter, resetFilter }) => (
   <div className="filter">
     <div>Filter results:</div>
     <br/>
@@ -30,23 +30,14 @@ const FilterForm = ({ minPrice, maxPrice, updateFilter }) => (
           <option value='4' >$$$$ - Ultra High-End</option>
         </select>
       </div>
+
+    </div>
+
+    <div className='reset-filter' onClick={resetFilter}>
+      Reset filters
     </div>
 
   </div>
 );
 
 export default FilterForm;
-
-// <label>Minimum Price</label>
-// <input
-//   type="number"
-//   value={minPrice}
-//   onChange={handleChange('minPrice', updateFilter)}
-// />
-//
-// <label>Maximum Price</label>
-// <input
-//   type="number"
-//   value={maxPrice}
-//   onChange={handleChange('maxPrice', updateFilter)}
-// />

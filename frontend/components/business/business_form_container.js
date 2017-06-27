@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { createBusiness, editBusiness, deleteBusiness } from '../../actions/business_actions';
+import {
+  createBusiness,
+  editBusiness,
+  deleteBusiness
+} from '../../actions/business_actions';
+
 import { clearErrors } from '../../actions/error_actions';
 import { selectCurrentBusiness } from '../../reducers/selectors';
 
 import BusinessForm from './business_form';
-
 
 const mapStateToProps = (state) => {
   return {

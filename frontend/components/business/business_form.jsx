@@ -7,16 +7,18 @@ class BusinessForm extends React.Component {
   constructor(props) {
     super(props);
     if (props.business) {
-      let {id, author_id, name, address,
-        city, state, zipcode, phone, url, price} = props.business;
-      this.state = {
-        id, author_id, name, address, city, state, zipcode, phone, url, price
-      };
+      // let {id, author_id, name, address,
+      //   city, state, zipcode, phone, url, price} = props.business;
+      // this.state = {
+      //   id, author_id, name, address, city, state, zipcode, phone, url, price
+      // };
+
+      this.state = Object.assign({}, props.business);
     } else {
       this.state = {
         id: '', author_id: props.currentUser.id,
         name: '', address: '', city: '',
-        state: '', zipcode: '', phone: '', url: '', price: '' };
+        state: '', zipcode: '', phone: '', url: '', price: '1' };
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,10 +33,12 @@ class BusinessForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const business = this.state;
-    this.props.processForm(business)
-      .then(() => this.resetForm())
-      .then(() => this.props.history.push(`/businesses/${business.id}`));
+    const biz = this.state;
+    this.props.processForm(biz)
+      .then(({business}) => {
+        this.resetForm();
+        this.props.history.push(`/businesses/${business.id}`);
+      });
   }
 
   resetForm() {

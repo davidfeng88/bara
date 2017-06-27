@@ -1,11 +1,18 @@
 import { fetchAllBusinesses } from './business_actions';
 
 export const UPDATE_FILTER = 'UPDATE_FILTER';
+export const RESET_FILTER = 'RESET_FILTER';
 
-export const changeFilter = (filter, value) => ({
+export const resetFilter = () => ({
+  type: RESET_FILTER
+});
+
+// export const changeFilter = (filter, value) => ({
+export const changeFilter = (filters) => ({ // filters = {minPrice: 4, maxPrice: 4}
   type: UPDATE_FILTER,
-  filter,
-  value
+  // filter,
+  filters,
+  // value
 });
 
 export const updateFilter = (filter, value) => (dispatch, getState) => {

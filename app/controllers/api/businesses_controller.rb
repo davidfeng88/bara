@@ -19,7 +19,7 @@ class Api::BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
-
+    @business.author = current_user
     if @business.save
       render "api/businesses/show"
     else
@@ -55,7 +55,6 @@ class Api::BusinessesController < ApplicationController
   def business_params
     params.require(:business)
       .permit(
-        :author_id,
         :name,
         :address,
         :city,

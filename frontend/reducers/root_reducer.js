@@ -10,10 +10,10 @@ import FiltersReducer from './filters_reducer';
 const RootReducer = combineReducers({
   currentUser: SessionReducer,
   errors: ErrorsReducer,
+  filters: FiltersReducer,
   reviews: ReviewsReducer,
   businesses: BusinessesReducer,
-  showDropdown: DropdownsReducer,
-  filters: FiltersReducer
+  showDropdown: DropdownsReducer
 });
 
 export default RootReducer;

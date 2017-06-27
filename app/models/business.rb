@@ -30,6 +30,9 @@ class Business < ActiveRecord::Base
             :price,
             presence: true
 
+  validates :price, inclusion: { in: 1..4,
+  message: "Price is not valid" }
+
   belongs_to :author,
 		primary_key: :id,
 		foreign_key: :author_id,
