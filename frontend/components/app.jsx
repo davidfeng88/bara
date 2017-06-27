@@ -16,31 +16,57 @@ import Footer from './footer';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
-const App = () => (
-  <div className='page-container'>
-    <HeaderRouter />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-    <div className='body'>
-    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-      <Route exact path='/' component={Home} />
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-      <Switch>
-        <ProtectedRoute path="/businesses/new" component={BusinessForm} />
-        <ProtectedRoute path="/businesses/:id/edit"
-          component={BusinessForm} />
-        <Route path='/businesses/:id' component={BusinessShowContainer} />
-        <Route path='/businesses' component={BusinessIndexContainer} />
-      </Switch>
+  // componentWillReceiveProps(newProps) {
+  //   if ( this.props.poke && this.props.poke.id !== parseInt(newProps.match.params.pokemonId) ) {
+  //     // THIS IS GETTING CALLED TWICE FOR NO REASON!!
+  //     // console.log("REQUESTING POKEMON");
+  //     this.props.requestOnePokemon(newProps.match.params.pokemonId);
+  //   }
+  // }
+
+  handleClick(e) {
+    e.preventDefault();
+    if (this.props.showDropdown) {
+      this.props.hideDropdown();
+    }
+  }
+
+  render() {
+    return (
+      <div onClick={this.handleClick} className='page-container'>
+        <HeaderRouter />
+
+        <div className='body'>
+        <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+          <Route exact path='/' component={Home} />
+
+          <Switch>
+            <ProtectedRoute path="/businesses/new" component={BusinessForm} />
+            <ProtectedRoute path="/businesses/:id/edit"
+              component={BusinessForm} />
+            <Route path='/businesses/:id' component={BusinessShowContainer} />
+            <Route path='/businesses' component={BusinessIndexContainer} />
+          </Switch>
 
 
 
-      <Switch>
-        <AuthRoute path="/login" component={SessionFormContainer} />
-        <AuthRoute path="/signup" component={SessionFormContainer} />
-      </Switch>
-    </div>
-    <Footer />
-  </div>
-);
+          <Switch>
+            <AuthRoute path="/login" component={SessionFormContainer} />
+            <AuthRoute path="/signup" component={SessionFormContainer} />
+          </Switch>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+}
 
 export default App;
