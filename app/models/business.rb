@@ -41,6 +41,6 @@ class Business < ActiveRecord::Base
     class_name: :Review,
     dependent: :destroy
 
-    has_attached_file :image, default_url: "capy.png"
+    has_attached_file :image, default_url: "business-default.jpg"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 end
