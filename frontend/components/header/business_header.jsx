@@ -30,8 +30,8 @@ class BusinessHeader extends React.Component {
 
     if (currentUser) {
       return (
-        <div onClick={toggleDropdown} className='home-bar-right'>
-          <div  className='dropdown' >
+        <div className='home-bar-right'>
+          <div onClick={toggleDropdown} className='dropdown' >
             <img className='home-avatar' src={currentUser.avatar_url} />
             <img className='down-icon' src={window.staticImages.downIcon} />
           </div>

@@ -12,8 +12,6 @@ const mapStateToProps = ({ currentUser, showDropdown }) => {
   };
 };
 
-
-
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   demoLogin: () => dispatch(login({username: 'guest', password: 'password'})),
