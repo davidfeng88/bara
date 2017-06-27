@@ -51,6 +51,8 @@ class Api::BusinessesController < ApplicationController
         :city,
         :state,
         :zipcode,
+        :phone,
+        :url,
         :price,
         :image
       )

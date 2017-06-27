@@ -8,7 +8,7 @@ import HeaderRouter from './header/header_router';
 import SessionFormContainer from './session/session_form_container';
 import BusinessShowContainer from './business/business_show_container';
 import BusinessIndexContainer from './business/business_index_container';
-import BusinessForm from './business/business_form';
+import BusinessFormContainer from './business/business_form_container';
 
 import Footer from './footer';
 
@@ -20,17 +20,15 @@ const App = () => {
       <HeaderRouter />
 
       <div className='body'>
-      <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
 
         <Switch>
-          <ProtectedRoute path="/businesses/new" component={BusinessForm} />
+          <ProtectedRoute path="/businesses/new"
+            component={BusinessFormContainer} />
           <ProtectedRoute path="/businesses/:id/edit"
-            component={BusinessForm} />
+            component={BusinessFormContainer} />
           <Route path='/businesses/:id' component={BusinessShowContainer} />
           <Route path='/businesses' component={BusinessIndexContainer} />
         </Switch>
-
-
 
         <Switch>
           <AuthRoute path="/login" component={SessionFormContainer} />

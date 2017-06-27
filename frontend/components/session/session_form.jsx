@@ -35,14 +35,14 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user)
-      .then(() => this.props.history.push('/'));
+      .then(() => this.props.history.goBack());
   }
 
   demoLogin(e) {
     e.preventDefault();
     const guestUser = {username: 'guest', password: 'password'};
     this.props.login(guestUser)
-      .then(() => this.props.history.push('/'));
+      .then(() => this.props.history.goBack());
 
   }
 

@@ -7,17 +7,20 @@ class BusinessForm extends React.Component {
   constructor(props) {
     super(props);
     if (props.business) {
-      let {name, address, city, state, zipcode, phone, url, price} = props.business;
+      let {id, author_id, name, address,
+        city, state, zipcode, phone, url, price} = props.business;
       this.state = {
-        name, address, city, state, zipcode, phone, url, price
+        id, author_id, name, address, city, state, zipcode, phone, url, price
       };
     } else {
       this.state = {
-        name: '', address: '', city: '', state: '', zipcode: '', phone: '',
-        url: '', price: '' };
+        id: '', author_id: props.currentUser.id,
+        name: '', address: '', city: '',
+        state: '', zipcode: '', phone: '', url: '', price: '' };
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   update(field) {
@@ -29,8 +32,16 @@ class BusinessForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const business = this.state;
-    this.props.processForm(business);
-      // then(() => this.props.history.push('/')); go to the business show page
+    this.props.processForm(business)
+      .then(() => this.resetForm())
+      .then(() => this.props.history.push(`/businesses/${business.id}`));
+  }
+
+  resetForm() {
+    this.setState({
+      author_id: this.props.currentUser.id, name: '', address: '', city: '',
+      state: '', zipcode: '', phone: '', url: '', price: ''
+    });
   }
 
   titleText() {
@@ -44,11 +55,33 @@ class BusinessForm extends React.Component {
   submitText() {
     return this.props.formType === 'edit' ? 'Submit Changes' : 'Add Business';
   }
-//        <ErrorList errors={ this.props.errors }
-          // clearErrors={this.props.clearErrors} />
+
+  handleDelete(e) {
+    e.preventDefault();
+    this.resetForm();
+    this.props.deleteBusiness(this.props.business.id)
+      .then(() => this.props.history.push("/businesses"))
+      .then(() => this.resetForm());
+  }
+
+  deleteButton() {
+    if (this.props.formType === 'edit') {
+      return(
+        <div className='input-wrapper'>
+          <button onClick={this.handleDelete} >Delete Business</button>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
     return(
       <div>
+
+      <ErrorList errors={ this.props.errors }
+         clearErrors={this.props.clearErrors} />
 
         <div className='container'>
           <div className='col-1-2'>
@@ -59,6 +92,7 @@ class BusinessForm extends React.Component {
                 <h2>{this.titleText()}</h2>
 
                 <div className="business-form">
+
                   <label htmlFor='name'>Business Name</label>
                   <div className='input-wrapper'>
                     <input type="text"
@@ -103,9 +137,20 @@ class BusinessForm extends React.Component {
                     />
                   </div>
 
+                  <label htmlFor='zipcode'>ZIP</label>
+                  <div className='input-wrapper'>
+                    <input type="number"
+                      id="zipcode"
+                      value={this.state.zipcode}
+                      onChange={this.update('zipcode')}
+                      className="login-input"
+                      placeholder="10001"
+                    />
+                  </div>
+
                   <label htmlFor='phone'>Phone Number</label>
                   <div className='input-wrapper'>
-                    <input type="text"
+                    <input type="tel"
                       id="phone"
                       value={this.state.phone}
                       onChange={this.update('phone')}
@@ -116,24 +161,34 @@ class BusinessForm extends React.Component {
 
                   <label htmlFor='url'>Website Address</label>
                   <div className='input-wrapper'>
-                    <input type="text"
+                    <input type="url"
                       id="url"
                       value={this.state.url}
                       onChange={this.update('url')}
                       className="login-input"
-                      placeholder="http://www.google.com"
+                      placeholder="http://bara.com"
                     />
                   </div>
+
+                  <label htmlFor='price'>Price</label>
+                  <select className='input-wrapper'
+                    id="price" value={this.state.price}
+                    onChange={this.update('price')} >
+                    <option value='1' >$ - Inexpensive</option>
+                    <option value='2' >$$ - Moderate</option>
+                    <option value='3' >$$$ - Pricey</option>
+                    <option value='4' >$$$$ - Ultra High-End</option>
+                  </select>
+                  <br />
 
                   <div className='input-wrapper'>
                     <button type="submit" >{this.submitText()}</button>
                   </div>
-
+                  {this.deleteButton()}
                 </div>
               </form>
             </div>
           </div>
-
 
         </div>
       </div>

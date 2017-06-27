@@ -25,6 +25,7 @@ class BusinessShow extends React.Component {
 
   render() {
     const { business } = this.props;
+    const editLink = `/businesses/${this.props.match.params.id}/edit`;
     if (business) {
       return(
         <div>
@@ -54,7 +55,7 @@ class BusinessShow extends React.Component {
                     <br/>
                     {business.phone}<br/>
                     <a>{business.url}</a><br/>
-                    Edit Business Link here
+                    <Link to={editLink} >Edit</Link>
                   </div>
                 </div>
 

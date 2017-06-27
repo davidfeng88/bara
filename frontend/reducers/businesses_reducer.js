@@ -19,7 +19,8 @@ const BusinessesReducer = (state = defaultState, action) => {
 
   switch(action.type) {
     case RECEIVE_ALL_BUSINESSES:
-      return merge({}, state, { entities: action.businesses,  });
+      return merge(newState,
+        {entities: action.businesses, currentBusiness: -1});
 
     case RECEIVE_BUSINESS:
     // action.business.reviews is an array. Extract the id information
