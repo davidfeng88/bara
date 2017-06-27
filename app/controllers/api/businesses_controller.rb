@@ -2,7 +2,13 @@ class Api::BusinessesController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
   def index
-    @businesses = Business.all.includes(:reviews)
+    businesses = Business.all
+
+    if (params[:minPrice] && params[:maxPrice])
+      businesses = businesses.where(price: price_range)
+    end
+
+    @businesses = businesses.includes(:reviews)
     render "api/businesses/index"
   end
 
@@ -41,6 +47,10 @@ class Api::BusinessesController < ApplicationController
   end
 
   private
+
+  def price_range
+    (params[:minPrice]..params[:maxPrice])
+  end
 
   def business_params
     params.require(:business)

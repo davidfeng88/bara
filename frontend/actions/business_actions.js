@@ -44,8 +44,8 @@ export const removeReview = review => {
   };
 };
 
-export const fetchAllBusinesses = () => dispatch => (
-  BusinessAPIUtil.fetchAllBusinesses().then(
+export const fetchAllBusinesses = filters => dispatch => (
+  BusinessAPIUtil.fetchAllBusinesses(filters).then(
     (businessesData) => dispatch(receiveAllBusinesses(businessesData)),
     (errors) => dispatch(receiveErrors(errors.responseText))
   )

@@ -7,7 +7,9 @@ import HeaderRouter from './header/header_router';
 
 import SessionFormContainer from './session/session_form_container';
 import BusinessShowContainer from './business/business_show_container';
-import BusinessIndexContainer from './business/business_index_container';
+// import BusinessIndexContainer from './business/business_index_container';
+import SearchContainer from './search/search_container';
+
 import BusinessFormContainer from './business/business_form_container';
 
 import Footer from './footer';
@@ -27,7 +29,7 @@ const App = () => {
           <ProtectedRoute path="/businesses/:id/edit"
             component={BusinessFormContainer} />
           <Route path='/businesses/:id' component={BusinessShowContainer} />
-          <Route path='/businesses' component={BusinessIndexContainer} />
+          <Route path='/businesses' component={SearchContainer} />
         </Switch>
 
         <Switch>

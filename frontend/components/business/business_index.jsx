@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import BusinessIndexItem from './business_index_item';
 
 class BusinessIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchAllBusinesses();
-  }
+  // componentDidMount() {
+  //   this.props.fetchAllBusinesses();
+  // }
 
   render() {
     const businessesEntries = this.props.businesses.map(business => (
@@ -16,13 +16,6 @@ class BusinessIndex extends React.Component {
 
     return(
       <div>
-        <div className='title'>
-          <div className='center'>
-            <h1>The Best 10 Restaurants
-              <span className='normal'> in New York, NY</span></h1>
-          </div>
-        </div>
-
         <div className='business-index-main'>
           <div className='center index-grid'>
             <div className='index-grid-col1'>

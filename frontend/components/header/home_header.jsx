@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HomeBarContainer from './home_bar_container';
-import SearchContainer from '../search/search_container';
+import SearchContainer from '../search/search_bar_placeholder';
 import LinksContainer from '../link/link_container';
 
 const HomeHeader = () => {
