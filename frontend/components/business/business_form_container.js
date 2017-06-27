@@ -15,13 +15,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, { location }) => {
-  // const formType = location.pathname.slice(1);
-  // const processForm = (formType === 'login') ? login : signup;
+const mapDispatchToProps = ( dispatch, { location } ) => {
+  debugger;
+  const formType = location.pathname.slice(1) !== 'new' ? "edit" : "create";
+  const processForm = (formType === "edit") ? editBusiness : createBusiness;
   return {
-    // processForm: user => dispatch(processForm(user)),
-    // formType,
-
+    processForm: business => dispatch(processForm(business)),
+    formType,
     clearErrors: () => dispatch(clearErrors())
   };
 };

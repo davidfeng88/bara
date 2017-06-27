@@ -27,8 +27,6 @@ class BusinessIndexItem extends React.Component {
     else {
       return null;
     }
-
-
   }
 
 
@@ -56,7 +54,7 @@ class BusinessIndexItem extends React.Component {
                 <Link to={`/businesses/${business.id}`}>{business.name}</Link>
               </li>
               Reviews Info goes here<br/>
-              {this.price(business.price)}  •  Business Tags<br/>
+              {this.price(business.price)}<br/>
             </div>
 
             <div className='col2'>
@@ -86,6 +84,3 @@ class BusinessIndexItem extends React.Component {
 }
 
 export default BusinessIndexItem;
-
-            // <img src={business.reviews[1].author.avatar} />
-            // {business.reviews.slice(-1).body}

@@ -35,7 +35,7 @@ class BusinessShow extends React.Component {
 
                 <div className='business-show-title-col'>
                   Reviews Info goes here<br/>
-                  {this.price(business.price)}  •  Business Tags<br/>
+                  {this.price(business.price)}<br/>
                 </div>
 
                 <div className='business-show-title-col'>

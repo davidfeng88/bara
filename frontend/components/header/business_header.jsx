@@ -2,21 +2,36 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchContainer from '../search/search_container';
 import LinksContainer from '../link/link_container';
+import Dropdown from './dropdown';
 
-const avatarOrSignUp = (dropdown, toggleDropdown,
-  showDropdown, currentUser, logout) => {
+class BusinessHeader extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
+  avatarOrSignUp() {
+    let {
+      currentUser,
+      toggleDropdown,
+      demoLogin,
+      logout,
+      showDropdown
+    } = this.props;
     let dropdownBox;
     if (showDropdown) {
-      dropdownBox = dropdown(currentUser, logout);
+      dropdownBox =
+      <Dropdown
+        currentUser={currentUser}
+        logout={logout}
+        toggleDropdown={toggleDropdown} />;
     } else {
       dropdownBox = null;
     }
 
     if (currentUser) {
       return (
-        <div className='home-bar-right'>
-          <div onClick={toggleDropdown} className='dropdown' >
+        <div onClick={toggleDropdown} className='home-bar-right'>
+          <div  className='dropdown' >
             <img className='home-avatar' src={currentUser.avatar_url} />
             <img className='down-icon' src={window.staticImages.downIcon} />
           </div>
@@ -30,50 +45,26 @@ const avatarOrSignUp = (dropdown, toggleDropdown,
         </div>
       );
     }
-};
-
-const login = (currentUser, demoLogin) => {
-  if (currentUser) {
-    return <div></div>;
-  } else {
-    return (
-      <div className='business-header-row2-right'>
-        <div onClick={demoLogin} className='business-demo'>
-          Demo Login
-        </div>
-        <div className="business-login">
-          <Link to="/login">Log In</Link>
-        </div>
-      </div>
-    );
-  }
-};
-
-
-class BusinessHeader extends React.Component {
-  constructor(props) {
-    super(props);
   }
 
-  dropdown(currentUser, logout) {
-    return(
-      <div onClick={ e => e.stopPropagation() } className='dropdown-box'>
-        <div className='dropdown-box-row1' >
-          <div className='dropdown-avatar-wrapper'>
-            <img className='dropdown-avatar' src={currentUser.avatar_url} />
+  login() {
+    if (this.props.currentUser) {
+      return <div></div>;
+    } else {
+      return (
+        <div className='business-header-row2-right'>
+          <div onClick={this.props.demoLogin} className='business-demo'>
+            Demo Login
           </div>
-          <div className='dropdown-name'>{currentUser.username}</div>
+          <div className="business-login">
+            <Link to="/login">Log In</Link>
+          </div>
         </div>
-
-        <div onClick={logout} className='dropdown-box-row2' >
-          Log Out
-        </div>
-      </div>
-    );
+      );
+    }
   }
 
   render() {
-    let { currentUser, toggleDropdown, demoLogin, logout, showDropdown } = this.props;
     return (
       <div className='business-header'>
         <div className='business-header-row1-wrapper' >
@@ -86,8 +77,7 @@ class BusinessHeader extends React.Component {
             <div className='business-search'>
               <SearchContainer />
             </div>
-            {avatarOrSignUp(this.dropdown,
-              toggleDropdown, showDropdown, currentUser, logout)}
+            {this.avatarOrSignUp()}
           </div>
         </div>
 
@@ -96,7 +86,7 @@ class BusinessHeader extends React.Component {
             <div className='business-header-links'>
               <LinksContainer />
             </div>
-            {login(currentUser, demoLogin)}
+            {this.login()}
           </div>
         </div>
       </div>

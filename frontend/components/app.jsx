@@ -20,7 +20,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+
   }
 
   // componentWillReceiveProps(newProps) {
@@ -31,16 +31,10 @@ class App extends React.Component {
   //   }
   // }
 
-  handleClick(e) {
-    e.preventDefault();
-    if (this.props.showDropdown) {
-      this.props.hideDropdown();
-    }
-  }
 
   render() {
     return (
-      <div onClick={this.handleClick} className='page-container'>
+      <div  className='page-container'>
         <HeaderRouter />
 
         <div className='body'>

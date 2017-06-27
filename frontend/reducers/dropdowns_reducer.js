@@ -1,7 +1,5 @@
-import {
-  TOGGLE_DROPDOWN,
-  HIDE_DROPDOWN
-} from '../actions/dropdown_actions';
+import { TOGGLE_DROPDOWN } from '../actions/dropdown_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const defaultState = false;
 
@@ -14,7 +12,7 @@ const DropdownsReducer = (state = defaultState, action) => {
       let newState = !state;
       return newState;
 
-    case HIDE_DROPDOWN:
+    case RECEIVE_CURRENT_USER:
       return false;
 
     default:

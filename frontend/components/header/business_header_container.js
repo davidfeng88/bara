@@ -5,9 +5,14 @@ import { toggleDropdown } from '../../actions/dropdown_actions';
 
 import BusinessHeader from './business_header';
 
-const mapStateToProps = ({ currentUser, showDropdown }) => ({
-  currentUser
-});
+const mapStateToProps = ({ currentUser, showDropdown }) => {
+  return {
+    currentUser,
+    showDropdown
+  };
+};
+
+
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
