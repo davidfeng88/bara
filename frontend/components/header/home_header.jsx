@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import HomeBarContainer from './home_bar_container';
-import SearchContainer from '../search/search_bar_placeholder';
-import LinksContainer from '../link/link_container';
+import SearchBar from './search_bar';
+import Links from './links';
 
 const HomeHeader = () => {
   return(
@@ -16,11 +16,11 @@ const HomeHeader = () => {
       </div>
 
       <div className='home-search'>
-        <SearchContainer />
+        <SearchBar />
       </div>
 
       <div className='home-header-links'>
-        <LinksContainer />
+        <Links />
       </div>
 
     </div>

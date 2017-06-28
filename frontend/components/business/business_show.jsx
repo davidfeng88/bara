@@ -74,7 +74,7 @@ class BusinessShow extends React.Component {
 
           </div>
 
-          <ReviewIndexContainer />
+
 
         </div>
       );
@@ -85,5 +85,6 @@ class BusinessShow extends React.Component {
   }
 }
 
+// <ReviewIndexContainer />
 
 export default BusinessShow;

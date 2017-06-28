@@ -30,9 +30,9 @@ const mapStateToProps = (state, ownProps) => {
   //   };
   // }
   // if (ownProps.location.pathname.slice(-3) === 'new') {
-    const businessId = ownProps.match.params.business_id || ownProps.match.params.id
+    const businessId = ownProps.match.params.business_id || ownProps.match.params.id;
     return {
-      business: selectCurrentBusiness(state, parseInt(businessId),
+      business: selectCurrentBusiness(state, parseInt(businessId)),
       review: selectCurrentReview(state, parseInt(ownProps.match.params.id)),
       errors: state.errors,
     };

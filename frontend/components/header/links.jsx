@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const LinksContainer = () => {
+const Links = () => {
   return(
     <div>
       <Link to="/businesses">Businesses</Link>
@@ -10,5 +10,4 @@ const LinksContainer = () => {
   );
 };
 
-
-export default LinksContainer;
+export default Links;
