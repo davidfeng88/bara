@@ -11,6 +11,7 @@ import BusinessShowContainer from './business/business_show_container';
 import SearchContainer from './search/search_container';
 
 import BusinessFormContainer from './business/business_form_container';
+import ReviewFormContainer from './review/review_form_container';
 
 import Footer from './footer';
 
@@ -28,8 +29,13 @@ const App = () => {
             component={BusinessFormContainer} />
           <ProtectedRoute path="/businesses/:id/edit"
             component={BusinessFormContainer} />
+          <ProtectedRoute path="/businesses/:business_id/reviews/new"
+            component={ReviewFormContainer} />
+          <ProtectedRoute path="/reviews/:id/edit"
+            component={ReviewFormContainer} />
           <Route path='/businesses/:id' component={BusinessShowContainer} />
           <Route path='/businesses' component={SearchContainer} />
+
         </Switch>
 
         <Switch>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import ReviewIndexContainer from '../review/review_index_container';
+
 class BusinessShow extends React.Component {
   constructor(props) {
     super(props);
@@ -25,8 +27,11 @@ class BusinessShow extends React.Component {
 
   render() {
     const { business } = this.props;
-    const editLink = `/businesses/${this.props.match.params.id}/edit`;
+    const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
+    const newReviewLink =
+      `/businesses/${this.props.business.id}/reviews/new`;
     if (business) {
+
       return(
         <div>
           <div className='business-show-title'>
@@ -40,7 +45,7 @@ class BusinessShow extends React.Component {
                 </div>
 
                 <div className='business-show-title-col'>
-                  Write a review button<br/>
+                  <Link to={newReviewLink}> Write a Review</Link>
                 </div>
               </div>
 
@@ -55,7 +60,7 @@ class BusinessShow extends React.Component {
                     <br/>
                     {business.phone}<br/>
                     <a>{business.url}</a><br/>
-                    <Link to={editLink} >Edit</Link>
+                    <Link to={editBusinessLink} >Edit</Link>
                   </div>
                 </div>
 
@@ -68,6 +73,8 @@ class BusinessShow extends React.Component {
             </div>
 
           </div>
+
+          <ReviewIndexContainer />
 
         </div>
       );

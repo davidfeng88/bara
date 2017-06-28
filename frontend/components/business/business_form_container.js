@@ -12,12 +12,18 @@ import { selectCurrentBusiness } from '../../reducers/selectors';
 
 import BusinessForm from './business_form';
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.currentUser,
-    business: selectCurrentBusiness(state),
-    errors: state.errors
-  };
+const mapStateToProps = (state, ownProps) => {
+  if (ownProps.location.pathname.slice(-3) === 'new') {
+    return {
+      business: null,
+      errors: state.errors,
+    };
+  } else {
+    return {
+      business: selectCurrentBusiness(state, parseInt(ownProps.match.params.id)),
+      errors: state.errors,
+    };
+  }
 };
 
 const mapDispatchToProps = ( dispatch, { location } ) => {

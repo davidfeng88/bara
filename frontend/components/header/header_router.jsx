@@ -10,10 +10,10 @@ import SessionHeader from './session_header';
 const HeaderRouter = () => (
   <header>
     <Switch>
-      <Route path='/businesses' component={BusinessHeaderContainer} />
-      <Route exact path='/' component={HomeHeader} />
       <AuthRoute path="/login" component={SessionHeader} />
       <AuthRoute path="/signup" component={SessionHeader} />
+      <Route exact path='/' component={HomeHeader} />
+      <Route path='/' component={BusinessHeaderContainer} />
     </Switch>
   </header>
 );

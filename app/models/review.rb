@@ -13,8 +13,9 @@
 
 class Review < ActiveRecord:: Base
   validates :author, :business, :rating, presence: true
-  validates :business, uniqueness: { scope: :author,
-    message: "one user can only have one review for one business" }
+
+  # validates :business, uniqueness: { scope: :author,
+  #   message: "one user can only have one review for one business" }
 
   belongs_to :author,
     primary_key: :id,

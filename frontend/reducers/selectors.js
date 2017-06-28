@@ -5,9 +5,24 @@ export const businessesToArray = state => {
   return businessesArray;
 };
 
-export const selectCurrentBusiness = (state) => {
-  if (state.businesses.currentBusiness === -1)
+export const selectCurrentBusiness = (state, businessId) => {
+  return state.businesses.entities[businessId];
+};
+
+export const reviewsToArray = (state, business) => {
+  let reviewsArray = [];
+  if (business) {
+    reviewsArray = business.reviews.map(reviewId => state.reviews[reviewId]);
+  }
+  return reviewsArray;
+};
+
+export const selectCurrentReview = (state, reviewId) => {
+  const matchedReview = state.reviews[reviewId];
+  // matchedReview will be undefined if not found.
+  if (matchedReview) {
+    return matchedReview;
+  } else {
     return null;
-  else
-    return state.businesses.entities[state.businesses.currentBusiness];
+  }
 };

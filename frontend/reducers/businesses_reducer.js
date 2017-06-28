@@ -89,7 +89,7 @@ export default BusinessesReducer;
 //       zip: 60637,
 //       phone: "(222)222-2222",
 //       price: 2,
-//       reviews: [2]
+//       reviews: [3]
 //     }
 //   },
 //

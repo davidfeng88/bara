@@ -16,9 +16,8 @@ class BusinessForm extends React.Component {
       this.state = Object.assign({}, props.business);
     } else {
       this.state = {
-        id: '', author_id: props.currentUser.id,
-        name: '', address: '', city: '',
-        state: '', zipcode: '', phone: '', url: '', price: '1' };
+        name: '', address: '', city: '', state: '',
+        zipcode: '', phone: '', url: '', price: '1' };
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,8 +42,8 @@ class BusinessForm extends React.Component {
 
   resetForm() {
     this.setState({
-      author_id: this.props.currentUser.id, name: '', address: '', city: '',
-      state: '', zipcode: '', phone: '', url: '', price: ''
+      name: '', address: '', city: '', state: '',
+      zipcode: '', phone: '', url: '', price: '1'
     });
   }
 
@@ -179,10 +178,10 @@ class BusinessForm extends React.Component {
                   <select className='input-wrapper'
                     id="price" value={this.state.price}
                     onChange={this.update('price')} >
-                    <option value='1' >$ - Inexpensive</option>
-                    <option value='2' >$$ - Moderate</option>
-                    <option value='3' >$$$ - Pricey</option>
-                    <option value='4' >$$$$ - Ultra High-End</option>
+                    <option value='1' >$    Inexpensive</option>
+                    <option value='2' >$$   Moderate</option>
+                    <option value='3' >$$$  Pricey</option>
+                    <option value='4' >$$$$ Ultra High-End</option>
                   </select>
                   <br />
 
