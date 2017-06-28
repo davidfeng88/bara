@@ -1,8 +1,9 @@
 import React from 'react';
 
-const handleChange = (filter, updateFilter) => e => (
-  updateFilter({ [filter]: e.currentTarget.value })
-);
+const handleChange = (filter, updateFilter) => e => {
+  e.preventDefault();
+  updateFilter({ [filter]: e.currentTarget.value });
+};
 
 const handleClick = (resetFilter, updateFilter) => e => {
   e.preventDefault();
