@@ -62,10 +62,11 @@ class BusinessForm extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    this.resetForm();
     this.props.deleteBusiness(this.props.business.id)
-      .then(() => this.props.history.push("/businesses"))
-      .then(() => this.resetForm());
+      .then(() => {
+        this.resetForm();
+        this.props.history.push("/businesses");
+      });
   }
 
   deleteButton() {
