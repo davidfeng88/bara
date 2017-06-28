@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import BusinessIndexItem from './business_index_item';
 
 class BusinessIndex extends React.Component {
+
+  // before the search/filter:
   // componentDidMount() {
   //   this.props.fetchAllBusinesses();
   // }

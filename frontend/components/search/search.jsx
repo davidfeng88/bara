@@ -1,13 +1,13 @@
 import React from 'react';
 
 import FilterForm from './filter_form';
-import BusinessIndex from '../business/business_index';
+import BusinessIndex from './business_index';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
   }
-  //
+
   componentDidMount() {
     this.props.updateFilter();
   }
@@ -17,8 +17,8 @@ class Search extends React.Component {
   }
 
   render() {
-    let { businesses, minPrice,
-      maxPrice, updateFilter, resetFilter } = this.props;
+    let { businesses, minPrice, maxPrice,
+      updateFilter, resetFilter } = this.props;
     return(
       <div>
         <div className='title'>

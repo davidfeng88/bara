@@ -16,3 +16,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(BusinessIndex);
+
+// Note: this file was imported to the App.jsx before the search/filter feature.
+// In the search file, business-index (not the container) was rendered.
