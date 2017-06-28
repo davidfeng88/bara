@@ -12,13 +12,9 @@ const FiltersReducer = (state = defaultFilters, action) => {
 
   switch (action.type) {
     case UPDATE_FILTER:
-      // const newFilter = {
-      //   [action.filter]: action.value
-      // };
       return merge({}, state, action.filters);
 
     case RESET_FILTER:
-      // const newFilters = merge({}, defaultFilters);
       return defaultFilters;
 
     default:

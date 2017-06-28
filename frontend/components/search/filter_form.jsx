@@ -4,6 +4,12 @@ const handleChange = (filter, updateFilter) => e => (
   updateFilter({ [filter]: e.currentTarget.value })
 );
 
+const handleClick = (resetFilter, updateFilter) => e => {
+  e.preventDefault();
+  resetFilter();
+  updateFilter();
+};
+
 const FilterForm = ({ minPrice, maxPrice, updateFilter, resetFilter }) => (
   <div className="filter">
     <div>Filter results:</div>
@@ -33,7 +39,8 @@ const FilterForm = ({ minPrice, maxPrice, updateFilter, resetFilter }) => (
 
     </div>
 
-    <div className='reset-filter' onClick={resetFilter}>
+    <div className='reset-filter'
+      onClick={handleClick(resetFilter, updateFilter)}>
       Reset filters
     </div>
 

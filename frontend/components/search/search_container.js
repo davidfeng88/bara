@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+  updateFilter: (filters) => dispatch(updateFilter(filters)),
   resetFilter: () => dispatch(resetFilter())
 });
 

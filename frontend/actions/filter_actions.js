@@ -7,15 +7,13 @@ export const resetFilter = () => ({
   type: RESET_FILTER
 });
 
-// export const changeFilter = (filter, value) => ({
-export const changeFilter = (filters) => ({ // filters = {minPrice: 4, maxPrice: 4}
+// filters = {minPrice: 4, maxPrice: 4}
+export const changeFilter = (filters) => ({
   type: UPDATE_FILTER,
-  // filter,
   filters,
-  // value
 });
 
-export const updateFilter = (filter, value) => (dispatch, getState) => {
-  dispatch(changeFilter(filter, value));
+export const updateFilter = (filters) => (dispatch, getState) => {
+  dispatch(changeFilter(filters));
   return fetchAllBusinesses(getState().filters)(dispatch);
 };
