@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import {
   createReview,
@@ -57,7 +56,7 @@ const mapDispatchToProps = ( dispatch, { location } ) => {
   };
 };
 
-export default withRouter(connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ReviewForm));
+)(ReviewForm);

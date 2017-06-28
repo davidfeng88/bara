@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import { withRouter } from 'react-router-dom';
 
 import {
@@ -17,8 +16,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 
 };
-
-
 
 export default withRouter(connect(
   mapStateToProps,

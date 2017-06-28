@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 
-import { withRouter } from 'react-router-dom';
-
 import { selectCurrentBusiness } from '../../reducers/selectors';
 import { fetchBusiness } from '../../actions/business_actions';
 
@@ -21,7 +19,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BusinessShow));
+)(BusinessShow);
