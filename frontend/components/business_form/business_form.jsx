@@ -12,7 +12,6 @@ class BusinessForm extends React.Component {
       // this.state = {
       //   id, author_id, name, address, city, state, zipcode, phone, url, price
       // };
-
       this.state = Object.assign({}, props.business);
     } else {
       this.state = {
