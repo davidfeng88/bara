@@ -2,18 +2,17 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import HeaderRouter from './header/header_router';
-
-// bodies
-
-import SessionFormContainer from './session/session_form_container';
-import BusinessShowContainer from './business/business_show_container';
-// import BusinessIndexContainer from './business/business_index_container';
-import SearchContainer from './search/search_container';
-
-import BusinessFormContainer from './business/business_form_container';
-import ReviewFormContainer from './review/review_form_container';
-
 import Footer from './footer';
+
+// forms
+import SessionFormContainer from './session_form/session_form_container';
+import BusinessFormContainer from './business_form/business_form_container';
+import ReviewFormContainer from './review_form/review_form_container';
+
+// Other Pages
+// import BusinessIndexContainer from './search/business_index_container';
+import SearchContainer from './search/search_container';
+import BusinessShowContainer from './business_show/business_show_container';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 

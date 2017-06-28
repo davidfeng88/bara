@@ -19,10 +19,7 @@ const BusinessesReducer = (state = defaultState, action) => {
       return action.businesses;
 
     case RECEIVE_BUSINESS:
-    // action.business.reviews is an array. Extract the id information
       newState[action.business.id] = action.business;
-      const reviewIDs = action.business.reviews.map(review => review.id);
-      newState[action.business.id].reviews = reviewIDs;
       return newState;
 
     case REMOVE_BUSINESS:

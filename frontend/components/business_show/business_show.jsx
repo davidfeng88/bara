@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import ReviewIndexContainer from '../review/review_index_container';
+import ReviewIndexContainer from '../review_index/review_index_container';
 
 class BusinessShow extends React.Component {
   constructor(props) {
@@ -27,11 +27,14 @@ class BusinessShow extends React.Component {
 
   render() {
     const { business } = this.props;
-    const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
-    const newReviewLink =
-      `/businesses/${this.props.business.id}/reviews/new`;
+    // if user go to /business/1 without go through the index page
+    // the store is empty and business will be undefined
+    // we will fetch the business after it mounted and re render this
+    // component
     if (business) {
-
+      const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
+      const newReviewLink =
+        `/businesses/${this.props.business.id}/reviews/new`;
       return(
         <div>
           <div className='business-show-title'>
@@ -71,9 +74,7 @@ class BusinessShow extends React.Component {
                 </div>
               </div>
             </div>
-
           </div>
-
 
 
         </div>
@@ -81,7 +82,6 @@ class BusinessShow extends React.Component {
     } else {
       return null;
     }
-
   }
 }
 
