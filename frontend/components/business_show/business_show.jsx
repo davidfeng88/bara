@@ -38,6 +38,7 @@ class BusinessShow extends React.Component {
 
 
   render() {
+    debugger
     const { business } = this.props;
     // if user go to /business/1 without go through the index page first
     // the store is empty and business will be undefined
