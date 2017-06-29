@@ -6,6 +6,8 @@ import {
   deleteBusiness
 } from '../../actions/business_actions';
 
+import { fetchLatlng } from '../../util/map_util';
+
 import { clearErrors } from '../../actions/error_actions';
 import { selectCurrentBusiness } from '../../reducers/selectors';
 
@@ -18,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     // so business: undefined will be obtained.
     // thus we do not need a if/else statement
     errors: state.errors,
+    fetchLatlng,
   };
 };
 
@@ -28,6 +31,8 @@ const mapDispatchToProps = ( dispatch, { location } ) => {
     processForm: business => dispatch(processForm(business)),
     deleteBusiness: (id) => dispatch(deleteBusiness(id)),
     clearErrors: () => dispatch(clearErrors()),
+    editBusiness: (business) => dispatch(editBusiness(business)),
+    // fetchLatlng: (business) => dispatch(fetchLatlng(business)),
   };
 };
 

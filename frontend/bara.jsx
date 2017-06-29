@@ -7,24 +7,29 @@ import configureStore from './store/store';
 
 // for test only
 // 1 ajax
-// import {
-//   createReview,
-//   editReview,
-//   deleteReview,
-// } from './util/business_api_util';
+import {
+  fetchLatlng,
+} from './util/map_util';
 
+window.fetchLatlng = fetchLatlng;
+window.b =
+{
+address: "514 W 28th St",
+ city: "New York",
+ state: "NY",
+};
 
 // 2 actions dispatch them!
-import {
-  createReview,
-  editReview,
-  deleteReview,
-} from './actions/business_actions';
+// import {
+//   fetchAllBusinesses,
+// } from './actions/business_actions';
+//
+// window.fetchAllBusinesses = fetchAllBusinesses;
 
 // sync actions
-window.createReview = createReview;
-window.editReview = editReview;
-window.deleteReview = deleteReview;
+// window.createReview = createReview;
+// window.editReview = editReview;
+// window.deleteReview = deleteReview;
 
 
 document.addEventListener('DOMContentLoaded', () => {

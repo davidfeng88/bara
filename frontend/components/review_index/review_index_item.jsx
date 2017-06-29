@@ -21,9 +21,18 @@ class ReviewIndexItem extends React.Component {
     }
   }
 
+  EditLink() {
+    let { currentUser, review } = this.props;
+    const editReviewLink = `/reviews/${review.id}/edit`;
+    if (currentUser.id === review.author_id) {
+      return <Link to={editReviewLink}>Edit Review</Link>;
+    } else {
+      return null;
+    }
+  }
+
   render() {
     const { review } = this.props;
-    const editReviewLink = `/reviews/${review.id}/edit`;
 
     return (
       <div className='review-index-item'>
@@ -33,7 +42,7 @@ class ReviewIndexItem extends React.Component {
           </div>
           <div className='review-index-col2'>
             <div className='review-author'>{review.author.username}</div>
-            <Link to={editReviewLink}>Edit Review</Link>
+            {this.EditLink()}
           </div>
         </div>
         <div className='review-index-right'>

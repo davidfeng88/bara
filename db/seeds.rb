@@ -16,26 +16,34 @@ User.create(username: 'guest', password: 'password')
   )
 end
 
+user_ids = (User.first.id..User.last.id).to_a
+
 Business.destroy_all
 20.times do
+  let west_east = %w(W E).sample
   Business.create(
-    author_id: User.order("RANDOM()").first.id,
+    # author_id: User.order("RANDOM()").first.id,
+    author_id: user_ids.sample,
     name: Faker::Company.name,
-    address: "#{rand(101..599)} W #{rand(25..34).ordinalize} St",
+    address: "#{rand(101..599)} #{west_east} #{rand(1..34).ordinalize} St",
+    lat: rand(40.711073..40.753247),
+    lng: rand(-74.009286..-73.976244),
     city: 'New York',
     state: 'NY',
-    zipcode: 10001,
+    zipcode: rand(10001..10010),
     price: rand(1..4),
     url: Faker::Internet.url,
     phone: "(#{"#{rand(0..999)}".rjust(3, '0')})#{"#{rand(0..999)}".rjust(3, '0')}-#{"#{rand(0..9999)}".rjust(4, '0')}"
     )
 end
 
+business_ids = (Business.first.id..Business.last.id).to_a
+
 Review.destroy_all
 70.times do
   Review.create(
-    author_id: User.order("RANDOM()").first.id,
-    business_id: Business.order("RANDOM()").first.id,
+    author_id: user_ids.sample,
+    business_id: business_ids.sample,
     rating: rand(1..5),
     body: Faker::Lorem.paragraph,
   )

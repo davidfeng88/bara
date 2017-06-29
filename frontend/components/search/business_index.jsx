@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import BusinessIndexItem from './business_index_item';
+import IndexMap from './index_map';
+
 
 class BusinessIndex extends React.Component {
 
@@ -27,9 +29,8 @@ class BusinessIndex extends React.Component {
             </div>
 
             <div className='index-grid-col2'>
-              <div className='index-map'>
-                Map goes here
-              </div>
+
+              <IndexMap businesses={this.props.businesses} />
 
               <div className='add-business'>
                 <h3>Not here? Tell us what we're missing.</h3>

@@ -8,7 +8,8 @@ class ReviewIndex extends React.Component {
   render() {
     if (this.props.reviews.length > 0) {
       const reviewsEntries = this.props.reviews.map(review => (
-          <ReviewIndexItem key={ review.id } review={ review } />
+          <ReviewIndexItem key={ review.id }
+            review={ review } currentUser={this.props.currentUser} />
         )
       );
 

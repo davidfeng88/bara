@@ -8,7 +8,7 @@ class Api::BusinessesController < ApplicationController
       businesses = businesses.where(price: price_range)
     end
 
-    @businesses = businesses.includes(:reviews)
+    @businesses = businesses.includes(:reviews).order('reviews.updated_at')
     render "api/businesses/index"
   end
 
@@ -63,7 +63,9 @@ class Api::BusinessesController < ApplicationController
         :phone,
         :url,
         :price,
-        :image
+        :image,
+        :lat,
+        :lng,
       )
   end
 

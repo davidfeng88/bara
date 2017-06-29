@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     business: business,
     reviews: reviewsToArray(state, business),
+    currentUser: state.currentUser
   };
 
 };
