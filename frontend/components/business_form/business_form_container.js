@@ -22,14 +22,12 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = ( dispatch, { location } ) => {
-  const formType = location.pathname.slice(-3) !== 'new' ? "edit" : "create";
   const processForm =
     (location.pathname.slice(-3) === 'new') ? createBusiness : editBusiness;
   return {
     processForm: business => dispatch(processForm(business)),
-    formType,
+    deleteBusiness: (id) => dispatch(deleteBusiness(id)),
     clearErrors: () => dispatch(clearErrors()),
-    deleteBusiness: (id) => dispatch(deleteBusiness(id))
   };
 };
 

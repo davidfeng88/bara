@@ -47,7 +47,7 @@ class BusinessForm extends React.Component {
   }
 
   titleText() {
-    if (this.props.formType === 'edit') {
+    if (this.props.business) {
       return 'Update Business Details';
     } else {
       return 'Add a Business';
@@ -55,7 +55,7 @@ class BusinessForm extends React.Component {
   }
 
   submitText() {
-    return this.props.formType === 'edit' ? 'Submit Changes' : 'Add Business';
+    return this.props.business ? 'Submit Changes' : 'Add Business';
   }
 
   handleDelete(e) {
@@ -68,7 +68,7 @@ class BusinessForm extends React.Component {
   }
 
   deleteButton() {
-    if (this.props.formType === 'edit') {
+    if (this.props.business) {
       return(
         <div className='input-wrapper'>
           <button onClick={this.handleDelete} >Delete Business</button>
