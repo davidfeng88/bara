@@ -11,8 +11,10 @@ export const selectCurrentBusiness = (state, businessId) => {
 
 export const reviewsToArray = (state, business) => {
   let reviewsArray = [];
-  if (business) {
-    reviewsArray = business.reviews.map(reviewId => state.reviews[reviewId]);
+  let reviewsObject = business.reviews;
+  if (reviewsObject) {
+    reviewsArray = Object.keys(reviewsObject)
+      .map(id => reviewsObject[id]);
   }
   return reviewsArray;
 };

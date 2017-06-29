@@ -7,14 +7,16 @@ class ReviewIndexItem extends React.Component {
   }
 
   render() {
-    const editReviewLink =
-      `/reviews/${this.props.review.id}/edit`;
+    const { review } = this.props;
+    const editReviewLink = `/reviews/${review.id}/edit`;
 
     return (
       <div>
+        <div>Author: {review.author.username}</div>
+        <div> <img src={review.author.avatar_url} /></div>
         <Link to={editReviewLink}>Edit Review</Link>
-        <div> Rating: {this.props.review.rating} </div>
-        <div> {this.props.review.body} </div>
+        <div> Rating: {review.rating} </div>
+        <div> {review.body} </div>
       </div>
     );
   }

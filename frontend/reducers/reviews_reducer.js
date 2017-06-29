@@ -41,32 +41,3 @@ const BusinessesReducer = (state = defaultState, action) => {
 };
 
 export default BusinessesReducer;
-
-// Sample State Shape
-// {
-//   1: {
-//     id: 1;
-//     name: "Good Pizza",
-//     author_id: 1,
-//     address 1: "555 W. 25th St.",
-//     city: "Chicago",
-//     state: "IL",
-//     zip: 60637,
-//     phone: "(111)111-1111",
-//     price: 1,
-//     reviews: {1: {review1 object}, 2: {review2 object}, ..}
-//     },
-//
-//   2: {
-//     id: 2;
-//     name: "Great Pizza",
-//     author_id: 1,
-//     address 1: "666 W. 25th St.",
-//     city: "Chicago",
-//     state: "IL",
-//     zip: 60637,
-//     phone: "(222)222-2222",
-//     price: 2,
-//     (no reviews, so there is no 'reviews' key)
-//   }
-// }

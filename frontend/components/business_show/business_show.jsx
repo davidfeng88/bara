@@ -27,14 +27,14 @@ class BusinessShow extends React.Component {
 
   render() {
     const { business } = this.props;
-    // if user go to /business/1 without go through the index page
+    // if user go to /business/1 without go through the index page first
     // the store is empty and business will be undefined
     // we will fetch the business after it mounted and re render this
     // component
     if (business) {
       const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
       const newReviewLink =
-        `/businesses/${this.props.business.id}/reviews/new`;
+        `/businesses/${business.id}/reviews/new`;
       return(
         <div>
           <div className='business-show-title'>
@@ -77,6 +77,7 @@ class BusinessShow extends React.Component {
           </div>
 
 
+
         </div>
       );
     } else {
@@ -85,6 +86,6 @@ class BusinessShow extends React.Component {
   }
 }
 
-// <ReviewIndexContainer />
+  //        <ReviewIndexContainer />
 
 export default BusinessShow;

@@ -6,7 +6,6 @@ import ReviewIndexItem from './review_index_item';
 class ReviewIndex extends React.Component {
 
   render() {
-    debugger
     if (this.props.reviews.length > 0) {
       const reviewsEntries = this.props.reviews.map(review => (
           <ReviewIndexItem key={ review.id } review={ review } />
@@ -28,7 +27,9 @@ class ReviewIndex extends React.Component {
         </div>
       );
     } else {
-      return null;
+      return (
+        <div>No review for this business yet.</div>
+      );
     }
   }
 

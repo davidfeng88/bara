@@ -7,6 +7,7 @@ import {
 } from '../../actions/business_actions';
 
 import { clearErrors } from '../../actions/error_actions';
+
 import {
   selectCurrentBusiness,
   selectCurrentReview,
@@ -29,12 +30,18 @@ const mapStateToProps = (state, ownProps) => {
   //   };
   // }
   // if (ownProps.location.pathname.slice(-3) === 'new') {
-    const businessId = ownProps.match.params.business_id || ownProps.match.params.id;
-    return {
-      business: selectCurrentBusiness(state, parseInt(businessId)),
-      review: selectCurrentReview(state, parseInt(ownProps.match.params.id)),
-      errors: state.errors,
-    };
+
+  //if edit
+  const reviewId = ownProps.match.params.id;
+  // const review =
+  const businessId =
+    ownProps.match.params.business_id ||
+     ownProps.match.params.id;
+  return {
+    business: selectCurrentBusiness(state, parseInt(businessId)),
+    review: selectCurrentReview(state, parseInt(ownProps.match.params.id)),
+    errors: state.errors,
+  };
   // } else {
   //   return {
   //     business: selectCurrentBusiness(state, ownProps.review.business_id),
