@@ -39,7 +39,7 @@ class BusinessIndexItem extends React.Component {
     }
 
     else
-      return (<div>No review for this business yet</div>);
+      return ('No review for this business yet');
   }
 
   averageRating(number) {
