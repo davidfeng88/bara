@@ -19,7 +19,7 @@ end
 user_ids = (User.first.id..User.last.id).to_a
 
 Business.destroy_all
-20.times do
+15.times do
   west_east = %w(W E).sample
   Business.create(
     # author_id: User.order("RANDOM()").first.id,

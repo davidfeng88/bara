@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import ShowMap from './show_map';
 import ReviewIndexContainer from '../review_index/review_index_container';
 
 class BusinessShow extends React.Component {
@@ -65,9 +66,7 @@ class BusinessShow extends React.Component {
 
               <div className='business-show-title-row2'>
                 <div className='info'>
-                  <div className='show-map'>
-                    the static show map goes here
-                  </div>
+                  <ShowMap business={business} />
                   <div className='text-info'>
                     {business.address}<br/>
                     {`${business.city}, ${business.state} ${business.zipcode}`}

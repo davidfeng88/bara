@@ -9,20 +9,25 @@ import MarkerManager from '../../util/marker_manager';
 //   lng: latLng.lng()
 // });
 //
-const mapOptions = {
-  center: {
-    lat: 40.732663,
-    lng: -73.993479
-  }, // NYC coords
-  zoom: 12
-};
 
 
-class IndexMap extends React.Component {
+
+class ShowMap extends React.Component {
+
   componentDidMount() {
     const map = this.refs.map;
+    let { business } = this.props;
+    const mapOptions = {
+      center: {
+        lat: business.lat,
+        lng: business.lng
+      }, // Business coords
+      zoom: 14
+    };
     this.map = new google.maps.Map(map, mapOptions);
+    const position = new google.maps.LatLng(business.lat, business.lng);
     this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
+
     // if (this.props.singleBusiness) {
     //   this.props.fetchBusiness(this.props.businessId);
     // } else {
@@ -32,13 +37,23 @@ class IndexMap extends React.Component {
   }
 //
   componentDidUpdate() {
-    // if (this.props.singleBusiness) {
-    //   const targetBusinessKey = Object.keys(this.props.businesses)[0];
-    //   const targetBusiness = this.props.businesses[targetBusinessKey];
-    //   this.MarkerManager.updateMarkers([targetBusiness]); //grabs only that one business
-    // } else {
-      this.MarkerManager.updateMarkers(this.props.businesses);
-    // }
+  //   // if (this.props.singleBusiness) {
+  //   //   const targetBusinessKey = Object.keys(this.props.businesses)[0];
+  //   //   const targetBusiness = this.props.businesses[targetBusinessKey];
+  //   //   this.MarkerManager.updateMarkers([targetBusiness]); //grabs only that one business
+  //   // } else {
+      this.MarkerManager.updateMarkers([this.props.business]);
+  //   // }
+  }
+
+  componentWillReceiveProps(newProps) {
+  //   // if (this.props.singleBusiness) {
+  //   //   const targetBusinessKey = Object.keys(this.props.businesses)[0];
+  //   //   const targetBusiness = this.props.businesses[targetBusinessKey];
+  //   //   this.MarkerManager.updateMarkers([targetBusiness]); //grabs only that one business
+  //   // } else {
+      this.MarkerManager.updateMarkers([newProps.business]);
+  //   // }
   }
 //
 //   registerListeners() {
@@ -56,16 +71,16 @@ class IndexMap extends React.Component {
 //   }
 //
   handleMarkerClick(business) {
-    this.props.history.push(`businesses/${business.id}`);
+
   }
 
   render() {
     return (
-      <div className="index-map" ref="map">
+      <div className="show-map" ref="map">
         Map
       </div>
     );
   }
 }
 
-export default withRouter(IndexMap);
+export default withRouter(ShowMap);

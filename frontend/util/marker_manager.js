@@ -1,14 +1,13 @@
 /* global google:false */
 
 class MarkerManager {
-  constructor(map){
+  constructor(map, handleClick){
     this.map = map;
     this.markers = {};
+    this.handleClick = handleClick;
   }
 
   updateMarkers(businesses){
-    // debugger;
-    console.log('time to update');
     const businessesObj = {};
     businesses.forEach(business => businessesObj[business.id] = business);
 
