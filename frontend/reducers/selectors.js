@@ -16,7 +16,7 @@ export const reviewsToArray = (state, business) => {
     reviewsArray = Object.keys(reviewsObject)
       .map(id => reviewsObject[id]);
   }
-  return reviewsArray;
+  return reviewsArray.reverse();
 };
 
 export const selectCurrentReview = (state, reviewId) => {

@@ -116,7 +116,7 @@ class ReviewForm extends React.Component {
                     </select>
                     <br />
 
-                    <label htmlFor='body'>Business Name</label>
+
                     <div className='input-wrapper'>
                       <textarea type="text"
                         id="body"
