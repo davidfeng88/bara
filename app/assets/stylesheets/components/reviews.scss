@@ -1,3 +1,43 @@
 // Place all the styles related to the Api::Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.review-index-pic {
+  border-radius: 3px;
+  overflow: hidden;
+  height: 90px;
+  width: 90px;
+  margin-right: 12px;
+}
+
+.black {
+  color: black;
+}
+
+.review-index-item {
+  padding: 18px 0;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+}
+
+.review-index-item:first-child {
+  border-top: 1px solid #e6e6e6;
+}
+
+.review-index-left {
+  display: flex;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.review-index-left a {
+  font-size: 14px;
+}
+
+.review-author, .rating {
+  margin-bottom: 10px;
+}
+
+.review-index-right {
+  font-size: 16px;
+}

@@ -18,9 +18,11 @@ class ReviewIndex extends React.Component {
             <div className='center index-grid'>
 
               <div className='index-grid-col1'>
-                <ol className="review-index">
+                <h2>Reviews for
+                <span className='normal black'> {this.props.business.name}</span></h2>
+                <ul className="review-index">
                   { reviewsEntries }
-                </ol>
+                </ul>
               </div>
             </div>
           </div>

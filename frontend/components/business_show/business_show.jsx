@@ -47,8 +47,8 @@ class BusinessShow extends React.Component {
                   {this.price(business.price)}<br/>
                 </div>
 
-                <div className='business-show-title-col'>
-                  <Link to={newReviewLink}> Write a Review</Link>
+                <div className='add-review-link business-show-title-col'>
+                  <Link to={newReviewLink}>☆ Write a Review</Link>
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ class BusinessShow extends React.Component {
             </div>
           </div>
 
-
+         <ReviewIndexContainer />
 
         </div>
       );
@@ -86,6 +86,6 @@ class BusinessShow extends React.Component {
   }
 }
 
-  //        <ReviewIndexContainer />
+        //  <ReviewIndexContainer />
 
 export default BusinessShow;

@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   const business =
     selectCurrentBusiness(state, parseInt(ownProps.match.params.id));
   return {
+    business: business,
     reviews: reviewsToArray(state, business),
   };
 

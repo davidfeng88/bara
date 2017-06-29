@@ -16,40 +16,21 @@ import {
 import ReviewForm from './review_form';
 
 const mapStateToProps = (state, ownProps) => {
-  // if (ownProps.location.pathname.slice(-3) === 'new') {
-  //   return {
-  //     business: selectCurrentBusiness(state, parseInt(ownProps.match.params.business_id)),
-  //     review: null,
-  //     errors: state.errors,
-  //   };
-  // } else {
-  //   return {
-  //     business: selectCurrentBusiness(state, ownProps.review.business_id),
-  //     review: selectCurrentReview(state, parseInt(ownProps.match.params.id)),
-  //     errors: state.errors,
-  //   };
-  // }
-  // if (ownProps.location.pathname.slice(-3) === 'new') {
-
-  //if edit
-  const reviewId = ownProps.match.params.id;
-  // const review =
-  const businessId =
-    ownProps.match.params.business_id ||
-     ownProps.match.params.id;
-  return {
-    business: selectCurrentBusiness(state, parseInt(businessId)),
-    review: selectCurrentReview(state, parseInt(ownProps.match.params.id)),
-    errors: state.errors,
-  };
-  // } else {
-  //   return {
-  //     business: selectCurrentBusiness(state, ownProps.review.business_id),
-  //     review: selectCurrentReview(state, parseInt(ownProps.match.params.id)),
-  //     errors: state.errors,
-  //   };
-  // }
-
+  if (ownProps.location.pathname.slice(-3) === 'new') {
+    return {
+      business: selectCurrentBusiness(state, state.reviews.currentBusiness),
+      review: null,
+      errors: state.errors,
+    };
+  } else {
+    const review = selectCurrentReview(state,
+      parseInt(ownProps.match.params.id));
+    return {
+      business: selectCurrentBusiness(state, review.business_id),
+      review: review,
+      errors: state.errors,
+    };
+  }
 };
 
 const mapDispatchToProps = ( dispatch, { location } ) => {

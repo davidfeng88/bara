@@ -20,7 +20,7 @@ export const reviewsToArray = (state, business) => {
 };
 
 export const selectCurrentReview = (state, reviewId) => {
-  const matchedReview = state.reviews[reviewId];
+  const matchedReview = state.reviews.reviews[reviewId];
   // matchedReview will be undefined if not found.
   if (matchedReview) {
     return matchedReview;
