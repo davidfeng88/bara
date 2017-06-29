@@ -24,7 +24,7 @@ class ReviewIndexItem extends React.Component {
   EditLink() {
     let { currentUser, review } = this.props;
     const editReviewLink = `/reviews/${review.id}/edit`;
-    if (currentUser.id === review.author_id) {
+    if (currentUser && currentUser.id === review.author_id) {
       return <Link to={editReviewLink}>Edit Review</Link>;
     } else {
       return null;
