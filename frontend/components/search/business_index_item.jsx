@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { values } from 'lodash';
 
 class BusinessIndexItem extends React.Component {
   constructor(props) {
@@ -20,9 +21,10 @@ class BusinessIndexItem extends React.Component {
   }
 
   topReviewPicture(business) {
-    if (business.reviews.length >= 1) {
+    if (business.reviews) {
+      let reviewArray = values(business.reviews);
       const url =
-      `${business.reviews[business.reviews.length - 1].author.avatar_url}`;
+      `${reviewArray[reviewArray.length - 1].author.avatar_url}`;
       return <img src={url} />;
     }
     else {
@@ -31,8 +33,11 @@ class BusinessIndexItem extends React.Component {
   }
 
   topReviewBody(business) {
-    if (business.reviews.length >= 1)
-      return business.reviews[business.reviews.length - 1].body;
+    if (business.reviews) {
+      let reviewArray = values(business.reviews);
+      return reviewArray[reviewArray.length - 1].body;
+    }
+
     else
       return (<div>No review for this business yet</div>);
   }
