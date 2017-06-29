@@ -25,6 +25,17 @@ class BusinessShow extends React.Component {
     }
   }
 
+  averageRating(number) {
+    if (number) {
+      return (
+        `Average Rating: ${number.substring(0, 3)}`
+      );
+    } else {
+      return `No reviews yet`;
+    }
+  }
+
+
   render() {
     const { business } = this.props;
     // if user go to /business/1 without go through the index page first
@@ -43,7 +54,7 @@ class BusinessShow extends React.Component {
               <div className='business-show-title-row1'>
 
                 <div className='business-show-title-col'>
-                  Reviews Info goes here<br/>
+                  {this.averageRating(business.average_rating)}<br/>
                   {this.price(business.price)}<br/>
                 </div>
 

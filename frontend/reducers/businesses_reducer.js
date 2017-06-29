@@ -27,6 +27,10 @@ const BusinessesReducer = (state = defaultState, action) => {
       return newState;
 
     case RECEIVE_REVIEW:
+    // if there is no reviews, the reviews won't be a key in the business
+      if (!newState[action.review.business_id].reviews) {
+        newState[action.review.business_id].reviews = {};
+      }
       newState[action.review.business_id].reviews[action.review.id]
         = action.review;
       return newState;

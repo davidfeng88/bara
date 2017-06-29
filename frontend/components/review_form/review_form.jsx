@@ -33,7 +33,6 @@ class ReviewForm extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger;
     e.preventDefault();
     const reviewData = this.state;
     this.props.processForm(reviewData)

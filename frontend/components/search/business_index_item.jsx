@@ -42,6 +42,16 @@ class BusinessIndexItem extends React.Component {
       return (<div>No review for this business yet</div>);
   }
 
+  averageRating(number) {
+    if (number) {
+      return (
+        `Average Rating: ${number.substring(0, 3)}`
+      );
+    } else {
+      return `No reviews yet`;
+    }
+  }
+
   render() {
     const { business } = this.props;
 
@@ -59,7 +69,7 @@ class BusinessIndexItem extends React.Component {
               <li>
                 <Link to={`/businesses/${business.id}`}>{business.name}</Link>
               </li>
-              Reviews Info goes here<br/>
+              {this.averageRating(business.average_rating)}<br/>
               {this.price(business.price)}<br/>
             </div>
 

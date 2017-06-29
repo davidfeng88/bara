@@ -46,4 +46,9 @@ class Business < ActiveRecord::Base
 
     has_attached_file :image, default_url: "business-default.jpg"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  def average_rating
+    reviews.average(:rating)
+  end
+
 end
