@@ -9,7 +9,7 @@
 User.destroy_all
 User.create(username: 'guest', password: 'password')
 
-10.times do
+20.times do
   User.create(
     username: Faker::Name.name,
     password: Faker::Lorem.word,
@@ -19,7 +19,7 @@ end
 user_ids = (User.first.id..User.last.id).to_a
 
 Business.destroy_all
-15.times do
+12.times do
   west_east = %w(W E).sample
   Business.create(
     # author_id: User.order("RANDOM()").first.id,
@@ -40,7 +40,7 @@ end
 business_ids = (Business.first.id..Business.last.id).to_a
 
 Review.destroy_all
-70.times do
+50.times do
   Review.create(
     author_id: user_ids.sample,
     business_id: business_ids.sample,
