@@ -93,7 +93,14 @@ business-signup {
 }
 
 .business-header-links a {
+  display: block;
+  padding: 0 12px;
   color: white;
+}
+
+.business-header-links a:hover {
+  text-decoration: none;
+  background-color: rgba(51,51,51,0.3);
 }
 
 .business-demo {
