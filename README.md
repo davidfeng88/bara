@@ -1,5 +1,5 @@
 # Bara
----
+
 [Bara live][heroku]
 
 [heroku]: http://bara-.herokuapp.com/
@@ -7,13 +7,15 @@
 Bara is a full-stack web application which clones several basic features of Yelp.  On the back-end, Bara utilizes Ruby on Rails and a PostgreSQL database; on the front-end it uses React.js with a Redux architectural framework.  
 
 ## Features & Implementation
----
+
 ### 1. User creation and authentication
 When a user is created, on the back-end,  passwords are hashed by Bcrypt and the resulting hash is stored in the database.
 If there is an error in the user creation (e.g. username has been taken), the back-end will send the error messages to the front-end, which will be rendered in a ErrorList React component. The errors can be dismissed.
 If the user is created successfully, it will be assigned to a default avatar (handled by Amazon Web Services and Paperclip gem).
 After logging in, the avatar appears on the top right, which reveals a dropdown box containing more user information upon clicking.
-*(GIF)*
+
+![session demo gif](docs/demo-gif/session-demo.gif)
+
 If no user is logged in, attempts to create/edit businesses/reviews will be redirected to the log in page. The browser go back to the previous page after logging in.
 *(GIF)*
 
@@ -32,7 +34,7 @@ When a business is created, Bara sends the full address (combines the `address`,
 ![image of notebook index](wireframes/home-logged-in.png)
 
 ## Future Directions
----
+
 ### Business filters/sorting/search
 I plan to make more filters in the business index page, e.g. filter by average rating.
 Businesses should be able to be sorted in multiple ways (e.g. creating time, average rating, price, etc.)
