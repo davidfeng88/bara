@@ -39,7 +39,7 @@ class BusinessShow extends React.Component {
 
   render() {
     debugger
-    const { business } = this.props;
+    const { business, fetchBusiness } = this.props;
     // if user go to /business/1 without go through the index page first
     // the store is empty and business will be undefined
     // we will fetch the business after it mounted and re render this
@@ -67,7 +67,7 @@ class BusinessShow extends React.Component {
 
               <div className='business-show-title-row2'>
                 <div className='info'>
-                  <ShowMap business={business} />
+                  <ShowMap business={business} fetchBusiness={fetchBusiness} />
                   <div className='text-info'>
                     {business.address}<br/>
                     {`${business.city}, ${business.state} ${business.zipcode}`}
