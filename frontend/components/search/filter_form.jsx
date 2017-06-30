@@ -13,9 +13,6 @@ const handleClick = (resetFilter, updateFilter) => e => {
 
 const FilterForm = ({ minPrice, maxPrice, updateFilter, resetFilter }) => (
   <div className="filter">
-    <div>Filter results:</div>
-    <br/>
-
     <div className='price-filter'>
       <div className='price-filter-col'>
         <label htmlFor='min-price'>Minimum Price</label>
