@@ -2,7 +2,7 @@ export const businessesToArray = state => {
   let businessesArray = [];
   businessesArray = Object.keys(state.businesses)
     .map(id => state.businesses[id]);
-  return businessesArray;
+  return businessesArray.reverse();
 };
 
 export const selectCurrentBusiness = (state, businessId) => {
