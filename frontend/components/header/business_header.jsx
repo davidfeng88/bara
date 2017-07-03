@@ -74,9 +74,7 @@ class BusinessHeader extends React.Component {
                 <img src={window.staticImages.headerLogo} />
               </Link>
             </div>
-            <div className='business-search'>
-              <SearchBar />
-            </div>
+
             {this.avatarOrSignUp()}
           </div>
         </div>
@@ -95,3 +93,8 @@ class BusinessHeader extends React.Component {
 }
 
 export default BusinessHeader;
+
+// insert to Line 77 when ready
+// <div className='business-search'>
+//   <SearchBar />
+// </div>

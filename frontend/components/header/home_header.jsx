@@ -15,9 +15,7 @@ const HomeHeader = () => {
         </Link>
       </div>
 
-      <div className='home-search'>
-        <SearchBar />
-      </div>
+
 
       <div className='home-header-links'>
         <Links />
@@ -28,3 +26,8 @@ const HomeHeader = () => {
 };
 
 export default HomeHeader;
+
+// insert into line 17 when ready
+// <div className='home-search'>
+//   <SearchBar />
+// </div>
