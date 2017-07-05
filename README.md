@@ -2,9 +2,9 @@
 
 [Bara live][heroku]
 
-[heroku]: http://bara-.herokuapp.com/
+[heroku]: http://bara1.herokuapp.com/
 
-Bara is a full-stack web application which clones several basic features of Yelp.  On the back-end, Bara utilizes Ruby on Rails and a PostgreSQL database; on the front-end it uses React.js with a Redux architectural framework.  
+Bara is a full-stack web application which clones several basic features of Yelp. On the back-end, Bara utilizes Ruby on Rails and a PostgreSQL database; on the front-end, it uses React.js with a Redux architectural framework.  
 
 ## Features & Implementation
 
