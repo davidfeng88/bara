@@ -17,6 +17,7 @@ business-logo {
   margin: 0 4px;
 }
 
+// business search bar
 .business-search {
   width: 754px;
   height: 36px;
@@ -27,6 +28,76 @@ business-logo {
   border-radius: 4px;
 }
 
+.home-search {
+  margin: 0 auto;
+  height: 45px;
+  width: 960px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.business-search .input {
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  padding: 8px 11px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.business-search .find {
+  display: flex;
+  justify-content: flex-start;
+  width: 325px;
+  padding-right: 11px;
+}
+
+.business-search .near {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 11px;
+  width: 325px;
+  border-left: 1px rgb(204, 204, 204) solid;
+}
+
+.business-search input {
+  border: none;
+}
+
+.business-search input:focus {
+  outline: none;
+}
+
+.find input {
+  width: 409px;
+}
+
+.near input {
+  width: 341px;
+}
+
+.business-search label {
+  padding-top: 4px;
+  font-weight: bold;
+  color: #555;
+  margin-right: 12px;
+}
+
+.business-search .submit {
+  color: white;
+  background-color: #be2020;
+  width: 24px;
+  height: 18px;
+  padding: 14px 20px 13px 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.business-search .submit:hover {
+  background-color: #a91c1c;
+}
+
+//
 business-signup {
   padding: 10% 0;
 }
