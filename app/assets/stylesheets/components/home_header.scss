@@ -21,15 +21,6 @@
   margin: 0 auto;
 }
 
-.home-search {
-  margin: 0 auto;
-  height: 45px;
-  width: 960px;
-  font-size: 14px;
-  background-color: white;
-  text-align: center;
-}
-
 .home-header-links {
   margin: 20px auto;
   width: 40%;
@@ -42,4 +33,81 @@
 .home-header-links a {
   font-weight: bold;
   color: white;
+}
+
+.home-search {
+  margin: 0 auto;
+  height: 45px;
+  width: 960px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.home-search .input {
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  padding: 8px 11px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.home-search .find {
+  display: flex;
+  justify-content: flex-start;
+  width: 458px;
+  padding-right: 11px;
+}
+
+.home-search .near {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 11px;
+  width: 394px;
+  border-left: 1px rgb(204, 204, 204) solid;
+}
+
+.home-search input {
+  border: none;
+}
+
+.home-search input:focus {
+  outline: none;
+}
+
+.find input {
+  width: 409px;
+}
+
+.near input {
+  width: 341px;
+}
+
+.home-search label {
+  padding-top: 4px;
+  font-weight: bold;
+  color: #555;
+  margin-right: 12px;
+}
+
+.home-search .submit {
+  color: white;
+  background-color: $yelpy-red;
+  width: 24px;
+  height: 18px;
+  padding: 14px 20px 13px 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.home-search .submit:hover {
+  background-color: #be2020;
+}
+
+.home-search .submit:active {
+  background-color: #a91c1c;
 }

@@ -35,7 +35,7 @@ gem 'jquery-rails'
 # //= require jquery_ujs
 
 gem 'bcrypt', '~> 3.1.7'
-
+gem "font-awesome-rails"
 gem 'aws-sdk'
 gem "paperclip", "~> 5.0.0"
 gem 'figaro'

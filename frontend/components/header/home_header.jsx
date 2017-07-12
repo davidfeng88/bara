@@ -14,9 +14,9 @@ const HomeHeader = () => {
           <img src={window.staticImages.homeLogo} />
         </Link>
       </div>
-
-
-
+      <div className='home-search'>
+        <SearchBar />
+      </div>
       <div className='home-header-links'>
         <Links />
       </div>
@@ -26,8 +26,3 @@ const HomeHeader = () => {
 };
 
 export default HomeHeader;
-
-// insert into line 17 when ready
-// <div className='home-search'>
-//   <SearchBar />
-// </div>
