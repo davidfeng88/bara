@@ -28,7 +28,7 @@ Business show page contains details, a map, a edit link, and reviews for a busin
 ![busienss show page](docs/business-show.png)
 
 ### 4. Business form
-When a business is created, Bara sends the full address (combines the `address`, `city`, `state` columns in the `businesses` table) to the the Google Map Geocoding API, which returns the latitude and longitude. The `lat` and `lng` columns are then updated. The coordinates are then used to set up the center of the map and to place a marker on it.
+When a business is created, Bara sends the full address (combines the `address`, `city`, `state` columns in the `businesses` table) to the the Google Maps Geocoding API, which returns the latitude and longitude. The `lat` and `lng` columns are then updated. The coordinates are then used to set up the center of the map and to place a marker on it.
 
 ## Future Directions
 
