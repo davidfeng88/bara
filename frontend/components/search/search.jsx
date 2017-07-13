@@ -15,7 +15,9 @@ class Search extends React.Component {
     });
   }
 
-  componentWillReceiveNewProps(newProps) {
+  componentWillUpdate(newProps) {
+    if (newProps.filters.name !== this.props.filters.name
+      || newProps.filters.location !== this.props.filters.location)
     this.props.updateFilter({
       name: newProps.filters.name,
       location: newProps.filters.location,
@@ -27,7 +29,7 @@ class Search extends React.Component {
   }
 
   render() {
-    let { businesses, filters, minPrice, maxPrice,
+    let { businesses, minPrice, maxPrice,
       updateFilter, resetFilter } = this.props;
     return(
       <div>

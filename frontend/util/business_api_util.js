@@ -1,5 +1,4 @@
 export const fetchAllBusinesses = data => {
-  debugger;
   return(
     $.ajax({
       method: 'GET',

@@ -2,7 +2,6 @@ class Api::BusinessesController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
   def index
-    debugger
     businesses = Business.all
 
     if (params[:name] != "")
