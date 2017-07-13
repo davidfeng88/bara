@@ -37,6 +37,42 @@ Business.destroy_all
     )
 end
 
+10.times do
+  west_east = %w(W E).sample
+  Business.create(
+    # author_id: User.order("RANDOM()").first.id,
+    author_id: user_ids.sample,
+    name: Faker::Company.name,
+    address: "#{rand(101..599)} Lake St",
+    lat: rand(41.020611..41.044825),
+    lng: rand(-73.770136..-73.755716),
+    city: 'White Plains',
+    state: 'NY',
+    zipcode: 10604,
+    price: rand(1..4),
+    url: Faker::Internet.url,
+    phone: "(#{"#{rand(0..999)}".rjust(3, '0')})#{"#{rand(0..999)}".rjust(3, '0')}-#{"#{rand(0..9999)}".rjust(4, '0')}"
+    )
+end
+
+3.times do
+  west_east = %w(W E).sample
+  Business.create(
+    # author_id: User.order("RANDOM()").first.id,
+    author_id: user_ids.sample,
+    name: Faker::Company.name,
+    address: "#{rand(101..599)} Lake St",
+    lat: rand(41.788329..41.801827),
+    lng: rand(-87.605483..-87.588289),
+    city: 'Chicago',
+    state: 'IL',
+    zipcode: 60615,
+    price: rand(1..4),
+    url: Faker::Internet.url,
+    phone: "(#{"#{rand(0..999)}".rjust(3, '0')})#{"#{rand(0..999)}".rjust(3, '0')}-#{"#{rand(0..9999)}".rjust(4, '0')}"
+    )
+end
+
 business_ids = (Business.first.id..Business.last.id).to_a
 
 Review.destroy_all
