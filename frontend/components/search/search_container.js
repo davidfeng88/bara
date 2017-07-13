@@ -5,8 +5,9 @@ import Search from './search';
 
 const mapStateToProps = (state, ownProps) => {
 
-  // const queryString = require('query-string');
-  // const parsed = queryString.parse(ownProps.location.search);
+  const queryString = require('query-string');
+  const parsed = queryString.parse(ownProps.location.search);
+  debugger;
   // console.log(`parsed=${parsed}`);
   return({
     businesses: businessesToArray(state),
