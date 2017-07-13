@@ -1,75 +1,158 @@
 User.destroy_all
 User.create(username: 'guest', password: 'password')
-
-20.times do
-  User.create(
-    username: Faker::Name.name,
-    password: Faker::Lorem.word,
-  )
-end
+User.create(username: 'David Feng', password: 'password')
+User.create(username: 'Ross Geller', password: 'password')
+User.create(username: 'Chandler Bing', password: 'password')
+User.create(username: 'Joey Tribbiani', password: 'password')
+User.create(username: 'Rachel Green', password: 'password')
+User.create(username: 'Monica Geller', password: 'password')
+User.create(username: 'Phoebe Buffay', password: 'password')
 
 user_ids = (User.first.id..User.last.id).to_a
 
-Business.destroy_all
-12.times do
-  west_east = %w(W E).sample
-  Business.create(
-    author_id: user_ids.sample,
-    name: Faker::Company.name,
-    address: "#{rand(101..599)} #{west_east} #{rand(1..34).ordinalize} St",
-    lat: rand(40.711073..40.753247),
-    lng: rand(-74.009286..-73.976244),
-    city: 'New York',
-    state: 'NY',
-    zipcode: rand(10001..10010),
-    price: rand(1..4),
-    url: Faker::Internet.url,
-    phone: "(#{"#{rand(0..999)}".rjust(3, '0')})#{"#{rand(0..999)}".rjust(3, '0')}-#{"#{rand(0..9999)}".rjust(4, '0')}"
-    )
-end
+Business.create(
+  author_id: user_ids.sample,
+  name: "Ippudo East Village",
+  address: "65 4th Ave",
+  lat: 40.730948,
+  lng: -73.990288,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10003,
+  price: 2,
+  url: "ippudony.com",
+  phone: "(212) 388-0088"
+)
 
-10.times do
-  west_east = %w(W E).sample
-  Business.create(
-    author_id: user_ids.sample,
-    name: Faker::Company.name,
-    address: "#{rand(101..599)} Lake St",
-    lat: rand(41.020611..41.044825),
-    lng: rand(-73.770136..-73.755716),
-    city: 'White Plains',
-    state: 'NY',
-    zipcode: 10604,
-    price: rand(1..4),
-    url: Faker::Internet.url,
-    phone: "(#{"#{rand(0..999)}".rjust(3, '0')})#{"#{rand(0..999)}".rjust(3, '0')}-#{"#{rand(0..9999)}".rjust(4, '0')}"
-    )
-end
+Business.create(
+  author_id: user_ids.sample,
+  name: "Joe’s Shanghai",
+  address: "9 Pell St",
+  lat: 40.714700,
+  lng: -73.997712,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10013,
+  price: 2,
+  url: "joeshanghairestaurants.com",
+  phone: "(212) 233-8888"
+)
 
-3.times do
-  west_east = %w(W E).sample
-  Business.create(
-    author_id: user_ids.sample,
-    name: Faker::Company.name,
-    address: "#{rand(101..599)} Lake St",
-    lat: rand(41.788329..41.801827),
-    lng: rand(-87.605483..-87.588289),
-    city: 'Chicago',
-    state: 'IL',
-    zipcode: 60615,
-    price: rand(1..4),
-    url: Faker::Internet.url,
-    phone: "(#{"#{rand(0..999)}".rjust(3, '0')})#{"#{rand(0..999)}".rjust(3, '0')}-#{"#{rand(0..9999)}".rjust(4, '0')}"
-    )
-end
+Business.create(
+  author_id: user_ids.sample,
+  name: "Burger & Lobster",
+  address: "39 W 19th St",
+  lat: 40.740123,
+  lng: -73.993345,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10011,
+  price: 2,
+  url: "burgerandlobster.com/en",
+  phone: "(646) 833-7532"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Buddakan",
+  address: "75 9th Ave",
+  lat: 40.742287,
+  lng: -74.004819,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10011,
+  price: 3,
+  url: "buddakannyc.com",
+  phone: "(212) 989-6699"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Woorijip Authentic Korean Food",
+  address: "12 W 32nd St",
+  lat: 40.747327,
+  lng: -73.986506,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10001,
+  price: 1,
+  url: "woorijipnyc.com",
+  phone: "(212) 244-1115"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Morimoto",
+  address: "88 10th Ave",
+  lat: 40.743000,
+  lng: -74.007189,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10011,
+  price: 4,
+  url: "morimotonyc.com",
+  phone: "(212) 989-8883"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Imperial Wok",
+  address: "736 N Broadway",
+  lat: 41.057609,
+  lng: -73.765809,
+  city: 'White Plains',
+  state: 'NY',
+  zipcode: 10603,
+  price: 2,
+  url: "imperialwokwp.com",
+  phone: "(914) 686-2700"
+)
 
 business_ids = (Business.first.id..Business.last.id).to_a
 
 Review.destroy_all
-50.times do
+
+7.times do
   Review.create(
     author_id: user_ids.sample,
     business_id: business_ids.sample,
-    rating: rand(1..5),
-    body: Faker::Lorem.paragraph,
+    rating: 1,
+    body: "So bad. Will never come again!",
+  )
+end
+
+10.times do
+  Review.create(
+    author_id: user_ids.sample,
+    business_id: business_ids.sample,
+    rating: 1,
+    body: "Could be better...",
+  )
+end
+
+15.times do
+  Review.create(
+    author_id: user_ids.sample,
+    business_id: business_ids.sample,
+    rating: 3,
+    body: "I don't really know... Maybe I'll come back again?",
+  )
+end
+
+10.times do
+  Review.create(
+    author_id: user_ids.sample,
+    business_id: business_ids.sample,
+    rating: 4,
+    body: "Pretty good food!!",
+  )
+end
+
+10.times do
+  Review.create(
+    author_id: user_ids.sample,
+    business_id: business_ids.sample,
+    rating: 5,
+    body: "Great food! Highly recommended!!",
   )
 end
