@@ -6,11 +6,20 @@ import Search from './search';
 const mapStateToProps = (state, ownProps) => {
 
   const queryString = require('query-string');
-  const parsed = queryString.parse(ownProps.location.search);
-  debugger;
-  // console.log(`parsed=${parsed}`);
+  let name = "";
+  let location = "";
+  if (ownProps.location.search !== "") {
+    const parsed = queryString.parse(ownProps.location.search);
+    name = parsed.name;
+    location = parsed.location;
+  }
+  let filters = {
+    name,
+    location,
+  };
   return({
     businesses: businessesToArray(state),
+    filters,
     minPrice: state.filters.minPrice,
     maxPrice: state.filters.maxPrice
   });

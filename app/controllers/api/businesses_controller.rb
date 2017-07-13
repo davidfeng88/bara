@@ -2,7 +2,20 @@ class Api::BusinessesController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
   def index
+    debugger
     businesses = Business.all
+
+    if (params[:name] != "")
+      businesses = businesses.where('lower(name) LIKE ?', "%#{params[:name].downcase}%")
+    end
+
+    if (params[:location] != "")
+      businesses =
+        businesses.where('lower(address) LIKE ?', "%#{params[:location].downcase}%")
+        .or(businesses.where('lower(city) LIKE ?', "%#{params[:location].downcase}%"))
+        .or(businesses.where('lower(state) LIKE ?', "%#{params[:location].downcase}%"))
+        .or(businesses.where('zipcode = ?', params[:location].to_i))
+    end
 
     if (params[:minPrice] && params[:maxPrice])
       businesses = businesses.where(price: price_range)

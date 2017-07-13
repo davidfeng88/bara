@@ -3,8 +3,10 @@ import merge from 'lodash/merge';
 import { UPDATE_FILTER, RESET_FILTER } from '../actions/filter_actions';
 
 const defaultFilters = Object.freeze({
+  name: "",
+  location: "",
   minPrice: 1,
-  maxPrice: 4
+  maxPrice: 4,
 });
 
 const FiltersReducer = (state = defaultFilters, action) => {

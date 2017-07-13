@@ -9,7 +9,17 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updateFilter();
+    this.props.updateFilter({
+      name: this.props.filters.name,
+      location: this.props.filters.location,
+    });
+  }
+
+  componentWillReceiveNewProps(newProps) {
+    this.props.updateFilter({
+      name: newProps.filters.name,
+      location: newProps.filters.location,
+    });
   }
 
   componentWillUnmount() {
@@ -17,7 +27,7 @@ class Search extends React.Component {
   }
 
   render() {
-    let { businesses, minPrice, maxPrice,
+    let { businesses, filters, minPrice, maxPrice,
       updateFilter, resetFilter } = this.props;
     return(
       <div>

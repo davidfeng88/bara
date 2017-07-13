@@ -1,10 +1,13 @@
-export const fetchAllBusinesses = data => (
-  $.ajax({
-    method: 'GET',
-    url: '/api/businesses',
-    data
-  })
-);
+export const fetchAllBusinesses = data => {
+  debugger;
+  return(
+    $.ajax({
+      method: 'GET',
+      url: '/api/businesses',
+      data
+    })
+  );
+};
 
 export const createBusiness = business => (
   $.ajax({
