@@ -7,11 +7,6 @@ import IndexMap from './index_map';
 
 class BusinessIndex extends React.Component {
 
-  // before the search/filter:
-  // componentDidMount() {
-  //   this.props.fetchAllBusinesses();
-  // }
-
   render() {
     const businessesEntries = this.props.businesses.map(business => (
         <BusinessIndexItem key={ business.id } business={ business } />
