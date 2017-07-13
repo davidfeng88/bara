@@ -6,25 +6,36 @@ class SearchBar extends React.Component {
     super(props);
     if (props.parsed) {
       let { name, location } = props.parsed;
-      if (name) {
-        this.state = { name };
-      } else {
-        this.state = { name: '' };
-      }
-      if (location) {
-        this.state = { location };
-      } else {
-        this.state = { location: '' };
-      }
+      let nameValue = name ? name : '';
+      let locationValue = location ? location : '';
+      this.state = {
+        name: nameValue,
+        location: locationValue,
+      };
     } else {
       this.state = {
         name: '',
-        location: ''
+        location: '',
       };
     }
-
-
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.parsed) {
+      let { name, location } = newProps.parsed;
+      let nameValue = name ? name : '';
+      let locationValue = location ? location : '';
+      this.setState({
+        name: nameValue,
+        location: locationValue,
+      });
+    } else {
+      this.setState({
+        name: '',
+        location: '',
+      });
+    }
   }
 
   update(field) {
@@ -32,6 +43,7 @@ class SearchBar extends React.Component {
       [field]: e.currentTarget.value
     });
   }
+
 
   handleSubmit(e) {
     e.preventDefault();

@@ -5,10 +5,14 @@ import { toggleDropdown } from '../../actions/dropdown_actions';
 
 import BusinessHeader from './business_header';
 
-const mapStateToProps = ({ currentUser, showDropdown }) => {
+const mapStateToProps = (state, ownProps) => {
+  const { currentUser, showDropdown } = state;
+  const queryString = require('query-string');
+  const parsed = queryString.parse(ownProps.location.search);
   return {
     currentUser,
-    showDropdown
+    showDropdown,
+    parsed,
   };
 };
 
