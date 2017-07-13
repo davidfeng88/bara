@@ -26,14 +26,6 @@ business-logo {
   font-size: 14px;
 }
 
-.home-search {
-  margin: 0 auto;
-  height: 45px;
-  width: 960px;
-  font-size: 18px;
-  text-align: center;
-}
-
 .business-search .input {
   display: flex;
   height: 26px;
@@ -65,14 +57,6 @@ business-logo {
 
 .business-search input:focus {
   outline: none;
-}
-
-.find input {
-  width: 409px;
-}
-
-.near input {
-  width: 341px;
 }
 
 .business-search label {
