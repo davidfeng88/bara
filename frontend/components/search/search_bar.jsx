@@ -8,9 +8,11 @@ class SearchBar extends React.Component {
       let { name, location } = props.parsed;
       let nameValue = name ? name : '';
       let locationValue = location ? location : '';
+      let nameDecoded = decodeURIComponent(nameValue);
+      let locationDecoded = decodeURIComponent(locationValue);
       this.state = {
-        name: nameValue,
-        location: locationValue,
+        name: nameDecoded,
+        location: locationDecoded,
       };
     } else {
       this.state = {
@@ -26,9 +28,11 @@ class SearchBar extends React.Component {
       let { name, location } = newProps.parsed;
       let nameValue = name ? name : '';
       let locationValue = location ? location : '';
+      let nameDecoded = decodeURIComponent(nameValue);
+      let locationDecoded = decodeURIComponent(locationValue);
       this.setState({
-        name: nameValue,
-        location: locationValue,
+        name: nameDecoded,
+        location: locationDecoded,
       });
     } else {
       this.setState({
@@ -49,7 +53,10 @@ class SearchBar extends React.Component {
     e.preventDefault();
     let name = this.state.name ? this.state.name : '';
     let location = this.state.location ? this.state.location : '';
-    this.props.history.push(`/businesses/?name=${name}&location=${location}`);
+    let nameEncoded = encodeURIComponent(name);
+    let locationEncoded = encodeURIComponent(location);
+
+    this.props.history.push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}`);
   }
 
   render() {

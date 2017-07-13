@@ -78,7 +78,13 @@ business-logo {
 
 .business-search .submit:hover {
   background-color: #a91c1c;
+  cursor: pointer;
 }
+
+.business-search .submit:focus {
+  outline: none;
+}
+
 
 //
 business-signup {
