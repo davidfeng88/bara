@@ -8,11 +8,15 @@ import IndexMap from './index_map';
 class BusinessIndex extends React.Component {
 
   render() {
-    const businessesEntries = this.props.businesses.map(business => (
-        <BusinessIndexItem key={ business.id } business={ business } />
-      )
-    );
-
+    let businessesEntries;
+    if (this.props.businesses.length === 0) {
+      businessesEntries = <h3>Sorry, nothing matched your search!</h3>;
+    } else {
+      businessesEntries = this.props.businesses.map(business => (
+          <BusinessIndexItem key={ business.id } business={ business } />
+        )
+      );
+    }
     return(
       <div>
         <div className='business-index-main'>

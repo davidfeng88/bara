@@ -26,7 +26,7 @@ class IndexMap extends React.Component {
   }
 
   handleMarkerClick(business) {
-    this.props.history.push(`businesses/${business.id}`);
+    // this.props.history.push(`businesses/${business.id}`);
   }
 
   render() {

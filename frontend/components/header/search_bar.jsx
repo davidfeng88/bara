@@ -53,10 +53,11 @@ class SearchBar extends React.Component {
     e.preventDefault();
     let name = this.state.name ? this.state.name : '';
     let location = this.state.location ? this.state.location : '';
+
     let nameEncoded = encodeURIComponent(name);
     let locationEncoded = encodeURIComponent(location);
-
     this.props.history.push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}`);
+
   }
 
   render() {
