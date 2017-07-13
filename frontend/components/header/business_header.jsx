@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from './search_bar';
+import SearchBar from '../search/search_bar';
 import Links from './links';
 import Dropdown from './dropdown';
 
@@ -65,6 +65,8 @@ class BusinessHeader extends React.Component {
   }
 
   render() {
+    const queryString = require('query-string');
+    const parsed = queryString.parse(this.props.location.search);
     return (
       <div className='business-header'>
         <div className='business-header-row1-wrapper' >
@@ -75,7 +77,7 @@ class BusinessHeader extends React.Component {
               </Link>
             </div>
             <div className='business-search'>
-              <SearchBar />
+              <SearchBar parsed={parsed} />
             </div>
             {this.avatarOrSignUp()}
           </div>

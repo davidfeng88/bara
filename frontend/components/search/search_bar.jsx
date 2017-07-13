@@ -1,18 +1,43 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      location:'',
-    };
+    if (props.parsed) {
+      let { name, location } = props.parsed;
+      if (name) {
+        this.state = { name };
+      } else {
+        this.state = { name: '' };
+      }
+      if (location) {
+        this.state = { location };
+      } else {
+        this.state = { location: '' };
+      }
+    } else {
+      this.state = {
+        name: '',
+        location: ''
+      };
+    }
+
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let name = this.state.name ? this.state.name : '';
+    let location = this.state.location ? this.state.location : '';
+    this.props.history.push(`/businesses/?name=${name}&location=${location}`);
   }
 
   render() {
@@ -48,4 +73,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
