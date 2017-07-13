@@ -97,17 +97,18 @@
 }
 
 .home-search .submit {
+  border: none;
   color: white;
   background-color: $yelpy-red;
-  width: 24px;
-  height: 18px;
-  padding: 11px 20px 16px 20px;
+  width: 58px;
+  height: 45px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .home-search .submit:hover {
   background-color: #be2020;
+  cursor: pointer;
 }
 
 .home-search .submit:active {
