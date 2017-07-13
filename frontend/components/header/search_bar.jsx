@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
           </div>
         </div>
         <div className='submit' onClick={this.handleSubmit}>
-          <i className="fa fa-search" aria-hidden="true"></i>
+          <i className="fa fa-search fa-lg" aria-hidden="true"></i>
         </div>
       </form>
     );

@@ -21,11 +21,9 @@ business-logo {
 .business-search {
   width: 754px;
   height: 36px;
-  background-color: white;
   margin: 0 20px;
   text-align: center;
   font-size: 14px;
-  border-radius: 4px;
 }
 
 .home-search {
@@ -38,9 +36,10 @@ business-logo {
 
 .business-search .input {
   display: flex;
+  height: 26px;
   justify-content: flex-start;
   background-color: white;
-  padding: 8px 11px;
+  padding: 5px 11px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -77,18 +76,18 @@ business-logo {
 }
 
 .business-search label {
-  padding-top: 4px;
+  padding-top: 5px;
   font-weight: bold;
-  color: #555;
-  margin-right: 12px;
+  color: black;
+  margin-right: 5px;
 }
 
 .business-search .submit {
   color: white;
   background-color: #be2020;
   width: 24px;
-  height: 18px;
-  padding: 14px 20px 13px 20px;
+  height: 27px;
+  padding: 10px 15px 0 15px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
