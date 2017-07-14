@@ -11,8 +11,8 @@ const Links = () => {
       </Link>
 
       <Link to="/businesses/?name=&location=New%20York">
-      <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;
-        Restaurants
+      <i className="fa fa-glass" aria-hidden="true"></i>&nbsp;&nbsp;
+        Nightlife
       </Link>
     </div>
   );
