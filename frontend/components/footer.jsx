@@ -14,7 +14,7 @@ const Footer = () => {
           </div>
 
           <div className='footer-links-col2'>
-            <h3>About the Developer: Ge "David" Feng</h3>
+            <h3>About Me</h3>
               <a href="http://davidfeng.us/" target="_blank">
               Portfolio Site</a>
               <a href="https://github.com/davidfeng88" target="_blank">
