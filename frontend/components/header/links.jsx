@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 const Links = () => {
   return(
     <div>
-      <Link to="/businesses/?name=&location=New%20York">Businesses</Link>
+      <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;
+      <Link to="/businesses/?name=&location=New%20York">
+        Restaurants
+      </Link>
     </div>
   );
 };
