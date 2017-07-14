@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './search_bar';
-import Links from './links';
+import BusinessLinks from './business_links';
 import Dropdown from './dropdown';
 
 class BusinessHeader extends React.Component {
@@ -85,9 +85,7 @@ class BusinessHeader extends React.Component {
 
         <div className='business-header-row2-wrapper' >
           <div className='business-header-row2'>
-            <div className='business-header-links'>
-              <Links />
-            </div>
+            <BusinessLinks />
             {this.login()}
           </div>
         </div>

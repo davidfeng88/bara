@@ -148,6 +148,7 @@ business-signup {
 }
 
 .business-header-links {
+  display: flex;
   color: white;
   line-height: 27px;
 }
@@ -156,6 +157,7 @@ business-signup {
   display: block;
   padding: 0 30px;
   color: white;
+  margin-right: 5px;
 }
 
 .business-header-links a:hover {

@@ -4,9 +4,14 @@ import { Link } from 'react-router-dom';
 
 const Links = () => {
   return(
-    <div>
-      <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;
+    <div className='business-header-links'>
       <Link to="/businesses/?name=&location=New%20York">
+      <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;
+        Restaurants
+      </Link>
+
+      <Link to="/businesses/?name=&location=New%20York">
+      <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;
         Restaurants
       </Link>
     </div>

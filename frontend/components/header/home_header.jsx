@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import HomeBarContainer from './home_bar_container';
 import SearchBar from './search_bar';
-import Links from './links';
+import HomeLinks from './home_links';
 
 const HomeHeader = () => {
   return(
@@ -17,10 +17,7 @@ const HomeHeader = () => {
       <div className='home-search'>
         <SearchBar />
       </div>
-      <div className='home-header-links'>
-        <Links />
-      </div>
-
+      <HomeLinks />
     </div>
   );
 };
