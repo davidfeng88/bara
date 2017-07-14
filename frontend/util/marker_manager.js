@@ -20,7 +20,7 @@ class MarkerManager {
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));
 
     let markersArray = Object.values(this.markers);
-    if (markersArray.length > 1) {
+    if (markersArray.length > 0) {
       let bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markersArray.length; i++) {
         bounds.extend(markersArray[i].getPosition());

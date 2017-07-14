@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Links = () => {
   return(
     <div>
-      <Link to="/businesses">Businesses</Link>
+      <Link to="/businesses/?name=&location=New%20York">Businesses</Link>
     </div>
   );
 };

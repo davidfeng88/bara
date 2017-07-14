@@ -125,7 +125,7 @@ end
   Review.create(
     author_id: user_ids.sample,
     business_id: business_ids.sample,
-    rating: 1,
+    rating: 2,
     body: "Could be better...",
   )
 end

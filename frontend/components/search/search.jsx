@@ -35,8 +35,7 @@ class Search extends React.Component {
       <div>
         <div className='title'>
           <div className='center'>
-            <h1>The Best Restaurants
-              <span className='normal'> in New York, NY</span></h1>
+            <h1>Try these filters:</h1>
             <FilterForm
               minPrice={minPrice}
               maxPrice={maxPrice}
