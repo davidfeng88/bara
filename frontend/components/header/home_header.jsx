@@ -14,21 +14,11 @@ class HomeHeader extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    if (this.className === 'home-header') {
-      this.className = 'home-header2';
-    }
-
   }
 
-
-
-
   render() {
-    let style = {
-      backgroundImage: `asset-url("home.jpeg")`,
-    };
     return(
-      <div style={style} className='home-header'>
+      <div className='home-header'>
         <HomeBarContainer />
         <div className='logo' onClick={this.handleClick}>
           <Link to="/">

@@ -9,13 +9,17 @@ const Links = () => {
         <Link to="/businesses/?name=&location=New%20York">
           Restaurants
         </Link>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <i className="fa fa-glass" aria-hidden="true"></i>&nbsp;&nbsp;
-        <Link to="/businesses/?name=&location=New%20York">
-          Nightlife
-        </Link>
+
+
+
     </div>
   );
 };
 
 export default Links;
+
+// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// <i className="fa fa-glass" aria-hidden="true"></i>&nbsp;&nbsp;
+// <Link to="/businesses/?name=&location=New%20York">
+//   Nightlife
+// </Link>

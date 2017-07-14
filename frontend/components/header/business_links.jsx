@@ -10,12 +10,14 @@ const Links = () => {
         Restaurants
       </Link>
 
-      <Link to="/businesses/?name=&location=New%20York">
-      <i className="fa fa-glass" aria-hidden="true"></i>&nbsp;&nbsp;
-        Nightlife
-      </Link>
+
     </div>
   );
 };
 
 export default Links;
+
+// <Link to="/businesses/?name=&location=New%20York">
+// <i className="fa fa-glass" aria-hidden="true"></i>&nbsp;&nbsp;
+//   Nightlife
+// </Link>
