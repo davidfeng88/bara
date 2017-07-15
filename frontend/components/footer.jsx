@@ -29,7 +29,7 @@ const Footer = () => {
             <h3>Credits</h3>
               <p>Design: <a href="https://www.yelp.com/nyc" target="_blank">
               Yelp</a></p>
-              <p>Developer: <a href="http://davidfeng.us/" target="_blank">
+              <p>Developer: <a href="https://davidfeng.us/" target="_blank">
               Ge "David" Feng</a></p>
               <p>Icons: <a href="http://fontawesome.io/" target="_blank">
               Font Awesome</a></p>
