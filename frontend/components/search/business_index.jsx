@@ -28,9 +28,7 @@ class BusinessIndex extends React.Component {
             </div>
 
             <div className='index-grid-col2'>
-
               <IndexMap businesses={this.props.businesses} />
-
               <div className='add-business'>
                 <h3>Not here? Tell us what we're missing.</h3>
                 <p>If the business you're looking for isn't here, add it!</p>

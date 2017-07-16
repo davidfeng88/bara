@@ -42,7 +42,7 @@
 
 .add-business {
   margin-top: 24px;
-  width: 276px;
+  width: 278px;
   height: 125px;
   padding: 11px;
   background-color: rgb(245, 245, 245);
@@ -84,8 +84,27 @@
   text-decoration: none;
 }
 
+// .index-grid-col2 {
+// 	position: relative;
+// 	height: 1000px;
+// }
+
+.sticky-container {
+	border: 1px solid black;
+	height: 500px;
+}
+
+.sticky {
+	border: 1px solid blue;
+	height: 50px;
+	font-size: 16px;
+}
+
 .index-map {
+	// position: -webkit-sticky;
+	// position: sticky;
+	// top: 20px;
   width: 300px;
   height: 300px;
-  border: 1px solid rgb(51, 51, 51);
+  border: 1px solid rgb(204, 204, 204);
 }
