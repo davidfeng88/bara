@@ -6,6 +6,7 @@ import BusinessesReducer from './businesses_reducer';
 import DropdownsReducer from './dropdowns_reducer';
 import FiltersReducer from './filters_reducer';
 import ReviewsReducer from './reviews_reducer';
+import HighlightReducer from './highlight_reducer';
 
 const RootReducer = combineReducers({
   currentUser: SessionReducer,
@@ -14,6 +15,7 @@ const RootReducer = combineReducers({
   businesses: BusinessesReducer,
   showDropdown: DropdownsReducer,
   reviews: ReviewsReducer,
+  highlight: HighlightReducer,
 });
 
 export default RootReducer;

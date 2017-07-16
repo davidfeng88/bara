@@ -5,7 +5,7 @@ import BusinessIndexItem from './business_index_item';
 import IndexMap from './index_map';
 
 class BusinessIndex extends React.Component {
-  
+
 
   render() {
     let businessesEntries;
@@ -13,7 +13,8 @@ class BusinessIndex extends React.Component {
       businessesEntries = <h3>Sorry, nothing matched your search!</h3>;
     } else {
       businessesEntries = this.props.businesses.map(business => (
-          <BusinessIndexItem key={ business.id } business={ business } />
+          <BusinessIndexItem highlightBusiness={this.props.highlightBusiness}
+          key={ business.id } business={ business } />
         )
       );
     }
@@ -27,7 +28,9 @@ class BusinessIndex extends React.Component {
           </div>
           <div className='index-grid-col2'>
             <div className='css-sticky'>
-             <IndexMap businesses={this.props.businesses} />
+             <IndexMap
+              highlight={this.props.highlight}
+              businesses={this.props.businesses} />
             </div>
           </div>
         </div>

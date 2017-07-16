@@ -5,9 +5,12 @@ class IndexMapMarkerManager {
     this.map = map;
     this.markers = {};
     this.handleClick = handleClick;
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
+
   }
 
-  updateMarkers(businesses){
+  updateMarkers(businesses, highlight){
     const businessesObj = {};
     businesses.forEach(business => businessesObj[business.id] = business);
 
@@ -25,12 +28,21 @@ class IndexMapMarkerManager {
       let bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markersArray.length; i++) {
         bounds.extend(markersArray[i].getPosition());
+
+        if (highlight !== markersArray[i].businessId) {
+          this.handleMouseOut(markersArray[i]);
+        }
       }
       this.map.fitBounds(bounds);
       if (this.map.getZoom() > 16) {
         this.map.setZoom(16);
       }
     }
+
+    if (highlight !== -1) {
+      this.handleMouseOver(this.markers[highlight]);
+    }
+
   }
 
   normalIcon() {
@@ -64,12 +76,12 @@ class IndexMapMarkerManager {
     });
   }
 
-  handleMouseover(marker) {
+  handleMouseOver(marker) {
     marker.setIcon(this.hoverIcon());
     marker.setLabel(this.hoverLabel(marker.text));
   }
 
-  handleMouseout(marker) {
+  handleMouseOut(marker) {
     marker.setIcon(this.normalIcon());
     marker.setLabel(this.normalLabel(marker.text));
   }
@@ -84,10 +96,10 @@ class IndexMapMarkerManager {
       icon: this.normalIcon(),
       label: this.normalLabel((idx+1).toString()),
     });
-    
+
     marker.addListener('click', () => this.handleClick(business));
-    marker.addListener('mouseover', () => this.handleMouseover(marker));
-    marker.addListener('mouseout', () => this.handleMouseout(marker));
+    marker.addListener('mouseover', () => this.handleMouseOver(marker));
+    marker.addListener('mouseout', () => this.handleMouseOut(marker));
     this.markers[marker.businessId] = marker;
   }
 

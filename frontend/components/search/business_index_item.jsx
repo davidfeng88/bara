@@ -5,6 +5,18 @@ import { values } from 'lodash';
 class BusinessIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  handleMouseEnter(e) {
+    e.preventDefault();
+    this.props.highlightBusiness(this.props.business.id);
+  }
+
+  handleMouseLeave(e) {
+    e.preventDefault();
+    this.props.highlightBusiness(-1);
   }
 
   price(number) {
@@ -56,7 +68,10 @@ class BusinessIndexItem extends React.Component {
     const { business } = this.props;
 
     return (
-      <div className='index-item'>
+      <div
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+        className='index-item'>
 
         <div className='index-item-row1'>
 

@@ -29,8 +29,8 @@ class Search extends React.Component {
   }
 
   render() {
-    let { businesses, minPrice, maxPrice,
-      updateFilter, resetFilter } = this.props;
+    let { businesses, highlight, minPrice, maxPrice,
+      updateFilter, resetFilter, highlightBusiness } = this.props;
     return(
       <div>
         <div className='title'>
@@ -44,7 +44,11 @@ class Search extends React.Component {
             />
           </div>
         </div>
-        <BusinessIndex businesses={businesses} />
+        <BusinessIndex
+          highlight={highlight}
+          businesses={businesses}
+          highlightBusiness={highlightBusiness}
+        />
       </div>
     );
   }
