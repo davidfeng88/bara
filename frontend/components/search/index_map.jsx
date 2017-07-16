@@ -12,7 +12,6 @@ const mapOptions = {
   zoom: 12
 };
 
-
 class IndexMap extends React.Component {
   componentDidMount() {
     const map = this.refs.map;

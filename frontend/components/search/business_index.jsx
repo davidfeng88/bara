@@ -5,6 +5,7 @@ import BusinessIndexItem from './business_index_item';
 import IndexMap from './index_map';
 
 class BusinessIndex extends React.Component {
+  
 
   render() {
     let businessesEntries;
