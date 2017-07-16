@@ -13,14 +13,15 @@ class MarkerManager {
 
     businesses
       .filter(business => !this.markers[business.id])
-      .forEach(newBusiness => this.createMarkerFromBusiness(newBusiness));
+      .forEach((newBusiness, idx) => this.createMarkerFromBusiness(newBusiness, idx));
 
     Object.keys(this.markers)
       .filter(businessId => !businessesObj[businessId])
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));
 
-    let markersArray = Object.values(this.markers);
-    if (markersArray.length > 0) {
+    //adjust map bounds when the search result is not empty
+    if (businesses.length > 0) {
+      let markersArray = Object.values(this.markers);
       let bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markersArray.length; i++) {
         bounds.extend(markersArray[i].getPosition());
@@ -30,14 +31,16 @@ class MarkerManager {
         this.map.setZoom(16);
       }
     }
+
   }
 
-  createMarkerFromBusiness(business) {
+  createMarkerFromBusiness(business, idx) {
     const position = new google.maps.LatLng(business.lat, business.lng);
     const marker = new google.maps.Marker({
       position,
       map: this.map,
-      businessId: business.id
+      businessId: business.id,
+      label: (idx+1).toString(),
     });
 
     marker.addListener('click', () => this.handleClick(business));
