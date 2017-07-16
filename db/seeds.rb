@@ -127,65 +127,33 @@ Business.create(
   phone: "(212) 989-8883"
 )
 
-Business.create(
-  author_id: user_ids.sample,
-  name: "Imperial Wok",
-  address: "736 N Broadway",
-  lat: 41.057609,
-  lng: -73.765809,
-  city: 'White Plains',
-  state: 'NY',
-  zipcode: 10603,
-  price: 2,
-  url: "imperialwokwp.com",
-  phone: "(914) 686-2700"
-)
-
 business_ids = (Business.first.id..Business.last.id).to_a
 
 Review.destroy_all
 
-5.times do
+50.times do
+  random = rand(15)
+  case random
+  when 0
+    rating = 1
+    body = 'So bad. Will never come again!'
+  when 1..2
+    rating = 2
+    body = 'Could be better...'
+  when 3..5
+    rating = 3
+    body = 'I have no strong feelings one way or the other.'
+  when 6..8
+    rating = 4
+    body = 'Pretty good food!!'
+  else
+    rating = 5
+    body = 'Great food! Highly recommended!!'
+  end
   Review.create(
     author_id: user_ids.sample,
     business_id: business_ids.sample,
-    rating: 1,
-    body: "So bad. Will never come again!",
-  )
-end
-
-10.times do
-  Review.create(
-    author_id: user_ids.sample,
-    business_id: business_ids.sample,
-    rating: 2,
-    body: "Could be better...",
-  )
-end
-
-15.times do
-  Review.create(
-    author_id: user_ids.sample,
-    business_id: business_ids.sample,
-    rating: 3,
-    body: "I don't really know... Maybe I'll come back again?",
-  )
-end
-
-20.times do
-  Review.create(
-    author_id: user_ids.sample,
-    business_id: business_ids.sample,
-    rating: 4,
-    body: "Pretty good food!!",
-  )
-end
-
-10.times do
-  Review.create(
-    author_id: user_ids.sample,
-    business_id: business_ids.sample,
-    rating: 5,
-    body: "Great food! Highly recommended!!",
+    rating: rating,
+    body: body,
   )
 end
