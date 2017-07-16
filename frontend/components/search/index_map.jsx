@@ -16,7 +16,7 @@ class IndexMap extends React.Component {
   componentDidMount() {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, mapOptions);
-    this.IndexMapMarkerManager = new IndexMapMarkerManager(this.map, this.handleMarkerClick.bind(this));
+    this.IndexMapMarkerManager = new IndexMapMarkerManager(this.map, this.handleClick.bind(this));
     this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
   }
 
@@ -24,7 +24,7 @@ class IndexMap extends React.Component {
     this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
   }
 
-  handleMarkerClick(business) {
+  handleClick(business) {
     this.props.history.push(`/businesses/${business.id}`);
   }
 

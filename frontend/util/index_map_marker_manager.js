@@ -31,53 +31,63 @@ class IndexMapMarkerManager {
         this.map.setZoom(16);
       }
     }
+  }
 
+  normalIcon() {
+    return({
+      url: window.staticImages.normalIcon,
+      labelOrigin: new google.maps.Point(11, 10),
+    });
+  }
+
+  hoverIcon() {
+    return({
+      url: window.staticImages.hoverIcon,
+      labelOrigin: new google.maps.Point(11, 10),
+    });
+  }
+
+  normalLabel(text) {
+    return({
+      text: text,
+      color: 'white',
+      fontFamily: 'Helvetica Neue',
+    });
+  }
+
+  hoverLabel(text) {
+    return({
+      text: text,
+      color: 'red',
+      fontFamily: 'Helvetica Neue',
+      fontWeight: 'bold',
+    });
+  }
+
+  handleMouseover(marker) {
+    marker.setIcon(this.hoverIcon());
+    marker.setLabel(this.hoverLabel(marker.text));
+  }
+
+  handleMouseout(marker) {
+    marker.setIcon(this.normalIcon());
+    marker.setLabel(this.normalLabel(marker.text));
   }
 
   createMarkerFromBusiness(business, idx) {
     const position = new google.maps.LatLng(business.lat, business.lng);
     const marker = new google.maps.Marker({
+      text: (idx+1).toString(),
       position,
       map: this.map,
       businessId: business.id,
-      icon: {
-        url: staticImages.normalIcon,
-        labelOrigin: new google.maps.Point(11, 10),
-      },
-      label: {
-        text: (idx+1).toString(),
-        color: 'white',
-        fontFamily: 'Helvetica Neue',
-      },
-      normalIcon: {
-        url: staticImages.normalIcon,
-        labelOrigin: new google.maps.Point(11, 10),
-      },
-      hoverIcon: {
-        url: staticImages.hoverIcon,
-        labelOrigin: new google.maps.Point(11, 10),
-      },
-      normalLabel: {
-        text: (idx+1).toString(),
-        color: 'white',
-        fontFamily: 'Helvetica Neue',
-      },
-      hoverLabel: {
-        text: (idx+1).toString(),
-        color: 'red',
-        fontFamily: 'Helvetica Neue',
-        fontWeight: 'bold',
-      }
+      icon: this.normalIcon(),
+      label: this.normalLabel((idx+1).toString()),
     });
+    
     marker.addListener('click', () => this.handleClick(business));
-    marker.addListener('mouseover', () => {
-      marker.setIcon(marker.hoverIcon);
-      marker.setLabel(marker.hoverLabel);
-    });
-    marker.addListener('mouseout', () => {
-      marker.setIcon(marker.normalIcon);
-      marker.setLabel(marker.normalLabel);
-    });
+    marker.addListener('mouseover', () => this.handleMouseover(marker));
+    marker.addListener('mouseout', () => this.handleMouseout(marker));
     this.markers[marker.businessId] = marker;
   }
 
