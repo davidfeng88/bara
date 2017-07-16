@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import MarkerManager from '../../util/marker_manager';
+import ShowMapMarkerManager from '../../util/show_map_marker_manager';
 
 class ShowMap extends React.Component {
 
@@ -10,7 +10,7 @@ class ShowMap extends React.Component {
     const map = this.refs.map;
     if (map && this.map) {
       // map is the map div, and this.map is the google map component
-      this.MarkerManager.updateMarkers([this.props.business]);
+      this.ShowMapMarkerManager.updateMarkers([this.props.business]);
     }
   }
 
@@ -28,7 +28,7 @@ class ShowMap extends React.Component {
       };
     this.map = new google.maps.Map(map, mapOptions);
     const position = new google.maps.LatLng(business.lat, business.lng);
-    this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
+    this.ShowMapMarkerManager = new ShowMapMarkerManager(this.map, this.handleMarkerClick.bind(this));
     }
   }
 
@@ -36,7 +36,7 @@ class ShowMap extends React.Component {
     this.configureMap();
     const map = this.refs.map;
     if (map && this.map) {
-      this.MarkerManager.updateMarkers([this.props.business]);
+      this.ShowMapMarkerManager.updateMarkers([this.props.business]);
     }
   }
 

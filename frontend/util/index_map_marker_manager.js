@@ -1,6 +1,6 @@
 /* global google:false */
 
-class MarkerManager {
+class IndexMapMarkerManager {
   constructor(map, handleClick){
     this.map = map;
     this.markers = {};
@@ -40,10 +40,44 @@ class MarkerManager {
       position,
       map: this.map,
       businessId: business.id,
-      label: (idx+1).toString(),
+      icon: {
+        url: staticImages.normalIcon,
+        labelOrigin: new google.maps.Point(11, 10),
+      },
+      label: {
+        text: (idx+1).toString(),
+        color: 'white',
+        fontFamily: 'Helvetica Neue',
+      },
+      normalIcon: {
+        url: staticImages.normalIcon,
+        labelOrigin: new google.maps.Point(11, 10),
+      },
+      hoverIcon: {
+        url: staticImages.hoverIcon,
+        labelOrigin: new google.maps.Point(11, 10),
+      },
+      normalLabel: {
+        text: (idx+1).toString(),
+        color: 'white',
+        fontFamily: 'Helvetica Neue',
+      },
+      hoverLabel: {
+        text: (idx+1).toString(),
+        color: 'red',
+        fontFamily: 'Helvetica Neue',
+        fontWeight: 'bold',
+      }
     });
-
     marker.addListener('click', () => this.handleClick(business));
+    marker.addListener('mouseover', () => {
+      marker.setIcon(marker.hoverIcon);
+      marker.setLabel(marker.hoverLabel);
+    });
+    marker.addListener('mouseout', () => {
+      marker.setIcon(marker.normalIcon);
+      marker.setLabel(marker.normalLabel);
+    });
     this.markers[marker.businessId] = marker;
   }
 
@@ -53,4 +87,4 @@ class MarkerManager {
   }
 }
 
-export default MarkerManager;
+export default IndexMapMarkerManager;

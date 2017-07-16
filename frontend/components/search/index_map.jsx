@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter } from 'react-router-dom';
 
-import MarkerManager from '../../util/marker_manager';
+import IndexMapMarkerManager from '../../util/index_map_marker_manager';
 
 const mapOptions = {
   center: {
@@ -17,12 +17,12 @@ class IndexMap extends React.Component {
   componentDidMount() {
     const map = this.refs.map;
     this.map = new google.maps.Map(map, mapOptions);
-    this.MarkerManager = new MarkerManager(this.map, this.handleMarkerClick.bind(this));
-    this.MarkerManager.updateMarkers(this.props.businesses);
+    this.IndexMapMarkerManager = new IndexMapMarkerManager(this.map, this.handleMarkerClick.bind(this));
+    this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
   }
 
   componentDidUpdate() {
-    this.MarkerManager.updateMarkers(this.props.businesses);
+    this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
   }
 
   handleMarkerClick(business) {
