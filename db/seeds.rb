@@ -283,7 +283,7 @@ business_ids = (Business.first.id..Business.last.id).to_a
 
 Review.destroy_all
 
-50.times do
+120.times do
   random = rand(15)
   case random
   when 0
