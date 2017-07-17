@@ -37,6 +37,30 @@ class BusinessShow extends React.Component {
     }
   }
 
+  phone(business) {
+    if (business.phone) {
+      return(
+        <div>
+        <i className="fa fa-phone" aria-hidden="true"></i>
+        &nbsp;&nbsp;{business.phone}
+        </div>
+      );
+    } else
+      return null;
+  }
+
+  url(business) {
+    if (business.url) {
+      let href = `http://${business.url}`;
+      return(
+        <div>
+        <i className="fa fa-external-link" aria-hidden="true"></i>
+        &nbsp;&nbsp;<a href={href} target='_blank'>{business.url}</a>
+        </div>
+      );
+    } else
+      return null;
+  }
 
   render() {
     const { business, fetchBusiness } = this.props;
@@ -48,16 +72,18 @@ class BusinessShow extends React.Component {
       const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
       const newReviewLink =
         `/businesses/${business.id}/reviews/new`;
+      let {name, average_rating, price, address,
+        city, state, zipcode, image_url } = business;
       return(
         <div>
           <div className='business-show-title'>
             <div className='center'>
-              <h1>{business.name}</h1>
+              <h1>{name}</h1>
               <div className='business-show-title-row1'>
 
                 <div className='business-show-title-col'>
-                  {this.averageRating(business.average_rating)}<br/>
-                  {this.price(business.price)}<br/>
+                  {this.averageRating(average_rating)}<br/>
+                  {this.price(price)}<br/>
                 </div>
 
                 <div className='add-review-link business-show-title-col'>
@@ -69,20 +95,22 @@ class BusinessShow extends React.Component {
                 <div className='info'>
                   <ShowMap business={business} fetchBusiness={fetchBusiness} />
                   <div className='text-info'>
-                    <i className="fa fa-map-marker" aria-hidden="true"></i>
-                    {business.address}<br/>
-                    {`${business.city}, ${business.state} ${business.zipcode}`}
-                    <br/>
-                    {business.phone}<br/>
-                    <a>{business.url}</a><br/>
+                    <span className='bold'>
+                      <i className="fa fa-map-marker" aria-hidden="true"></i>
+                      &nbsp;&nbsp;&nbsp;{address}<br/>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      {`${city}, ${state} ${zipcode}`}
+                    </span><br/>
+                    {this.phone(business)}
+                    {this.url(business)}
                     <Link to={editBusinessLink} >Edit</Link>
                   </div>
                 </div>
 
                 <div className='pictures'>
-                  <img src={business.image_url} />
-                  <img src={business.image_url} />
-                  <img src={business.image_url} />
+                  <img src={image_url} />
+                  <img src={image_url} />
+                  <img src={image_url} />
                 </div>
               </div>
             </div>

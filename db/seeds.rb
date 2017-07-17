@@ -137,7 +137,7 @@ Business.create(
   state: 'NY',
   zipcode: 10021,
   price: 4,
-  url: "website cafeboulud.com/nyc",
+  url: "cafeboulud.com/nyc",
   phone: "(212) 772-2600"
 )
 
