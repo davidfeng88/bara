@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { updateFilter, resetFilter } from '../../actions/filter_actions';
-import { highlightBusiness } from '../../actions/highlight_actions';
 import { businessesToArray } from '../../reducers/selectors';
 import Search from './search';
 
@@ -31,7 +30,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   updateFilter: (filters) => dispatch(updateFilter(filters)),
   resetFilter: () => dispatch(resetFilter()),
-  highlightBusiness: (id) => dispatch(highlightBusiness(id)),
 });
 
 

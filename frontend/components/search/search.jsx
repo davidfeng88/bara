@@ -47,7 +47,6 @@ class Search extends React.Component {
         <BusinessIndex
           highlight={highlight}
           businesses={businesses}
-          highlightBusiness={highlightBusiness}
         />
       </div>
     );

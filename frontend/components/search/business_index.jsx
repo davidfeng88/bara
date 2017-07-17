@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import BusinessIndexItem from './business_index_item';
+import BusinessIndexItemContainer from './business_index_item_container';
 import IndexMap from './index_map';
 
 class BusinessIndex extends React.Component {
@@ -13,8 +13,7 @@ class BusinessIndex extends React.Component {
       businessesEntries = <h3>Sorry, nothing matched your search!</h3>;
     } else {
       businessesEntries = this.props.businesses.map(business => (
-          <BusinessIndexItem highlightBusiness={this.props.highlightBusiness}
-          key={ business.id } business={ business } />
+          <BusinessIndexItemContainer key={business.id} business={business} />
         )
       );
     }
