@@ -1,7 +1,50 @@
 // Place all the styles related to the Api::Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.show-grid {
+  display: flex;
+  margin-top: 18px;
+  margin-bottom: 36px;
+}
 
+.show-grid-col1 {
+  padding-right: 30px;
+  border-right: 1px solid rgb(230, 230, 230);
+}
+
+.show-grid-col1 h2 {
+  margin-top: 0;
+}
+
+.show-grid-col2 {
+  font-size: 14px;
+  padding-left: 30px;
+}
+
+#hours {
+  text-align: left;
+  font-size: 14px;
+}
+
+#hours th {
+  width: 36px;
+  padding-right: 18px;
+}
+
+.show-grid-col2 h3 {
+  margin-top: 0;
+}
+
+.show-grid-col2 p {
+  margin: 0;
+  padding-bottom: 8px;
+}
+
+.edit-business-link {
+  color: rgb(0, 115, 187);
+  margin: 5px 0 24px 0;
+  // font-size: 14px;
+}
 .review-index-pic {
   border-radius: 3px;
   overflow: hidden;
