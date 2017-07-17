@@ -2,17 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import BusinessIndexItemContainer from './business_index_item_container';
-import IndexMap from './index_map';
+import IndexMapContainer from './index_map_container';
 
 class BusinessIndex extends React.Component {
 
-
   render() {
     let businessesEntries;
-    if (this.props.businesses.length === 0) {
+    let {businesses} = this.props;
+    if (businesses.length === 0) {
       businessesEntries = <h3>Sorry, nothing matched your search!</h3>;
     } else {
-      businessesEntries = this.props.businesses.map(business => (
+      businessesEntries = businesses.map(business => (
           <BusinessIndexItemContainer key={business.id} business={business} />
         )
       );
@@ -27,9 +27,7 @@ class BusinessIndex extends React.Component {
           </div>
           <div className='index-grid-col2'>
             <div className='css-sticky'>
-             <IndexMap
-              highlight={this.props.highlight}
-              businesses={this.props.businesses} />
+             <IndexMapContainer businesses={businesses} />
             </div>
           </div>
         </div>

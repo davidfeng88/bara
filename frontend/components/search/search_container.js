@@ -19,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
   };
   return({
     businesses: businessesToArray(state),
-    highlight: state.highlight,
     filters,
     minPrice: state.filters.minPrice,
     maxPrice: state.filters.maxPrice

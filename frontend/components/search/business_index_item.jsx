@@ -66,7 +66,6 @@ class BusinessIndexItem extends React.Component {
 
   render() {
     const { business } = this.props;
-
     return (
       <div
         onMouseEnter={this.handleMouseEnter}
