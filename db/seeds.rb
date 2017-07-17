@@ -45,6 +45,20 @@ user_ids = (User.first.id..User.last.id).to_a
 
 Business.create(
   author_id: user_ids.sample,
+  name: "Conmigo",
+  address: "1685 1st Ave",
+  lat: 40.777917,
+  lng: -73.948976,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10128,
+  price: 3,
+  url: "conmigonyc.com",
+  phone: "(212) 256-0056"
+)
+
+Business.create(
+  author_id: user_ids.sample,
   name: "Ippudo East Village",
   address: "65 4th Ave",
   lat: 40.730948,
@@ -73,6 +87,34 @@ Business.create(
 
 Business.create(
   author_id: user_ids.sample,
+  name: "Dovetail",
+  address: "103 W 77th St",
+  lat: 40.780927,
+  lng: -73.976625,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10024,
+  price: 4,
+  url: "dovetailnyc.com",
+  phone: "(212) 362-3800"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Print",
+  address: "653 11th Ave",
+  lat: 40.764561,
+  lng: -73.995976,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10036,
+  price: 3,
+  url: "printrestaurant.com",
+  phone: "(212) 757-2224"
+)
+
+Business.create(
+  author_id: user_ids.sample,
   name: "Burger & Lobster",
   address: "39 W 19th St",
   lat: 40.740123,
@@ -83,6 +125,20 @@ Business.create(
   price: 2,
   url: "burgerandlobster.com/en",
   phone: "(646) 833-7532"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Cafe Boulud",
+  address: "20 E 76th St",
+  lat: 40.774278,
+  lng: -73.963914,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10021,
+  price: 4,
+  url: "website cafeboulud.com/nyc",
+  phone: "(212) 772-2600"
 )
 
 Business.create(
@@ -115,16 +171,140 @@ Business.create(
 
 Business.create(
   author_id: user_ids.sample,
-  name: "Morimoto",
-  address: "88 10th Ave",
-  lat: 40.743000,
-  lng: -74.007189,
+  name: "Agern",
+  address: "89 E 42nd St",
+  lat: 40.752569,
+  lng: -73.977626,
   city: 'New York',
   state: 'NY',
-  zipcode: 10011,
+  zipcode: 10017,
   price: 4,
-  url: "morimotonyc.com",
-  phone: "(212) 989-8883"
+  url: "agernrestaurant.com",
+  phone: "(646) 568-4018"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "The Dead Rabbit",
+  address: "30 Water St",
+  lat: 40.703290,
+  lng: -74.011031,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10004,
+  price: 2,
+  url: "deadrabbitnyc.com",
+  phone: "(646) 422-7906"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Il Mattone",
+  address: "49 Beach St",
+  lat: 40.720791,
+  lng: -74.009126,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10013,
+  price: 1,
+  url: "ilmattonetribeca.com",
+  phone: "(646) 964-4623"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Foxy Greens",
+  address: "1049 1st Ave",
+  lat: 40.758689,
+  lng: -73.962948,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10022,
+  price: 1,
+  phone: "(646) 649-2089"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Dinnertable",
+  address: "206 Ave A",
+  lat: 40.729435,
+  lng: -73.980731,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10009,
+  price: 3,
+  url: "dinnertable.nyc",
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "The Burrito Box",
+  address: "885 9th Ave",
+  lat: 40.768248,
+  lng: -73.985716,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10019,
+  price: 1,
+  url: "burritobox.com",
+  phone: "(212) 489-6889"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Girl & the Goat",
+  address: "809 W Randolph St",
+  lat: 41.884101,
+  lng: -87.647965,
+  city: 'Chicago',
+  state: 'IL',
+  zipcode: 60607,
+  price: 3,
+  url: "girlandthegoat.com",
+  phone: "(312) 492-6262"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "The Purple Pig",
+  address: "500 N Michigan Ave",
+  lat: 41.891171,
+  lng: -87.624687,
+  city: 'Chicago',
+  state: 'IL',
+  zipcode: 60611,
+  price: 2,
+  url: "thepurplepigchicago.com",
+  phone: "(312) 464-1744"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Omandarin Chinese Cuisine",
+  address: "361 N Central Ave",
+  lat: 41.029552,
+  lng: -73.790524,
+  city: 'Hartsdale',
+  state: 'NY',
+  zipcode: 10530,
+  price: 2,
+  url: "omandarin.com",
+  phone: "(914) 437-9168"
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Imperial Wok",
+  address: "736 N Broadway",
+  lat: 41.057598,
+  lng: -73.765689,
+  city: 'White Plains',
+  state: 'NY',
+  zipcode: 10603,
+  price: 2,
+  url: "imperialwokwp.com",
+  phone: "(914) 686-2700"
 )
 
 business_ids = (Business.first.id..Business.last.id).to_a

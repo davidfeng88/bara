@@ -11,16 +11,25 @@ class IndexMapMarkerManager {
   }
 
   updateMarkers(businesses, highlight){
-    const businessesObj = {};
-    businesses.forEach(business => businessesObj[business.id] = business);
+    // aggressively update all markers
+    // (filter change may change idx, even though marker is always on)
+    Object.keys(this.markers)
+      .forEach((businessId) => this.removeMarker(this.markers[businessId]));
 
     businesses
-      .filter(business => !this.markers[business.id])
-      .forEach((newBusiness, idx) => this.createMarkerFromBusiness(newBusiness, idx));
+      .forEach((business, idx) => this.createMarkerFromBusiness(business, idx));
 
-    Object.keys(this.markers)
-      .filter(businessId => !businessesObj[businessId])
-      .forEach((businessId) => this.removeMarker(this.markers[businessId]));
+    // if the user does not search again, just toggle highlight,
+    // then lazy update is enough
+    // const businessesObj = {};
+    // businesses.forEach(business => businessesObj[business.id] = business);
+    // businesses
+    //   .filter(business => !this.markers[business.id])
+    //   .forEach((newBusiness, idx) => this.createMarkerFromBusiness(newBusiness, idx));
+    //
+    // Object.keys(this.markers)
+    //   .filter(businessId => !businessesObj[businessId])
+    //   .forEach((businessId) => this.removeMarker(this.markers[businessId]));
 
     //adjust map bounds when the search result is not empty
     if (businesses.length > 0) {
