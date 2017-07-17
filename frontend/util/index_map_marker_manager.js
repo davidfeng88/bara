@@ -10,8 +10,18 @@ class IndexMapMarkerManager {
 
   }
 
-  updateMarkers(businesses, highlight){
+  updateHighlight(oldHighlight, newHighlight) {
+    if (oldHighlight !== -1) {
+      this.handleMouseOut(this.markers[oldHighlight]);
+    }
+    if (newHighlight !== -1) {
+      this.handleMouseOver(this.markers[newHighlight]);
+    }
+  }
+
+  updateMarkers(businesses){
     // aggressively update all markers
+
     // (filter change may change idx, even though marker is always on)
     Object.keys(this.markers)
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));
@@ -21,6 +31,7 @@ class IndexMapMarkerManager {
 
     // if the user does not search again, just toggle highlight,
     // then lazy update is enough
+
     // const businessesObj = {};
     // businesses.forEach(business => businessesObj[business.id] = business);
     // businesses
@@ -37,21 +48,12 @@ class IndexMapMarkerManager {
       let bounds = new google.maps.LatLngBounds();
       for (let i = 0; i < markersArray.length; i++) {
         bounds.extend(markersArray[i].getPosition());
-
-        if (highlight !== markersArray[i].businessId) {
-          this.handleMouseOut(markersArray[i]);
-        }
       }
       this.map.fitBounds(bounds);
       if (this.map.getZoom() > 16) {
         this.map.setZoom(16);
       }
     }
-
-    if (highlight !== -1) {
-      this.handleMouseOver(this.markers[highlight]);
-    }
-
   }
 
   normalIcon() {
