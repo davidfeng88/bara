@@ -11,6 +11,7 @@ class BusinessShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchBusiness(this.props.match.params.id);
+    window.scrollTo(0,0);
   }
 
   price(number) {
@@ -68,6 +69,7 @@ class BusinessShow extends React.Component {
                 <div className='info'>
                   <ShowMap business={business} fetchBusiness={fetchBusiness} />
                   <div className='text-info'>
+                    <i className="fa fa-map-marker" aria-hidden="true"></i>
                     {business.address}<br/>
                     {`${business.city}, ${business.state} ${business.zipcode}`}
                     <br/>

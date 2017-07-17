@@ -1,7 +1,7 @@
 .business-show-title {
   background-color: rgb(245, 245, 245);
   margin: 0;
-  padding: 40px 0 20px 0;
+  padding: 30px 0 20px 0;
   font-size: 16px;
 	border-bottom: 1px solid rgb(230, 230, 230);
 }
@@ -9,6 +9,7 @@
 .business-show-title h1 {
   font-size: 36px;
   font-weight: bold;
+  margin: 0 0 20px 0;
 }
 
 .business-show-title-row1 {
@@ -28,7 +29,7 @@
 }
 
 .info {
-  width: 300px;
+  width: 288px;
   padding: 5px;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(204, 204, 204);
@@ -42,7 +43,7 @@
 .show-map {
   width: 286px;
   height: 135px;
-  border: 1px solid black;
+  border: 1px solid rgb(204, 204, 204);
   margin: 0 auto;
 }
 

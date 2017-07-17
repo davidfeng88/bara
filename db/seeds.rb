@@ -253,34 +253,6 @@ Business.create(
 
 Business.create(
   author_id: user_ids.sample,
-  name: "Girl & the Goat",
-  address: "809 W Randolph St",
-  lat: 41.884101,
-  lng: -87.647965,
-  city: 'Chicago',
-  state: 'IL',
-  zipcode: 60607,
-  price: 3,
-  url: "girlandthegoat.com",
-  phone: "(312) 492-6262"
-)
-
-Business.create(
-  author_id: user_ids.sample,
-  name: "The Purple Pig",
-  address: "500 N Michigan Ave",
-  lat: 41.891171,
-  lng: -87.624687,
-  city: 'Chicago',
-  state: 'IL',
-  zipcode: 60611,
-  price: 2,
-  url: "thepurplepigchicago.com",
-  phone: "(312) 464-1744"
-)
-
-Business.create(
-  author_id: user_ids.sample,
   name: "Omandarin Chinese Cuisine",
   address: "361 N Central Ave",
   lat: 41.029552,
