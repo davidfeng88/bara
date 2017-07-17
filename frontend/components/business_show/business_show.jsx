@@ -37,6 +37,27 @@ class BusinessShow extends React.Component {
     }
   }
 
+  address(business) {
+    let {address, city, state, zipcode} = business;
+    const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
+    return(
+      <div className='address-info'>
+      <div className='addresss-info-col1'>
+      <span className='bold'>
+        <i className="fa fa-map-marker" aria-hidden="true"></i>
+        &nbsp;&nbsp;&nbsp;{address}<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {`${city}, ${state} ${zipcode}`}
+      </span>
+      </div>
+      <div className='address-info-col2'>
+        <i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+        <Link to={editBusinessLink} >Edit</Link>
+      </div>
+    </div>
+    );
+  }
+
   phone(business) {
     if (business.phone) {
       return(
@@ -55,7 +76,7 @@ class BusinessShow extends React.Component {
       return(
         <div>
         <i className="fa fa-external-link" aria-hidden="true"></i>
-        &nbsp;&nbsp;<a href={href} target='_blank'>{business.url}</a>
+        &nbsp;<a href={href} target='_blank'>{business.url}</a>
         </div>
       );
     } else
@@ -69,11 +90,9 @@ class BusinessShow extends React.Component {
     // we will fetch the business after it mounted and re render this
     // component
     if (business) {
-      const editBusinessLink = `/businesses/${this.props.match.params.id}/edit`;
       const newReviewLink =
         `/businesses/${business.id}/reviews/new`;
-      let {name, average_rating, price, address,
-        city, state, zipcode, image_url } = business;
+      let {name, average_rating, price, image_url } = business;
       return(
         <div>
           <div className='business-show-title'>
@@ -87,7 +106,8 @@ class BusinessShow extends React.Component {
                 </div>
 
                 <div className='add-review-link business-show-title-col'>
-                  <Link to={newReviewLink}>☆ Write a Review</Link>
+                  <Link to={newReviewLink}>
+                    <i className="fa fa-star fa-lg" aria-hidden="true"></i> Write a Review</Link>
                 </div>
               </div>
 
@@ -95,15 +115,9 @@ class BusinessShow extends React.Component {
                 <div className='info'>
                   <ShowMap business={business} fetchBusiness={fetchBusiness} />
                   <div className='text-info'>
-                    <span className='bold'>
-                      <i className="fa fa-map-marker" aria-hidden="true"></i>
-                      &nbsp;&nbsp;&nbsp;{address}<br/>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      {`${city}, ${state} ${zipcode}`}
-                    </span><br/>
+                    {this.address(business)}
                     {this.phone(business)}
                     {this.url(business)}
-                    <Link to={editBusinessLink} >Edit</Link>
                   </div>
                 </div>
 

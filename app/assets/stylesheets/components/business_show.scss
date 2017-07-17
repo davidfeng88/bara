@@ -56,6 +56,16 @@
   line-height: 20px;
 }
 
+.address-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address-info-col2 {
+  font-size: 12px;
+  color: rgb(0, 115, 187);
+}
+
 .pictures img {
   width: 200px;
   height: auto;
