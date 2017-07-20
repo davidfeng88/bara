@@ -74,7 +74,8 @@ class IndexMapMarkerManager {
     return({
       text: text,
       color: 'white',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+      fontWeight: 'bold',
     });
   }
 
@@ -82,7 +83,7 @@ class IndexMapMarkerManager {
     return({
       text: text,
       color: 'red',
-      fontFamily: 'Helvetica Neue',
+      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
       fontWeight: 'bold',
     });
   }
