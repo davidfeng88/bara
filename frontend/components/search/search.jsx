@@ -6,13 +6,17 @@ import BusinessIndex from './business_index';
 class Search extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {loaded: false};
   }
 
   componentDidMount() {
     this.props.updateFilter({
       name: this.props.filters.name,
       location: this.props.filters.location,
-    });
+    }).then( () => {
+      this.setState({loaded: true});
+      }
+    );
   }
 
   componentWillUpdate(newProps) {
@@ -26,6 +30,19 @@ class Search extends React.Component {
 
   componentWillUnmount() {
     this.props.resetFilter();
+    this.setState({loaded: false});
+  }
+
+  searchResult(businesses) {
+    if (this.state.loaded) {
+      return(
+        <BusinessIndex businesses={businesses} />
+      );
+    } else {
+      return(
+        <img className='spinner' src={window.staticImages.spinner} />
+      );
+    }
   }
 
   render() {
@@ -75,7 +92,7 @@ class Search extends React.Component {
             />
           </div>
         </div>
-        <BusinessIndex businesses={businesses} />
+        {this.searchResult(businesses)}
       </div>
     );
   }
