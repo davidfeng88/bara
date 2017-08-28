@@ -16,7 +16,7 @@ class HomeBar extends React.Component {
       logout,
       showDropdown
     } = this.props;
-    let dropdownBox;
+    let dropdownBox = null;
 
     if (showDropdown) {
       dropdownBox =
@@ -24,10 +24,8 @@ class HomeBar extends React.Component {
         currentUser={currentUser}
         logout={logout}
         toggleDropdown={toggleDropdown} />;
-    } else {
-      dropdownBox = null;
     }
-
+    
     return(
       <nav className='home-bar'>
         <div className='home-bar-left'>
