@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
 import ErrorsReducer from './errors_reducer';
 import BusinessesReducer from './businesses_reducer';
-import DropdownsReducer from './dropdowns_reducer';
 import FiltersReducer from './filters_reducer';
 import ReviewsReducer from './reviews_reducer';
 import HighlightReducer from './highlight_reducer';
@@ -13,7 +12,6 @@ const RootReducer = combineReducers({
   errors: ErrorsReducer,
   filters: FiltersReducer,
   businesses: BusinessesReducer,
-  showDropdown: DropdownsReducer,
   reviews: ReviewsReducer,
   highlight: HighlightReducer,
 });
