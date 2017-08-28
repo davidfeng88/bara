@@ -12,6 +12,7 @@ class BusinessHeader extends React.Component {
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   toggleDropdown() {
@@ -20,18 +21,24 @@ class BusinessHeader extends React.Component {
     }));
   }
 
+  handleLogout() {
+    this.setState( () => ({
+      showDropdown: false,
+    }));
+    this.props.logout();
+  }
+
   avatarOrSignUp() {
     let {
       currentUser,
       demoLogin,
-      logout,
     } = this.props;
     let dropdownBox = null;
     if (this.state.showDropdown) {
       dropdownBox =
       <Dropdown
         currentUser={currentUser}
-        logout={logout}
+        logout={this.handleLogout}
         toggleDropdown={this.toggleDropdown} />;
     }
     if (currentUser) {

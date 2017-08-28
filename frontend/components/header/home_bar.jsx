@@ -11,6 +11,7 @@ class HomeBar extends React.Component {
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   toggleDropdown() {
@@ -19,11 +20,17 @@ class HomeBar extends React.Component {
     }));
   }
 
+  handleLogout() {
+    this.setState( () => ({
+      showDropdown: false,
+    }));
+    this.props.logout();
+  }
+
   personalGreeting() {
     let {
       currentUser,
       demoLogin,
-      logout,
     } = this.props;
     let dropdownBox = null;
 
@@ -31,7 +38,7 @@ class HomeBar extends React.Component {
       dropdownBox =
       <Dropdown
         currentUser={currentUser}
-        logout={logout}
+        logout={this.handleLogout}
         toggleDropdown={this.toggleDropdown} />;
     }
 
