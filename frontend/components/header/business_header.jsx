@@ -4,7 +4,7 @@ import SearchBar from './search_bar';
 import BusinessLinks from './business_links';
 import Dropdown from './dropdown';
 
-class BusinessHeader extends React.Component {
+export default class BusinessHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,10 +61,9 @@ class BusinessHeader extends React.Component {
   }
 
   login() {
-    if (this.props.currentUser) {
-      return <div></div>;
-    } else {
-      return (
+    let login = null;
+    if (!this.props.currentUser) {
+      login = (
         <div className='business-header-row2-right'>
           <div onClick={this.props.demoLogin} className='business-demo'>
             Demo Login
@@ -75,6 +74,7 @@ class BusinessHeader extends React.Component {
         </div>
       );
     }
+    return login;
   }
 
   render() {
@@ -106,5 +106,3 @@ class BusinessHeader extends React.Component {
     );
   }
 }
-
-export default BusinessHeader;
