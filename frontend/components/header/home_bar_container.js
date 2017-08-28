@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
-
 import { login, logout } from '../../actions/session_actions';
-import { toggleDropdown } from '../../actions/dropdown_actions';
-
 import HomeBar from './home_bar';
 
 const mapStateToProps = ({ currentUser }) => ({

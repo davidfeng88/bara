@@ -7,31 +7,37 @@ import Dropdown from './dropdown';
 class BusinessHeader extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showDropdown: false,
+    };
+
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+  }
+
+  toggleDropdown() {
+    this.setState( prevState => ({
+      showDropdown: !prevState.showDropdown
+    }));
   }
 
   avatarOrSignUp() {
     let {
       currentUser,
-      toggleDropdown,
       demoLogin,
       logout,
-      showDropdown
     } = this.props;
-    let dropdownBox;
-    if (showDropdown) {
+    let dropdownBox = null;
+    if (this.state.showDropdown) {
       dropdownBox =
       <Dropdown
         currentUser={currentUser}
         logout={logout}
-        toggleDropdown={toggleDropdown} />;
-    } else {
-      dropdownBox = null;
+        toggleDropdown={this.toggleDropdown} />;
     }
-
     if (currentUser) {
       return (
         <div className='home-bar-right'>
-          <div onClick={toggleDropdown} className='dropdown' >
+          <div onClick={this.toggleDropdown} className='dropdown' >
             <img className='home-avatar' src={currentUser.avatar_url} />
             <img className='down-icon' src={window.staticImages.downIcon} />
           </div>
