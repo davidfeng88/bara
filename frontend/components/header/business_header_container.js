@@ -9,11 +9,11 @@ const mapStateToProps = (state, ownProps) => {
   const { currentUser, showDropdown } = state;
   const queryString = require('query-string');
   const parsed = queryString.parse(ownProps.location.search);
-  return {
+  return ({
     currentUser,
     showDropdown,
     parsed,
-  };
+  });
 };
 
 const mapDispatchToProps = dispatch => ({
