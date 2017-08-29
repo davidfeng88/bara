@@ -1,44 +1,35 @@
 User.destroy_all
-# User.create(username: 'guest', password: 'password')
-# User.create(username: 'David Feng', password: 'password')
-User.create(username: 'William Shakespeare', password: Faker::Lorem.word, avatar: File.open('app/assets/images/avatar/shakespeare.jpg'))
-User.create(username: 'Du Fu', password: Faker::Lorem.word, avatar: File.open('app/assets/images/avatar/du.jpg'))
-# User.create(username: 'Li Bai', password: Faker::Lorem.word)
-# User.create(username: 'Michelangelo', password: Faker::Lorem.word)
-# User.create(username: 'Pablo Picasso', password: Faker::Lorem.word)
-# User.create(username: 'Raphael', password: Faker::Lorem.word)
-# User.create(username: 'Claude Monet', password: Faker::Lorem.word)
-# User.create(username: 'Vincent van Gogh', password: Faker::Lorem.word)
-# User.create(username: 'Leonardo da Vinci', password: Faker::Lorem.word)
-# User.create(username: 'Donatello', password: Faker::Lorem.word)
-# User.create(username: 'Wolfgang Amadeus Mozart', password: Faker::Lorem.word)
-# User.create(username: 'Ludwig van Beethoven', password: Faker::Lorem.word)
-# User.create(username: 'Johann Sebastian Bach', password: Faker::Lorem.word)
-# User.create(username: 'Aristotle', password: Faker::Lorem.word)
-# User.create(username: 'Plato', password: Faker::Lorem.word)
-# User.create(username: 'Immanuel Kant', password: Faker::Lorem.word)
-# User.create(username: 'Confucius', password: Faker::Lorem.word)
-# User.create(username: 'Laozi', password: Faker::Lorem.word)
-# User.create(username: 'Mencius', password: Faker::Lorem.word)
-# User.create(username: 'Isaac Newton', password: Faker::Lorem.word)
-# User.create(username: 'Galileo Galilei', password: Faker::Lorem.word)
-# User.create(username: 'Albert Einstein', password: Faker::Lorem.word)
-# User.create(username: 'James Clerk Maxwell', password: Faker::Lorem.word)
-# User.create(username: 'Charles Darwin', password: Faker::Lorem.word)
-# User.create(username: 'Leonhard Euler', password: Faker::Lorem.word)
-# User.create(username: 'James Watt', password: Faker::Lorem.word)
-# User.create(username: 'Thomas Edison', password: Faker::Lorem.word)
-# User.create(username: 'Nikola Tesla', password: Faker::Lorem.word)
-# User.create(username: 'Benjamin Franklin', password: Faker::Lorem.word)
-# User.create(username: 'Archimedes', password: Faker::Lorem.word)
-# User.create(username: 'Euclid', password: Faker::Lorem.word)
-# User.create(username: 'Carl Friedrich Gauss', password: Faker::Lorem.word)
-# User.create(username: 'Marie Curie', password: Faker::Lorem.word)
-# User.create(username: 'Dmitri Mendeleev', password: Faker::Lorem.word)
-# User.create(username: 'Nicolaus Copernicus', password: Faker::Lorem.word)
-# User.create(username: 'Bill Gates', password: Faker::Lorem.word)
-# User.create(username: 'Steve Jobs', password: Faker::Lorem.word)
-# User.create(username: 'Mark Zuckerberg', password: Faker::Lorem.word)
+User.create(username: 'Guest', password: 'password')
+default_users = [
+  'David Feng',
+
+  'William Shakespeare', 'Du Fu', 'Li Bai',
+
+  'Michelangelo', 'Pablo Picasso', 'Raphael', 'Claude Monet',
+  'Vincent van Gogh', 'Leonardo da Vinci', 'Donatello',
+
+  'Wolfgang Amadeus Mozart', 'Ludwig van Beethoven', 'Johann Sebastian Bach',
+
+  'Aristotle', 'Plato', 'Immanuel Kant', 'Confucius', 'Laozi', 'Mencius',
+
+  'Isaac Newton', 'Galileo Galilei', 'Albert Einstein', 'James Clerk Maxwell',
+  'Marie Curie', 'Dmitri Mendeleev', 'Nicolaus Copernicus', 'Charles Darwin',
+
+  'Euclid', 'Carl Friedrich Gauss', 'Archimedes', 'Leonhard Euler',
+
+  'James Watt', 'Thomas Edison', 'Nikola Tesla', 'Benjamin Franklin',
+
+  'Bill Gates', 'Steve Jobs', 'Mark Zuckerberg'
+]
+
+default_users.each do |username|
+  password = username.delete(' ')
+  avatar_path = "app/assets/images/avatar/#{username}.jpg"
+  avatar = File.open(avatar_path)
+  User.create(username: username, password: password, avatar: avatar)
+end
+
+# User.create(username: 'William Shakespeare', password: Faker::Lorem.word, avatar: File.open('app/assets/images/avatar/shakespeare.jpg'))
 
 user_ids = (User.first.id..User.last.id).to_a
 

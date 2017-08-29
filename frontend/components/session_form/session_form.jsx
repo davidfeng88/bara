@@ -40,7 +40,7 @@ export default class SessionForm extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    const guestUser = {username: 'guest', password: 'password'};
+    const guestUser = {username: 'Guest', password: 'password'};
     this.props.login(guestUser)
       .then(() => this.props.history.goBack());
   }
