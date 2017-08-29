@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import ErrorList from '../error_list';
 
-class SessionForm extends React.Component {
+export default class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +15,7 @@ class SessionForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // click 'Sign Up' from the login page or vice versa
     if (nextProps.formType !== this.props.formType) {
       this.setState({
         username: '',
@@ -43,29 +43,22 @@ class SessionForm extends React.Component {
     const guestUser = {username: 'guest', password: 'password'};
     this.props.login(guestUser)
       .then(() => this.props.history.goBack());
-
   }
 
   titleText() {
-    if (this.props.formType === 'login') {
-      return 'Log In to Bara';
-    } else {
-      return 'Sign Up for Bara';
-    }
+    return this.props.formType === 'login' ?
+    'Log In to Bara' :
+    'Sign Up for Bara';
   }
 
   subheadingText() {
-    if (this.props.formType === 'login') {
-      return (
-        <p className='subheading'>New to Bara?&nbsp;
-          <Link to='/signup'>Sign up</Link>
-        </p>
-      );
-    } else {
-      return (
-        <p className='subheading'>Connect with great local businesses</p>
-      );
-    }
+    return this.props.formType === 'login' ? (
+      <p className='subheading'>New to Bara?&nbsp;
+        <Link to='/signup'>Sign up</Link>
+      </p>
+    ) : (
+      <p className='subheading'>Connect with great local businesses</p>
+    );
   }
 
   submitText() {
@@ -73,19 +66,15 @@ class SessionForm extends React.Component {
   }
 
   endText() {
-    if (this.props.formType === 'login') {
-      return (
-        <p className='subtle-text'>New to Bara?&nbsp;
-          <Link to='/signup'>Sign up</Link>
-        </p>
-      );
-    } else {
-      return (
-        <p className='subtle-text'>Already on Bara?&nbsp;
-          <Link to='/login'>Log in</Link>
-        </p>
-      );
-    }
+    return this.props.formType === 'login' ? (
+      <p className='subtle-text'>New to Bara?&nbsp;
+        <Link to='/signup'>Sign up</Link>
+      </p>
+    ) : (
+      <p className='subtle-text'>Already on Bara?&nbsp;
+        <Link to='/login'>Log in</Link>
+      </p>
+    );
   }
 
   render() {
@@ -96,12 +85,9 @@ class SessionForm extends React.Component {
         <div className='container'>
           <div className='col-1-2'>
             <div className="session-form-container">
-
               <form onSubmit={this.handleSubmit} className="session-form-box">
-
                 <h2>{this.titleText()}</h2>
                 {this.subheadingText()}
-
                 <div className="session-form">
                   <div className='input-wrapper'>
                     <label htmlFor='username'
@@ -114,7 +100,6 @@ class SessionForm extends React.Component {
                       placeholder="Username"
                     />
                   </div>
-
                   <div className='input-wrapper'>
                     <label htmlFor='password'
                       className='hidden'>Password</label>
@@ -126,24 +111,19 @@ class SessionForm extends React.Component {
                       placeholder="Password"
                     />
                   </div>
-
                   <div className='input-wrapper'>
                     <button type="submit" >{this.submitText()}</button>
                   </div>
-
                   <div className='input-wrapper'>
                     <button onClick={this.demoLogin} type="submit" >
                       Demo Login
                     </button>
                   </div>
-
                   {this.endText()}
-
                 </div>
               </form>
             </div>
           </div>
-
           <div className='col-1-2 session-pic'>
             <img src={window.staticImages.sessionPic} />
           </div>
@@ -152,5 +132,3 @@ class SessionForm extends React.Component {
     );
   }
 }
-
-export default SessionForm;
