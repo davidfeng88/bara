@@ -1,7 +1,7 @@
 import React from 'react';
 
-// stopPropagation: when you click on the dropdown box, it should not
-// toggle
+// stopPropagation: when you click on the dropdown box,
+// it should not toggle/close the dropdown
 const Dropdown = ({ currentUser, logout, toggleDropdown }) => (
   <div onClick={toggleDropdown} className="dropdown-background">
     <div className='dropdown-container'>

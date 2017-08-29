@@ -20,6 +20,10 @@ class SearchBar extends React.Component {
         location: '',
       };
     }
+  /**
+   * Use local state for (transitory) current input,
+   * use Redux store for submitted data.
+   */
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -48,16 +52,14 @@ class SearchBar extends React.Component {
     });
   }
 
-
   handleSubmit(e) {
     e.preventDefault();
     let name = this.state.name ? this.state.name : '';
     let location = this.state.location ? this.state.location : '';
-
     let nameEncoded = encodeURIComponent(name);
     let locationEncoded = encodeURIComponent(location);
-    this.props.history.push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}`);
-
+    this.props.history
+      .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}`);
   }
 
   render() {
@@ -85,11 +87,9 @@ class SearchBar extends React.Component {
             />
           </div>
         </div>
-
-          <button type='submit' className='submit'>
-            <i className="fa fa-search fa-lg" aria-hidden="true"></i>
-          </button>
-
+        <button type='submit' className='submit'>
+          <i className="fa fa-search fa-lg" aria-hidden="true"></i>
+        </button>
       </form>
     );
   }

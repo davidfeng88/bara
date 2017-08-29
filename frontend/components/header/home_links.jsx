@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Links = () => (
   <div className='home-header-links'>
       <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;

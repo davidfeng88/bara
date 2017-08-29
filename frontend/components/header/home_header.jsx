@@ -31,18 +31,14 @@ export default class HomeHeader extends React.Component {
         <HomeLinks />
       </div>
     );
-    if (this.state.defaultBackground) {
-      return(
+    return this.state.defaultBackground ? (
         <div className='home-header-1'>
           {homeBarContent}
         </div>
-      );
-    } else {
-      return(
+      ) : (
         <div className='home-header-2'>
           {homeBarContent}
         </div>
       );
-    }
   }
 }
