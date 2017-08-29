@@ -75,7 +75,6 @@ class IndexMapMarkerManager {
       text: text,
       color: 'white',
       fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-      fontWeight: 'bold',
     });
   }
 
