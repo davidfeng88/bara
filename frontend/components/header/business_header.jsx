@@ -46,7 +46,8 @@ export default class BusinessHeader extends React.Component {
         <div className='home-bar-right'>
           <div onClick={this.toggleDropdown} className='dropdown' >
             <img className='home-avatar' src={currentUser.avatar_url} />
-            <img className='down-icon' src={window.staticImages.downIcon} />
+            <i className='fa fa-caret-down'
+              id='down-arrow' aria-hidden="true"></i>
           </div>
           {dropdownBox}
         </div>
