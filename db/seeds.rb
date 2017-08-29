@@ -29,8 +29,6 @@ default_users.each do |username|
   User.create(username: username, password: password, avatar: avatar)
 end
 
-# User.create(username: 'William Shakespeare', password: Faker::Lorem.word, avatar: File.open('app/assets/images/avatar/shakespeare.jpg'))
-
 user_ids = (User.first.id..User.last.id).to_a
 
 Business.create(
@@ -44,7 +42,8 @@ Business.create(
   zipcode: 10128,
   price: 3,
   url: "conmigonyc.com",
-  phone: "(212) 256-0056"
+  phone: "(212) 256-0056",
+  image: File.open("app/assets/images/business/Mexican.jpg")
 )
 
 Business.create(
@@ -58,7 +57,8 @@ Business.create(
   zipcode: 10003,
   price: 2,
   url: "ippudony.com",
-  phone: "(212) 388-0088"
+  phone: "(212) 388-0088",
+  image: File.open("app/assets/images/business/Japanese.jpg")
 )
 
 Business.create(
@@ -72,7 +72,8 @@ Business.create(
   zipcode: 10013,
   price: 2,
   url: "joeshanghairestaurants.com",
-  phone: "(212) 233-8888"
+  phone: "(212) 233-8888",
+  image: File.open("app/assets/images/business/Chinese.jpg")
 )
 
 Business.create(
@@ -86,7 +87,8 @@ Business.create(
   zipcode: 10024,
   price: 4,
   url: "dovetailnyc.com",
-  phone: "(212) 362-3800"
+  phone: "(212) 362-3800",
+  image: File.open("app/assets/images/business/French.jpg")
 )
 
 Business.create(
@@ -100,7 +102,8 @@ Business.create(
   zipcode: 10036,
   price: 3,
   url: "printrestaurant.com",
-  phone: "(212) 757-2224"
+  phone: "(212) 757-2224",
+  image: File.open("app/assets/images/business/American.jpg")
 )
 
 Business.create(
@@ -114,7 +117,8 @@ Business.create(
   zipcode: 10011,
   price: 2,
   url: "burgerandlobster.com/en",
-  phone: "(646) 833-7532"
+  phone: "(646) 833-7532",
+  image: File.open("app/assets/images/business/Seafood.jpg")
 )
 
 Business.create(
@@ -128,7 +132,8 @@ Business.create(
   zipcode: 10021,
   price: 4,
   url: "cafeboulud.com/nyc",
-  phone: "(212) 772-2600"
+  phone: "(212) 772-2600",
+  image: File.open("app/assets/images/business/French.jpg")
 )
 
 Business.create(
@@ -142,7 +147,8 @@ Business.create(
   zipcode: 10011,
   price: 3,
   url: "buddakannyc.com",
-  phone: "(212) 989-6699"
+  phone: "(212) 989-6699",
+  image: File.open("app/assets/images/business/Chinese.jpg")
 )
 
 Business.create(
@@ -156,7 +162,8 @@ Business.create(
   zipcode: 10001,
   price: 1,
   url: "woorijipnyc.com",
-  phone: "(212) 244-1115"
+  phone: "(212) 244-1115",
+  image: File.open("app/assets/images/business/Korean.jpg")
 )
 
 Business.create(
@@ -170,7 +177,8 @@ Business.create(
   zipcode: 10017,
   price: 4,
   url: "agernrestaurant.com",
-  phone: "(646) 568-4018"
+  phone: "(646) 568-4018",
+  image: File.open("app/assets/images/business/HighEnd.jpg")
 )
 
 Business.create(
@@ -184,7 +192,8 @@ Business.create(
   zipcode: 10004,
   price: 2,
   url: "deadrabbitnyc.com",
-  phone: "(646) 422-7906"
+  phone: "(646) 422-7906",
+  image: File.open("app/assets/images/business/Salmon.jpg")
 )
 
 Business.create(
@@ -198,7 +207,8 @@ Business.create(
   zipcode: 10013,
   price: 1,
   url: "ilmattonetribeca.com",
-  phone: "(646) 964-4623"
+  phone: "(646) 964-4623",
+  image: File.open("app/assets/images/business/Italian.jpg")
 )
 
 Business.create(
@@ -211,7 +221,8 @@ Business.create(
   state: 'NY',
   zipcode: 10022,
   price: 1,
-  phone: "(646) 649-2089"
+  phone: "(646) 649-2089",
+  image: File.open("app/assets/images/business/American.jpg")
 )
 
 Business.create(
@@ -225,6 +236,7 @@ Business.create(
   zipcode: 10009,
   price: 3,
   url: "dinnertable.nyc",
+  image: File.open("app/assets/images/business/Japanese.jpg")
 )
 
 Business.create(
@@ -238,7 +250,8 @@ Business.create(
   zipcode: 10019,
   price: 1,
   url: "burritobox.com",
-  phone: "(212) 489-6889"
+  phone: "(212) 489-6889",
+  image: File.open("app/assets/images/business/Mexican.jpg")
 )
 
 Business.create(
@@ -252,7 +265,8 @@ Business.create(
   zipcode: 10530,
   price: 2,
   url: "omandarin.com",
-  phone: "(914) 437-9168"
+  phone: "(914) 437-9168",
+  image: File.open("app/assets/images/business/Chinese.jpg")
 )
 
 Business.create(
@@ -266,7 +280,8 @@ Business.create(
   zipcode: 10603,
   price: 2,
   url: "imperialwokwp.com",
-  phone: "(914) 686-2700"
+  phone: "(914) 686-2700",
+  image: File.open("app/assets/images/business/Chinese.jpg")
 )
 
 business_ids = (Business.first.id..Business.last.id).to_a

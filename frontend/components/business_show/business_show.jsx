@@ -107,7 +107,8 @@ class BusinessShow extends React.Component {
 
                 <div className='add-review-link business-show-title-col'>
                   <Link to={newReviewLink}>
-                    <i className="fa fa-star fa-lg" aria-hidden="true"></i> Write a Review</Link>
+                    <i className="fa fa-star fa-lg" aria-hidden="true"></i>
+                    &nbsp;Write a Review</Link>
                 </div>
               </div>
 
@@ -122,9 +123,9 @@ class BusinessShow extends React.Component {
                 </div>
 
                 <div className='pictures'>
+                  <img src={window.staticImages.businessDefault1} />
                   <img src={image_url} />
-                  <img src={image_url} />
-                  <img src={image_url} />
+                  <img src={window.staticImages.businessDefault2} />
                 </div>
               </div>
             </div>
