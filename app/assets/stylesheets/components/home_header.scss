@@ -1,6 +1,14 @@
-.home-header {
-  // background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
+.home-header-1 {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-url("home.jpeg");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  opacity : 0.9;
+  height: 600px;
+}
+
+.home-header-2 {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-url("home2.jpeg");
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
@@ -19,6 +27,10 @@
   height: 80px;
   width: auto;
   margin: 0 auto;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 // links

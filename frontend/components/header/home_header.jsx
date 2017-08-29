@@ -1,29 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import HomeBarContainer from './home_bar_container';
 import SearchBar from './search_bar';
 import HomeLinks from './home_links';
 
-class HomeHeader extends React.Component {
+export default class HomeHeader extends React.Component {
   constructor(props){
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.state = {defaultBackground: true};
   }
 
   handleClick(e) {
     e.preventDefault();
+    this.setState( prevState => ({
+      defaultBackground: !prevState.defaultBackground
+    }));
   }
 
   render() {
-    return(
-      <div className='home-header'>
+    let homeBarContent = (
+      <div>
         <HomeBarContainer />
         <div className='logo' onClick={this.handleClick}>
-          <Link to="/">
-            <img src={window.staticImages.homeLogo} />
-          </Link>
+          <img src={window.staticImages.homeLogo} />
         </div>
         <div className='home-search'>
           <SearchBar />
@@ -31,7 +31,18 @@ class HomeHeader extends React.Component {
         <HomeLinks />
       </div>
     );
+    if (this.state.defaultBackground) {
+      return(
+        <div className='home-header-1'>
+          {homeBarContent}
+        </div>
+      );
+    } else {
+      return(
+        <div className='home-header-2'>
+          {homeBarContent}
+        </div>
+      );
+    }
   }
 }
-
-export default HomeHeader;
