@@ -92,12 +92,17 @@ class BusinessShow extends React.Component {
     if (business) {
       const newReviewLink =
         `/businesses/${business.id}/reviews/new`;
-      let {name, average_rating, price, image_url } = business;
+      let {name, average_rating, price, image_url, tags } = business;
+      let tagsContent = [];
+      if (tags) {
+        tagsContent = tags.map( tag => tag.label);
+      }
       return(
         <div>
           <div className='business-show-title'>
             <div className='center'>
               <h1>{name}</h1>
+              <h3>{tagsContent}</h3>
               <div className='business-show-title-row1'>
 
                 <div className='business-show-title-col'>

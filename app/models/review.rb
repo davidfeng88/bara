@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Review < ActiveRecord:: Base
+class Review < ActiveRecord::Base
   validates :author, :business, :rating, presence: true
 
   validates :business, uniqueness: { scope: :author,

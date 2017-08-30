@@ -1,3 +1,4 @@
+# User
 User.destroy_all
 User.create(username: 'Guest', password: 'password')
 default_users = [
@@ -31,6 +32,22 @@ end
 
 user_ids = (User.first.id..User.last.id).to_a
 
+# Tag
+Tag.destroy_all
+
+default_tags = [
+  'Mexican', 'Taco', 'Chinese'
+]
+
+default_tags.each do |label|
+  Tag.create(label: label)
+end
+
+tag_ids = (Tag.first.id..Tag.last.id).to_a
+
+# Business
+Business.destroy_all
+
 Business.create(
   author_id: user_ids.sample,
   name: "Conmigo",
@@ -43,7 +60,8 @@ Business.create(
   price: 3,
   url: "conmigonyc.com",
   phone: "(212) 256-0056",
-  image: File.open("app/assets/images/business/Mexican.jpg")
+  image: File.open("app/assets/images/business/Mexican.jpg"),
+  tag_ids: [tag_ids.first, tag_ids.last]
 )
 
 Business.create(
@@ -286,6 +304,7 @@ Business.create(
 
 business_ids = (Business.first.id..Business.last.id).to_a
 
+# Review
 Review.destroy_all
 
 120.times do

@@ -78,6 +78,7 @@ class Api::BusinessesController < ApplicationController
         :image,
         :lat,
         :lng,
+        tag_ids: [],
       )
   end
 
