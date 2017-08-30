@@ -2,13 +2,16 @@ class Api::BusinessesController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
   def index
-    businesses = Business.all
+    businesses = Business.all.includes(:tags)
 
-    if (params[:name] != "")
-      businesses = businesses.where('lower(name) LIKE ?', "%#{params[:name].downcase}%")
+
+    if (params[:name] && params[:name] != "")
+      businesses =
+        businesses.where('lower(name) LIKE ?', "%#{params[:name].downcase}%")
+        # .or(businesses.where(tags: ))
     end
 
-    if (params[:location] != "")
+    if (params[:location] && params[:location] != "")
       businesses =
         businesses.where('lower(address) LIKE ?', "%#{params[:location].downcase}%")
         .or(businesses.where('lower(city) LIKE ?', "%#{params[:location].downcase}%"))
@@ -16,8 +19,15 @@ class Api::BusinessesController < ApplicationController
         .or(businesses.where('zipcode = ?', params[:location].to_i))
     end
 
+
     if (params[:minPrice] && params[:maxPrice])
       businesses = businesses.where(price: price_range)
+    end
+
+
+    if (params[:prices] && params[:prices] != "")
+      prices_numbers = params[:prices].map { |string| string.to_i }
+      businesses = businesses.where(price: prices_numbers)
     end
 
     @businesses = businesses.includes(:reviews).order('reviews.updated_at')

@@ -5,6 +5,7 @@ import { UPDATE_FILTER, RESET_FILTER } from '../actions/filter_actions';
 const defaultFilters = Object.freeze({
   name: "",
   location: "",
+  prices: "",
   minPrice: 1,
   maxPrice: 4,
 });

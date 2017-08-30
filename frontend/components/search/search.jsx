@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { isEqual } from 'lodash';
 import FilterForm from './filter_form';
 import BusinessIndex from './business_index';
 
@@ -13,6 +13,7 @@ class Search extends React.Component {
     this.props.updateFilter({
       name: this.props.filters.name,
       location: this.props.filters.location,
+      prices: this.props.filters.prices,
     }).then( () => {
       this.setState({loaded: true});
       }
@@ -21,10 +22,12 @@ class Search extends React.Component {
 
   componentWillUpdate(newProps) {
     if (newProps.filters.name !== this.props.filters.name
-      || newProps.filters.location !== this.props.filters.location)
+      || newProps.filters.location !== this.props.filters.location
+      || !isEqual(newProps.filters.prices, this.props.filters.prices))
     this.props.updateFilter({
       name: newProps.filters.name,
       location: newProps.filters.location,
+      prices: newProps.filters.prices,
     });
   }
 
