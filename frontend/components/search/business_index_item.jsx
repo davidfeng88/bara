@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { values } from 'lodash';
+import values from 'lodash/values';
 
 class BusinessIndexItem extends React.Component {
   constructor(props) {
