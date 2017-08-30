@@ -21,12 +21,9 @@ class FilterForm extends React.Component {
   handleChange(e) {
     e.preventDefault();
     const value = e.target.checked;
-    console.log(value);
-    let nameEncoded = '';
-    let locationEncoded = '';
     let { name, location } = this.props.filters;
-    nameEncoded = encodeURIComponent(name);
-    locationEncoded = encodeURIComponent(location);
+    let nameEncoded = encodeURIComponent(name);
+    let locationEncoded = encodeURIComponent(location);
     let pricesSet = new Set(this.props.filters.prices);
     if (value) {
       pricesSet.add(e.target.name);
