@@ -19,12 +19,6 @@ class Api::BusinessesController < ApplicationController
         .or(businesses.where('zipcode = ?', params[:location].to_i))
     end
 
-
-    if (params[:minPrice] && params[:maxPrice])
-      businesses = businesses.where(price: price_range)
-    end
-
-
     if (params[:prices] && params[:prices] != "")
       prices_numbers = params[:prices].map { |string| string.to_i }
       businesses = businesses.where(price: prices_numbers)
@@ -69,10 +63,6 @@ class Api::BusinessesController < ApplicationController
   end
 
   private
-
-  def price_range
-    (params[:minPrice]..params[:maxPrice])
-  end
 
   def business_params
     params.require(:business)

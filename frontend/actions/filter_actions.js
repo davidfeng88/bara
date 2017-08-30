@@ -7,7 +7,7 @@ export const resetFilter = () => ({
   type: RESET_FILTER
 });
 
-// filters = {minPrice: 4, maxPrice: 4}
+// filters = {name: "", location: "New York"}
 export const changeFilter = (filters) => ({
   type: UPDATE_FILTER,
   filters,

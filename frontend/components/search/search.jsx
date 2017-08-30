@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import isEqual from 'lodash/isEqual';
 import FilterForm from './filter_form';
 import BusinessIndex from './business_index';
@@ -8,9 +7,6 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {loaded: false};
-
-    this.handleChange = this.handleChange.bind(this);
-    // this.priceButtons = this.priceButtons.bind(this);
   }
 
   componentDidMount() {
@@ -52,61 +48,10 @@ class Search extends React.Component {
     }
   }
 
-  handleChange(e) {
-    e.preventDefault();
-    const value = e.target.checked;
-    console.log(value);
-    let nameEncoded = '';
-    let locationEncoded = '';
-    let { name, location } = this.props.filters;
-    nameEncoded = encodeURIComponent(name);
-    locationEncoded = encodeURIComponent(location);
-    let pricesSet = new Set(this.props.filters.prices);
-    if (value) {
-      pricesSet.add(e.target.name);
-    } else {
-      pricesSet.delete(e.target.name);
-    }
-    let pricesEncoded = Array.from(pricesSet).map( price => `&prices[]=${price}`);
-    let pricesQuery = pricesEncoded.join('');
-    this.props.history
-      .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}${pricesQuery}`);
-  }
-
-  priceButtons() {
-    let prices = this.props.filters.prices ? this.props.filters.prices : [];
-    return(
-      <div>
-        <label>$
-        <input type='checkbox' name='1'
-          checked={prices.includes("1")}
-          onChange={this.handleChange} />
-        </label>
-        <label>$$
-        <input type='checkbox' name='2'
-          checked={prices.includes("2")}
-          onChange={this.handleChange} />
-        </label>
-        <label>$$$
-        <input type='checkbox' name='3'
-          checked={prices.includes("3")}
-          onChange={this.handleChange} />
-        </label>
-        <label>$$$$
-        <input type='checkbox' name='4'
-          checked={prices.includes("4")}
-          onChange={this.handleChange} />
-        </label>
-      </div>
-    );
-  }
-
   render() {
-    let { businesses, highlight, minPrice, maxPrice,
-      updateFilter, resetFilter, highlightBusiness } = this.props;
+    let { businesses, highlight, filters, highlightBusiness } = this.props;
     return(
       <div>
-        {this.priceButtons()}
         <div className='title'>
           <div className='center'>
             <h1>Try these searches:</h1>
@@ -141,12 +86,7 @@ class Search extends React.Component {
                 <a href="/#/businesses/?name=&location=10013">10013</a>
               </div>
             </div>
-            <FilterForm
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              updateFilter={updateFilter}
-              resetFilter={resetFilter}
-            />
+            <FilterForm filters={filters} />
           </div>
         </div>
         {this.searchResult(businesses)}
@@ -155,5 +95,4 @@ class Search extends React.Component {
   }
 }
 
-// export default Search;
-export default withRouter(Search);
+export default Search;
