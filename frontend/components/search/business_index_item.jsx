@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import values from 'lodash/values';
 
-const averageRating = number => ( number ?
+export const averageRating = number => ( number ?
   (`Average Rating: ${number.substring(0, 3)}`) :
   (`No reviews yet`)
 );
 
-const price = { 1: '$', 2: '$$', 3: '$$$', 4: '$$$$' };
+export const price = { 1: '$', 2: '$$', 3: '$$$', 4: '$$$$' };
 
 const topReview = business => {
   let picture = null;
