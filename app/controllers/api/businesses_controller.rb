@@ -23,12 +23,12 @@ class Api::BusinessesController < ApplicationController
       businesses = businesses.where(price: prices_numbers)
     end
 
-    @businesses = businesses.includes(:reviews).order('reviews.updated_at')
+    @businesses = businesses.includes(latest_reviews: [:author])
     render "api/businesses/index"
   end
 
   def show
-    @business = Business.find(params[:id])
+    @business = Business.includes(reviews: [:author]).find(params[:id])
     render "api/businesses/show"
   end
 

@@ -2,115 +2,62 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import values from 'lodash/values';
 
-class BusinessIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+const averageRating = number => ( number ?
+  (`Average Rating: ${number.substring(0, 3)}`) :
+  (`No reviews yet`)
+);
+
+const price = { 1: '$', 2: '$$', 3: '$$$', 4: '$$$$' };
+
+const topReview = business => {
+  let picture = null;
+  let reviewBody = 'No review for this business yet';
+  if (business.latest_review) {
+    let review = business.latest_review;
+    const url = `${review.author.avatar_url}`;
+    picture = <img src={url} />;
+    reviewBody = review.body;
   }
+  return (
+    <div className='index-item-row2'>
+      <div className='index-item-review-pic'>
+        {picture}
+      </div>
+      <div className='top-review'>
+        {reviewBody}
+      </div>
+    </div>
+  );
+};
 
-  handleMouseEnter(e) {
-    e.preventDefault();
-    this.props.highlightBusiness(this.props.business.id);
-  }
-
-  handleMouseLeave(e) {
-    e.preventDefault();
-    this.props.highlightBusiness(-1);
-  }
-
-  price(number) {
-    switch (number) {
-      case 1:
-        return '$';
-      case 2:
-        return '$$';
-      case 3:
-        return '$$$';
-      case 4:
-        return '$$$$';
-    }
-  }
-
-  topReviewPicture(business) {
-    if (business.reviews) {
-      let reviewArray = values(business.reviews);
-      const url =
-      `${reviewArray[reviewArray.length - 1].author.avatar_url}`;
-      return <img src={url} />;
-    }
-    else {
-      return null;
-    }
-  }
-
-  topReviewBody(business) {
-    if (business.reviews) {
-      let reviewArray = values(business.reviews);
-      return reviewArray[reviewArray.length - 1].body;
-    }
-
-    else
-      return ('No review for this business yet');
-  }
-
-  averageRating(number) {
-    if (number) {
-      return (
-        `Average Rating: ${number.substring(0, 3)}`
-      );
-    } else {
-      return `No reviews yet`;
-    }
-  }
-
-  render() {
-    const { business } = this.props;
-    return (
-      <div
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-        className='index-item'>
-
-        <div className='index-item-row1'>
-
-          <div className='index-pic'>
-            <img src={business.image_url} />
-          </div>
-
-          <div className='index-li'>
-            <div className='col1'>
-              <li>
-                <Link to={`/businesses/${business.id}`}>{business.name}</Link>
-              </li>
-              {this.averageRating(business.average_rating)}<br/>
-              {this.price(business.price)}<br/>
-            </div>
-
-            <div className='col2'>
-              {business.address}<br/>
-              {`${business.city}, ${business.state} ${business.zipcode}`}<br/>
-              {business.phone}<br/>
-            </div>
-
-          </div>
-
+const BusinessIndexItem = ({ business, highlightBusiness }) => (
+  <div
+    onMouseEnter={() =>
+      highlightBusiness(business.id)}
+    onMouseLeave={() =>
+      highlightBusiness(-1)}
+    className='index-item'>
+    <div className='index-item-row1'>
+      <div className='index-pic'>
+        <img src={business.image_url} />
+      </div>
+      <div className='index-li'>
+        <div className='col1'>
+          <li>
+            <Link to={`/businesses/${business.id}`}>{business.name}</Link>
+          </li>
+          {averageRating(business.average_rating)}<br/>
+          {price[business.price]}<br/>
         </div>
-
-        <div className='index-item-row2'>
-          <div className='index-item-review-pic'>
-            {this.topReviewPicture(business)}
-          </div>
-
-          <div className='top-review'>
-            {this.topReviewBody(business)}
-          </div>
-
+        <div className='col2'>
+          {business.address}<br/>
+          {`${business.city}, ${business.state} ${business.zipcode}`}<br/>
+          {business.phone}<br/>
         </div>
       </div>
-    );
-
-  }
-}
+    </div>
+    {topReview(business)}
+  </div>
+);
 
 export default BusinessIndexItem;

@@ -27,5 +27,6 @@ class Review < ActiveRecord::Base
     foreign_key: :business_id,
     class_name: :Business
 
+  scope :latest, -> { order('updated_at DESC').limit(1) }
 
 end
