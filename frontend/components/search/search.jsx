@@ -1,6 +1,7 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
 import BusinessIndex from './business_index';
+import SampleSearch from './sample_search';
 
 class Search extends React.Component {
   constructor(props) {
@@ -24,20 +25,22 @@ class Search extends React.Component {
     if (newProps.filters.name !== this.props.filters.name
       || newProps.filters.location !== this.props.filters.location
       || !isEqual(newProps.filters.prices, this.props.filters.prices))
-    this.props.updateFilter({
-      name: newProps.filters.name,
-      location: newProps.filters.location,
-      prices: newProps.filters.prices,
-    }).then( () => {
-      this.setState({loaded: true});
-      }
-    );
+    {
+      this.props.updateFilter({
+        name: newProps.filters.name,
+        location: newProps.filters.location,
+        prices: newProps.filters.prices,
+      }).then( () => {
+        this.setState({loaded: true});
+        }
+      );
+    }
   }
 
-  componentWillUnmount() {
-    this.props.resetFilter();
-    this.setState({loaded: false});
-  }
+  // componentWillUnmount() {
+  //   this.props.resetFilter();
+  //   this.setState({loaded: false});
+  // }
 
   searchResult(businesses) {
     if (this.state.loaded) {
@@ -99,44 +102,13 @@ class Search extends React.Component {
   }
 
   render() {
-    let { businesses, highlight, updateFilter, resetFilter, highlightBusiness } = this.props;
+    let { businesses, highlight, updateFilter, highlightBusiness } = this.props;
     return(
       <div>
-        {this.priceButtons()}
         <div className='title'>
           <div className='center'>
-            <h1>Try these searches:</h1>
-
-            <div className='sample-search'>
-              <div className='sample-search-title'>
-                Address:
-              </div>
-              <div className='sample-search-entries'>
-                <a href="/#/businesses/?name=&location=30%20water%20st">30 Water St</a>
-                <a href="/#/businesses/?name=&location=1st%20ave">1st Ave</a>
-              </div>
-
-              <div className='sample-search-title'>
-                City:
-              </div>
-              <div className='sample-search-entries'>
-                <a href="/#/businesses/?name=&location=New%20York">New York</a>
-              </div>
-
-              <div className='sample-search-title'>
-                State:
-              </div>
-              <div className='sample-search-entries'>
-                <a href="/#/businesses/?name=&location=NY">NY</a>
-              </div>
-
-              <div className='sample-search-title'>
-                Zip:
-              </div>
-              <div className='sample-search-entries'>
-                <a href="/#/businesses/?name=&location=10013">10013</a>
-              </div>
-            </div>
+            <SampleSearch />
+            {this.priceButtons()}
           </div>
         </div>
         {this.searchResult(businesses)}
