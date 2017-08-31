@@ -1,11 +1,6 @@
 import { fetchAllBusinesses } from './business_actions';
 
 export const UPDATE_FILTER = 'UPDATE_FILTER';
-export const RESET_FILTER = 'RESET_FILTER';
-
-export const resetFilter = () => ({
-  type: RESET_FILTER
-});
 
 // filters = {name: "", location: "New York"}
 export const changeFilter = (filters) => ({

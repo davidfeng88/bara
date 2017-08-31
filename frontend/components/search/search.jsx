@@ -37,11 +37,6 @@ class Search extends React.Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.props.resetFilter();
-  //   this.setState({loaded: false});
-  // }
-
   searchResult(businesses) {
     if (this.state.loaded) {
       return(
@@ -102,7 +97,7 @@ class Search extends React.Component {
   }
 
   render() {
-    let { businesses, highlight, updateFilter, highlightBusiness } = this.props;
+    let { businesses } = this.props;
     return(
       <div>
         <div className='title'>

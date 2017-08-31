@@ -1,4 +1,4 @@
-import { UPDATE_FILTER, RESET_FILTER } from '../actions/filter_actions';
+import { UPDATE_FILTER } from '../actions/filter_actions';
 
 const defaultFilters = Object.freeze({
   name: "",
@@ -12,9 +12,6 @@ const FiltersReducer = (state = defaultFilters, action) => {
   switch (action.type) {
     case UPDATE_FILTER:
       return action.filters;
-
-    case RESET_FILTER:
-      return defaultFilters;
 
     default:
       return state;

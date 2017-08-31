@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import { updateFilter, resetFilter } from '../../actions/filter_actions';
+import { updateFilter } from '../../actions/filter_actions';
 import { businessesToArray } from '../../reducers/selectors';
 import Search from './search';
 
@@ -29,7 +29,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   updateFilter: (filters) => dispatch(updateFilter(filters)),
-  resetFilter: () => dispatch(resetFilter()),
 });
 
 export default connect(
