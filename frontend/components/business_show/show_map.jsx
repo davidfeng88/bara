@@ -24,7 +24,8 @@ class ShowMap extends React.Component {
           lat: business.lat,
           lng: business.lng
         }, // Business coords
-        zoom: 14
+        zoom: 14,
+        disableDefaultUI: true
       };
     this.map = new google.maps.Map(map, mapOptions);
     this.ShowMapMarkerManager = new ShowMapMarkerManager(this.map);
