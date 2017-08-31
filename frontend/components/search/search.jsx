@@ -96,6 +96,15 @@ class Search extends React.Component {
     );
   }
 
+  searchTitle() {
+    let { name, location } = this.props.filters;
+    name = name ? name : "places";
+    location = location ? `near ${location}` : "";
+    return(
+      <h1 className='search-title'><strong>Best {name}</strong> {location}</h1>
+    );
+  }
+
   render() {
     let { businesses } = this.props;
     return(
@@ -103,6 +112,7 @@ class Search extends React.Component {
         <div className='title'>
           <div className='center'>
             <SampleSearch />
+            {this.searchTitle()}
             {this.priceButtons()}
           </div>
         </div>

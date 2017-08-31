@@ -1,12 +1,18 @@
 .sample-search {
   font-size: 16px;
   display: flex;
+  align-items: flex-start;
   margin-bottom: 10px;
-}
 
-.sample-search a {
-  display: block;
-  margin-bottom: 5px;
+  p {
+    font-weight: bold;
+    margin: 0 20px 0 0;
+  }
+
+  a {
+    display: block;
+    margin-bottom: 5px;
+  }
 }
 
 .sample-search-title {
@@ -15,4 +21,8 @@
 
 .sample-search-entries {
   margin-right: 20px;
+}
+
+h1.search-title {
+  font-weight: normal;
 }

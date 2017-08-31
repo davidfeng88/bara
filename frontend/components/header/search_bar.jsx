@@ -73,7 +73,7 @@ class SearchBar extends React.Component {
               value={this.state.name}
               onChange={this.update('name')}
               className="login-input"
-              placeholder="tacos, cheap dinner, Max's"
+              placeholder="Shanghai, Burrito"
             />
           </div>
           <div className='near'>

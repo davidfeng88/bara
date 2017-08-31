@@ -1,4 +1,4 @@
-# User
+# Users
 User.destroy_all
 User.create(username: 'Guest', password: 'password')
 default_users = [
@@ -32,7 +32,7 @@ end
 
 user_ids = (User.first.id..User.last.id).to_a
 
-# Tag
+# Tags
 Tag.destroy_all
 
 default_tags = [
@@ -45,7 +45,7 @@ end
 
 tag_ids = (Tag.first.id..Tag.last.id).to_a
 
-# Business
+# Businesses
 Business.destroy_all
 
 Business.create(
@@ -62,6 +62,20 @@ Business.create(
   phone: "(212) 256-0056",
   image: File.open("app/assets/images/business/Mexican.jpg"),
   tag_ids: [tag_ids.first, tag_ids.last]
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Shanghai",
+  address: "1388 2nd Ave",
+  lat: 40.768306,
+  lng: -73.958399,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10021,
+  price: 1,
+  phone: "(212) 288-8066",
+  image: File.open("app/assets/images/business/Noodles.jpg"),
 )
 
 Business.create(
@@ -304,7 +318,7 @@ Business.create(
 
 business_ids = (Business.first.id..Business.last.id).to_a
 
-# Review
+# Reviews
 Review.destroy_all
 
 120.times do
