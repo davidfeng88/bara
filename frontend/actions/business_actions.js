@@ -5,97 +5,57 @@ export const RECEIVE_ALL_BUSINESSES = "RECEIVE_ALL_BUSINESSES";
 export const RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
 export const REMOVE_BUSINESS = "REMOVE_BUSINESS";
 
-export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
-export const REMOVE_REVIEW = "REMOVE_REVIEW";
+export const receiveAllBusinesses = businesses => ({
+  type: RECEIVE_ALL_BUSINESSES,
+  businesses
+});
 
-export const receiveAllBusinesses = businesses => {
-  return {
-    type: RECEIVE_ALL_BUSINESSES,
-    businesses
-  };
-};
+export const receiveBusiness = business => ({
+  type: RECEIVE_BUSINESS,
+  business,
+});
 
-export const receiveBusiness = business => {
-  return {
-    type: RECEIVE_BUSINESS,
-    business
-  };
-};
-
-export const removeBusiness = business => {
-  return {
-    type: REMOVE_BUSINESS,
-    business
-  };
-};
-
-export const receiveReview = review => {
-
-  return {
-    type: RECEIVE_REVIEW,
-    review
-  };
-};
-
-export const removeReview = review => {
-  return {
-    type: REMOVE_REVIEW,
-    review
-  };
-};
+export const removeBusiness = business => ({
+  type: REMOVE_BUSINESS,
+  business,
+});
 
 export const fetchAllBusinesses = filters => dispatch => (
-  BusinessAPIUtil.fetchAllBusinesses(filters).then(
+  BusinessAPIUtil.fetchAllBusinesses(filters)
+  .then(
     (businessesData) => dispatch(receiveAllBusinesses(businessesData)),
     (errors) => dispatch(receiveErrors(errors.responseText))
   )
 );
 
 export const fetchBusiness = id => dispatch => (
-  BusinessAPIUtil.fetchBusiness(id).then(
+  BusinessAPIUtil.fetchBusiness(id)
+  .then(
     (businessData) => dispatch(receiveBusiness(businessData)),
     (errors) => dispatch(receiveErrors(errors.responseText))
   )
 );
 
 export const createBusiness = business => dispatch => (
-  BusinessAPIUtil.createBusiness(business).then(
+  BusinessAPIUtil.createBusiness(business)
+  .then(
     (businessData) => dispatch(receiveBusiness(businessData)),
     (errors) => dispatch(receiveErrors(errors.responseText))
   )
 );
 
 export const editBusiness = business => dispatch => (
-  BusinessAPIUtil.editBusiness(business).then(
+  BusinessAPIUtil.editBusiness(business)
+  .then(
     (businessData) => dispatch(receiveBusiness(businessData)),
     (errors) => dispatch(receiveErrors(errors.responseText))
   )
 );
 
 export const deleteBusiness = id => dispatch => (
-  BusinessAPIUtil.deleteBusiness(id).then(
+  BusinessAPIUtil.deleteBusiness(id)
+  .then(
     (businessData) => dispatch(removeBusiness(businessData)),
-    (errors) => dispatch(receiveErrors(errors.responseText))
-  )
-);
-
-export const createReview = review => dispatch => (
-  BusinessAPIUtil.createReview(review).then(
-    (reviewData) => dispatch(receiveReview(reviewData)),
-    (errors) => dispatch(receiveErrors(errors.responseText))
-  )
-);
-
-export const editReview = review => dispatch => (
-  BusinessAPIUtil.editReview(review).then(
-    (reviewData) => dispatch(receiveReview(reviewData)),
-    (errors) => dispatch(receiveErrors(errors.responseText))
-  )
-);
-
-export const deleteReview = id => dispatch => (
-  BusinessAPIUtil.deleteReview(id).then(
-    (reviewData) => dispatch(removeReview(reviewData)),
     (errors) => dispatch(receiveErrors(errors.responseText))
   )
 );

@@ -4,9 +4,12 @@ import {
   RECEIVE_ALL_BUSINESSES,
   RECEIVE_BUSINESS,
   REMOVE_BUSINESS,
-  RECEIVE_REVIEW,
-  REMOVE_REVIEW
 } from '../actions/business_actions.js';
+
+import {
+  RECEIVE_REVIEW,
+  REMOVE_REVIEW,
+} from '../actions/review_actions.js';
 
 const defaultState = {
   currentBusiness: -1,
