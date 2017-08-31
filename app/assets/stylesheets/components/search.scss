@@ -1,3 +1,4 @@
+// sample search
 .sample-search {
   font-size: 16px;
   display: flex;
@@ -57,6 +58,10 @@ h1.search-title {
   cursor: pointer;
   text-align: center;
   margin-right: -1px;
+
+  &:hover {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+  }
 }
 
 input:checked + .button {
@@ -65,8 +70,4 @@ input:checked + .button {
   background-color: #c4f3a4;
   color: #348c42;
   border: 1px solid #348c42;
-}
-
-input:focus + .button {
-  box-shadow: 0 0 1px yellow;
 }
