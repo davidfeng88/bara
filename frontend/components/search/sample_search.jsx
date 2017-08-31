@@ -7,8 +7,8 @@ const SampleSearch = () => (
       Name:
     </div>
     <div className='sample-search-entries'>
-      <a href="/#/businesses/?name=Shanghai">Shanghai</a>
-      <a href="/#/businesses/?name=bur">bur</a>
+      <a href="/#/businesses/?name=bur&location=">bur (fuzzy)</a>
+      <a href="/#/businesses/?name=Shanghai&location=">Shanghai</a>
     </div>
     <div className='sample-search-title'>
       Address:
@@ -29,10 +29,10 @@ const SampleSearch = () => (
       Prices:
     </div>
     <div className='sample-search-entries'>
-      <a href="/#/businesses/?location=New%20York&prices[]=4">
+      <a href="/#/businesses/?name=&location=New%20York&prices[]=4">
         "$$$$" in New York
       </a>
-      <a href="/#/businesses/?prices[]=1&prices[]=3">
+      <a href="/#/businesses/?name=&location=&prices[]=1&prices[]=3">
         "$" and "$$$"
       </a>
     </div>

@@ -26,3 +26,26 @@
 h1.search-title {
   font-weight: normal;
 }
+
+.price-buttons {
+  display: flex;
+}
+
+.price-button input {
+  display: none;
+}
+
+.button {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input:checked + .button {
+  background-color: green;
+}
+
+input:focus + .button {
+  box-shadow: 0 0 1px yellow;
+}

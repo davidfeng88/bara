@@ -3,6 +3,13 @@ import isEqual from 'lodash/isEqual';
 import BusinessIndex from './business_index';
 import SampleSearch from './sample_search';
 
+const PriceButton = props => (
+  <label className='price-button'>
+    <input type='checkbox' {...props} />
+    <div className='button'>{props.label}</div>
+  </label>
+);
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +33,7 @@ class Search extends React.Component {
       || newProps.filters.location !== this.props.filters.location
       || !isEqual(newProps.filters.prices, this.props.filters.prices))
     {
+      this.setState({loaded: false});
       this.props.updateFilter({
         name: newProps.filters.name,
         location: newProps.filters.location,
@@ -38,15 +46,9 @@ class Search extends React.Component {
   }
 
   searchResult(businesses) {
-    if (this.state.loaded) {
-      return(
-        <BusinessIndex businesses={businesses} />
-      );
-    } else {
-      return(
-        <img className='spinner' src={window.staticImages.spinner} />
-      );
-    }
+    return this.state.loaded ?
+      <BusinessIndex businesses={businesses} /> :
+      <img className='spinner' src={window.staticImages.spinner} /> ;
   }
 
   handleChange(e) {
@@ -71,27 +73,19 @@ class Search extends React.Component {
   priceButtons() {
     let prices = this.props.filters.prices ? this.props.filters.prices : [];
     return(
-      <div>
-        <label>$
-        <input type='checkbox' name='1'
+      <div className='price-buttons'>
+        <PriceButton label='$' name='1'
           checked={prices.includes("1")}
           onChange={this.handleChange} />
-        </label>
-        <label>$$
-        <input type='checkbox' name='2'
+        <PriceButton label='$$' name='2'
           checked={prices.includes("2")}
           onChange={this.handleChange} />
-        </label>
-        <label>$$$
-        <input type='checkbox' name='3'
+        <PriceButton label='$$$' name='3'
           checked={prices.includes("3")}
           onChange={this.handleChange} />
-        </label>
-        <label>$$$$
-        <input type='checkbox' name='4'
+        <PriceButton label='$$$$' name='4'
           checked={prices.includes("4")}
           onChange={this.handleChange} />
-        </label>
       </div>
     );
   }

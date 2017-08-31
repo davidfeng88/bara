@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
   if (ownProps.location.search !== "") {
     const parsed = queryString.parse(
       ownProps.location.search, {arrayFormat: 'bracket'});
-    name = parsed.name;
-    location = parsed.location;
+    name = parsed.name ? parsed.name : "";
+    location = parsed.location ? parsed.location : "";
     prices = parsed.prices;
   }
   let filters = {
