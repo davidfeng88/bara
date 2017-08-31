@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import values from 'lodash/values';
 
@@ -46,6 +47,13 @@ const BusinessIndexItem = ({ business, highlightBusiness }) => (
           <li>
             <Link to={`/businesses/${business.id}`}>{business.name}</Link>
           </li>
+          <Rating className='rating'
+            empty="fa fa-star-o fa-lg"
+            full="fa fa-star fa-lg"
+            initialRate={parseFloat(business.average_rating)}
+
+            readonly
+          />
           {averageRating(business.average_rating)}<br/>
           {price[business.price]}<br/>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import { averageRating, price } from '../search/business_index_item';
 import ShowMap from './show_map';
@@ -89,6 +90,13 @@ class BusinessShow extends React.Component {
             <div className='business-show-title'>
               <div className='center'>
                 <h1>{name}</h1>
+                <Rating className='rating'
+                  empty="fa fa-star-o fa-lg"
+                  full="fa fa-star fa-lg"
+                  initialRate={parseFloat(business.average_rating)}
+                  fractions={1}
+                  readonly
+                />
                 <h3>{tagsContent}</h3>
                 <div className='business-show-title-row1'>
                   <div className='business-show-title-col'>

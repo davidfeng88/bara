@@ -1,14 +1,19 @@
 /* global google:false */
 
-class IndexMapMarkerManager {
-  constructor(map, handleClick){
+export default class IndexMapMarkerManager {
+  constructor(map, handleClick) {
     this.map = map;
     this.markers = {};
     this.handleClick = handleClick;
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
-
+    this.normalIcon = {
+      url: window.staticImages.normalIcon,
+      labelOrigin: new google.maps.Point(11, 10),
+    };
   }
+
+
 
   updateHighlight(oldHighlight, newHighlight) {
     if (oldHighlight !== -1) {
@@ -24,7 +29,6 @@ class IndexMapMarkerManager {
     // (filter change may change idx, even though marker is always on)
     Object.keys(this.markers)
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));
-
     businesses
       .forEach((business, idx) => this.createMarkerFromBusiness(business, idx));
 
@@ -36,9 +40,6 @@ class IndexMapMarkerManager {
         bounds.extend(markersArray[i].getPosition());
       }
       this.map.fitBounds(bounds);
-      // if (this.map.getZoom() > 16) {
-      //   this.map.setZoom(16);
-      // }
     }
   }
 
@@ -74,12 +75,20 @@ class IndexMapMarkerManager {
   }
 
   handleMouseOver(marker) {
-    marker.setIcon(this.hoverIcon());
-    marker.setLabel(this.hoverLabel(marker.text));
+    marker.setIcon({
+      url: window.staticImages.hoverIcon,
+      labelOrigin: new google.maps.Point(11, 10),
+    });
+    marker.setLabel({
+      text: marker.text,
+      color: 'red',
+      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+      fontWeight: 'bold',
+    });
   }
 
   handleMouseOut(marker) {
-    marker.setIcon(this.normalIcon());
+    marker.setIcon(this.normalIcon);
     marker.setLabel(this.normalLabel(marker.text));
   }
 
@@ -90,7 +99,7 @@ class IndexMapMarkerManager {
       position,
       map: this.map,
       businessId: business.id,
-      icon: this.normalIcon(),
+      icon: this.normalIcon,
       label: this.normalLabel((idx+1).toString()),
     });
 
@@ -105,5 +114,3 @@ class IndexMapMarkerManager {
     delete this.markers[marker.businessId];
   }
 }
-
-export default IndexMapMarkerManager;

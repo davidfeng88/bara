@@ -26,7 +26,6 @@ class IndexMap extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
     if (this.props.highlight !== prevProps.highlight) {
       this.IndexMapMarkerManager
         .updateHighlight(prevProps.highlight, this.props.highlight);
