@@ -7,40 +7,53 @@ html {
 	color: $black;
 }
 
-.container {
-	width: 960px;
-	margin: 0 auto;
+.flex-box {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 
+.center {
+	width: 960px;
+	margin: 0 auto;
+}
+
 a {
 	color: $blue;
 	text-decoration: none;
+
+	&:visited {
+		color: $blue;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
-a:visited {
-	color: $blue;
-}
+a.link-as-button {
+  display: block;
+  width: 150px;
+  border: 1px solid #4D4D4D;
+  border-radius: 3px;
+  margin: 9px auto;
+  font-size: 14px;
+  padding: 8px 19px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  background-color: $yelpy-red;
 
-a:hover {
-	text-decoration: underline;
+  &:hover {
+    background-color: #ed0008;
+    text-decoration: none;
+  }
 }
 
 .hidden {
 	display: none;
 }
-
-/*
-	Font Elements
-*/
-
-// h1 {
-// 	font-size: 24px;
-// 	font-style: italic;
-// 	font-weight: bold;
-// }
 
 h2 {
 	text-align: center;
@@ -70,68 +83,50 @@ img {
 	height: 100%;
 }
 
-
-
-
-/*
-	Images
-*/
-
 .thumbnail {
 	height: 100px;
+	img {
+		object-fit: cover;
+	}
 }
 
-.thumbnail img {
-	object-fit: cover;
-}
-
-/*
-	Inputs
-*/
-//
 .input-wrapper {
 	display: flex;
 	margin: 1px;
 	width: 100%;
-	// border: 1px solid $border-color;
-	// padding: 5px 9px;
-}
 
-.input-wrapper input {
-	flex: 1;
-	border: 1px solid $border-color;
-	border-radius: 3px;
-	margin: 0 0 9px 0;
-	font-size: 14px;
-	padding: 5px 9px;
-}
+	input {
+		flex: 1;
+		border: 1px solid $border-color;
+		border-radius: 3px;
+		margin: 0 0 9px 0;
+		font-size: 14px;
+		padding: 5px 9px;
+	}
 
-.input-wrapper button {
-	flex: 1;
-	border: 1px solid #4D4D4D;
-	border-radius: 3px;
-	margin: 0 0 9px 0;
-	font-size: 14px;
-	padding: 8px 19px;
+	button {
+		flex: 1;
+		border: 1px solid #4D4D4D;
+		border-radius: 3px;
+		margin: 0 0 9px 0;
+		font-size: 14px;
+		padding: 8px 19px;
+		cursor: pointer;
 
-	font-weight: bold;
-	color: white;
-	background-color: $yelpy-red;
-}
+		font-weight: bold;
+		color: white;
+		background-color: $yelpy-red;
+	}
 
-.input-wrapper button:hover {
-	cursor: pointer;
-	background-color: #ed0008;
+	button:hover {
+		background-color: #ed0008;
+	}
 }
 
 .subtle-text {
 	color: #999;
 	text-align: right;
 }
-//
-// input[type="search"] {
-// 	padding: 5px;
-// }
 
 .spinner {
 	width: 200px;

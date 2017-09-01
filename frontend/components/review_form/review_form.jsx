@@ -88,7 +88,7 @@ class ReviewForm extends React.Component {
         <ErrorList errors={ this.props.errors }
            clearErrors={this.props.clearErrors} />
 
-          <div className='container'>
+          <div className='center flex-box'>
             <div className='col-1-2'>
               <div className="business-form-container">
 
