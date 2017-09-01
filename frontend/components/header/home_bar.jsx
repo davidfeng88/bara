@@ -27,47 +27,38 @@ export default class HomeBar extends React.Component {
   }
 
   render() {
-    let {
-      currentUser,
-      demoLogin,
-    } = this.props;
-    let dropdownBox = null;
-
-    if (this.state.showDropdown) {
-      dropdownBox =
+    let { currentUser, demoLogin, } = this.props;
+    let dropdownBox = this.state.showDropdown ? (
       <Dropdown
         currentUser={currentUser}
         logout={this.handleLogout}
-        toggleDropdown={this.toggleDropdown} />;
-    }
+        toggleDropdown={this.toggleDropdown}
+      />
+    ) : null;
 
-    if (currentUser) {
-      return(
-        <nav className='home-bar'>
-          <div className='home-bar-left'>
+    return currentUser ? (
+      <nav className='home-bar'>
+        <div className='home-bar-left'>
+        </div>
+        <div className='home-bar-right'>
+          <div onClick={this.toggleDropdown} className='dropdown' >
+            <img className='home-avatar' src={currentUser.avatar_url} />
+            <i className='fa fa-caret-down'
+              id='down-arrow' aria-hidden="true"></i>
           </div>
-          <div className='home-bar-right'>
-            <div onClick={this.toggleDropdown} className='dropdown' >
-              <img className='home-avatar' src={currentUser.avatar_url} />
-              <i className='fa fa-caret-down'
-                id='down-arrow' aria-hidden="true"></i>
-            </div>
-            {dropdownBox}
-          </div>
-        </nav>
-      );
-    } else {
-      return(
-        <nav className="home-bar">
-          <div onClick={this.props.demoLogin} className='home-demo'>
-            Demo Login
-          </div>
-          <div className='home-bar-right'>
-            <div className='home-login'><Link to="/login">Log In</Link></div>
-            <div className='home-signup'><Link to="/signup">Sign up</Link></div>
-          </div>
-        </nav>
-      );
-    }
+          {dropdownBox}
+        </div>
+      </nav>
+    ):(
+      <nav className="home-bar">
+        <div onClick={this.props.demoLogin} className='home-demo'>
+          Demo Login
+        </div>
+        <div className='home-bar-right'>
+          <div className='home-login'><Link to="/login">Log In</Link></div>
+          <div className='home-signup'><Link to="/signup">Sign up</Link></div>
+        </div>
+      </nav>
+    );
   }
 }

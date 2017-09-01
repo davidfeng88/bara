@@ -32,13 +32,13 @@ export default class HomeHeader extends React.Component {
       </div>
     );
     return this.state.defaultBackground ? (
-        <div className='home-header-1'>
-          {homeBarContent}
-        </div>
-      ) : (
-        <div className='home-header-2'>
-          {homeBarContent}
-        </div>
-      );
+      <div className='home-header-1'>
+        {homeBarContent}
+      </div>
+    ) : (
+      <div className='home-header-2'>
+        {homeBarContent}
+      </div>
+    );
   }
 }

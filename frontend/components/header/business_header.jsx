@@ -29,53 +29,41 @@ export default class BusinessHeader extends React.Component {
   }
 
   avatarOrSignUp() {
-    let {
-      currentUser,
-      demoLogin,
-    } = this.props;
-    let dropdownBox = null;
-    if (this.state.showDropdown) {
-      dropdownBox =
+    let { currentUser, demoLogin, } = this.props;
+    let dropdownBox = this.state.showDropdown ? (
       <Dropdown
         currentUser={currentUser}
         logout={this.handleLogout}
-        toggleDropdown={this.toggleDropdown} />;
-    }
-    if (currentUser) {
-      return (
-        <div className='home-bar-right'>
-          <div onClick={this.toggleDropdown} className='dropdown' >
-            <img className='home-avatar' src={currentUser.avatar_url} />
-            <i className='fa fa-caret-down'
-              id='down-arrow' aria-hidden="true"></i>
-          </div>
-          {dropdownBox}
+        toggleDropdown={this.toggleDropdown} />
+    ) : null;
+
+    return currentUser ? (
+      <div className='home-bar-right'>
+        <div onClick={this.toggleDropdown} className='dropdown' >
+          <img className='home-avatar' src={currentUser.avatar_url} />
+          <i className='fa fa-caret-down'
+            id='down-arrow' aria-hidden="true"></i>
         </div>
-      );
-    } else {
-      return (
-        <div className='business-signup'>
-          <Link to="/signup">Sign up</Link>
-        </div>
-      );
-    }
+        {dropdownBox}
+      </div>
+    ) : (
+      <div className='business-signup'>
+        <Link to="/signup">Sign up</Link>
+      </div>
+    );
   }
 
   login() {
-    let login = null;
-    if (!this.props.currentUser) {
-      login = (
-        <div className='business-header-row2-right'>
-          <div onClick={this.props.demoLogin} className='business-demo'>
-            Demo Login
-          </div>
-          <div className="business-login">
-            <Link to="/login">Log In</Link>
-          </div>
+    return this.props.currentUser ? null : (
+      <div className='business-header-row2-right'>
+        <div onClick={this.props.demoLogin} className='business-demo'>
+          Demo Login
         </div>
-      );
-    }
-    return login;
+        <div className="business-login">
+          <Link to="/login">Log In</Link>
+        </div>
+      </div>
+    );
   }
 
   render() {
