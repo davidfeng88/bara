@@ -5,7 +5,9 @@ import { price } from '../search/business_index_item';
 
 const HomeBusinessItem = ({ business }) => (
   <div className='home-business-item'>
-    <img src={business.image_url} />
+    <Link to={`/businesses/${business.id}`}>
+      <img src={business.image_url} />
+    </Link>
     <div className='card-content'>
       <Link to={`/businesses/${business.id}`}>{business.name}</Link><br/>
       <Rating className='rating'

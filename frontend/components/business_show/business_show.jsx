@@ -132,12 +132,12 @@ class BusinessShow extends React.Component {
         );
       } else {
         return(
-          <div>
+          <div className='center'>
             <ErrorList errors={ this.props.errors }
               clearErrors={this.props.clearErrors} />
-            <div className='input-wrapper'>
-              <Link to='/businesses/?name=&location=New%20York'>Back to Restaurants</Link>
-            </div>
+            <Link to="/" className='link-as-button'>
+              Go Home
+            </Link>
           </div>
         );
       }
@@ -147,10 +147,10 @@ class BusinessShow extends React.Component {
       );
     }
   }
-    // if user go to /business/1 without go through the index page first
-    // the store is empty and business will be undefined
-    // we will fetch the business after it mounted and re render this
-    // component
+  // if user go to /business/1 without go through the index page first
+  // the store is empty and business will be undefined
+  // we will fetch the business after it mounted and re render this
+  // component
 }
 
 export default BusinessShow;

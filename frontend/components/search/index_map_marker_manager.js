@@ -104,7 +104,11 @@ export default class IndexMapMarkerManager {
     });
 
     marker.addListener('click', () => this.handleClick(business));
-    marker.addListener('mouseover', () => this.handleMouseOver(marker));
+    marker.addListener('mouseover', (e) => {
+      console.log('hover');
+      debugger;
+      this.handleMouseOver(marker);
+    });
     marker.addListener('mouseout', () => this.handleMouseOut(marker));
     this.markers[marker.businessId] = marker;
   }
