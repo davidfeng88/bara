@@ -17,7 +17,8 @@
   border-radius: 4px;
 
   img {
-    overflow: hidden;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     object-fit: cover;
     width: 298px;
     height: 180px;
