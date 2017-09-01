@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { averageRating, price } from '../search/business_index_item';
+import { reviewNumber, price } from '../../util/business_info_util';
 import ShowMap from './show_map';
 import ReviewIndexContainer from '../review_index/review_index_container';
 import ErrorList from '../error_list';
@@ -89,19 +89,18 @@ class BusinessShow extends React.Component {
           <div>
             <div className='business-show-title'>
               <div className='center'>
-                <h1>{name}</h1>
-                <Rating className='rating'
-                  empty="fa fa-star-o fa-lg"
-                  full="fa fa-star fa-lg"
-                  initialRate={parseFloat(business.average_rating)}
-                  fractions={1}
-                  readonly
-                />
-                <h3>{tagsContent}</h3>
-                <div className='business-show-title-row1'>
+                  <div className='business-show-title-row1'>
                   <div className='business-show-title-col'>
-                    {averageRating(business.average_rating)}<br/>
-                    {price[business.price]}<br/>
+                    <h1>{name}</h1>
+                    <Rating className='rating'
+                      empty="fa fa-star-o fa-lg"
+                      full="fa fa-star fa-lg"
+                      initialRate={parseFloat(business.average_rating)}
+                      fractions={1}
+                      readonly
+                    />
+                    {reviewNumber(business)}<br/>
+                    {price[business.price]}&nbsp;{tagsContent}
                   </div>
 
                   <div className='add-review-link business-show-title-col'>
@@ -125,7 +124,6 @@ class BusinessShow extends React.Component {
                 </div>
               </div>
             </div>
-
           <ReviewIndexContainer />
 
           </div>

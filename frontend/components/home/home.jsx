@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from 'react-rating';
-import { price } from '../search/business_index_item';
+import { reviewNumber, price } from '../../util/business_info_util';
 
 const HomeBusinessItem = ({ business }) => (
   <div className='home-business-item'>
@@ -9,14 +9,17 @@ const HomeBusinessItem = ({ business }) => (
       <img src={business.image_url} />
     </Link>
     <div className='card-content'>
-      <Link to={`/businesses/${business.id}`}>{business.name}</Link><br/>
+      <Link to={`/businesses/${business.id}`}>{business.name}</Link>
+      <div>
       <Rating className='rating'
         empty="fa fa-star-o fa-lg"
         full="fa fa-star fa-lg"
         initialRate={parseFloat(business.average_rating)}
         readonly
       />
-      {price[business.price]}<br/>
+      {reviewNumber(business)}
+      </div>
+      {price[business.price]}
     </div>
   </div>
 );

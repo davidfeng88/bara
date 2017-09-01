@@ -2,13 +2,7 @@ import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import values from 'lodash/values';
-
-export const averageRating = number => ( number ?
-  (`Average Rating: ${number.substring(0, 3)}`) :
-  (`No reviews yet`)
-);
-
-export const price = { 1: '$', 2: '$$', 3: '$$$', 4: '$$$$' };
+import { reviewNumber, price } from '../../util/business_info_util';
 
 const topReview = business => {
   let picture = null;
@@ -51,11 +45,11 @@ const BusinessIndexItem = ({ business, highlightBusiness }) => (
             empty="fa fa-star-o fa-lg"
             full="fa fa-star fa-lg"
             initialRate={parseFloat(business.average_rating)}
-
             readonly
           />
-          {averageRating(business.average_rating)}<br/>
-          {price[business.price]}<br/>
+          {reviewNumber(business)}
+          <br/>
+          {price[business.price]}
         </div>
         <div className='col2'>
           {business.address}<br/>

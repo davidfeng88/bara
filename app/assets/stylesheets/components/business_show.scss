@@ -78,27 +78,24 @@
   transition: 0.5s;
 }
 
-.add-review-link a {
-	flex: 1;
-  margin: 10px 0;
-	border: 1px solid #4D4D4D;
-	border-radius: 3px;
-	font-size: 14px;
-  font-weight: bold;
-	padding: 10px 12px;
-	color: white;
-	background-color: $yelpy-red;
+.add-review-link {
+  display: flex;
+  align-items: center;
+  a {
+  	display: inline-block;
+    margin: 10px 0;
+  	border: 1px solid #4D4D4D;
+  	border-radius: 3px;
+  	font-size: 14px;
+    font-weight: bold;
+  	padding: 10px 12px;
+  	color: white;
+  	background-color: $yelpy-red;
+  }
 }
 
 .add-review-link a:hover {
 	cursor: pointer;
 	background-color: #ed0008;
   text-decoration: none;
-}
-
-// rating
-.rating {
-  color: #f15c4f;
-  display: block;
-  margin: 6px 0;
 }
