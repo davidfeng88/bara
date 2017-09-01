@@ -3,16 +3,15 @@ import isEqual from 'lodash/isEqual';
 import BusinessIndex from './business_index';
 import SampleSearch from './sample_search';
 
-const PriceButton = props => (
+const PriceButton = ({label, name, tooltip, checked, onChange }) => (
   <label className='price-button'>
-    <input type='checkbox' {...props} />
+    <input type='checkbox' name={name}
+      checked={checked} onChange={onChange} />
     <div className='button'>
       <div className='tooltip-wrapper'>
-        <span className='tooltip'>
-        {props.tooltip}
-        </span>
+        <span className='tooltip'>{tooltip}</span>
       </div>
-      {props.label}
+      {label}
     </div>
   </label>
 );
