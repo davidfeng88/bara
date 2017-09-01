@@ -7,16 +7,14 @@ import IndexMapContainer from './index_map_container';
 class BusinessIndex extends React.Component {
 
   render() {
-    let businessesEntries;
-    let {businesses} = this.props;
-    if (businesses.length === 0) {
-      businessesEntries = <h3>Sorry, nothing matched your search!</h3>;
-    } else {
-      businessesEntries = businesses.map(business => (
-          <BusinessIndexItemContainer key={business.id} business={business} />
-        )
-      );
-    }
+    let { businesses } = this.props;
+    let businessesEntries = businesses.length === 0 ? (
+      <h3>Sorry, nothing matched your search!</h3>
+    ) : (
+      businesses.map( business =>
+        <BusinessIndexItemContainer key={business.id} business={business} />
+      )
+    );
     return(
       <div className='business-index-main'>
         <div className='center index-grid-row1'>

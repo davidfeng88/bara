@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Rating from 'react-rating';
 
 class ReviewIndexItem extends React.Component {
   constructor(props) {
@@ -46,7 +47,12 @@ class ReviewIndexItem extends React.Component {
           </div>
         </div>
         <div className='review-index-right'>
-          <div className='rating'> {this.rating(review.rating)} </div>
+          <Rating className='rating'
+            empty="fa fa-star-o fa-lg"
+            full="fa fa-star fa-lg"
+            initialRate={review.rating}
+            readonly
+          />
           <div> {review.body} </div>
         </div>
       </div>

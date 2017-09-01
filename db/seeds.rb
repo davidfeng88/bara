@@ -313,7 +313,7 @@ Business.create(
   price: 2,
   url: "imperialwokwp.com",
   phone: "(914) 686-2700",
-  image: File.open("app/assets/images/business/Chinese.jpg")
+  image: File.open("app/assets/images/business/Noodles.jpg")
 )
 
 business_ids = (Business.first.id..Business.last.id).to_a

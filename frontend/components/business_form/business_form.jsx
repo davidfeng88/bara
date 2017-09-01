@@ -2,7 +2,6 @@ import React from 'react';
 
 import ErrorList from '../error_list';
 
-
 class BusinessForm extends React.Component {
   constructor(props) {
     super(props);

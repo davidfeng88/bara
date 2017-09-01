@@ -9,6 +9,7 @@ import ReviewFormContainer from './review_form/review_form_container';
 import SessionFormContainer from './session_form/session_form_container';
 import BusinessShowContainer from './business_show/business_show_container';
 import SearchContainer from './search/search_container';
+import HomeContainer from './home/home_container';
 import FourZeroFour from './four_zero_four';
 
 import Footer from './footer';
@@ -30,6 +31,7 @@ const App = () => (
         <AuthRoute path="/signup" component={SessionFormContainer} />
         <Route path='/businesses/:id' component={BusinessShowContainer} />
         <Route path='/businesses' component={SearchContainer} />
+        <Route exact path='/' component={HomeContainer} />
         <Route component={FourZeroFour} />
       </Switch>
     </div>
