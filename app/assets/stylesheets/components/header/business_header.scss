@@ -24,93 +24,88 @@ business-logo {
   margin: 0 20px;
   text-align: center;
   font-size: 14px;
+
+  .input {
+    display: flex;
+    height: 26px;
+    justify-content: flex-start;
+    background-color: white;
+    padding: 5px 11px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .find {
+    display: flex;
+    justify-content: flex-start;
+    width: 325px;
+    padding-right: 11px;
+  }
+
+  .near {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 11px;
+    width: 325px;
+    border-left: 1px rgb(204, 204, 204) solid;
+  }
+
+  label {
+    padding-top: 5px;
+    font-weight: bold;
+    color: black;
+    margin-right: 5px;
+  }
+
+  input {
+    border: none;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .submit {
+    border: none;
+    color: white;
+    background-color: #be2020;
+    width: 66px;
+    height: 36px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+  }
+
+  .submit:hover {
+    background-color: #a91c1c;
+  }
+
+  .submit:focus {
+    outline: none;
+  }
 }
 
-.business-search .input {
-  display: flex;
-  height: 26px;
-  justify-content: flex-start;
-  background-color: white;
-  padding: 5px 11px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
+.business-signup {
+  a {
+    text-align: center;
+    width: 80px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    display: block;
+    padding: 10px 12px;
+    background-color: rgb(189, 31, 31);
+    border-radius: 4px;
+    vertical-align: middle;
+  }
 
-.business-search .find {
-  display: flex;
-  justify-content: flex-start;
-  width: 325px;
-  padding-right: 11px;
-}
-
-.business-search .near {
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 11px;
-  width: 325px;
-  border-left: 1px rgb(204, 204, 204) solid;
-}
-
-.business-search input {
-  border: none;
-}
-
-.business-search input:focus {
-  outline: none;
-}
-
-.business-search label {
-  padding-top: 5px;
-  font-weight: bold;
-  color: black;
-  margin-right: 5px;
-}
-
-.business-search .submit {
-  border: none;
-  color: white;
-  background-color: #be2020;
-  width: 66px;
-  height: 36px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.business-search .submit:hover {
-  background-color: #a91c1c;
-  cursor: pointer;
-}
-
-.business-search .submit:focus {
-  outline: none;
-}
-
-
-//
-business-signup {
-  padding: 10% 0;
-}
-
-.business-signup a {
-  text-align: center;
-  width: 80px;
-  font-size: 14px;
-  color: white;
-  font-weight: bold;
-  display: block;
-  padding: 10px 12px;
-  background-color: rgb(189, 31, 31);
-  border-radius: 4px;
-  vertical-align: middle;
-}
-
-.business-signup:hover a {
-  background-color: #a71c1c;
-  text-decoration: none;
+  &:hover a {
+    background-color: #a71c1c;
+    text-decoration: none;
+  }
 }
 
 // row 2
-
 .business-header-row2-wrapper {
   vertical-align: middle;
   height: 27px;
@@ -129,40 +124,22 @@ business-signup {
   height: 100%;
 }
 
-.business-login {
-  line-height: 27px;
-}
-
-.business-login a {
-  display: block;
-  padding: 0 12px;
-  width: 80px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-}
-
-.business-demo:hover, .business-login a:hover {
-  text-decoration: none;
-  background-color: rgba(51,51,51,0.3);
-}
-
 .business-header-links {
   display: flex;
   color: white;
   line-height: 27px;
-}
 
-.business-header-links a {
-  display: block;
-  padding: 0 15px;
-  color: white;
-  margin-right: 5px;
-}
+  a {
+    display: block;
+    padding: 0 15px;
+    color: white;
+    margin-right: 5px;
+  }
 
-.business-header-links a:hover {
-  text-decoration: none;
-  background-color: rgba(51,51,51,0.3);
+  a:hover {
+    text-decoration: none;
+    background-color: rgba(51,51,51,0.3);
+  }
 }
 
 .business-demo {
@@ -172,4 +149,22 @@ business-signup {
   margin-right: 20px;
   text-align: center;
   line-height: 27px;
+}
+
+.business-login {
+  line-height: 27px;
+
+  a {
+    display: block;
+    padding: 0 12px;
+    width: 80px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.business-demo:hover, .business-login a:hover {
+  text-decoration: none;
+  background-color: rgba(51,51,51,0.3);
 }

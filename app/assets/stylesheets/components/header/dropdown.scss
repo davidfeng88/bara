@@ -1,3 +1,19 @@
+.dropdown-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  // background: rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-container {
+  position: relative;
+  width: 960px;
+  margin: 0 auto;
+}
+
 .dropdown-box {
   background-color: white;
   border-radius: 3px;
@@ -11,12 +27,6 @@
   top: 60px;
   right: 0;
   z-index: 1;
-}
-
-.dropdown-container {
-  position: relative;
-  width: 960px;
-  margin: 0 auto;
 }
 
 .dropdown-box-row1 {
@@ -35,7 +45,6 @@
 .dropdown-avatar {
   width: 100%;
   height: auto;
-
 }
 
 .dropdown-name {
@@ -50,19 +59,9 @@
   color: #0073bb;
   font-size: 14px;
   width: 51px;
-}
-
-.dropdown-box-row2:hover {
-  text-decoration: underline;
   cursor: pointer;
-}
 
-.dropdown-background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  // background: rgba(0, 0, 0, 0.5);
+  &:hover {
+    text-decoration: underline;
+  }
 }

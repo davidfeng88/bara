@@ -11,66 +11,80 @@
   color: white;
 }
 
-// group css
-
 .home-bar-right {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.home-demo, .home-login, .home-signup {
+.home-demo {
   border-radius: 4px;
   border: 2px solid;
   cursor: pointer;
-}
-
-.home-login > a, .home-signup > a {
-  text-decoration: none;
-  color: white;
-}
-
-// individual divs
-.home-demo {
   padding: 8px 24px;
   border-color: white;
+
+  &:hover {
+    background: white;
+    color: #666;
+  }
+
+  &:active {
+    color: #999;
+  }
 }
 
 .home-login {
+  border-radius: 4px;
+  border: 2px solid;
+  cursor: pointer;
   border-color: transparent;
   margin-right: 10px;
-}
 
-.home-login > a {
-  display: block; // need it for vertical padding
-  padding: 9px 12px;
+  a {
+    text-decoration: none;
+    color: white;
+    display: block; // need it for vertical padding
+    padding: 9px 12px;
+  }
+
+  &:hover {
+    border-bottom: 2px solid white;
+  }
+
+  &:active {
+    a {
+      color: #999;
+    }
+  }
 }
 
 .home-signup {
+  border-radius: 4px;
+  border: 2px solid;
+  cursor: pointer;
   border-color: white;
-}
 
-.home-signup > a {
-  display: block; // need it for vertical padding
-  padding: 8px 24px;
-}
+  a {
+    text-decoration: none;
+    color: white;
+    display: block; // need it for vertical padding
+    padding: 8px 24px;
+  }
 
-// hover
-.home-demo:hover, .home-signup:hover {
-  background: white;
-}
+  &:hover {
+    background: white;
 
-.home-demo:hover, .home-signup:hover a {
-  color: #666;
-}
+    a {
+      color: #666;
+    }
+  }
 
-.home-login:hover {
-  border-bottom: 2px solid white;
-}
-
-// active
-.home-demo:active, .home-login:active a, .home-signup:active a {
-  color: #999;
+  &:active {
+    a {
+      color: #999;
+    }
+  }
 }
 
 // when logged in
@@ -82,14 +96,14 @@
   cursor: pointer;
   overflow: hidden;
   width: 58px;
-}
 
-.dropdown:hover {
-  background-color: rgba(0, 0, 0, 0.35);
-}
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.35);
+  }
 
-.dropdown:active {
+  &:active {
   background-color: rgba(0, 0, 0, 0.45);
+  }
 }
 
 .home-avatar {
