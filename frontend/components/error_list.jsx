@@ -1,21 +1,20 @@
 import React from 'react';
 
-const ErrorList = ({ errors, clearErrors }) => {
-  if (errors.length === 0) return null;
-  const errorItems = JSON.parse(errors).map((error, idx) => (
-    <li key={ `error-${idx}` }>{ error }</li>
-  ));
+const errorItems = errors => (
+  JSON.parse(errors).map(
+    (error, idx) => (<li key={ `error-${idx}` }>{ error }</li>)
+  )
+);
 
-  return (
+const ErrorList = ({ errors, clearErrors }) => (
+  errors.length === 0 ? null : (
     <div className="error-list">
-      <ul >
-        { errorItems }
-      </ul>
+      <ul>{errorItems(errors)}</ul>
       <div onClick={clearErrors} className='dismiss-error'>
       ×
       </div>
     </div>
-  );
-};
+  )
+);
 
 export default ErrorList;
