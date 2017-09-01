@@ -1,17 +1,12 @@
 .dropdown-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   background: transparent;
   // background: rgba(0, 0, 0, 0.5);
-}
-
-.dropdown-container {
-  position: relative;
-  width: 960px;
-  margin: 0 auto;
 }
 
 .dropdown-box {
@@ -24,9 +19,21 @@
   width: 190px;
 
   position: absolute;
-  top: 60px;
+  top: 40px;
   right: 0;
-  z-index: 1;
+  z-index: 2;
+
+  // the triangle
+  &::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    right: 10%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+  }
 }
 
 .dropdown-box-row1 {
