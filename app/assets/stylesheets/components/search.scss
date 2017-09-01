@@ -58,9 +58,47 @@ h1.search-title {
   cursor: pointer;
   text-align: center;
   margin-right: -1px;
+  position: relative;
+
+  .tooltip-wrapper {
+    font-size: 12px;
+    font-weight: bold;
+    visibility: hidden;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 2;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -75px;
+
+    .tooltip {
+      background-color: rgba(0,0,0,0.8);
+      color: #fff;
+      text-align: center;
+      border-radius: 4px;
+      padding: 10px;
+    }
+
+    .tooltip::after {
+      content: " ";
+      position: absolute;
+      top: 100%; /* At the bottom of the tooltip */
+      left: 50%;
+      margin-left: -8px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: rgba(0,0,0,0.8) transparent transparent transparent;
+    }
+  }
 
   &:hover {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+    .tooltip-wrapper {
+      visibility: visible;
+    }
   }
 }
 

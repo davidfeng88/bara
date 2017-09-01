@@ -6,7 +6,14 @@ import SampleSearch from './sample_search';
 const PriceButton = props => (
   <label className='price-button'>
     <input type='checkbox' {...props} />
-    <div className='button'>{props.label}</div>
+    <div className='button'>
+      <div className='tooltip-wrapper'>
+        <span className='tooltip'>
+        {props.tooltip}
+        </span>
+      </div>
+      {props.label}
+    </div>
   </label>
 );
 
@@ -74,18 +81,14 @@ class Search extends React.Component {
     let prices = this.props.filters.prices ? this.props.filters.prices : [];
     return(
       <div className='price-buttons'>
-        <PriceButton label='$' name='1'
-          checked={prices.includes("1")}
-          onChange={this.handleChange} />
-        <PriceButton label='$$' name='2'
-          checked={prices.includes("2")}
-          onChange={this.handleChange} />
-        <PriceButton label='$$$' name='3'
-          checked={prices.includes("3")}
-          onChange={this.handleChange} />
-        <PriceButton label='$$$$' name='4'
-          checked={prices.includes("4")}
-          onChange={this.handleChange} />
+        <PriceButton label='$' name='1' tooltip='Inexpensive'
+          checked={prices.includes("1")} onChange={this.handleChange} />
+        <PriceButton label='$$' name='2' tooltip='Moderate'
+          checked={prices.includes("2")} onChange={this.handleChange} />
+        <PriceButton label='$$$' name='3' tooltip='Pricey'
+          checked={prices.includes("3")} onChange={this.handleChange} />
+        <PriceButton label='$$$$' name='4' tooltip='Ultra High-End'
+          checked={prices.includes("4")} onChange={this.handleChange} />
       </div>
     );
   }
