@@ -3,6 +3,24 @@ import { Link } from 'react-router-dom';
 import Rating from 'react-rating';
 import { reviewNumber, price, tagContent } from '../../util/business_info_util';
 
+const Categories = () => (
+  <div className='home-categories'>
+    <h2>Browse Businesses by Category</h2>
+    <div className='category-cards'>
+      <Link className='category-card'
+        to="/businesses/?name=&location=New%20York">
+        <img src={window.staticImages.restaurants} />
+        <p>Restaurants</p>
+      </Link>
+      <Link className='category-card'
+        to="/businesses/?name=&location=New%20York&tag=nightlife">
+        <img src={window.staticImages.nightlife} />
+        <p>Nightlife</p>
+      </Link>
+    </div>
+  </div>
+);
+
 const HomeBusinessItem = ({ business }) => (
   <div className='home-business-item'>
     <Link to={`/businesses/${business.id}`}>
@@ -26,7 +44,7 @@ const HomeBusinessItem = ({ business }) => (
   </div>
 );
 
-class Home extends React.Component {
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {loaded: false};
@@ -40,7 +58,6 @@ class Home extends React.Component {
     );
   }
 
-// <BusinessIndex businesses={businesses} />
   newBusinesses(businesses) {
     return this.state.loaded ? (
       <div className='home-businesses'>
@@ -58,12 +75,12 @@ class Home extends React.Component {
   render() {
     let { businesses } = this.props;
     return(
-      <div className='center'>
-        {this.newBusinesses(businesses)}
-        <div>Categories are under construction!</div>
+      <div>
+        <div className='center'>
+          {this.newBusinesses(businesses)}
+          <Categories />
+        </div>
       </div>
     );
   }
 }
-
-export default Home;
