@@ -40,6 +40,10 @@ business-logo {
     justify-content: flex-start;
     width: 325px;
     padding-right: 11px;
+
+    input {
+      width: 285px;
+    }
   }
 
   .near {
@@ -48,6 +52,10 @@ business-logo {
     padding-left: 11px;
     width: 325px;
     border-left: 1px rgb(204, 204, 204) solid;
+
+    input {
+      width: 282px;
+    }
   }
 
   label {

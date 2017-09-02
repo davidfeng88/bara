@@ -1,8 +1,11 @@
 .home-businesses {
-  padding: 12px 0 72px 0;
+  padding: 40px 0;
 
-  h3 {
+  h2 {
+    font-size: 21px;
     text-align: center;
+    margin-top: 0;
+    margin-bottom: 24px;
   }
 }
 
@@ -35,6 +38,7 @@
 
 .home-categories {
   // background-color: $background-color;
+  border-top: 1px solid $border-color;
   padding: 36px 0;
   h2 {
     font-size: 21px;

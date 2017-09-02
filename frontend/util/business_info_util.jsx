@@ -15,11 +15,11 @@ export const reviewNumber = business => {
 };
 
 const tagEntry = tag => {
-  let { label } = tag;
+  let label = encodeURIComponent(tag.label);
   let tagLink = `/businesses/?tag=${label}`;
   return (
     <Link key={label} to={tagLink}>
-      {label}
+      {tag.label}
     </Link>
   );
 };

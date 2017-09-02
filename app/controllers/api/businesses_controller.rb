@@ -4,10 +4,10 @@ class Api::BusinessesController < ApplicationController
   def index
     businesses = Business.all.includes(:tags)
 
-    if (params[:tag] && Tag.find_by(label: params[:tag]))
-      businesses = Tag.find_by(label: params[:tag].downcase).businesses
+    if (params[:tag] && Tag.find_by(label: params[:tag].split.map(&:capitalize).join(' ')))
+      businesses = Tag.find_by(label: params[:tag].split.map(&:capitalize).join(' ')).businesses
     end
-    
+
     if (params[:name] && params[:name] != "")
       businesses =
       businesses.where('lower(name) LIKE ?', "%#{params[:name].downcase}%")

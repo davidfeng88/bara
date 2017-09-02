@@ -4,19 +4,21 @@ import Rating from 'react-rating';
 import { reviewNumber, price, tagContent } from '../../util/business_info_util';
 
 const Categories = () => (
-  <div className='home-categories'>
-    <h2>Browse Businesses by Category</h2>
-    <div className='category-cards'>
-      <Link className='category-card'
-        to="/businesses/?name=&location=New%20York">
-        <img src={window.staticImages.restaurants} />
-        <p>Restaurants</p>
-      </Link>
-      <Link className='category-card'
-        to="/businesses/?name=&location=New%20York&tag=nightlife">
-        <img src={window.staticImages.nightlife} />
-        <p>Nightlife</p>
-      </Link>
+  <div className='center'>
+    <div className='home-categories'>
+      <h2>Browse Businesses by Category</h2>
+      <div className='category-cards'>
+        <Link className='category-card'
+          to="/businesses/?name=&location=New%20York">
+          <img src={window.staticImages.restaurants} />
+          <p>Restaurants</p>
+        </Link>
+        <Link className='category-card'
+          to="/businesses/?name=&location=New%20York&tag=nightlife">
+          <img src={window.staticImages.nightlife} />
+          <p>Nightlife</p>
+        </Link>
+      </div>
     </div>
   </div>
 );
@@ -61,7 +63,7 @@ export default class Home extends React.Component {
   newBusinesses(businesses) {
     return this.state.loaded ? (
       <div className='home-businesses'>
-        <h3>Hot & New Businesses</h3>
+        <h2>Hot & New Businesses</h2>
         <div className='home-businesses-list'>
         {businesses.slice(0, 3).map( business =>
           <HomeBusinessItem key={business.id} business={business} />
@@ -78,8 +80,8 @@ export default class Home extends React.Component {
       <div>
         <div className='center'>
           {this.newBusinesses(businesses)}
-          <Categories />
         </div>
+          <Categories />
       </div>
     );
   }

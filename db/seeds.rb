@@ -1,6 +1,8 @@
 # Users
 User.destroy_all
+
 User.create(username: 'Guest', password: 'password')
+
 default_users = [
   'David Feng',
 
@@ -179,22 +181,6 @@ Business.create(
 
 Business.create(
   author_id: user_ids.sample,
-  name: "Buddakan",
-  address: "75 9th Ave",
-  lat: 40.742287,
-  lng: -74.004819,
-  city: 'New York',
-  state: 'NY',
-  zipcode: 10011,
-  price: 3,
-  url: "buddakannyc.com",
-  phone: "(212) 989-6699",
-  image: File.open("app/assets/images/business/Chinese.jpg"),
-  tag_ids: [tag_ids[2], tag_ids[7]],
-)
-
-Business.create(
-  author_id: user_ids.sample,
   name: "Woorijip Authentic Korean Food",
   address: "12 W 32nd St",
   lat: 40.747327,
@@ -243,48 +229,18 @@ Business.create(
 
 Business.create(
   author_id: user_ids.sample,
-  name: "Foxy Greens",
-  address: "1049 1st Ave",
-  lat: 40.758689,
-  lng: -73.962948,
+  name: "The Dead Rabbit",
+  address: "30 Water St",
+  lat: 40.703290,
+  lng: -74.011031,
   city: 'New York',
   state: 'NY',
-  zipcode: 10022,
-  price: 1,
-  phone: "(646) 649-2089",
-  image: File.open("app/assets/images/business/American.jpg"),
-  tag_ids: [tag_ids[5]],
-)
-
-Business.create(
-  author_id: user_ids.sample,
-  name: "Dinnertable",
-  address: "206 Ave A",
-  lat: 40.729435,
-  lng: -73.980731,
-  city: 'New York',
-  state: 'NY',
-  zipcode: 10009,
-  price: 3,
-  url: "dinnertable.nyc",
-  image: File.open("app/assets/images/business/Japanese.jpg"),
-  tag_ids: [tag_ids[1], tag_ids[3], tag_ids[7]],
-)
-
-Business.create(
-  author_id: user_ids.sample,
-  name: "The Burrito Box",
-  address: "885 9th Ave",
-  lat: 40.768248,
-  lng: -73.985716,
-  city: 'New York',
-  state: 'NY',
-  zipcode: 10019,
-  price: 1,
-  url: "burritobox.com",
-  phone: "(212) 489-6889",
-  image: File.open("app/assets/images/business/Mexican.jpg"),
-  tag_ids: [tag_ids[0]],
+  zipcode: 10004,
+  price: 2,
+  url: "deadrabbitnyc.com",
+  phone: "(646) 422-7906",
+  image: File.open("app/assets/images/business/Salmon.jpg"),
+  tag_ids: [tag_ids[1], tag_ids[9]],
 )
 
 Business.create(
@@ -321,18 +277,64 @@ Business.create(
 
 Business.create(
   author_id: user_ids.sample,
-  name: "The Dead Rabbit",
-  address: "30 Water St",
-  lat: 40.703290,
-  lng: -74.011031,
+  name: "Foxy Greens",
+  address: "1049 1st Ave",
+  lat: 40.758689,
+  lng: -73.962948,
   city: 'New York',
   state: 'NY',
-  zipcode: 10004,
-  price: 2,
-  url: "deadrabbitnyc.com",
-  phone: "(646) 422-7906",
-  image: File.open("app/assets/images/business/Salmon.jpg"),
-  tag_ids: [tag_ids[1], tag_ids[9]],
+  zipcode: 10022,
+  price: 1,
+  phone: "(646) 649-2089",
+  image: File.open("app/assets/images/business/American.jpg"),
+  tag_ids: [tag_ids[5]],
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Buddakan",
+  address: "75 9th Ave",
+  lat: 40.742287,
+  lng: -74.004819,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10011,
+  price: 3,
+  url: "buddakannyc.com",
+  phone: "(212) 989-6699",
+  image: File.open("app/assets/images/business/Chinese.jpg"),
+  tag_ids: [tag_ids[2], tag_ids[7]],
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "Dinnertable",
+  address: "206 Ave A",
+  lat: 40.729435,
+  lng: -73.980731,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10009,
+  price: 3,
+  url: "dinnertable.nyc",
+  image: File.open("app/assets/images/business/Japanese.jpg"),
+  tag_ids: [tag_ids[1], tag_ids[3], tag_ids[7]],
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "The Burrito Box",
+  address: "885 9th Ave",
+  lat: 40.768248,
+  lng: -73.985716,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10019,
+  price: 1,
+  url: "burritobox.com",
+  phone: "(212) 489-6889",
+  image: File.open("app/assets/images/business/Mexican.jpg"),
+  tag_ids: [tag_ids[0]],
 )
 
 business_ids = (Business.first.id..Business.last.id).to_a
