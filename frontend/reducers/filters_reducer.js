@@ -4,6 +4,7 @@ const defaultFilters = Object.freeze({
   name: "",
   location: "",
   prices: "",
+  tag: "",
 });
 
 const FiltersReducer = (state = defaultFilters, action) => {

@@ -36,7 +36,9 @@ user_ids = (User.first.id..User.last.id).to_a
 Tag.destroy_all
 
 default_tags = [
-  'Mexican', 'Taco', 'Chinese'
+  'Mexican', 'Nightlife', 'Chinese', 'Japanese', 'Seafood',
+  'American', 'French', 'Asian Fusion', 'Korean', 'Irish',
+  'Italian'
 ]
 
 default_tags.each do |label|
@@ -61,7 +63,7 @@ Business.create(
   url: "conmigonyc.com",
   phone: "(212) 256-0056",
   image: File.open("app/assets/images/business/Mexican.jpg"),
-  tag_ids: [tag_ids.first, tag_ids.last]
+  tag_ids: [tag_ids[0], tag_ids[1]],
 )
 
 Business.create(
@@ -76,6 +78,7 @@ Business.create(
   price: 1,
   phone: "(212) 288-8066",
   image: File.open("app/assets/images/business/Noodles.jpg"),
+  tag_ids: [tag_ids[2]],
 )
 
 Business.create(
@@ -90,7 +93,8 @@ Business.create(
   price: 2,
   url: "ippudony.com",
   phone: "(212) 388-0088",
-  image: File.open("app/assets/images/business/Japanese.jpg")
+  image: File.open("app/assets/images/business/Japanese.jpg"),
+  tag_ids: [tag_ids[3]],
 )
 
 Business.create(
@@ -105,7 +109,8 @@ Business.create(
   price: 2,
   url: "joeshanghairestaurants.com",
   phone: "(212) 233-8888",
-  image: File.open("app/assets/images/business/Chinese.jpg")
+  image: File.open("app/assets/images/business/Chinese.jpg"),
+  tag_ids: [tag_ids[2], tag_ids[4]],
 )
 
 Business.create(
@@ -120,7 +125,8 @@ Business.create(
   price: 4,
   url: "dovetailnyc.com",
   phone: "(212) 362-3800",
-  image: File.open("app/assets/images/business/French.jpg")
+  image: File.open("app/assets/images/business/French.jpg"),
+  tag_ids: [tag_ids[5], tag_ids[6]],
 )
 
 Business.create(
@@ -135,7 +141,8 @@ Business.create(
   price: 3,
   url: "printrestaurant.com",
   phone: "(212) 757-2224",
-  image: File.open("app/assets/images/business/American.jpg")
+  image: File.open("app/assets/images/business/American.jpg"),
+  tag_ids: [tag_ids[5]],
 )
 
 Business.create(
@@ -150,7 +157,8 @@ Business.create(
   price: 2,
   url: "burgerandlobster.com/en",
   phone: "(646) 833-7532",
-  image: File.open("app/assets/images/business/Seafood.jpg")
+  image: File.open("app/assets/images/business/Seafood.jpg"),
+  tag_ids: [tag_ids[5], tag_ids[4]],
 )
 
 Business.create(
@@ -165,7 +173,8 @@ Business.create(
   price: 4,
   url: "cafeboulud.com/nyc",
   phone: "(212) 772-2600",
-  image: File.open("app/assets/images/business/French.jpg")
+  image: File.open("app/assets/images/business/French.jpg"),
+  tag_ids: [tag_ids[6]],
 )
 
 Business.create(
@@ -180,7 +189,8 @@ Business.create(
   price: 3,
   url: "buddakannyc.com",
   phone: "(212) 989-6699",
-  image: File.open("app/assets/images/business/Chinese.jpg")
+  image: File.open("app/assets/images/business/Chinese.jpg"),
+  tag_ids: [tag_ids[2], tag_ids[7]],
 )
 
 Business.create(
@@ -195,7 +205,8 @@ Business.create(
   price: 1,
   url: "woorijipnyc.com",
   phone: "(212) 244-1115",
-  image: File.open("app/assets/images/business/Korean.jpg")
+  image: File.open("app/assets/images/business/Korean.jpg"),
+  tag_ids: [tag_ids[8]],
 )
 
 Business.create(
@@ -210,22 +221,8 @@ Business.create(
   price: 4,
   url: "agernrestaurant.com",
   phone: "(646) 568-4018",
-  image: File.open("app/assets/images/business/HighEnd.jpg")
-)
-
-Business.create(
-  author_id: user_ids.sample,
-  name: "The Dead Rabbit",
-  address: "30 Water St",
-  lat: 40.703290,
-  lng: -74.011031,
-  city: 'New York',
-  state: 'NY',
-  zipcode: 10004,
-  price: 2,
-  url: "deadrabbitnyc.com",
-  phone: "(646) 422-7906",
-  image: File.open("app/assets/images/business/Salmon.jpg")
+  image: File.open("app/assets/images/business/HighEnd.jpg"),
+  tag_ids: [tag_ids[1]],
 )
 
 Business.create(
@@ -240,7 +237,8 @@ Business.create(
   price: 1,
   url: "ilmattonetribeca.com",
   phone: "(646) 964-4623",
-  image: File.open("app/assets/images/business/Italian.jpg")
+  image: File.open("app/assets/images/business/Italian.jpg"),
+  tag_ids: [tag_ids[10]],
 )
 
 Business.create(
@@ -254,7 +252,8 @@ Business.create(
   zipcode: 10022,
   price: 1,
   phone: "(646) 649-2089",
-  image: File.open("app/assets/images/business/American.jpg")
+  image: File.open("app/assets/images/business/American.jpg"),
+  tag_ids: [tag_ids[5]],
 )
 
 Business.create(
@@ -268,7 +267,8 @@ Business.create(
   zipcode: 10009,
   price: 3,
   url: "dinnertable.nyc",
-  image: File.open("app/assets/images/business/Japanese.jpg")
+  image: File.open("app/assets/images/business/Japanese.jpg"),
+  tag_ids: [tag_ids[1], tag_ids[3], tag_ids[7]],
 )
 
 Business.create(
@@ -283,7 +283,8 @@ Business.create(
   price: 1,
   url: "burritobox.com",
   phone: "(212) 489-6889",
-  image: File.open("app/assets/images/business/Mexican.jpg")
+  image: File.open("app/assets/images/business/Mexican.jpg"),
+  tag_ids: [tag_ids[0]],
 )
 
 Business.create(
@@ -298,7 +299,8 @@ Business.create(
   price: 2,
   url: "omandarin.com",
   phone: "(914) 437-9168",
-  image: File.open("app/assets/images/business/Chinese.jpg")
+  image: File.open("app/assets/images/business/Chinese.jpg"),
+  tag_ids: [tag_ids[2]],
 )
 
 Business.create(
@@ -313,7 +315,24 @@ Business.create(
   price: 2,
   url: "imperialwokwp.com",
   phone: "(914) 686-2700",
-  image: File.open("app/assets/images/business/Noodles.jpg")
+  image: File.open("app/assets/images/business/Noodles.jpg"),
+  tag_ids: [tag_ids[2]],
+)
+
+Business.create(
+  author_id: user_ids.sample,
+  name: "The Dead Rabbit",
+  address: "30 Water St",
+  lat: 40.703290,
+  lng: -74.011031,
+  city: 'New York',
+  state: 'NY',
+  zipcode: 10004,
+  price: 2,
+  url: "deadrabbitnyc.com",
+  phone: "(646) 422-7906",
+  image: File.open("app/assets/images/business/Salmon.jpg"),
+  tag_ids: [tag_ids[1], tag_ids[9]],
 )
 
 business_ids = (Business.first.id..Business.last.id).to_a
@@ -321,7 +340,7 @@ business_ids = (Business.first.id..Business.last.id).to_a
 # Reviews
 Review.destroy_all
 
-120.times do
+270.times do
   random = rand(15)
   case random
   when 0

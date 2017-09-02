@@ -28,6 +28,7 @@ class Search extends React.Component {
       name: this.props.filters.name,
       location: this.props.filters.location,
       prices: this.props.filters.prices,
+      tag: this.props.filters.tag,
     }).then( () => {
       this.setState({loaded: true});
       }
@@ -37,6 +38,7 @@ class Search extends React.Component {
   componentWillUpdate(newProps) {
     if (newProps.filters.name !== this.props.filters.name
       || newProps.filters.location !== this.props.filters.location
+      || newProps.filters.tag !== this.props.filters.tag
       || !isEqual(newProps.filters.prices, this.props.filters.prices))
     {
       this.setState({loaded: false});
@@ -44,6 +46,7 @@ class Search extends React.Component {
         name: newProps.filters.name,
         location: newProps.filters.location,
         prices: newProps.filters.prices,
+        tag: newProps.filters.tag,
       }).then( () => {
         this.setState({loaded: true});
         }

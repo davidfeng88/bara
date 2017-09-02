@@ -2,7 +2,7 @@ import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import values from 'lodash/values';
-import { reviewNumber, price } from '../../util/business_info_util';
+import { reviewNumber, price, tagContent } from '../../util/business_info_util';
 
 const topReview = business => {
   let picture = null;
@@ -49,7 +49,7 @@ const BusinessIndexItem = ({ business, highlightBusiness }) => (
           />
           {reviewNumber(business)}
           <br/>
-          {price[business.price]}
+          {price[business.price]}{tagContent(business)}
         </div>
         <div className='col2'>
           {business.address}<br/>

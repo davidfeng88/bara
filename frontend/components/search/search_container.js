@@ -9,17 +9,20 @@ const mapStateToProps = (state, ownProps) => {
   let name = "";
   let location = "";
   let prices = [];
+  let tag = "";
   if (ownProps.location.search !== "") {
     const parsed = queryString.parse(
       ownProps.location.search, {arrayFormat: 'bracket'});
     name = parsed.name ? parsed.name : "";
     location = parsed.location ? parsed.location : "";
+    tag = parsed.tag ? parsed.tag : "";
     prices = parsed.prices;
   }
   let filters = {
     name,
     location,
     prices,
+    tag,
   };
   return({
     businesses: businessesToArray(state),

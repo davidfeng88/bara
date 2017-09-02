@@ -9,6 +9,8 @@
 #
 
 class Tag < ActiveRecord::Base
+  validates :label, presence: true, uniqueness: true
+
   has_many :taggings, dependent: :destroy, inverse_of: :tag
   has_many :businesses, through: :taggings
 end

@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { reviewNumber, price } from '../../util/business_info_util';
+import { reviewNumber, price, tagContent } from '../../util/business_info_util';
 import ShowMap from './show_map';
 import ReviewIndexContainer from '../review_index/review_index_container';
 import ErrorList from '../error_list';
@@ -80,11 +80,7 @@ class BusinessShow extends React.Component {
       if (business) {
         const newReviewLink =
           `/businesses/${business.id}/reviews/new`;
-        let {name, image_url, tags } = business;
-        let tagsContent = [];
-        if (tags) {
-          tagsContent = tags.map( tag => tag.label);
-        }
+        let {name, image_url } = business;
         return(
           <div>
             <div className='business-show-title'>
@@ -100,9 +96,8 @@ class BusinessShow extends React.Component {
                       readonly
                     />
                     {reviewNumber(business)}<br/>
-                    {price[business.price]}&nbsp;{tagsContent}
+                    {price[business.price]}{tagContent(business)}
                   </div>
-
                   <div className='add-review-link business-show-title-col'>
                     <Link to={newReviewLink}>
                       <i className="fa fa-star fa-lg" aria-hidden="true"></i>
