@@ -1,23 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Links = () => (
+const HomeLinks = () => (
   <div className='home-header-links'>
-      <i className="fa fa-cutlery" aria-hidden="true"></i>&nbsp;&nbsp;
+      <span className='home-header-link'>
+      <i className="fa fa-cutlery" aria-hidden="true"></i>
       <Link to="/businesses/?name=&location=New%20York">
         Restaurants
       </Link>
-
-
-
+      </span>
+      <span className='home-header-link'>
+      <i className="fa fa-glass" aria-hidden="true"></i>
+      <Link to="/businesses/?name=&location=New%20York&tag=nightlife">
+        Nightlife
+      </Link>
+      </span>
   </div>
 );
 
-
-export default Links;
-
-// &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-// <i className="fa fa-glass" aria-hidden="true"></i>&nbsp;&nbsp;
-// <Link to="/businesses/?name=&location=New%20York">
-//   Nightlife
-// </Link>
+export default HomeLinks;

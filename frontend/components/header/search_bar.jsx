@@ -83,7 +83,7 @@ class SearchBar extends React.Component {
               value={this.state.location}
               onChange={this.update('location')}
               className="login-input"
-              placeholder="address, neighborhood, city, state or zip"
+              placeholder="address, city, state or zip"
             />
           </div>
         </div>
