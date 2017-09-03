@@ -40,8 +40,10 @@ class IndexMap extends React.Component {
 
   render() {
     return (
-      <div className="index-map" ref="map">
-        Map
+      <div className='css-sticky'>
+        <div className="index-map" ref="map">
+          Map
+        </div>
       </div>
     );
   }

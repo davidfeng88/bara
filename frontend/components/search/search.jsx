@@ -115,9 +115,7 @@ export default class Search extends React.Component {
               {this.searchResult(businesses)}
             </div>
             <div className='index-grid-col2'>
-              <div className='css-sticky'>
-               <IndexMapContainer businesses={businesses} />
-              </div>
+              <IndexMapContainer businesses={businesses} />
             </div>
           </div>
           <AddBusiness />
