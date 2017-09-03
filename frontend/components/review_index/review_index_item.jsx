@@ -2,62 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from 'react-rating';
 
-class ReviewIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  rating(number) {
-    switch (number) {
-      case 1:
-        return '☆';
-      case 2:
-        return '☆☆';
-      case 3:
-        return '☆☆☆';
-      case 4:
-        return '☆☆☆☆';
-      case 5:
-        return '☆☆☆☆☆';
-    }
-  }
-
-  EditLink() {
-    let { currentUser, review } = this.props;
-    const editReviewLink = `/reviews/${review.id}/edit`;
-    if (currentUser && currentUser.id === review.author_id) {
-      return <Link to={editReviewLink}>Edit Review</Link>;
-    } else {
-      return null;
-    }
-  }
-
-  render() {
-    const { review } = this.props;
-
-    return (
-      <div className='review-index-item'>
-        <div className='review-index-left' >
-          <div className='review-index-pic'>
-            <img src={review.author.avatar_url} />
-          </div>
-          <div className='review-index-col2'>
-            <div className='review-author'>{review.author.username}</div>
-            {this.EditLink()}
-          </div>
+const ReviewIndexItem = ({ currentUser, review }) => {
+  const editReviewString = `/reviews/${review.id}/edit`;
+  const editLink = (currentUser && currentUser.id === review.author_id) ?
+    <Link to={editReviewString}>Edit Review</Link>
+    : null;
+  return (
+    <div className='review-index-item'>
+      <div className='review-index-left' >
+        <div className='review-index-pic'>
+          <img src={review.author.avatar_url} />
         </div>
-        <div className='review-index-right'>
-          <Rating className='rating'
-            empty="fa fa-star-o fa-lg"
-            full="fa fa-star fa-lg"
-            initialRate={review.rating}
-            readonly
-          />
-          <div> {review.body} </div>
+        <div className='review-index-col2'>
+          <div className='review-author'>{review.author.username}</div>
+          {editLink}
         </div>
       </div>
-    );
-  }
-}
+      <div className='review-index-right'>
+        <Rating className='rating'
+          empty="fa fa-star-o fa-lg"
+          full="fa fa-star fa-lg"
+          initialRate={review.rating}
+          readonly
+        />
+        <div> {review.body} </div>
+      </div>
+    </div>
+  );
+};
 
 export default ReviewIndexItem;

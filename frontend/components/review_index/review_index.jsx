@@ -3,9 +3,9 @@ import ReviewIndexItem from './review_index_item';
 
 const ReviewIndex = ({ currentUser, reviews }) => {
   let reviewsEntries = reviews.length > 0 ? (
-    reviews.map(review => (
-        <ReviewIndexItem key={ review.id }
-          review={ review } currentUser={ currentUser } />
+    reviews.map( review => (
+      <ReviewIndexItem key={ review.id }
+        review={ review } currentUser={ currentUser } />
     ))
   ) : (
     <div className='review-placehoder'>
