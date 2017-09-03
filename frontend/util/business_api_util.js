@@ -6,6 +6,13 @@ export const fetchAllBusinesses = data => (
   })
 );
 
+export const fetchFeaturedBusinesses = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/businesses/feature',
+  })
+);
+
 export const createBusiness = business => (
   $.ajax({
     method: 'POST',

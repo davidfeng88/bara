@@ -26,9 +26,11 @@ const tagEntry = tag => {
 
 export const tagContent = ({ tags }) => {
   if (tags) {
-    let tagsArray = [' • '];
+    let tagsArray = [];
     tags.forEach( (tag, index) => {
-      if (index > 0) {
+      if (index === 0) {
+        tagsArray.push(' • ');
+      } else {
         tagsArray.push(', ');
       }
         tagsArray.push(tagEntry(tag));

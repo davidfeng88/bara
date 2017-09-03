@@ -1,8 +1,19 @@
 class Api::BusinessesController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
+  def feature
+    @businesses = Business.all.sample(3)
+    # N + 1 queries. However, in this case N = 3, not that bad. Do not
+    # need to join big tables.
+
+    # @businesses = Business.all.includes(:reviews, :tags).sample(3)
+    
+    # For big database, the table JOINs can be expensive
+    render "api/businesses/feature"
+  end
+
   def index
-    businesses = Business.all.includes(:tags)
+    businesses = Business.all.includes(:reviews, :tags)
 
     if (params[:tag] && Tag.find_by(label: params[:tag].split.map(&:capitalize).join(' ')))
       businesses = Tag.find_by(label: params[:tag].split.map(&:capitalize).join(' ')).businesses
@@ -11,7 +22,6 @@ class Api::BusinessesController < ApplicationController
     if (params[:name] && params[:name] != "")
       businesses =
       businesses.where('lower(name) LIKE ?', "%#{params[:name].downcase}%")
-      # .or(businesses.where(tags: ))
     end
 
     if (params[:location] && params[:location] != "")

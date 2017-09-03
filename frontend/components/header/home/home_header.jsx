@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeBarContainer from './home_bar_container';
-import SearchBar from './search_bar';
+import SearchBar from '../search_bar';
 import HomeLinks from './home_links';
 
 export default class HomeHeader extends React.Component {
