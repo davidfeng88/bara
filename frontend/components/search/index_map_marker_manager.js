@@ -1,4 +1,16 @@
 /* global google:false */
+const normalLabel = text => ({
+  text: text,
+  color: 'white',
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+});
+
+const hoverLabel = text => ({
+  text: text,
+  color: 'red',
+  fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
+  fontWeight: 'bold',
+});
 
 export default class IndexMapMarkerManager {
   constructor(map, handleClick) {
@@ -11,6 +23,20 @@ export default class IndexMapMarkerManager {
       url: window.staticImages.normalIcon,
       labelOrigin: new google.maps.Point(11, 10),
     };
+    this.hoverIcon = {
+      url: window.staticImages.hoverIcon,
+      labelOrigin: new google.maps.Point(11, 10),
+    };
+  }
+
+  handleMouseOver(marker) {
+    marker.setIcon(this.hoverIcon);
+    marker.setLabel(hoverLabel(marker.text));
+  }
+
+  handleMouseOut(marker) {
+    marker.setIcon(this.normalIcon);
+    marker.setLabel(normalLabel(marker.text));
   }
 
   updateHighlight(oldHighlight, newHighlight) {
@@ -41,55 +67,6 @@ export default class IndexMapMarkerManager {
     }
   }
 
-  normalIcon() {
-    return({
-      url: window.staticImages.normalIcon,
-      labelOrigin: new google.maps.Point(11, 10),
-    });
-  }
-
-  hoverIcon() {
-    return({
-      url: window.staticImages.hoverIcon,
-      labelOrigin: new google.maps.Point(11, 10),
-    });
-  }
-
-  normalLabel(text) {
-    return({
-      text: text,
-      color: 'white',
-      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-    });
-  }
-
-  hoverLabel(text) {
-    return({
-      text: text,
-      color: 'red',
-      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-      fontWeight: 'bold',
-    });
-  }
-
-  handleMouseOver(marker) {
-    marker.setIcon({
-      url: window.staticImages.hoverIcon,
-      labelOrigin: new google.maps.Point(11, 10),
-    });
-    marker.setLabel({
-      text: marker.text,
-      color: 'red',
-      fontFamily: "Helvetica Neue, Helvetica, Arial, sans-serif",
-      fontWeight: 'bold',
-    });
-  }
-
-  handleMouseOut(marker) {
-    marker.setIcon(this.normalIcon);
-    marker.setLabel(this.normalLabel(marker.text));
-  }
-
   createMarkerFromBusiness(business, idx) {
     const position = new google.maps.LatLng(business.lat, business.lng);
     const marker = new google.maps.Marker({
@@ -98,14 +75,11 @@ export default class IndexMapMarkerManager {
       map: this.map,
       businessId: business.id,
       icon: this.normalIcon,
-      label: this.normalLabel((idx+1).toString()),
+      label: normalLabel((idx+1).toString()),
     });
 
     marker.addListener('click', () => this.handleClick(business));
-    marker.addListener('mouseover', (e) => {
-      console.log('hover');
-      this.handleMouseOver(marker);
-    });
+    marker.addListener('mouseover', () => this.handleMouseOver(marker));
     marker.addListener('mouseout', () => this.handleMouseOut(marker));
     this.markers[marker.businessId] = marker;
   }
