@@ -13,8 +13,6 @@ export default class IndexMapMarkerManager {
     };
   }
 
-
-
   updateHighlight(oldHighlight, newHighlight) {
     if (oldHighlight !== -1) {
       this.handleMouseOut(this.markers[oldHighlight]);
@@ -106,7 +104,6 @@ export default class IndexMapMarkerManager {
     marker.addListener('click', () => this.handleClick(business));
     marker.addListener('mouseover', (e) => {
       console.log('hover');
-      debugger;
       this.handleMouseOver(marker);
     });
     marker.addListener('mouseout', () => this.handleMouseOut(marker));

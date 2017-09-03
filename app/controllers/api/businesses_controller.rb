@@ -7,7 +7,7 @@ class Api::BusinessesController < ApplicationController
     # need to join big tables.
 
     # @businesses = Business.all.includes(:reviews, :tags).sample(3)
-    
+
     # For big database, the table JOINs can be expensive
     render "api/businesses/feature"
   end
@@ -37,7 +37,7 @@ class Api::BusinessesController < ApplicationController
       businesses = businesses.where(price: prices_numbers)
     end
 
-    @businesses = businesses.includes(latest_reviews: [:author])
+    @businesses = businesses.includes(latest_reviews: [:author]).order(updated_at: :desc)
     render "api/businesses/index"
   end
 

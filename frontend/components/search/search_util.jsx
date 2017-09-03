@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const SampleSearch = () => (
+export const SampleSearch = () => (
   <div className='sample-search'>
     <p>Try these searches:</p>
     <div className='sample-search-title'>
@@ -39,4 +40,27 @@ const SampleSearch = () => (
   </div>
 );
 
-export default SampleSearch;
+export const PriceButton = ({label, name, tooltip, checked, onChange }) => (
+  <label className='price-button'>
+    <input type='checkbox' name={name}
+      checked={checked} onChange={onChange} />
+    <div className='button'>
+      <div className='tooltip-wrapper'>
+        <span className='tooltip'>{tooltip}</span>
+      </div>
+      {label}
+    </div>
+  </label>
+);
+
+export const AddBusiness = () => (
+  <div className='center index-grid-row2'>
+    <div className='add-business'>
+      <h3>Not here? Tell us what we're missing.</h3>
+      <p>If the business you're looking for isn't here, add it!</p>
+      <div className='add-business-link'>
+        <Link to='/businesses/new'>Add A Business</Link>
+      </div>
+    </div>
+  </div>
+);

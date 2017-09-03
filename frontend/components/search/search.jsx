@@ -1,38 +1,32 @@
 import React from 'react';
 import isEqual from 'lodash/isEqual';
+import { searchBusinesses } from '../../util/business_api_util';
+import {
+  SampleSearch,
+  PriceButton,
+  AddBusiness,
+} from './search_util';
 import BusinessIndex from './business_index';
-import SampleSearch from './sample_search';
-
-const PriceButton = ({label, name, tooltip, checked, onChange }) => (
-  <label className='price-button'>
-    <input type='checkbox' name={name}
-      checked={checked} onChange={onChange} />
-    <div className='button'>
-      <div className='tooltip-wrapper'>
-        <span className='tooltip'>{tooltip}</span>
-      </div>
-      {label}
-    </div>
-  </label>
-);
+import IndexMapContainer from './index_map_container';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {loaded: false};
+    this.state = {
+      loaded: false,
+      businesses: [],
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    this.props.updateFilter({
-      name: this.props.filters.name,
-      location: this.props.filters.location,
-      prices: this.props.filters.prices,
-      tag: this.props.filters.tag,
-    }).then( () => {
-      this.setState({loaded: true});
-      }
-    );
+    searchBusinesses(this.props.filters)
+    .then( (businesses) => {
+      this.setState({
+        loaded: true,
+        businesses,
+      });
+    });
     window.scrollTo(0,0);
   }
 
@@ -43,22 +37,14 @@ class Search extends React.Component {
       || !isEqual(newProps.filters.prices, this.props.filters.prices))
     {
       this.setState({loaded: false});
-      this.props.updateFilter({
-        name: newProps.filters.name,
-        location: newProps.filters.location,
-        prices: newProps.filters.prices,
-        tag: newProps.filters.tag,
-      }).then( () => {
-        this.setState({loaded: true});
-        }
-      );
+      searchBusinesses(newProps.filters)
+      .then( (businesses) => {
+        this.setState({
+          loaded: true,
+          businesses,
+        });
+      });
     }
-  }
-
-  searchResult(businesses) {
-    return this.state.loaded ?
-      <BusinessIndex businesses={businesses} /> :
-      <img className='spinner' src={window.staticImages.spinner} /> ;
   }
 
   handleChange(e) {
@@ -80,6 +66,15 @@ class Search extends React.Component {
       .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}${pricesQuery}`);
   }
 
+  searchTitle() {
+    let { name, location } = this.props.filters;
+    name = name ? name : "places";
+    location = location ? `near ${location}` : "";
+    return(
+      <h1 className='search-title'><strong>Best {name}</strong> {location}</h1>
+    );
+  }
+  
   priceButtons() {
     let prices = this.props.filters.prices ? this.props.filters.prices : [];
     return(
@@ -96,17 +91,14 @@ class Search extends React.Component {
     );
   }
 
-  searchTitle() {
-    let { name, location } = this.props.filters;
-    name = name ? name : "places";
-    location = location ? `near ${location}` : "";
-    return(
-      <h1 className='search-title'><strong>Best {name}</strong> {location}</h1>
-    );
+  searchResult(businesses) {
+    return this.state.loaded ?
+      <BusinessIndex businesses={businesses} /> :
+      <img className='spinner' src={window.staticImages.spinner} /> ;
   }
 
   render() {
-    let { businesses } = this.props;
+    let { businesses } = this.state;
     return(
       <div>
         <div className='title'>
@@ -116,7 +108,19 @@ class Search extends React.Component {
             {this.priceButtons()}
           </div>
         </div>
-        {this.searchResult(businesses)}
+        <div className='business-index-main'>
+          <div className='center index-grid-row1'>
+            <div className='index-grid-col1'>
+              {this.searchResult(businesses)}
+            </div>
+            <div className='index-grid-col2'>
+              <div className='css-sticky'>
+               <IndexMapContainer businesses={businesses} />
+              </div>
+            </div>
+          </div>
+          <AddBusiness />
+        </div>
       </div>
     );
   }

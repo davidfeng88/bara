@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
 import ShowMapMarkerManager from './show_map_marker_manager';
 
 class ShowMap extends React.Component {
@@ -40,7 +38,6 @@ class ShowMap extends React.Component {
     }
   }
 
-
   render() {
     const { business: { lat, lng } } = this.props;
     //  if the business has lat&lng, render the map div
@@ -52,7 +49,6 @@ class ShowMap extends React.Component {
       <div></div>
     );
   }
-
 }
 
 export default ShowMap;

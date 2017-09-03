@@ -1,7 +1,5 @@
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import { updateFilter } from '../../actions/filter_actions';
-import { businessesToArray } from '../../reducers/selectors';
 import Search from './search';
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,16 +23,11 @@ const mapStateToProps = (state, ownProps) => {
     tag,
   };
   return({
-    businesses: businessesToArray(state),
     filters,
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  updateFilter: (filters) => dispatch(updateFilter(filters)),
-});
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(Search);
