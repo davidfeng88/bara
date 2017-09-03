@@ -7,8 +7,7 @@ import {
 } from '../../actions/business_actions';
 
 import { fetchLatlng } from '../../util/map_util';
-
-import { clearErrors } from '../../actions/error_actions';
+// TODO: handle errors locally!
 import { selectCurrentBusiness } from '../../reducers/selectors';
 
 import BusinessForm from './business_form';
@@ -30,7 +29,6 @@ const mapDispatchToProps = ( dispatch, { location } ) => {
   return {
     processForm: business => dispatch(processForm(business)),
     deleteBusiness: (id) => dispatch(deleteBusiness(id)),
-    clearErrors: () => dispatch(clearErrors()),
     editBusiness: (business) => dispatch(editBusiness(business)),
     // fetchLatlng: (business) => dispatch(fetchLatlng(business)),
   };

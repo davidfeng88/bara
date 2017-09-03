@@ -6,7 +6,7 @@ import {
   deleteReview
 } from '../../actions/business_actions';
 
-import { clearErrors } from '../../actions/error_actions';
+// TODO: handle errors locally!
 
 import {
   selectCurrentBusiness,
@@ -39,7 +39,6 @@ const mapDispatchToProps = ( dispatch, { location } ) => {
   return {
     processForm: review => dispatch(processForm(review)),
     formType,
-    clearErrors: () => dispatch(clearErrors()),
     deleteReview: (id) => dispatch(deleteReview(id))
   };
 };
