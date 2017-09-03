@@ -20,6 +20,9 @@ const HomeLinks = () => (
           find "burger" near "19th St"
         </Link>
       </p>
+      <p>
+        Click on bara logo for new random featured businesses
+      </p>
   </div>
 );
 
