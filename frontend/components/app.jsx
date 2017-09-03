@@ -8,7 +8,7 @@ import BusinessFormContainer from './business_form/business_form_container';
 import ReviewFormContainer from './review_form/review_form_container';
 import SessionFormContainer from './session_form/session_form_container';
 // business show, search, home pages
-import BusinessShowContainer from './business_show/business_show_container';
+import BusinessShow from './business_show/business_show';
 import SearchContainer from './search/search_container';
 import Home from './home/home';
 // 404
@@ -31,7 +31,7 @@ const App = () => (
           component={ReviewFormContainer} />
         <AuthRoute path="/login" component={SessionFormContainer} />
         <AuthRoute path="/signup" component={SessionFormContainer} />
-        <Route path='/businesses/:id' component={BusinessShowContainer} />
+        <Route path='/businesses/:id' component={BusinessShow} />
         <Route path='/businesses' component={SearchContainer} />
         <Route exact path='/' component={Home} />
         <Route component={FourZeroFour} />

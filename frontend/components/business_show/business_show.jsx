@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { fetchBusiness } from '../../util/business_api_util';
+
+import ErrorList from '../error_list';
+import {
+  businessShowTitle,
+  textInfo,
+  extraInfo,
+} from './business_show_util';
 import ShowMap from './show_map';
 import ReviewIndexContainer from '../review_index/review_index_container';
-import ErrorList from '../error_list';
-import { businessShowTitle, textInfo } from './business_show_util';
 
 export default class BusinessShow extends React.Component {
   constructor(props) {
@@ -30,13 +35,11 @@ export default class BusinessShow extends React.Component {
           business,
           errors: [],
         }),
-        (errors) => {
-          this.setState({
-            loaded: true,
-            errors: errors.responseJSON,
-            business: null,
-          });
-        }
+        (errors) => this.setState({
+          loaded: true,
+          errors: errors.responseJSON,
+          business: null,
+        })
       );
     window.scrollTo(0,0);
   }
@@ -64,11 +67,16 @@ export default class BusinessShow extends React.Component {
       window.scrollTo(0,0);
     }
   }
-          // <ReviewIndexContainer />
+
+
   render() {
     const { business } = this.state;
     if (this.state.loaded) {
       if (business) {
+        let reviewsEntries =
+          <div className='review-placehoder'>
+            No review for this business yet.
+          </div>;
         return(
           <div>
             <div className='business-show-title'>
@@ -88,6 +96,16 @@ export default class BusinessShow extends React.Component {
               </div>
             </div>
 
+            <div className='review-index-main'>
+              <div className='center index-grid show-grid'>
+                <div className='index-grid-col1 show-grid-col1'>
+                  <h2>Reviews for
+                  <span className='normal black'> {business.name}</span></h2>
+                  <ReviewIndexContainer reviews={business.reviews} />
+                </div>
+                {extraInfo(business)}
+              </div>
+            </div>
 
 
 
@@ -110,8 +128,4 @@ export default class BusinessShow extends React.Component {
       );
     }
   }
-  // if user go to /business/1 without go through the index page first
-  // the store is empty and business will be undefined
-  // we will fetch the business after it mounted and re render this
-  // component
 }
