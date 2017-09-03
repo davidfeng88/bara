@@ -1,5 +1,26 @@
 import React from 'react';
+import queryString from 'query-string';
 import { Link } from 'react-router-dom';
+
+export const buildFilters = search => {
+  let name = "";
+  let location = "";
+  let prices = [];
+  let tag = "";
+  if (search !== "") {
+    const parsed = queryString.parse(search, {arrayFormat: 'bracket'});
+    name = parsed.name ? parsed.name : "";
+    location = parsed.location ? parsed.location : "";
+    tag = parsed.tag ? parsed.tag : "";
+    prices = parsed.prices;
+  }
+  return {
+    name,
+    location,
+    prices,
+    tag,
+  };
+};
 
 export const SampleSearch = () => (
   <div className='sample-search'>

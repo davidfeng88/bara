@@ -1,26 +1,29 @@
 import React from 'react';
-import isEqual from 'lodash/isEqual';
+
 import { searchBusinesses } from '../../util/business_api_util';
 import {
   SampleSearch,
   PriceButton,
   AddBusiness,
+  buildFilters,
 } from './search_util';
 import BusinessIndex from './business_index';
 import IndexMapContainer from './index_map_container';
 
-class Search extends React.Component {
+export default class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
       businesses: [],
     };
+
+    this.filters = buildFilters(props.location.search);
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    searchBusinesses(this.props.filters)
+    searchBusinesses(this.filters)
     .then( (businesses) => {
       this.setState({
         loaded: true,
@@ -31,13 +34,10 @@ class Search extends React.Component {
   }
 
   componentWillUpdate(newProps) {
-    if (newProps.filters.name !== this.props.filters.name
-      || newProps.filters.location !== this.props.filters.location
-      || newProps.filters.tag !== this.props.filters.tag
-      || !isEqual(newProps.filters.prices, this.props.filters.prices))
-    {
+    if (this.props.location.search !== newProps.location.search) {
       this.setState({loaded: false});
-      searchBusinesses(newProps.filters)
+    this.filters = buildFilters(newProps.location.search);
+      searchBusinesses(this.filters)
       .then( (businesses) => {
         this.setState({
           loaded: true,
@@ -51,10 +51,11 @@ class Search extends React.Component {
     e.preventDefault();
     this.setState({loaded: false});
     const value = e.target.checked;
-    let { name, location } = this.props.filters;
+    let { name, location, tag } = this.filters;
     let nameEncoded = encodeURIComponent(name);
     let locationEncoded = encodeURIComponent(location);
-    let pricesSet = new Set(this.props.filters.prices);
+    let tagEncoded = encodeURIComponent(tag);
+    let pricesSet = new Set(this.filters.prices);
     if (value) {
       pricesSet.add(e.target.name);
     } else {
@@ -63,20 +64,20 @@ class Search extends React.Component {
     let pricesEncoded = Array.from(pricesSet).map( price => `&prices[]=${price}`);
     let pricesQuery = pricesEncoded.join('');
     this.props.history
-      .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}${pricesQuery}`);
+      .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}&tag=${tagEncoded}${pricesQuery}`);
   }
 
   searchTitle() {
-    let { name, location } = this.props.filters;
+    let { name, location } = this.filters;
     name = name ? name : "places";
     location = location ? `near ${location}` : "";
     return(
       <h1 className='search-title'><strong>Best {name}</strong> {location}</h1>
     );
   }
-  
+
   priceButtons() {
-    let prices = this.props.filters.prices ? this.props.filters.prices : [];
+    let prices = this.filters.prices ? this.filters.prices : [];
     return(
       <div className='price-buttons'>
         <PriceButton label='$' name='1' tooltip='Inexpensive'
@@ -125,5 +126,3 @@ class Search extends React.Component {
     );
   }
 }
-
-export default Search;
