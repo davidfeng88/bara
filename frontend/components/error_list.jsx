@@ -1,7 +1,7 @@
 import React from 'react';
 
 const errorItems = errors => (
-  JSON.parse(errors).map(
+  errors.map(
     (error, idx) => (<li key={ `error-${idx}` }>{ error }</li>)
   )
 );

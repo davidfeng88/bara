@@ -33,6 +33,7 @@ class Search extends React.Component {
       this.setState({loaded: true});
       }
     );
+    window.scrollTo(0,0);
   }
 
   componentWillUpdate(newProps) {

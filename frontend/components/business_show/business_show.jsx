@@ -1,133 +1,104 @@
 import React from 'react';
-import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import { reviewNumber, price, tagContent } from '../../util/business_info_util';
+import { fetchBusiness } from '../../util/business_api_util';
 import ShowMap from './show_map';
 import ReviewIndexContainer from '../review_index/review_index_container';
 import ErrorList from '../error_list';
+import { businessShowTitle, textInfo } from './business_show_util';
 
-const textInfo = business => {
-  let {address, city, state, zipcode} = business;
-  const editBusinessLink = `/businesses/${business.id}/edit`;
-  let addressLine = (
-    <div className='address-info'>
-    <div className='addresss-info-col1'>
-    <span className='bold'>
-      <i className="fa fa-map-marker" aria-hidden="true"></i>
-      &nbsp;&nbsp;&nbsp;{address}<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      {`${city}, ${state} ${zipcode}`}
-    </span>
-    </div>
-    <div className='address-info-col2'>
-      <i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;
-      <Link to={editBusinessLink} >Edit</Link>
-    </div>
-  </div>
-  );
-  let phoneLine = business.phone ? (
-      <div>
-      <i className="fa fa-phone" aria-hidden="true"></i>
-      &nbsp;&nbsp;{business.phone}
-      </div>
-    ) : null;
-  let urlLine = business.url ? (
-      <div>
-      <i className="fa fa-external-link" aria-hidden="true"></i>
-      &nbsp;<a href={`http://${business.url}`} target='_blank'>
-        {business.url}</a>
-      </div>
-    ) : null;
-  return(
-    <div className='text-info'>
-      {addressLine}
-      {phoneLine}
-      {urlLine}
-    </div>
-  );
-};
-
-class BusinessShow extends React.Component {
+export default class BusinessShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({loaded: false});
+    this.state = ({
+      loaded: false,
+      errors: [],
+      business: null,
+    });
+
+    this.clearErrors = this.clearErrors.bind(this);
+  }
+
+  clearErrors() {
+    this.setState({errors: []});
   }
 
   componentDidMount() {
-    this.props.fetchBusiness(this.props.match.params.id)
+    fetchBusiness(this.props.match.params.id)
       .then(
-        () => this.setState({loaded: true}),
-        () => this.setState({loaded: true})
+        (business) => this.setState({
+          loaded: true,
+          business,
+          errors: [],
+        }),
+        (errors) => {
+          debugger
+          this.setState({
+            loaded: true,
+            errors: errors.responseJSON,
+            business: null,
+          });
+        }
       );
     window.scrollTo(0,0);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.id !== this.props.match.params.id) {
-      this.setState({loaded: false});
-      this.props.fetchBusiness(nextProps.match.params.id)
+      this.setState({
+        loaded: false,
+        business: null,
+        errors: [],
+      });
+      fetchBusiness(nextProps.match.params.id)
         .then(
-          () => this.setState({loaded: true}),
-          () => this.setState({loaded: true})
+          (business) => this.setState({
+            loaded: true,
+            business,
+            errors: [],
+          }),
+          (errors) => this.setState({
+            loaded: true,
+            errors: errors.responseJSON,
+            business: null,
+          })
         );
       window.scrollTo(0,0);
     }
   }
-
+          // <ReviewIndexContainer />
   render() {
-    const { business } = this.props;
+    const { business } = this.state;
     if (this.state.loaded) {
       if (business) {
-        const newReviewLink =
-          `/businesses/${business.id}/reviews/new`;
-        let {name, image_url } = business;
         return(
           <div>
             <div className='business-show-title'>
               <div className='center'>
-                  <div className='business-show-title-row1'>
-                  <div className='business-show-title-col'>
-                    <h1>{name}</h1>
-                    <Rating className='rating'
-                      empty="fa fa-star-o fa-lg"
-                      full="fa fa-star fa-lg"
-                      initialRate={parseFloat(business.average_rating)}
-                      fractions={1}
-                      readonly
-                    />
-                    {reviewNumber(business)}<br/>
-                    {price[business.price]}{tagContent(business)}
-                  </div>
-                  <div className='add-review-link business-show-title-col'>
-                    <Link to={newReviewLink}>
-                      <i className="fa fa-star fa-lg" aria-hidden="true"></i>
-                      &nbsp;Write a Review</Link>
-                  </div>
-                </div>
-
+                {businessShowTitle(business)}
                 <div className='business-show-title-row2'>
                   <div className='info'>
                     <ShowMap business={business} />
                     {textInfo(business)}
                   </div>
-
                   <div className='pictures'>
                     <img src={window.staticImages.businessDefault1} />
-                    <img src={image_url} />
+                    <img src={business.image_url} />
                     <img src={window.staticImages.businessDefault2} />
                   </div>
                 </div>
               </div>
             </div>
-          <ReviewIndexContainer />
+
+
+
 
           </div>
         );
       } else {
         return(
           <div className='center'>
-            <ErrorList errors={ this.props.errors }
-              clearErrors={this.props.clearErrors} />
+            <ErrorList errors={ this.state.errors }
+              clearErrors={this.clearErrors} />
             <Link to="/" className='link-as-button'>
               Go Home
             </Link>
@@ -145,5 +116,3 @@ class BusinessShow extends React.Component {
   // we will fetch the business after it mounted and re render this
   // component
 }
-
-export default BusinessShow;
