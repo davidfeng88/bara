@@ -39,10 +39,13 @@ class BusinessForm extends React.Component {
       .then(({business}) => {
         this.resetForm();
         this.props.fetchLatlng(business)
-          .then((data) => {
-            let { lat, lng } = data.results[0].geometry.location;
-            this.props.editBusiness({id: business.id, lat, lng});
-          }).then(() => {
+          .then(
+            (data) => {
+              let { lat, lng } = data.results[0].geometry.location;
+              this.props.editBusiness({id: business.id, lat, lng});
+            }
+            // else, prompt: invalid address
+        ).then(() => {
            return this.props.history.push(`/businesses/${business.id}`);
           });
       });
