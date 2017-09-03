@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 //   deleteBusiness
 // } from '../../actions/business_actions';
 
-import { fetchLatlng } from '../../util/map_util';
+
 // TODO: handle errors locally!
 
 
@@ -17,7 +17,6 @@ const mapStateToProps = (state, ownProps) => {
     // if it is the create form, then ownProps.match.params.id is undefined
     // so business: undefined will be obtained.
     // thus we do not need a if/else statement
-    fetchLatlng,
   };
 };
 

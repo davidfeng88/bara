@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { fetchLatlng } from './business_form_util';
 import ErrorList from '../error_list';
 
 class BusinessForm extends React.Component {
@@ -38,7 +38,7 @@ class BusinessForm extends React.Component {
     this.props.processForm(biz)
       .then(({business}) => {
         this.resetForm();
-        this.props.fetchLatlng(business)
+        fetchLatlng(business)
           .then(
             (data) => {
               let { lat, lng } = data.results[0].geometry.location;

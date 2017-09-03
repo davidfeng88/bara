@@ -1,15 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import queryString from 'query-string';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    if (props.parsed) {
-      let { name, location } = props.parsed;
-      let nameValue = name ? name : '';
-      let locationValue = location ? location : '';
-      let nameDecoded = decodeURIComponent(nameValue);
-      let locationDecoded = decodeURIComponent(locationValue);
+
+    if (props.location.search !== '') {
+      let { name, location } = queryString.parse(props.location.search);
+      name = name ? name : '';
+      location = location ? location : '';
+      let nameDecoded = decodeURIComponent(name);
+      let locationDecoded = decodeURIComponent(location);
       this.state = {
         name: nameDecoded,
         location: locationDecoded,
@@ -20,20 +22,17 @@ class SearchBar extends React.Component {
         location: '',
       };
     }
-  /**
-   * Use local state for (transitory) current input,
-   * use Redux store for submitted data.
-   */
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.parsed) {
-      let { name, location } = newProps.parsed;
-      let nameValue = name ? name : '';
-      let locationValue = location ? location : '';
-      let nameDecoded = decodeURIComponent(nameValue);
-      let locationDecoded = decodeURIComponent(locationValue);
+    if (newProps.location.search !== this.props.location.search) {
+      let { name, location } = queryString.parse(newProps.location.search);
+      name = name ? name : '';
+      location = location ? location : '';
+      let nameDecoded = decodeURIComponent(name);
+      let locationDecoded = decodeURIComponent(location);
       this.setState({
         name: nameDecoded,
         location: locationDecoded,
