@@ -31,7 +31,6 @@ export default class BusinessShow extends React.Component {
           errors: [],
         }),
         (errors) => {
-          debugger
           this.setState({
             loaded: true,
             errors: errors.responseJSON,

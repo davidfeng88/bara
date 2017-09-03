@@ -7,11 +7,17 @@ export default class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errors: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
+  }
+
+  clearErrors() {
+    this.setState({errors: []});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -19,9 +25,9 @@ export default class SessionForm extends React.Component {
     if (nextProps.formType !== this.props.formType) {
       this.setState({
         username: '',
-        password: ''
+        password: '',
+        errors: [],
       });
-      this.props.clearErrors();
     }
   }
 
@@ -35,7 +41,12 @@ export default class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user)
-      .then(() => this.props.history.goBack());
+      .then(
+        () => this.props.history.goBack(),
+        (errors) => this.setState({
+          errors: errors.responseJSON,
+        })
+      );
   }
 
   demoLogin(e) {
@@ -80,8 +91,8 @@ export default class SessionForm extends React.Component {
   render() {
     return (
       <div>
-        <ErrorList errors={ this.props.errors }
-          clearErrors={this.props.clearErrors} />
+      <ErrorList errors={ this.state.errors }
+        clearErrors={this.clearErrors} />
         <div className='center flex-box'>
           <div className='col-1-2'>
             <div className="session-form-container">
