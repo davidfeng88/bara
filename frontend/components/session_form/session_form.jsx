@@ -16,10 +16,6 @@ export default class SessionForm extends React.Component {
     this.clearErrors = this.clearErrors.bind(this);
   }
 
-  clearErrors() {
-    this.setState({errors: []});
-  }
-
   componentWillReceiveProps(nextProps) {
     // click 'Sign Up' from the login page or vice versa
     if (nextProps.formType !== this.props.formType) {
@@ -86,6 +82,10 @@ export default class SessionForm extends React.Component {
         <Link to='/login'>Log in</Link>
       </p>
     );
+  }
+
+  clearErrors() {
+    this.setState({errors: []});
   }
 
   render() {
