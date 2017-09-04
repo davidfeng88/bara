@@ -40,10 +40,9 @@ a {
 
 a.link-as-button {
   display: block;
-  width: 150px;
+  width: 300px;
   border: 1px solid #4D4D4D;
   border-radius: 3px;
-  margin: 9px auto;
   font-size: 14px;
   padding: 8px 19px;
   cursor: pointer;
@@ -64,7 +63,7 @@ a.link-as-button {
 
 h2 {
 	text-align: center;
-	font-size: 22px;
+	font-size: 21px;
 	font-weight: bold;
 	color: $yelpy-red;
 	margin-bottom: 6px;

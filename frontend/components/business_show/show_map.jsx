@@ -4,20 +4,20 @@ export default class ShowMap extends React.Component {
   componentDidMount() {
     const map = this.refs.map;
     let { business } = this.props;
+    let { lat, lng } = business;
     const mapOptions = {
       center: {
-        lat: business.lat,
-        lng: business.lng
+        lat: lat,
+        lng: lng
       }, // Business coords
       zoom: 14,
       disableDefaultUI: true
     };
     this.map = new google.maps.Map(map, mapOptions);
-    const position = new google.maps.LatLng(business.lat, business.lng);
+    const position = new google.maps.LatLng(lat, lng);
     const marker = new google.maps.Marker({
       position,
       map: this.map,
-      businessId: business.id,
       icon: {
         url: window.staticImages.normalIcon,
       }

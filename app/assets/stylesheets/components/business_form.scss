@@ -1,15 +1,37 @@
-.business-form label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 6px;
-  color: black;
+.form-outer-wrapper {
+  h2 {
+    text-align: left;
+    margin-bottom: 12px;
+  }
 }
 
-.business-form .input-wrapper input {
-  display: block;
+.form-inner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  select {
+    display: block;
+    font-size: 14px;
+    width: 300px;
+  }
 }
 
-.business-form option {
-  font-size: 14px;
+.form-map-wrapper {
+  height: 288px;
+  width: 288px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-map {
+  width: 288px;
+  height: 288px;
 }

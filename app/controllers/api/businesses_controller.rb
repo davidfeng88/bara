@@ -61,6 +61,7 @@ class Api::BusinessesController < ApplicationController
   end
 
   def update
+    # only the author of the business can edit the business
     # @business = currentUser.businesses.find(params[:id])
     @business = Business.find(params[:id])
 
@@ -72,6 +73,7 @@ class Api::BusinessesController < ApplicationController
   end
 
   def destroy
+    # only the author of the business can delete the business
     # @business = currentUser.businesses.find(params[:id])
     @business = Business.find(params[:id])
 
