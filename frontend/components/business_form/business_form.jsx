@@ -13,31 +13,10 @@ class BusinessForm extends React.Component {
     super(props);
     this.formType = props.location.pathname.slice(-3) === 'new' ?
       'createBusiness' : 'editBusiness';
-    if (this.formType === 'createBusiness') {
-      this.state = {
-        name: '', address: '', city: '', state: '',
-        zipcode: '', phone: '', url: '', price: '1', errors: []
-      };
-    } else {
-      fetchBusiness(props.match.params.id)
-      .then(
-        (business) => {
-          let {
-            name, address, city, state,
-            zipcode, phone, url, price,
-          } = business;
-          this.state = {
-            name, address, city, state,
-            zipcode, phone, url, price,
-          };
-        },
-        (errors) => {
-          this.state = {
-            errors: errors.responseJSON,
-          };
-        }
-      );
-    }
+    this.state = {
+      name: '', address: '', city: '', state: '',
+      zipcode: '', phone: '', url: '', price: '1', errors: []
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -46,6 +25,26 @@ class BusinessForm extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0,0);
+    if (this.formType === 'editBusiness') {
+      fetchBusiness(this.props.match.params.id)
+      .then(
+        (business) => {
+          let {
+            name, address, city, state,
+            zipcode, phone, url, price,
+          } = business;
+          this.setState({
+            name, address, city, state,
+            zipcode, phone, url, price,
+          });
+        },
+        (errors) => {
+          this.state = {
+            errors: errors.responseJSON,
+          };
+        }
+      );
+    }
   }
 
   update(field) {
@@ -67,7 +66,6 @@ class BusinessForm extends React.Component {
           let { lat, lng } = response.results[0].geometry.location;
           biz.lat = lat;
           biz.lng = lng;
-
           if (this.formType === 'createBusiness') {
             createBusiness(biz)
             .then(
@@ -80,20 +78,15 @@ class BusinessForm extends React.Component {
             );
           } else {
             editBusiness(biz)
-            .then((business) => {
-              // debugger
-              this.props.history.push(`/businesses/${business.id}`);
-            }
+            .then(
+              business =>
+              this.props.history.push(`/businesses/${business.id}`)
             ,
-            (errors) => this.setState({
-              errors: errors.responseJSON,
-            })
-          );
+              errors => this.setState({ errors: errors.responseJSON })
+            );
           }
         } else {
-          this.setState({
-            errors: ['Invalid Address'],
-          });
+          this.setState({ errors: ['Invalid Address'] });
         }
       }
 
@@ -120,7 +113,7 @@ class BusinessForm extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
-    this.props.deleteBusiness(this.props.business.id)
+    deleteBusiness(this.props.match.params.id)
       .then(() => {
         this.resetForm();
         this.props.history.push("/businesses");

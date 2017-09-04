@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { highlightBusiness } from '../../actions/highlight_actions';
-import BusinessIndexItem from './business_index_item';
+import Search from './search';
 
 const mapDispatchToProps = dispatch => ({
   highlightBusiness: (id) => dispatch(highlightBusiness(id)),
@@ -9,4 +9,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps
-)(BusinessIndexItem);
+)(Search);

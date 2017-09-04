@@ -47,6 +47,10 @@ export default class Search extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.highlightBusiness(-1);
+  }
+
   handleChange(e) {
     e.preventDefault();
     this.setState({loaded: false});

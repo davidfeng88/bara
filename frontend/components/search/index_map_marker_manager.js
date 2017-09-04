@@ -40,6 +40,7 @@ export default class IndexMapMarkerManager {
   }
 
   updateHighlight(oldHighlight, newHighlight) {
+    // after user delete oldHighlight
     if (oldHighlight !== -1) {
       this.handleMouseOut(this.markers[oldHighlight]);
     }
