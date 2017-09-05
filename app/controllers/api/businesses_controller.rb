@@ -61,32 +61,18 @@ class Api::BusinessesController < ApplicationController
   end
 
   def update
-    # begin
-      # only the author of the business can edit the business
-      # @business = current_user.businesses.find(params[:id])
-
-      @business = Business.find(params[:id])
-      if @business.update(business_params)
-        render "api/businesses/show"
-      else
-        render json: @business.errors.full_messages, status: 422
-      end
-    # rescue ActiveRecord::RecordNotFound
-    #   render json: ["Couldn't find business with 'id'=#{params[:id]}"], status: 404
-    # end
+    @business = Business.find(params[:id])
+    if @business.update(business_params)
+      render "api/businesses/show"
+    else
+      render json: @business.errors.full_messages, status: 422
+    end
   end
 
   def destroy
-    # begin
-      # only the author of the business can delete the business
-      # @business = current_user.businesses.find(params[:id])
-
-      @business = Business.find(params[:id])
-      @business.destroy
-      render "api/businesses/show"
-    # rescue ActiveRecord::RecordNotFound
-    #   render json: ["Couldn't find business with 'id'=#{params[:id]}"], status: 404
-    # end
+    @business = Business.find(params[:id])
+    @business.destroy
+    render "api/businesses/show"
   end
 
   private

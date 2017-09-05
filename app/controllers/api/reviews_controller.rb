@@ -9,26 +9,30 @@ class Api::ReviewsController < ApplicationController
     else
       render json: @review.errors.full_messages, status: 422
     end
-
   end
 
+  # only the author can edit/delete the review
   def update
-
-    @review = Review.find(params[:id])
-
-    if @review.update(review_params)
-      render "api/reviews/show"
-    else
-      render json: @review.errors.full_messages, status: 422
+    begin
+      @review = current_user.find(params[:id])
+      if @review.update(review_params)
+        render "api/reviews/show"
+      else
+        render json: @review.errors.full_messages, status: 422
+      end
+    rescue ActiveRecord::RecordNotFound
+      render json: ["Couldn't find review with 'id'=#{params[:id]}"], status: 404
     end
-
   end
 
   def destroy
-    @review = Review.find(params[:id])
-
-    @review.destroy
-    render "api/reviews/show"
+    begin
+      @review = current_user.find(params[:id])
+      @review.destroy
+      render "api/reviews/show"
+    rescue ActiveRecord::RecordNotFound
+      render json: ["Couldn't find review with 'id'=#{params[:id]}"], status: 404
+    end
   end
 
   private
