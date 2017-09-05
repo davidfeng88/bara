@@ -175,8 +175,7 @@ export default class BusinessForm extends React.Component {
 
         <label htmlFor='phone'>Phone</label>
         <div className='input-wrapper'>
-          <input type="tel"
-            id="phone"
+          <input id="phone"
             value={this.state.phone}
             onChange={this.update('phone')}
             className="login-input"
@@ -186,8 +185,7 @@ export default class BusinessForm extends React.Component {
 
         <label htmlFor='url'>Web Address</label>
         <div className='input-wrapper'>
-          <input type="url"
-            id="url"
+          <input id="url"
             value={this.state.url}
             onChange={this.update('url')}
             className="login-input"
