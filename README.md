@@ -1,7 +1,7 @@
 # Bara
 [Live](https://bara.davidfeng.us/#/)
 
-Bara is a full-stack web application which clones several basic features of Yelp. On the back-end, Bara utilizes Ruby on Rails and a PostgreSQL database; on the front-end, it uses React.js with a Redux architectural framework.  
+Bara is a Yelp-inspired single-page web app where users can CRUD businesses and reviews. It is built with React.js, Redux, Ruby on Rails, and a PostgreSQL database.
 
 ## Features & Implementation
 
