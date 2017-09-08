@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import update from 'immutability-helper';
-
 import { fetchLatlng } from './business_form_util';
 import {
   createBusiness,
@@ -19,7 +16,6 @@ export default class BusinessForm extends React.Component {
     this.formType = props.location.pathname.slice(-3) === 'new' ?
       'createBusiness' : 'editBusiness';
     this.state = {
-      business: {name: '', address:''},
       id: null, name: '', address: '', city: '', state: '',
       zipcode: '', phone: '', url: '', price: '1', errors: []
     };
@@ -54,19 +50,6 @@ export default class BusinessForm extends React.Component {
       [field]: e.currentTarget.value
     });
   }
-
-  updateNested(field) {
-    return(
-      e => {
-        let { business } = this.state;
-        const newBiz = update(business, {
-          [field]: {$set: e.currentTarget.value}}
-        );
-        this.setState({business: newBiz});
-      }
-    );
-  }
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -133,36 +116,9 @@ export default class BusinessForm extends React.Component {
   }
 
   businessForm() {
-    let {business} = this.state;
     return(
       <form onSubmit={this.handleSubmit} className="business-form">
-        <label htmlFor='nested-name'>Nested Business Name</label>
-        <div className='input-wrapper'>
-          <input type="text"
-            id="nested-name"
-            value={business.name}
-            onChange={this.updateNested('name')}
-            className="login-input"
-            placeholder="Mel's Diner"
-          />
-        </div>
-        <label htmlFor='nested-address'>Nested Business address</label>
-        <div className='input-wrapper'>
-          <input type="text"
-            id="nested-address"
-            value={business.address}
-            onChange={(e) => {
-
-              const newBiz = update(business, {
-                address: {$set: e.currentTarget.value}}
-              );
-              this.setState({business: newBiz});
-            }}
-            className="login-input"
-            placeholder="Mel's Diner"
-          />
-        </div>
-        <label htmlFor='nested-name'>Business Name</label>
+        <label htmlFor='name'>Business Name</label>
         <div className='input-wrapper'>
           <input type="text"
             id="name"
