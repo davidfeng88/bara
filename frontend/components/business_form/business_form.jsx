@@ -21,7 +21,7 @@ export default class BusinessForm extends React.Component {
     this.state = {
       business: {name: '', address:''},
       id: null, name: '', address: '', city: '', state: '',
-      zipcode: '', phone: '', url: '', price: '1', errors: []
+      zipcode: '', phone: '', url: '', price: '1', errors: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,7 +51,7 @@ export default class BusinessForm extends React.Component {
 
   update(field) {
     return e => this.setState({
-      [field]: e.currentTarget.value
+      [field]: e.currentTarget.value,
     });
   }
 
@@ -121,11 +121,11 @@ export default class BusinessForm extends React.Component {
 
   deleteButton() {
     return this.formType === 'createBusiness' ?
-      null : (
+      null :
         <div className='input-wrapper'>
           <button onClick={this.handleDelete} >Delete Business</button>
         </div>
-      );
+      ;
   }
 
   clearErrors() {
