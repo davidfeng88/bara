@@ -15,18 +15,17 @@ class Review < ActiveRecord::Base
   validates :author, :business, :rating, presence: true
 
   validates :business_id, uniqueness: { scope: :author_id,
-    message: "one user can only have one review for one business" }
+                                        message: 'one user can only have one review for one business' }
 
   belongs_to :author,
-    primary_key: :id,
-    foreign_key: :author_id,
-    class_name: :User
+             primary_key: :id,
+             foreign_key: :author_id,
+             class_name: :User
 
   belongs_to :business,
-    primary_key: :id,
-    foreign_key: :business_id,
-    class_name: :Business
+             primary_key: :id,
+             foreign_key: :business_id,
+             class_name: :Business
 
   scope :latest, -> { order('updated_at DESC').limit(1) }
-
 end
