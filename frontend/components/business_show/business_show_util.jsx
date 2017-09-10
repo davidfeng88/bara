@@ -9,12 +9,12 @@ export const textInfo = business => {
   let addressLine = (
     <div className='address-info'>
     <div className='addresss-info-col1'>
-    <span className='bold'>
+    <strong>
       <i className="fa fa-map-marker" aria-hidden="true"></i>
       &nbsp;&nbsp;&nbsp;{address}<br/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       {`${city}, ${state} ${zipcode}`}
-    </span>
+    </strong>
     </div>
     <div className='address-info-col2'>
       <i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;
@@ -114,31 +114,32 @@ export const extraInfo = business => {
       </div>
 
       <h3>More business info</h3>
-      <p>Takes Reservations&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Delivery&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Take-out&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Accepts Credit Cards&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Accepts Apple Pay&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Accepts Bitcoin&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Good For&nbsp;&nbsp;<span className='bold'>Dinner</span></p>
-      <p>Parking&nbsp;&nbsp;<span className='bold'>Garage, Street</span></p>
-      <p>Bike Parking&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Wheelchair Accessible&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Good for Kids&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Good for Groups&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Attire&nbsp;&nbsp;<span className='bold'>Casual</span></p>
-      <p>Ambience&nbsp;&nbsp;<span className='bold'>Casual, Trendy</span></p>
-      <p>Noise Level&nbsp;&nbsp;<span className='bold'>Average</span></p>
-      <p>Alcohol&nbsp;&nbsp;<span className='bold'>Full Bar</span></p>
-      <p>Outdoor Seating&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Wi-Fi&nbsp;&nbsp;<span className='bold'>Free</span></p>
-      <p>Has TV&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Dogs Allowed&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Waiter Service&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Drive-Thru&nbsp;&nbsp;<span className='bold'>No</span></p>
-      <p>Caters&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Offers Military Discount&nbsp;&nbsp;<span className='bold'>Yes</span></p>
-      <p>Gender Neutral Restrooms&nbsp;&nbsp;<span className='bold'>Yes</span></p>
+      <p>Takes Reservations&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Delivery&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Take-out&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Accepts Credit Cards&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Accepts Apple Pay&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Accepts Bitcoin&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Good For&nbsp;&nbsp;<strong>Dinner</strong></p>
+      <p>Parking&nbsp;&nbsp;<strong>Garage, Street</strong></p>
+      <p>Bike Parking&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Wheelchair Accessible&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Good for Kids&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Good for Groups&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Attire&nbsp;&nbsp;<strong>Casual</strong></p>
+      <p>Ambience&nbsp;&nbsp;<strong>Casual, Trendy</strong></p>
+      <p>Noise Level&nbsp;&nbsp;<strong>Average</strong></p>
+      <p>Alcohol&nbsp;&nbsp;<strong>Full Bar</strong></p>
+      <p>Outdoor Seating&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Wi-Fi&nbsp;&nbsp;<strong>Free</strong></p>
+      <p>Has TV&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Dogs Allowed&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Waiter Service&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Drive-Thru&nbsp;&nbsp;<strong>No</strong></p>
+      <p>Caters&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Offers Military Discount&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Gender Neutral Restrooms&nbsp;&nbsp;<strong>Yes</strong></p>
+      <p>Gender Neutral Restrooms&nbsp;&nbsp;<strong>Yes</strong></p>
     </div>
   );
 };
