@@ -36,10 +36,6 @@
   font-size: 14px;
 }
 
-// .info a:hover {
-//   cursor: pointer;
-// }
-
 .show-map {
   width: 286px;
   height: 135px;
@@ -88,10 +84,9 @@
   	color: white;
   	background-color: $yelpy-red;
   }
-}
 
-.add-review-link a:hover {
-	cursor: pointer;
-	background-color: #ed0008;
-  text-decoration: none;
+  a:hover {
+    background-color: #ed0008;
+    text-decoration: none;
+  }
 }
