@@ -33,31 +33,30 @@ class Business < ActiveRecord::Base
             presence: true
 
   validates :price, inclusion: { in: 1..4,
-  message: "Price is not valid" }
+                                 message: 'Price is not valid' }
 
   belongs_to :author,
-		primary_key: :id,
-		foreign_key: :author_id,
-		class_name: :User
+             primary_key: :id,
+             foreign_key: :author_id,
+             class_name: :User
 
   has_many :reviews,
-    primary_key: :id,
-    foreign_key: :business_id,
-    class_name: :Review,
-    dependent: :destroy
+           primary_key: :id,
+           foreign_key: :business_id,
+           class_name: :Review,
+           dependent: :destroy
 
   has_many :latest_reviews,
-   -> { order('updated_at desc').limit(1) },
-   class_name: "Review"
+           -> { order('updated_at desc').limit(1) },
+           class_name: 'Review'
 
   has_many :taggings, dependent: :destroy, inverse_of: :business
   has_many :tags, through: :taggings
 
-  has_attached_file :image, default_url: "business-default.jpg"
+  has_attached_file :image, default_url: 'business-default.jpg'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def average_rating
     reviews.average(:rating)
   end
-
 end
