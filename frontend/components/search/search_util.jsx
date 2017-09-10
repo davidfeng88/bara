@@ -1,14 +1,18 @@
 import React from 'react';
 import queryString from 'query-string';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 
 export const buildFilters = search => {
   let name = "";
   let location = "";
   let prices = [];
   let tag = "";
-  if (search !== "") {
-    const parsed = queryString.parse(search, {arrayFormat: 'bracket'});
+  if ( search !== "" ) {
+    const parsed = queryString.parse( search, {
+      arrayFormat: 'bracket'
+    } );
     name = parsed.name ? parsed.name : "";
     location = parsed.location ? parsed.location : "";
     tag = parsed.tag ? parsed.tag : "";
@@ -61,7 +65,13 @@ export const SampleSearch = () => (
   </div>
 );
 
-export const PriceButton = ({label, name, tooltip, checked, onChange }) => (
+export const PriceButton = ( {
+  label,
+  name,
+  tooltip,
+  checked,
+  onChange
+} ) => (
   <label className='price-button'>
     <input type='checkbox' name={name}
       checked={checked} onChange={onChange} />

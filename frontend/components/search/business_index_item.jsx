@@ -1,13 +1,19 @@
 import React from 'react';
 import Rating from 'react-rating';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 import values from 'lodash/values';
-import { reviewNumber, price, tagContent } from '../../util/business_info_util';
+import {
+  reviewNumber,
+  price,
+  tagContent
+} from '../../util/business_info_util';
 
 const topReview = business => {
   let picture = null;
   let reviewBody = 'No review for this business yet';
-  if (business.latest_review) {
+  if ( business.latest_review ) {
     let review = business.latest_review;
     const url = `${review.author.avatar_url}`;
     picture = <img src={url} />;
@@ -25,7 +31,10 @@ const topReview = business => {
   );
 };
 
-const BusinessIndexItem = ({ business, highlightBusiness }) => (
+const BusinessIndexItem = ( {
+  business,
+  highlightBusiness
+} ) => (
   <div
     onMouseEnter={() =>
       highlightBusiness(business.id)}

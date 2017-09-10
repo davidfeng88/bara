@@ -1,5 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import {
+  withRouter
+} from 'react-router-dom';
 import IndexMapMarkerManager from './index_map_marker_manager';
 
 class IndexMap extends React.Component {
@@ -20,22 +22,22 @@ class IndexMap extends React.Component {
       },
     };
     const map = this.refs.map;
-    this.map = new google.maps.Map(map, mapOptions);
-    this.IndexMapMarkerManager = new IndexMapMarkerManager(this.map, this.handleClick.bind(this));
-    this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
+    this.map = new google.maps.Map( map, mapOptions );
+    this.IndexMapMarkerManager = new IndexMapMarkerManager( this.map, this.handleClick.bind( this ) );
+    this.IndexMapMarkerManager.updateMarkers( this.props.businesses );
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.highlight !== prevProps.highlight) {
+  componentDidUpdate( prevProps ) {
+    if ( this.props.highlight !== prevProps.highlight ) {
       this.IndexMapMarkerManager
-        .updateHighlight(prevProps.highlight, this.props.highlight);
+        .updateHighlight( prevProps.highlight, this.props.highlight );
     } else {
-      this.IndexMapMarkerManager.updateMarkers(this.props.businesses);
+      this.IndexMapMarkerManager.updateMarkers( this.props.businesses );
     }
   }
 
-  handleClick(business) {
-    this.props.history.push(`/businesses/${business.id}`);
+  handleClick( business ) {
+    this.props.history.push( `/businesses/${business.id}` );
   }
 
   render() {
@@ -49,4 +51,4 @@ class IndexMap extends React.Component {
   }
 }
 
-export default withRouter(IndexMap);
+export default withRouter( IndexMap );

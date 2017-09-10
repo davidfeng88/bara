@@ -1,10 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 
-export const price = { 1: '$', 2: '$$', 3: '$$$', 4: '$$$$' };
+export const price = {
+  1: '$',
+  2: '$$',
+  3: '$$$',
+  4: '$$$$'
+};
 
 export const reviewNumber = business => {
-  switch (business.number_of_reviews) {
+  switch ( business.number_of_reviews ) {
     case 0:
       return "No reviews yet";
     case 1:
@@ -15,7 +22,7 @@ export const reviewNumber = business => {
 };
 
 const tagEntry = tag => {
-  let label = encodeURIComponent(tag.label);
+  let label = encodeURIComponent( tag.label );
   let tagLink = `/businesses/?tag=${label}`;
   return (
     <Link key={label} to={tagLink}>
@@ -24,17 +31,19 @@ const tagEntry = tag => {
   );
 };
 
-export const tagContent = ({ tags }) => {
-  if (tags) {
+export const tagContent = ( {
+  tags
+} ) => {
+  if ( tags ) {
     let tagsArray = [];
-    tags.forEach( (tag, index) => {
-      if (index === 0) {
-        tagsArray.push(' • ');
+    tags.forEach( ( tag, index ) => {
+      if ( index === 0 ) {
+        tagsArray.push( ' • ' );
       } else {
-        tagsArray.push(', ');
+        tagsArray.push( ', ' );
       }
-        tagsArray.push(tagEntry(tag));
-    });
+      tagsArray.push( tagEntry( tag ) );
+    } );
     return tagsArray;
   } else {
     return null;

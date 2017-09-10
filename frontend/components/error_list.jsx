@@ -2,11 +2,14 @@ import React from 'react';
 
 const errorItems = errors => (
   errors.map(
-    (error, idx) => (<li key={ `error-${idx}` }>{ error }</li>)
+    ( error, idx ) => ( <li key={ `error-${idx}` }>{ error }</li> )
   )
 );
 
-const ErrorList = ({ errors, clearErrors }) => (
+const ErrorList = ( {
+  errors,
+  clearErrors
+} ) => (
   errors.length === 0 ? null : (
     <div className="error-list">
       <ul>{errorItems(errors)}</ul>

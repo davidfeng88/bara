@@ -2,10 +2,10 @@ import React from 'react';
 import ErrorList from '../error_list';
 
 class ReviewForm extends React.Component {
-  constructor(props) {
-    super(props);
-    if (props.review) {
-      this.state = Object.assign({}, props.review);
+  constructor( props ) {
+    super( props );
+    if ( props.review ) {
+      this.state = Object.assign( {}, props.review );
     } else {
       this.state = {
         rating: '3',
@@ -14,8 +14,8 @@ class ReviewForm extends React.Component {
       };
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.handleSubmit = this.handleSubmit.bind( this );
+    this.handleDelete = this.handleDelete.bind( this );
   }
 
   // componentDidMount() {
@@ -24,50 +24,50 @@ class ReviewForm extends React.Component {
   //   }
   // }
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+  update( field ) {
+    return e => this.setState( {
+      [ field ]: e.currentTarget.value
+    } );
   }
 
-  handleSubmit(e) {
+  handleSubmit( e ) {
     e.preventDefault();
     const reviewData = this.state;
-    this.props.processForm(reviewData)
-      .then(() => {
+    this.props.processForm( reviewData )
+      .then( () => {
         this.resetForm();
-        this.props.history.push(`/businesses/${this.props.business.id}`);
-      });
+        this.props.history.push( `/businesses/${this.props.business.id}` );
+      } );
   }
 
   resetForm() {
-    this.setState({
+    this.setState( {
       rating: '3',
       body: '',
       business_id: ``,
-    });
+    } );
   }
 
   titleText() {
-    if (this.props.formType === 'edit') {
+    if ( this.props.formType === 'edit' ) {
       return 'Edit Your Review';
     } else {
       return 'Write a Review';
     }
   }
 
-  handleDelete(e) {
+  handleDelete( e ) {
     e.preventDefault();
-    this.props.deleteReview(this.props.review.id)
-      .then(() => {
+    this.props.deleteReview( this.props.review.id )
+      .then( () => {
         this.resetForm();
-        this.props.history.push(`/businesses/${this.props.business.id}`);
-      });
+        this.props.history.push( `/businesses/${this.props.business.id}` );
+      } );
   }
 
   deleteButton() {
-    if (this.props.formType === 'edit') {
-      return(
+    if ( this.props.formType === 'edit' ) {
+      return (
         <div className='input-wrapper'>
           <button onClick={this.handleDelete} >Delete Review</button>
         </div>
@@ -78,7 +78,7 @@ class ReviewForm extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
       <ErrorList errors={ this.props.errors }
          clearErrors={this.props.clearErrors} />

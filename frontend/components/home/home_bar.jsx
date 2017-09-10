@@ -1,33 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 import Dropdown from '../header/dropdown';
 
 export default class HomeBar extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       showDropdown: false,
     };
 
-    this.toggleDropdown = this.toggleDropdown.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind( this );
+    this.handleLogout = this.handleLogout.bind( this );
   }
 
   toggleDropdown() {
-    this.setState( prevState => ({
+    this.setState( prevState => ( {
       showDropdown: !prevState.showDropdown
-    }));
+    } ) );
   }
 
   handleLogout() {
-    this.setState( () => ({
+    this.setState( () => ( {
       showDropdown: false,
-    }));
+    } ) );
     this.props.logout();
   }
 
   render() {
-    let { currentUser, demoLogin, } = this.props;
+    let {
+      currentUser,
+      demoLogin,
+    } = this.props;
     let dropdownBox = this.state.showDropdown ? (
       <Dropdown
         currentUser={currentUser}
@@ -49,7 +54,7 @@ export default class HomeBar extends React.Component {
           {dropdownBox}
         </div>
       </nav>
-    ):(
+    ) : (
       <nav className="home-bar">
         <div onClick={this.props.demoLogin} className='home-demo'>
           Demo Login

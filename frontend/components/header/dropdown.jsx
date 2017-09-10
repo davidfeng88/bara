@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Dropdown = ({ currentUser, logout, toggleDropdown }) => (
+const Dropdown = ( {
+  currentUser,
+  logout,
+  toggleDropdown
+} ) => (
   <div>
     <div onClick={toggleDropdown} className="dropdown-background">
     </div>

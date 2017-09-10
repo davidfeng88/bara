@@ -1,29 +1,33 @@
 export const createReview = review => (
-  $.ajax({
+  $.ajax( {
     method: 'POST',
     url: '/api/reviews',
-    data: { review }
-  })
+    data: {
+      review
+    }
+  } )
 );
 
 export const fetchReview = id => (
-  $.ajax({
+  $.ajax( {
     method: 'GET',
     url: `/api/reviews/${id}`
-  })
+  } )
 );
 
 export const editReview = review => (
-  $.ajax({
+  $.ajax( {
     method: 'PATCH',
     url: `/api/reviews/${review.id}`,
-    data: { review }
-  })
+    data: {
+      review
+    }
+  } )
 );
 
 export const deleteReview = id => (
-  $.ajax({
+  $.ajax( {
     method: 'DELETE',
     url: `/api/reviews/${id}`
-  })
+  } )
 );

@@ -1,44 +1,48 @@
 export const searchBusinesses = filters => (
-  $.ajax({
+  $.ajax( {
     method: 'GET',
     url: '/api/businesses',
     data: filters,
-  })
+  } )
 );
 
 export const fetchFeaturedBusinesses = () => (
-  $.ajax({
+  $.ajax( {
     method: 'GET',
     url: '/api/businesses/feature',
-  })
+  } )
 );
 
 export const createBusiness = business => (
-  $.ajax({
+  $.ajax( {
     method: 'POST',
     url: '/api/businesses',
-    data: { business }
-  })
+    data: {
+      business
+    }
+  } )
 );
 
 export const fetchBusiness = id => (
-  $.ajax({
+  $.ajax( {
     method: 'GET',
     url: `/api/businesses/${id}`
-  })
+  } )
 );
 
 export const editBusiness = business => (
-  $.ajax({
+  $.ajax( {
     method: 'PATCH',
     url: `/api/businesses/${business.id}`,
-    data: { business }
-  })
+    data: {
+      business
+    }
+  } )
 );
 
 export const deleteBusiness = id => (
-  $.ajax({
+  $.ajax( {
     method: 'DELETE',
     url: `/api/businesses/${id}`
-  })
+  } )
 );

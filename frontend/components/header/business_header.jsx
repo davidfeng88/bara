@@ -1,36 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 
 import SearchBar from './search_bar';
 import BusinessHeaderLinks from './business_links';
 import Dropdown from './dropdown';
 
 export default class BusinessHeader extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       showDropdown: false,
     };
 
-    this.toggleDropdown = this.toggleDropdown.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind( this );
+    this.handleLogout = this.handleLogout.bind( this );
   }
 
   toggleDropdown() {
-    this.setState( prevState => ({
+    this.setState( prevState => ( {
       showDropdown: !prevState.showDropdown
-    }));
+    } ) );
   }
 
   handleLogout() {
-    this.setState( () => ({
+    this.setState( () => ( {
       showDropdown: false,
-    }));
+    } ) );
     this.props.logout();
   }
 
   avatarOrSignUp() {
-    let { currentUser, demoLogin, } = this.props;
+    let {
+      currentUser,
+      demoLogin,
+    } = this.props;
     let dropdownBox = this.state.showDropdown ? (
       <Dropdown
         currentUser={currentUser}

@@ -1,4 +1,6 @@
-import { connect } from 'react-redux';
+import {
+  connect
+} from 'react-redux';
 // TODO use AJAX actions
 // import {
 //   createReview,
@@ -10,8 +12,8 @@ import { connect } from 'react-redux';
 
 import ReviewForm from './review_form';
 
-const mapStateToProps = (state, ownProps) => {
-  if (ownProps.location.pathname.slice(-3) === 'new') {
+const mapStateToProps = ( state, ownProps ) => {
+  if ( ownProps.location.pathname.slice( -3 ) === 'new' ) {
     return {
       // business: selectCurrentBusiness(state, state.reviews.currentBusiness),
       review: null,
@@ -28,8 +30,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = ( dispatch, { location } ) => {
-  const formType = location.pathname.slice(-3) !== 'new' ? "edit" : "create";
+const mapDispatchToProps = ( dispatch, {
+  location
+} ) => {
+  const formType = location.pathname.slice( -3 ) !== 'new' ? "edit" : "create";
   // const processForm = (formType === "edit") ? editReview : createReview;
   return {
     // processForm: review => dispatch(processForm(review)),
@@ -41,4 +45,4 @@ const mapDispatchToProps = ( dispatch, { location } ) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ReviewForm);
+)( ReviewForm );

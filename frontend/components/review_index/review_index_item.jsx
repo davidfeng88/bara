@@ -1,12 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 import Rating from 'react-rating';
 
-const ReviewIndexItem = ({ currentUser, review }) => {
+const ReviewIndexItem = ( {
+  currentUser,
+  review
+} ) => {
   const editReviewString = `/reviews/${review.id}/edit`;
-  const editLink = (currentUser && currentUser.id === review.author_id) ?
-    <Link to={editReviewString}>Edit Review</Link>
-    : null;
+  const editLink = ( currentUser && currentUser.id === review.author_id ) ?
+    <Link to={editReviewString}>Edit Review</Link> :
+    null;
   return (
     <div className='review-index-item'>
       <div className='review-index-left' >

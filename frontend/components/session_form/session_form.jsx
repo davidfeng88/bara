@@ -1,61 +1,66 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 import ErrorList from '../error_list';
 
 export default class SessionForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor( props ) {
+    super( props );
     this.state = {
       username: '',
       password: '',
       errors: [],
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoLogin = this.demoLogin.bind(this);
-    this.clearErrors = this.clearErrors.bind(this);
+    this.handleSubmit = this.handleSubmit.bind( this );
+    this.demoLogin = this.demoLogin.bind( this );
+    this.clearErrors = this.clearErrors.bind( this );
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps( nextProps ) {
     // click 'Sign Up' from the login page or vice versa
-    if (nextProps.formType !== this.props.formType) {
-      this.setState({
+    if ( nextProps.formType !== this.props.formType ) {
+      this.setState( {
         username: '',
         password: '',
         errors: [],
-      });
+      } );
     }
   }
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+  update( field ) {
+    return e => this.setState( {
+      [ field ]: e.currentTarget.value
+    } );
   }
 
-  handleSubmit(e) {
+  handleSubmit( e ) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user)
+    this.props.processForm( user )
       .then(
         () => this.props.history.goBack(),
-        (errors) => this.setState({
+        ( errors ) => this.setState( {
           errors: errors.responseJSON,
-        })
+        } )
       );
   }
 
-  demoLogin(e) {
+  demoLogin( e ) {
     e.preventDefault();
-    const guestUser = {username: 'Guest', password: 'password'};
-    this.props.login(guestUser)
-      .then(() => this.props.history.goBack());
+    const guestUser = {
+      username: 'Guest',
+      password: 'password'
+    };
+    this.props.login( guestUser )
+      .then( () => this.props.history.goBack() );
   }
 
   titleText() {
     return this.props.formType === 'login' ?
-    'Log In to Bara' :
-    'Sign Up for Bara';
+      'Log In to Bara' :
+      'Sign Up for Bara';
   }
 
   subheadingText() {
@@ -85,7 +90,9 @@ export default class SessionForm extends React.Component {
   }
 
   clearErrors() {
-    this.setState({errors: []});
+    this.setState( {
+      errors: []
+    } );
   }
 
   render() {

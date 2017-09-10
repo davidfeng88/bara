@@ -3,7 +3,7 @@ import React from 'react';
 export default class FormMap extends React.Component {
   componentDidMount() {
     const map = this.refs.map;
-    if (this.props.formType === 'createBusiness') {
+    if ( this.props.formType === 'createBusiness' ) {
       let mapOptions = {
         center: {
           lat: 40.712775,
@@ -18,9 +18,12 @@ export default class FormMap extends React.Component {
           position: google.maps.ControlPosition.TOP_LEFT,
         },
       };
-      this.map = new google.maps.Map(map, mapOptions);
+      this.map = new google.maps.Map( map, mapOptions );
     } else {
-      let { lat, lng } = this.props;
+      let {
+        lat,
+        lng
+      } = this.props;
       let mapOptions = {
         center: {
           lat: lat,
@@ -29,15 +32,15 @@ export default class FormMap extends React.Component {
         zoom: 14,
         disableDefaultUI: true
       };
-      this.map = new google.maps.Map(map, mapOptions);
-      const position = new google.maps.LatLng(lat, lng);
-      const marker = new google.maps.Marker({
+      this.map = new google.maps.Map( map, mapOptions );
+      const position = new google.maps.LatLng( lat, lng );
+      const marker = new google.maps.Marker( {
         position,
         map: this.map,
         icon: {
           url: window.staticImages.normalIcon,
         }
-      });
+      } );
     }
   }
 

@@ -1,11 +1,13 @@
-import { HIGHLIGHT_BUSINESS } from '../actions/highlight_actions';
+import {
+  HIGHLIGHT_BUSINESS
+} from '../actions/highlight_actions';
 
 const defaultState = -1;
 
-const HighlightReducer = (state = defaultState, action) => {
-  Object.freeze(state);
+const HighlightReducer = ( state = defaultState, action ) => {
+  Object.freeze( state );
 
-  switch (action.type) {
+  switch ( action.type ) {
 
     case HIGHLIGHT_BUSINESS:
       return action.hightlightBusinessId;
