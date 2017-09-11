@@ -10,7 +10,7 @@ import {
 // header
 import HeaderRouter from './header/header_router';
 // forms
-import BusinessForm from './business_form/business_form';
+import BusinessFormContainer from './business_form/business_form_container';
 import ReviewFormContainer from './review_form/review_form_container';
 import SessionFormContainer from './session_form/session_form_container';
 // business show, search, home pages
@@ -28,9 +28,9 @@ const App = () => (
     <div className='body'>
       <Switch>
         <ProtectedRoute path="/businesses/new"
-          component={BusinessForm} />
+          component={BusinessFormContainer} />
         <ProtectedRoute path="/businesses/:id/edit"
-          component={BusinessForm} />
+          component={BusinessFormContainer} />
         <ProtectedRoute path="/businesses/:business_id/reviews/new"
           component={ReviewFormContainer} />
         <ProtectedRoute path="/reviews/:id/edit"

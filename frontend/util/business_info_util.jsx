@@ -7,7 +7,7 @@ export const price = {
   1: '$',
   2: '$$',
   3: '$$$',
-  4: '$$$$'
+  4: '$$$$',
 };
 
 export const reviewNumber = business => {
