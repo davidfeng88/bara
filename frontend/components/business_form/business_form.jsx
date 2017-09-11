@@ -22,6 +22,7 @@ const BusinessForm = ( {
       url = '',
       price = '1',
   } = business;
+
   const titleText = formType === 'createBusiness' ?
     <h2>Add a Business</h2> : <h2>Update Business Details</h2>;
 
@@ -31,18 +32,18 @@ const BusinessForm = ( {
   const deleteButton = formType === 'createBusiness' ?
     null :
     <div className='input-wrapper'>
-          <button onClick={handleDelete} >Delete Business</button>
-        </div>;
+      <button onClick={handleDelete} >Delete Business</button>
+    </div>;
 
   let cancelButton;
   if ( formType === 'createBusiness' ) {
     cancelButton = (
-      <Link to="/" className='link-as-button'>Go Home</Link>
+      <Link to="/" className='link-as-button-no-margin'>Go Home</Link>
     );
   } else {
     let businessLink = `/businesses/${business.id}`;
     cancelButton = (
-      <Link to={businessLink} className='link-as-button'>Cancel</Link>
+      <Link to={businessLink} className='link-as-button-no-margin'>Cancel</Link>
     );
   }
 
@@ -150,7 +151,6 @@ const BusinessForm = ( {
         />
       </div>
     </div>
-
   );
 };
 

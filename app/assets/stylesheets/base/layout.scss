@@ -58,6 +58,26 @@ a.link-as-button {
   }
 }
 
+a.link-as-button-no-margin {
+	margin: 0 auto;
+  display: block;
+  width: 300px;
+  border: 1px solid #4D4D4D;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 8px 19px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  background-color: $yelpy-red;
+
+  &:hover {
+    background-color: #ed0008;
+    text-decoration: none;
+  }
+}
+
 .hidden {
 	display: none;
 }
