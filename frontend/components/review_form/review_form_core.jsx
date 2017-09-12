@@ -12,15 +12,26 @@ const ReviewFormCore = ( {
   formType,
   business,
   review,
-  handleChange,
+  handleReviewRatingChange,
+  handleReviewBodyChange,
   handleDelete,
   handleSubmit,
 } ) => {
 
+  let {
+    rating = 0,
+      body = '', // takes care of undefined
+  } = review;
+  body = body ? body : ''; // body can be null, convert to ''
   const titleText =
     formType === 'createReview' ?
     <h3>Write a Review</h3> :
     <h3>Edit Your Review</h3>;
+
+  const businessLink = `/businesses/${business.id}`;
+  const cancelButton = (
+    <Link to={businessLink} className='link-as-button-no-margin'>Cancel</Link>
+  );
 
   const deleteButton =
     formType === 'createReview' ?
@@ -29,11 +40,88 @@ const ReviewFormCore = ( {
       <button onClick={handleDelete} >Delete Review</button>
     </div>;
 
+  const handleRate = rate => {
+    let tooltip = '';
+    if ( review.rating === 0 || !review.rating ) {
+      tooltip = 'Select your rating.';
+    }
+    switch ( rate ) {
+      case 1:
+        tooltip = 'Eek! Methinks not.';
+        break;
+      case 2:
+        tooltip = 'Meh. I\'ve experinced better.';
+        break;
+      case 3:
+        tooltip = 'A-OK.';
+        break;
+      case 4:
+        tooltip = 'Yay! I\'m a fan.';
+        break;
+      case 5:
+        tooltip = 'Woohoo! As good as it gets!';
+        break;
+      default:
+    }
+    document.getElementById( 'rating-tooltip' )
+      .innerHTML = tooltip;
+  };
+
   return (
     <div className='flex-left'>
       <div className='review-form-col-1'>
         {titleText}
         <ReviewFormBusienssShow business={business} />
+        <div className='label'>Your Review</div>
+        <form onSubmit={handleSubmit}>
+          <div className='review-form-input'>
+            <div className='flex-left'>
+              <label
+                htmlFor='review-rating'
+                className='hidden'
+              >
+                Review Rating
+              </label>
+              <Rating
+                id='review-rating'
+                className='rating'
+                empty="fa fa-star-o fa-lg"
+                full="fa fa-star fa-lg"
+                initialRate={rating}
+                onChange={handleReviewRatingChange}
+                onRate={handleRate}
+              />
+              <div id='rating-tooltip'>
+                {/* Select your rating. */}
+                {rating}
+              </div>
+            </div>
+
+            <label
+              htmlFor='review-body'
+              className='hidden'
+            >
+              Review Body
+            </label>
+            <textarea
+              id='review-body'
+              type='text'
+              value={body}
+              onChange={handleReviewBodyChange}
+              placeholder="Your review helps others learn about
+              great local businesses.
+              Please don't review this business if you received
+              a freebie for writing this review, or if you're
+              connected in any way to the owner or employees."
+            />
+          </div>
+
+          <div className='input-wrapper'>
+            <button type="submit" >Post Review</button>
+          </div>
+          {cancelButton}
+          {deleteButton}
+        </form>
       </div>
       <ReviewFormReviewIndex business={business}/>
     </div>
@@ -46,7 +134,9 @@ const ReviewFormBusienssShow = ( {
   business
 } ) => (
   <div className='flex-left review-form-business'>
-    <img src={business.image_url} />
+    <Link to={`/businesses/${business.id}`}>
+      <img src={business.image_url} />
+    </Link>
     <div>
       <Link className='business-name-link' to={`/businesses/${business.id}`}>
         {business.name}
@@ -106,47 +196,19 @@ const ReviewFormReviewIndexItem = ( {
 );
 
 /* <div className='center flex-box'>
-  <div className='col-1-2'>
-    <div className="business-form-container">
-      <form onSubmit={this.handleSubmit} className="business-form-box">
-        <h2>{this.titleText()}</h2>
-        <div className="business-form">
-          <label htmlFor='rating'>Your Rating</label>
-          <select className='input-wrapper'
-            id="rating" value={this.state.rating}
-            onChange={this.update('rating')} >
-            <option value='1' >
-              ☆ - Eek! Methinks not.</option>
-            <option value='2' >
-              ☆☆ - Meh. I've experinced better.</option>
-            <option value='3' >
-              ☆☆☆ - A-OK.</option>
-            <option value='4' >
-              ☆☆☆☆ - Yay! I'm a fan.</option>
-            <option value='5' >
-              ☆☆☆☆☆ - Woohoo! As good as it gets!</option>
-          </select>
-          <br />
-          <div className='input-wrapper'>
-            <textarea type="text"
-              id="body"
-              onChange={this.update('body')}
-              className="login-input"
-              placeholder="Your review helps others learn about great
-              local businesses.
 
-              Please don't review this business if you received a
-              freebie for writing this review, or if you're connected
-              in any way to the owner or employees."
-              value={this.state.body} />
-          </div>
-          <div className='input-wrapper'>
-            <button type="submit" >Post Review</button>
-          </div>
-          {this.deleteButton()}
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+  <br />
+  <div className='input-wrapper'>
+    <textarea type="text"
+      id="body"
+      onChange={this.update('body')}
+      className="login-input"
+      placeholder="Your review helps others learn about great
+      local businesses.
+
+      Please don't review this business if you received a
+      freebie for writing this review, or if you're connected
+      in any way to the owner or employees."
+      value={this.state.body} />
+
 </div> */

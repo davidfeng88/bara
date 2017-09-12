@@ -31,7 +31,9 @@ export default class ReviewForm extends React.Component {
     this.fetchBusiness = this.fetchBusiness.bind( this );
     this.fetchReviewToEdit = this.fetchReviewToEdit.bind( this );
     this.clearErrors = this.clearErrors.bind( this );
-    this.handleChange = this.handleChange.bind( this );
+
+    this.handleReviewRatingChange = this.handleReviewRatingChange.bind( this );
+    this.handleReviewBodyChange = this.handleReviewBodyChange.bind( this );
     this.handleDelete = this.handleDelete.bind( this );
     this.handleSubmit = this.handleSubmit.bind( this );
   }
@@ -58,10 +60,11 @@ export default class ReviewForm extends React.Component {
   }
 
   fetchInfo( props ) {
+    window.scrollTo( 0, 0 );
     this.setState( {
       business: {},
       review: {},
-      errrors: [],
+      errors: [],
       loaded: false
     } );
     if ( props.formType === 'createReview' ) {
@@ -128,24 +131,35 @@ export default class ReviewForm extends React.Component {
     } );
   }
 
-  handleChange( field ) {
-    return (
-      e => {
-        e.preventDefault();
-        let {
-          review
-        } = this.state;
-        const updatedReview = update( review, {
-          [ field ]: {
-            $set: e.currentTarget.value
-          }
-        } );
-        this.setState( {
-          business: updatedReview,
-        } );
+  handleReviewRatingChange( rate ) {
+    let {
+      review
+    } = this.state;
+    const updatedReview = update( review, {
+      rating: {
+        $set: rate
       }
-    );
+    } );
+    this.setState( {
+      review: updatedReview,
+    } );
   }
+
+  handleReviewBodyChange( e ) {
+    e.preventDefault();
+    let {
+      review
+    } = this.state;
+    const updatedReview = update( review, {
+      body: {
+        $set: e.currentTarget.value
+      }
+    } );
+    this.setState( {
+      review: updatedReview,
+    } );
+  }
+
 
   handleDelete( e ) {
     e.preventDefault();
@@ -160,6 +174,7 @@ export default class ReviewForm extends React.Component {
     e.preventDefault();
     window.scrollTo( 0, 0 );
     const reviewData = Object.assign( {}, this.state.review );
+    reviewData.business_id = this.state.business.id;
     if ( this.props.formType === 'createReview' ) {
       createReview( reviewData )
         .then(
@@ -215,7 +230,8 @@ export default class ReviewForm extends React.Component {
           formType={formType}
           business={business}
           review={review}
-          handleChange={this.handleChange}
+          handleReviewRatingChange={this.handleReviewRatingChange}
+          handleReviewBodyChange={this.handleReviewBodyChange}
           handleDelete={this.handleDelete}
           handleSubmit={this.handleSubmit}
         />

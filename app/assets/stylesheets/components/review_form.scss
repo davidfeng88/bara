@@ -5,17 +5,45 @@
     border-bottom: 1px solid #e6e6e6;
     margin: 0;
   }
+  line-height: 18px;
 }
 
 .review-form-col-1 {
   width: 645px;
   padding-right: 15px;
+
+  .label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .review-form-input {
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 18px 15px 0 15px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: none;
+    width: 597px;
+    min-height: 156px;
+    border: none;
+    padding: 10px 2px;
+    border-top: 1px solid #e6e6e6;
+    line-height: 18px;
+  }
+
+  textarea:focus {
+    outline: none;
+  }
 }
 
 .review-form-business {
-  margin-top: 11px;
-  line-height: 18px;
-  
+  margin: 11px 0;
+
   img {
     width: 60px;
     height: 60px;

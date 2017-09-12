@@ -20,7 +20,7 @@ class Api::ReviewsController < ApplicationController
 
   # only the author can edit/delete the review
   def update
-    @review = current_user.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
     if @review.update(review_params)
       render 'api/reviews/show'
     else
@@ -31,7 +31,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = current_user.find(params[:id])
+    @review = current_user.reviews.find(params[:id])
     @review.destroy
     render 'api/reviews/show'
   rescue ActiveRecord::RecordNotFound
