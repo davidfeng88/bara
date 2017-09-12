@@ -13,14 +13,14 @@ const BusinessForm = ( {
 } ) => {
 
   const {
-    name = '',
-      address = '',
-      city = '',
-      state = '',
-      zipcode = '',
-      phone = '',
-      url = '',
-      price = '1',
+    name,
+    address,
+    city,
+    state,
+    zipcode,
+    phone,
+    url,
+    price,
   } = business;
 
   const titleText = formType === 'createBusiness' ?
@@ -48,7 +48,7 @@ const BusinessForm = ( {
   }
 
   return (
-    <div className='center form-outer-wrapper'>
+    <div>
       {titleText}
       <div className='form-inner-wrapper'>
         <form onSubmit={handleSubmit} className="business-form">

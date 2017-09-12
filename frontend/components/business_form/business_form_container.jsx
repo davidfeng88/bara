@@ -16,12 +16,23 @@ import {
 import ErrorList from '../error_list';
 import BusinessForm from './business_form';
 
+const emptyBusiness = {
+  name: '',
+  address: '',
+  city: '',
+  state: '',
+  zipcode: '',
+  phone: '',
+  url: '',
+  price: '1',
+};
+
 export default class BusinessFormContainer extends React.Component {
   constructor( props ) {
     super( props );
 
     this.state = {
-      business: {},
+      business: emptyBusiness,
       errors: [],
       loaded: false,
     };
@@ -48,7 +59,7 @@ export default class BusinessFormContainer extends React.Component {
   componentWillReceiveProps( nextProps ) {
     if ( nextProps.location.pathname.slice( -3 ) === 'new' ) {
       this.setState( {
-        business: {},
+        business: emptyBusiness,
         errors: [],
         loaded: true,
       } );
@@ -71,7 +82,7 @@ export default class BusinessFormContainer extends React.Component {
           } );
         },
         errors => this.setState( {
-          business: {},
+          business: emptyBusiness,
           errors: errors.responseJSON,
           loaded: true,
         } )
@@ -163,7 +174,7 @@ export default class BusinessFormContainer extends React.Component {
         <img className='spinner' src={window.staticImages.spinner} />
       );
     }
-    if ( errors.length > 0 ) {
+    if ( formType === 'editBusiness' && !business.id ) {
       return (
         <div className='center'>
           <ErrorList errors={errors}
@@ -175,13 +186,17 @@ export default class BusinessFormContainer extends React.Component {
       );
     }
     return (
-      <BusinessForm
-        business={business}
-        formType={formType}
-        handleChange={this.handleChange}
-        handleDelete={this.handleDelete}
-        handleSubmit={this.handleSubmit}
-      />
+      <div className='center form-outer-wrapper'>
+        <ErrorList errors={ this.state.errors }
+          clearErrors={this.clearErrors} />
+        <BusinessForm
+          business={business}
+          formType={formType}
+          handleChange={this.handleChange}
+          handleDelete={this.handleDelete}
+          handleSubmit={this.handleSubmit}
+        />
+      </div>
     );
   }
 }

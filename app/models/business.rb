@@ -33,7 +33,7 @@ class Business < ActiveRecord::Base
             presence: true
 
   validates :price, inclusion: { in: 1..4,
-                                 message: 'Price is not valid' }
+                                 message: 'should be an integer between 1 and 4' }
 
   belongs_to :author,
              primary_key: :id,
