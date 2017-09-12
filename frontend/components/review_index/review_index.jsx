@@ -7,8 +7,11 @@ const ReviewIndex = ( {
 } ) => {
   let reviewsEntries = reviews.length > 0 ? (
     reviews.map( review => (
-      <ReviewIndexItem key={ review.id }
-        review={ review } currentUser={ currentUser } />
+      <ReviewIndexItem
+        key={ review.id }
+        review={ review }
+        currentUser={ currentUser }
+      />
     ) )
   ) : (
     <div className='review-placehoder'>

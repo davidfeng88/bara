@@ -1,0 +1,54 @@
+.review-form {
+  padding: 15px 0 36px 0;
+  h3 {
+    padding: 0 0 6px 0;
+    border-bottom: 1px solid #e6e6e6;
+    margin: 0;
+  }
+}
+
+.review-form-col-1 {
+  width: 645px;
+  padding-right: 15px;
+}
+
+.review-form-business {
+  margin-top: 11px;
+  line-height: 18px;
+  
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    margin-right: 12px;
+  }
+
+  .business-name-link {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.review-form-col-2 {
+  border-left: 1px solid #e6e6e6;
+  width: 315px;
+  padding-left: 15px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.review-form-index-item {
+  padding: 18px 0 17px 0;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 14px;
+
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 9px;
+  }
+}

@@ -98,16 +98,17 @@ export default class BusinessFormContainer extends React.Component {
   handleChange( field ) {
     return (
       e => {
+        e.preventDefault();
         let {
           business
         } = this.state;
-        const newBiz = update( business, {
+        const updatedBusiness = update( business, {
           [ field ]: {
             $set: e.currentTarget.value
           }
         } );
         this.setState( {
-          business: newBiz
+          business: updatedBusiness
         } );
       }
     );
