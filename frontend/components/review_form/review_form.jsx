@@ -32,6 +32,7 @@ export default class ReviewForm extends React.Component {
       loaded: false,
     };
 
+    this.fetchInfo = this.fetchInfo.bind( this );
     this.fetchBusiness = this.fetchBusiness.bind( this );
     this.fetchReviewToEdit = this.fetchReviewToEdit.bind( this );
 
@@ -40,10 +41,37 @@ export default class ReviewForm extends React.Component {
   }
 
   componentDidMount() {
-    if ( this.props.formType === 'createReview' ) {
-      this.fetchBusiness( this.props.match.params.business_id );
+    this.fetchInfo( this.props );
+  }
+
+  // TODO: test if all these conditions are necessary
+  componentWillReceiveProps( nextProps ) {
+    if ( nextProps.formType !== this.props.formType ) {
+      this.fetchInfo( nextProps );
+    } else if (
+      this.props.formType === 'createReview' &&
+      this.props.match.params.business_id !== nextProps.match.params.business_id
+    ) {
+      this.fetchInfo( nextProps );
+    } else if (
+      this.props.formType === 'editReview' &&
+      this.props.match.params.id !== nextProps.match.params.id
+    ) {
+      this.fetchInfo( nextProps );
+    }
+  }
+
+  fetchInfo( props ) {
+    this.setState( {
+      business: {},
+      review: {},
+      errrors: [],
+      loaded: false
+    } );
+    if ( props.formType === 'createReview' ) {
+      this.fetchBusiness( props.match.params.business_id );
     } else {
-      this.fetchReviewToEdit( this.props.match.params.id );
+      this.fetchReviewToEdit( props.match.params.id );
     }
   }
 
@@ -71,11 +99,9 @@ export default class ReviewForm extends React.Component {
     fetchReview( this.props.match.params.id )
       .then(
         review => {
-          debugger
           fetchBusiness( review.business_id )
             .then(
               business => {
-                debugger
                 this.setState( {
                   business,
                   review,
@@ -126,7 +152,6 @@ export default class ReviewForm extends React.Component {
       errors,
       loaded,
     } = this.state;
-    debugger
     if ( !loaded ) {
       return (
         <img className='spinner' src={window.staticImages.spinner} />
