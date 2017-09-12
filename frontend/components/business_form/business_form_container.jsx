@@ -175,6 +175,7 @@ export default class BusinessFormContainer extends React.Component {
       );
     }
     if ( formType === 'editBusiness' && !business.id ) {
+      // business is not found
       return (
         <div className='center'>
           <ErrorList errors={errors}
