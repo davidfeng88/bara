@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :businesses do
       get 'feature', on: :collection
     end
-    resources :reviews, only: %i[create destroy update]
+    resources :reviews, only: %i[show create destroy update]
   end
 end

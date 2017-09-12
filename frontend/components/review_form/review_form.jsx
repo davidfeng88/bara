@@ -1,28 +1,98 @@
 import React from 'react';
+import {
+  Link
+} from 'react-router-dom';
+import update from 'immutability-helper';
+
+import {
+  createReview,
+  fetchReview,
+  editReview,
+  deleteReview,
+} from '../../util/review_api_util';
+import {
+  fetchBusiness,
+} from '../../util/business_api_util';
+
 import ErrorList from '../error_list';
 
-class ReviewForm extends React.Component {
+const emptyReview = {
+  rating: '',
+  body: '',
+};
+
+// container passed in currentUser and formType
+export default class ReviewForm extends React.Component {
   constructor( props ) {
     super( props );
-    if ( props.review ) {
-      this.state = Object.assign( {}, props.review );
-    } else {
-      this.state = {
-        rating: '3',
-        body: '',
-        business_id: `${props.business.id}`,
-      };
-    }
+    this.state = {
+      business: {},
+      review: {},
+      errors: [],
+      loaded: false,
+    };
+
+    this.fetchBusiness = this.fetchBusiness.bind( this );
+    this.fetchReviewToEdit = this.fetchReviewToEdit.bind( this );
 
     this.handleSubmit = this.handleSubmit.bind( this );
     this.handleDelete = this.handleDelete.bind( this );
   }
 
-  // componentDidMount() {
-  //   if (!this.props.review) {
-  //     fetchReview();
-  //   }
-  // }
+  componentDidMount() {
+    if ( this.props.formType === 'createReview' ) {
+      this.fetchBusiness( this.props.match.params.business_id );
+    } else {
+      this.fetchReviewToEdit( this.props.match.params.id );
+    }
+  }
+
+  fetchBusiness( businessId ) {
+    fetchBusiness( businessId )
+      .then(
+        business => {
+          this.setState( {
+            business,
+            review: {},
+            errors: [],
+            loaded: true,
+          } );
+        },
+        errors => this.setState( {
+          business: {},
+          review: {},
+          errors: errors.responseJSON,
+          loaded: true,
+        } )
+      );
+  }
+
+  fetchReviewToEdit( reviewId ) {
+    fetchReview( this.props.match.params.id )
+      .then(
+        review => {
+          debugger
+          fetchBusiness( review.business_id )
+            .then(
+              business => {
+                debugger
+                this.setState( {
+                  business,
+                  review,
+                  errors: [],
+                  loaded: true,
+                } );
+              }
+            );
+        },
+        errors => this.setState( {
+          business: {},
+          review: {},
+          errors: errors.responseJSON,
+          loaded: true,
+        } )
+      );
+  }
 
   update( field ) {
     return e => this.setState( {
@@ -40,22 +110,6 @@ class ReviewForm extends React.Component {
       } );
   }
 
-  resetForm() {
-    this.setState( {
-      rating: '3',
-      body: '',
-      business_id: ``,
-    } );
-  }
-
-  titleText() {
-    if ( this.props.formType === 'edit' ) {
-      return 'Edit Your Review';
-    } else {
-      return 'Write a Review';
-    }
-  }
-
   handleDelete( e ) {
     e.preventDefault();
     this.props.deleteReview( this.props.review.id )
@@ -65,71 +119,26 @@ class ReviewForm extends React.Component {
       } );
   }
 
-  deleteButton() {
-    if ( this.props.formType === 'edit' ) {
-      return (
-        <div className='input-wrapper'>
-          <button onClick={this.handleDelete} >Delete Review</button>
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
-
   render() {
+    const {
+      business,
+      review,
+      errors,
+      loaded,
+    } = this.state;
+    debugger
+    if ( !loaded ) {
+      return (
+        <img className='spinner' src={window.staticImages.spinner} />
+      );
+    }
     return (
       <div>
-      <ErrorList errors={ this.props.errors }
-         clearErrors={this.props.clearErrors} />
-      <div className='center flex-box'>
-        <div className='col-1-2'>
-          <div className="business-form-container">
-            <form onSubmit={this.handleSubmit} className="business-form-box">
-              <h2>{this.titleText()}</h2>
-              <div className="business-form">
-                <label htmlFor='rating'>Your Rating</label>
-                <select className='input-wrapper'
-                  id="rating" value={this.state.rating}
-                  onChange={this.update('rating')} >
-                  <option value='1' >
-                    ☆ - Eek! Methinks not.</option>
-                  <option value='2' >
-                    ☆☆ - Meh. I've experinced better.</option>
-                  <option value='3' >
-                    ☆☆☆ - A-OK.</option>
-                  <option value='4' >
-                    ☆☆☆☆ - Yay! I'm a fan.</option>
-                  <option value='5' >
-                    ☆☆☆☆☆ - Woohoo! As good as it gets!</option>
-                </select>
-                <br />
-                <div className='input-wrapper'>
-                  <textarea type="text"
-                    id="body"
-                    onChange={this.update('body')}
-                    className="login-input"
-                    placeholder="Your review helps others learn about great
-                    local businesses.
-
-                    Please don't review this business if you received a
-                    freebie for writing this review, or if you're connected
-                    in any way to the owner or employees."
-                    value={this.state.body} />
-                </div>
-                <div className='input-wrapper'>
-                  <button type="submit" >Post Review</button>
-                </div>
-                {this.deleteButton()}
-              </div>
-            </form>
-          </div>
-        </div>
+        <ErrorList errors={ this.state.errors }
+          clearErrors={this.clearErrors} />
+        business: {business.name}<br />
+        review: {review.body}<br />
       </div>
-    </div>
     );
   }
-
 }
-
-export default ReviewForm;

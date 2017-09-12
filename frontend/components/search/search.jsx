@@ -84,8 +84,10 @@ export default class Search extends React.Component {
 
   searchTitle() {
     let {
-      name = "places", location
+      name,
+      location,
     } = this.filters;
+    name = name ? name : "places";
     location = location ? `near ${location}` : "";
     return (
       <h1 className='search-title'><strong>Best {name}</strong> {location}</h1>

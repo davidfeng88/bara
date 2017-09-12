@@ -162,7 +162,8 @@ export default class BusinessFormContainer extends React.Component {
   }
 
   render() {
-    const formType = this.props.location.pathname.slice( -3 ) === 'new' ?
+    const formType =
+      this.props.location.pathname.slice( -3 ) === 'new' ?
       'createBusiness' : 'editBusiness';
     const {
       business,

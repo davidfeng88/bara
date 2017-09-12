@@ -1,6 +1,13 @@
 class Api::ReviewsController < ApplicationController
   before_action :require_logged_in, only: [:create]
 
+  def show
+    @review = Review.find(params[:id])
+    render 'api/reviews/show'
+  rescue ActiveRecord::RecordNotFound
+    render json: ["Couldn't find review with 'id'=#{params[:id]}"], status: 404
+  end
+
   def create
     @review = Review.new(review_params)
     @review.author = current_user
