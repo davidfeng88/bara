@@ -39,7 +39,15 @@ export default class ReviewForm extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchInfo( this.props );
+    if ( this.props.formType === 'createReview' ) {
+      const businessId = this.props.match.params.business_id;
+      if ( this.props.currentUser.reviewed_businesses[ businessId ] ) {
+        const reviewId = this.props.currentUser.reviewed_businesses[ businessId ];
+        this.props.history.push( `/reviews/${reviewId}/edit` );
+      }
+    } else {
+      this.fetchInfo( this.props );
+    }
   }
 
   componentWillReceiveProps( nextProps ) {
