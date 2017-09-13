@@ -7,3 +7,5 @@ json.reviews do
 end
 # if @business has no review, @business.reviews == [] and the "reviews"
 # field will be an empty array
+
+json.reviewers Hash[@business.reviews.map { |review| [review.author_id, review.id] }]

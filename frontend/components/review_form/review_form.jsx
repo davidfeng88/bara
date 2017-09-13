@@ -39,15 +39,7 @@ export default class ReviewForm extends React.Component {
   }
 
   componentDidMount() {
-    if ( this.props.formType === 'createReview' ) {
-      const businessId = this.props.match.params.business_id;
-      if ( this.props.currentUser.reviewed_businesses[ businessId ] ) {
-        const reviewId = this.props.currentUser.reviewed_businesses[ businessId ];
-        this.props.history.push( `/reviews/${reviewId}/edit` );
-      }
-    } else {
-      this.fetchInfo( this.props );
-    }
+    this.fetchInfo( this.props );
   }
 
   componentWillReceiveProps( nextProps ) {
@@ -75,22 +67,28 @@ export default class ReviewForm extends React.Component {
       loaded: false
     } );
     if ( props.formType === 'createReview' ) {
-      this.fetchBusiness( props.match.params.business_id );
+      this.fetchBusiness( props );
     } else {
       this.fetchReviewToEdit( props.match.params.id );
     }
   }
 
-  fetchBusiness( businessId ) {
-    fetchBusiness( businessId )
+  fetchBusiness( props ) {
+    fetchBusiness( props.match.params.business_id )
       .then(
         business => {
-          this.setState( {
-            business,
-            review: {},
-            errors: [],
-            loaded: true,
-          } );
+          if ( props.currentUser &&
+            business.reviewers[ props.currentUser.id ] ) {
+            let reviewId = business.reviewers[ props.currentUser.id ];
+            this.props.history.push( `/reviews/${reviewId}/edit` );
+          } else {
+            this.setState( {
+              business,
+              review: {},
+              errors: [],
+              loaded: true,
+            } );
+          }
         },
         errors => this.setState( {
           business: {},

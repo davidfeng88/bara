@@ -3,7 +3,7 @@ import {
   Link
 } from 'react-router-dom';
 import {
-  fetchBusiness
+  fetchBusiness,
 } from '../../util/business_api_util';
 
 import ErrorList from '../error_list';
@@ -15,33 +15,16 @@ export default class BusinessShow extends React.Component {
     this.state = ( {
       business: null,
       errors: [],
+      reviewId: null,
       loaded: false,
     } );
 
+    this.fetchBusiness = this.fetchBusiness.bind( this );
     this.clearErrors = this.clearErrors.bind( this );
   }
 
-  clearErrors() {
-    this.setState( {
-      errors: []
-    } );
-  }
-
   componentDidMount() {
-    fetchBusiness( this.props.match.params.id )
-      .then(
-        business => this.setState( {
-          business,
-          errors: [],
-          loaded: true,
-        } ),
-        errors => this.setState( {
-          business: null,
-          errors: errors.responseJSON,
-          loaded: true,
-        } )
-      );
-    window.scrollTo( 0, 0 );
+    this.fetchBusiness( this.props );
   }
 
   componentWillReceiveProps( nextProps ) {
@@ -49,23 +32,43 @@ export default class BusinessShow extends React.Component {
       this.setState( {
         business: null,
         errors: [],
+        reviewId: null,
         loaded: false,
       } );
-      fetchBusiness( nextProps.match.params.id )
-        .then(
-          business => this.setState( {
+      fetchBusiness( nextProps );
+    }
+  }
+
+  fetchBusiness( props ) {
+    fetchBusiness( props.match.params.id )
+      .then(
+        business => {
+          let reviewId = null;
+          if ( props.currentUser &&
+            business.reviewers[ props.currentUser.id ] ) {
+            reviewId = business.reviewers[ props.currentUser.id ];
+          }
+          this.setState( {
             business,
+            reviewId,
             errors: [],
             loaded: true,
-          } ),
-          errors => this.setState( {
-            business: null,
-            errors: errors.responseJSON,
-            loaded: true,
-          } )
-        );
-      window.scrollTo( 0, 0 );
-    }
+          } );
+        },
+        errors => this.setState( {
+          business: null,
+          reviewId: null,
+          errors: errors.responseJSON,
+          loaded: true,
+        } )
+      );
+    window.scrollTo( 0, 0 );
+  }
+
+  clearErrors() {
+    this.setState( {
+      errors: [],
+    } );
   }
 
   render() {
@@ -73,6 +76,7 @@ export default class BusinessShow extends React.Component {
       business,
       errors,
       loaded,
+      reviewId,
     } = this.state;
     if ( !loaded ) {
       return (
@@ -93,7 +97,7 @@ export default class BusinessShow extends React.Component {
     return (
       <BusinessShowCore
         business={business}
-        currentUser={this.props.currentUser}
+        reviewId={reviewId}
       />
     );
   }

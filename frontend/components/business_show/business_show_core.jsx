@@ -13,12 +13,12 @@ import ReviewIndex from '../review_index/review_index';
 
 const BusinessShowCore = ( {
   business,
-  currentUser,
+  reviewId,
 } ) => (
   <div>
     <div className='business-show-title'>
       <div className='center'>
-        {businessShowTitle(business, currentUser)}
+        {businessShowTitle(business, reviewId)}
         <div className='business-show-title-row2'>
           <div className='info'>
             <ShowMap business={business} />
@@ -92,17 +92,17 @@ const textInfo = business => {
   );
 };
 
-const businessShowTitle = ( business, currentUser ) => {
+const businessShowTitle = ( business, reviewId ) => {
   let reviewButton = null;
-  if ( currentUser.reviewed_businesses[ business.id ] ) {
+  if ( reviewId ) {
     const editReviewLink =
-      `/reviews/${currentUser.reviewed_businesses[business.id]}/edit`;
+      `/reviews/${reviewId}/edit`;
     reviewButton = (
       <div className='add-review-link business-show-title-col'>
         <Link to={editReviewLink}>
           <i className="fa fa-star fa-lg" aria-hidden="true"></i>
           &nbsp;Edit My Review</Link>
-      </div>
+        </div>
     );
   } else {
     const newReviewLink =
