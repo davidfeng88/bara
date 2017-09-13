@@ -1,16 +1,14 @@
 import React from 'react';
-import ReviewIndexItem from './review_index_item';
+import ReviewIndexItemContainer from './review_index_item_container';
 
 const ReviewIndex = ( {
-  currentUser,
   reviews
 } ) => {
   let reviewsEntries = reviews.length > 0 ? (
     reviews.map( review => (
-      <ReviewIndexItem
+      <ReviewIndexItemContainer
         key={ review.id }
         review={ review }
-        currentUser={ currentUser }
       />
     ) )
   ) : (

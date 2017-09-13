@@ -9,7 +9,7 @@ import {
   tagContent
 } from '../../util/business_info_util';
 import ShowMap from './show_map';
-import ReviewIndexContainer from '../review_index/review_index_container';
+import ReviewIndex from '../review_index/review_index';
 
 const BusinessShowCore = ( {
   business,
@@ -37,7 +37,7 @@ const BusinessShowCore = ( {
         <div className='index-grid-col1 show-grid-col1'>
           <h2>Reviews for
           <span className='normal black'> {business.name}</span></h2>
-          <ReviewIndexContainer reviews={business.reviews} />
+          <ReviewIndex reviews={business.reviews} />
         </div>
         {extraInfo(business)}
       </div>
