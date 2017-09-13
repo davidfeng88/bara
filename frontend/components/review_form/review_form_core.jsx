@@ -30,21 +30,27 @@ const ReviewFormCore = ( {
 
   const businessLink = `/businesses/${business.id}`;
   const cancelButton = (
-    <Link to={businessLink} className='link-as-button-no-margin'>Cancel</Link>
+    <Link to={businessLink}>Cancel</Link>
   );
 
   const deleteButton =
     formType === 'createReview' ?
     null :
-    <div className='input-wrapper'>
+    <div className='input-wrapper-narrow'>
       <button onClick={handleDelete} >Delete Review</button>
     </div>;
 
+  const ratingTooltip = ( {
+    0: 'Select your rating.',
+    1: 'Eek! Methinks not.',
+    2: 'Meh. I\'ve experinced better.',
+    3: 'A-OK.',
+    4: 'Yay! I\'m a fan.',
+    5: 'Woohoo! As good as it gets!',
+  } );
+
   const handleRate = rate => {
     let tooltip = '';
-    if ( review.rating === 0 || !review.rating ) {
-      tooltip = 'Select your rating.';
-    }
     switch ( rate ) {
       case 1:
         tooltip = 'Eek! Methinks not.';
@@ -62,6 +68,7 @@ const ReviewFormCore = ( {
         tooltip = 'Woohoo! As good as it gets!';
         break;
       default:
+        tooltip = ratingTooltip[ review.rating ] || 'Select your rating.';
     }
     document.getElementById( 'rating-tooltip' )
       .innerHTML = tooltip;
@@ -75,25 +82,26 @@ const ReviewFormCore = ( {
         <div className='label'>Your Review</div>
         <form onSubmit={handleSubmit}>
           <div className='review-form-input'>
-            <div className='flex-left'>
+            <div className='star-line'>
               <label
                 htmlFor='review-rating'
                 className='hidden'
               >
                 Review Rating
               </label>
-              <Rating
-                id='review-rating'
-                className='rating'
-                empty="fa fa-star-o fa-lg"
-                full="fa fa-star fa-lg"
-                initialRate={rating}
-                onChange={handleReviewRatingChange}
-                onRate={handleRate}
-              />
+              <span className='rating-star'>
+                <Rating
+                  id='review-rating'
+                  className='rating'
+                  empty="fa fa-star-o fa-lg"
+                  full="fa fa-star fa-lg"
+                  initialRate={rating}
+                  onChange={handleReviewRatingChange}
+                  onRate={handleRate}
+                />
+              </span>
               <div id='rating-tooltip'>
-                {/* Select your rating. */}
-                {rating}
+                Select your rating.
               </div>
             </div>
 
@@ -115,12 +123,17 @@ const ReviewFormCore = ( {
               connected in any way to the owner or employees."
             />
           </div>
-
-          <div className='input-wrapper'>
-            <button type="submit" >Post Review</button>
+          <div className='flex-left-center'>
+            <div className='input-wrapper-narrow'>
+              <button type="submit" >Post Review</button>
+            </div>
+            {deleteButton}
+            {cancelButton}
           </div>
-          {cancelButton}
-          {deleteButton}
+
+          <p className='subtle-text-left'>
+            * You can always edit or remove reviews later.
+          </p>
         </form>
       </div>
       <ReviewFormReviewIndex business={business}/>
@@ -161,7 +174,7 @@ const ReviewFormReviewIndex = ( {
       />
     ) )
   ) : (
-    <div className='review-placehoder'>
+    <div className='review-form-review-placehoder'>
       No review for this business yet.
     </div>
   );
@@ -194,21 +207,3 @@ const ReviewFormReviewIndexItem = ( {
     <div>{review.body}</div>
   </div>
 );
-
-/* <div className='center flex-box'>
-
-  <br />
-  <div className='input-wrapper'>
-    <textarea type="text"
-      id="body"
-      onChange={this.update('body')}
-      className="login-input"
-      placeholder="Your review helps others learn about great
-      local businesses.
-
-      Please don't review this business if you received a
-      freebie for writing this review, or if you're connected
-      in any way to the owner or employees."
-      value={this.state.body} />
-
-</div> */

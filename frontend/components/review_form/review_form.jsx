@@ -42,7 +42,6 @@ export default class ReviewForm extends React.Component {
     this.fetchInfo( this.props );
   }
 
-  // TODO: test if all these conditions are necessary
   componentWillReceiveProps( nextProps ) {
     if ( nextProps.formType !== this.props.formType ) {
       this.fetchInfo( nextProps );
@@ -95,7 +94,7 @@ export default class ReviewForm extends React.Component {
   }
 
   fetchReviewToEdit( reviewId ) {
-    fetchReview( this.props.match.params.id )
+    fetchReview( reviewId )
       .then(
         review => {
           if ( this.props.currentUser.id === review.author_id ) {

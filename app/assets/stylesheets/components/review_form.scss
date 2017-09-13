@@ -26,12 +26,23 @@
     font-size: 14px;
   }
 
+  .star-line {
+    display: flex;
+    align-items: center;
+    padding-bottom: 18px;
+  }
+
+  .rating-star {
+    font-size: 1.5em;
+    margin-right: 9px;
+  }
+
   textarea {
     resize: none;
     width: 597px;
     min-height: 156px;
     border: none;
-    padding: 10px 2px;
+    padding: 18px 2px;
     border-top: 1px solid #e6e6e6;
     line-height: 18px;
   }
@@ -68,6 +79,12 @@
   }
 }
 
+.review-form-review-placehoder {
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
 .review-form-index-item {
   padding: 18px 0 17px 0;
   border-bottom: 1px solid #e6e6e6;
@@ -78,5 +95,41 @@
     height: 30px;
     border-radius: 4px;
     margin-right: 9px;
+  }
+}
+
+.subtle-text-left {
+	color: #999;
+}
+
+.input-wrapper-narrow {
+	display: flex;
+	margin: 1px;
+	width: 150px;
+  margin-right: 12px;
+	button {
+		flex: 1;
+		border: 1px solid #4D4D4D;
+		border-radius: 3px;
+		font-size: 14px;
+		padding: 8px 19px;
+		cursor: pointer;
+
+		font-weight: bold;
+		color: white;
+		background-color: $yelpy-red;
+	}
+
+	button:hover {
+		background-color: #ed0008;
+	}
+}
+
+.flex-left-center {
+  display: flex;
+  align-items: center;
+
+  a {
+    font-size: 12px;
   }
 }
