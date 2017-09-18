@@ -6,7 +6,7 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 ![homepage](docs/homepage.png)
 
 ## Main Features
-* Each page loads data from backend based on URL, not from Redux store, so that a user can send a URL to another user to share a particular business or a business search result.
+* Each component loads data from backend (based on URL), not from Redux store, so that a user can send a URL to another user to share a particular business or a business search result, and the second user can visit that URL directly.
 * Businesses can be searched by its name, address, city, state, zipcode, price range, tags, and their combinations. Business show page displays a specific business and its reviews.
 * When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review.
 
