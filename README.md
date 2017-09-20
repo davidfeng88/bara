@@ -12,8 +12,9 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 * When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review.
 
 ## Implementation Details
-[Homepage](###homepage)
-[Business Search](###business-search)
+[Homepage](#homepage)
+
+[Business Search](#business-search)
 ### Homepage
 The homepage contains a 'Featured Businesses' section, which displays three random businesses. Clicking on the bara logo updates them. To implements this feature, I added collection route called `feature` and set up corresponding controller and view. Clicking the bara logo sends a GET request to `/api/businesses/feature`, which will send back the information of three random businesses.
 ```ruby
