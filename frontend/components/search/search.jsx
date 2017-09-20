@@ -26,12 +26,13 @@ export default class Search extends React.Component {
 
   componentDidMount() {
     searchBusinesses( this.filters )
-      .then( ( businesses ) => {
-        this.setState( {
-          loaded: true,
-          businesses,
+      .then(
+        businesses => {
+          this.setState( {
+            loaded: true,
+            businesses,
+          } );
         } );
-      } );
     window.scrollTo( 0, 0 );
   }
 
@@ -42,12 +43,13 @@ export default class Search extends React.Component {
       } );
       this.filters = buildFilters( newProps.location.search );
       searchBusinesses( this.filters )
-        .then( ( businesses ) => {
-          this.setState( {
-            loaded: true,
-            businesses,
+        .then(
+          businesses => {
+            this.setState( {
+              loaded: true,
+              businesses,
+            } );
           } );
-        } );
     }
   }
 

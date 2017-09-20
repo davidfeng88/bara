@@ -1,5 +1,5 @@
 class Api::BusinessesController < ApplicationController
-  before_action :require_logged_in, only: [:create]
+  before_action :require_logged_in, only: [:create :update :destroy]
 
   def feature
     @businesses = Business.all.sample(3)

@@ -1,5 +1,5 @@
 class Api::ReviewsController < ApplicationController
-  before_action :require_logged_in, only: [:create]
+  before_action :require_logged_in, only: [:create :update :destroy]
 
   def show
     @review = Review.find(params[:id])
