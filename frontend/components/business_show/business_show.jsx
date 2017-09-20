@@ -35,7 +35,7 @@ export default class BusinessShow extends React.Component {
         reviewId: null,
         loaded: false,
       } );
-      fetchBusiness( nextProps );
+      this.fetchBusiness( nextProps );
     }
   }
 

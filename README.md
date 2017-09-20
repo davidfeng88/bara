@@ -12,9 +12,14 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 * When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review.
 
 ## Implementation Details
-[Homepage](#homepage)
+* [Homepage](#homepage)
+* [Business search](#business-search)
+  * [Search bar](#search-bar)
+  * [Sample searches and price filters](#sample-searches-and-price-filters)
+  * [Search component](#search-component)
+  * [Business tags](#busienss-tags)
+  * [Index map](#index-map)
 
-[Business Search](#business-search)
 ### Homepage
 The homepage contains a 'Featured Businesses' section, which displays three random businesses. Clicking on the bara logo updates them. To implements this feature, I added collection route called `feature` and set up corresponding controller and view. Clicking the bara logo sends a GET request to `/api/businesses/feature`, which will send back the information of three random businesses.
 ```ruby
@@ -36,18 +41,21 @@ end
 ```
 The homepage also contains a search bar component, which is the same search bar component in the header of other pages (business search, business show, etc.) See details in the next section.
 
-### Business Search
+### Business search
+
 #### Search bar
 ![search_bar](docs/search_bar.png)
 The search bar has two fields, `name` and `location`, which are filled based on query string (`?name=bur&location=19th`) in the URL (e.g. `https://bara.davidfeng.us/#/businesses/?name=bur&location=19th`) in the `constructor` and `componentWillReceiveProps`. Therefore in a search page, the search bar input fields are filled with those queries.
 Upon submission, the search bar pushes `/businesses/?name=${nameEncoded}&location=${locationEncoded}` to the history. Notice that the two fields are encoded using `encodeURIComponent`.
+
 #### Sample searches and price filters
 ![sample_searches](docs/sample_searches.png)
 Sample searches provides some links for the user to try the search functionality.
 The price filters fetches all the current filters (`name`, `location`, `tag`, current `prices[]`) from the URL, and adds/removes a specific `prices[]` value when the user clicks on the dollar sign buttons. The updated search result will show up after the click. No need to click the submit button. Also, it is possible to select multiple `prices[]` values (e.g. "$" and "$$$$", which translates to `prices[]=1&prices[]=4` in the query string).
+
 #### Search component
 ![search](docs/search.png)
-The search component first set the `loaded` field in its state to be `false`, which displays the loading spinner. Then it get all the filters (`name`, `location`, `tag`, `prices[]`) from the URL, send them to the backend, and the business index route handles the search and sends back the information of matched businesses.
+The search component first set the `loaded` field in its state to be `false`, which displays the loading spinner. Then it get all the filters (`name`, `location`, `tag`, `prices[]`) from the URL, send them to the backend, and the business index route handles the search and sends back the information of matched businesses (see below). Then the search component displays those businesses.
 ```ruby
 def index
   businesses = Business.all.includes(:reviews, :tags)
@@ -84,15 +92,49 @@ def index
 end
 ```
 
-Tags
-Redux Store
+#### Business tags
+Businesses and tags (e.g. 'Chinese', 'Japanese', 'Nightlife') have a many-to-many relationship. Thus the database has a `taggings` joint table to handle it. In the search result entries, the tag links of each business are shown next to its price range (dollar sign). Click on the tag link would fire a new search to fetch all the businesses with that tag.
+
+#### Index map
+The index map is wrapped in a div, which has a 'sticky' CSS position property, so that when scrolling down the page, the map is always on the page.
+When a business index entry is hovered, the business is 'highlighted', and the corresponding icon on the map should change to a different style. Instead of passing the highlighted business' id and the `highlightBusiness` action amongst all the relavant components, Redux is used to store the highlight. See the graph below for details.
+```
+SearchContainer
+│ (map highlightBusiness action to props)
+│
+Search
+│ (change the highlight to -1 before unmounting)
+│
+└───BusinessIndex
+│   │
+│   └───BusinessIndexItemContainer
+│       │ (map highlightBusiness action to props)
+│       │
+│       BusinessIndexItem
+│         (change the highlight to the business.id onMouseEnter,
+│          change it to -1 onMouseLeave)
+│
+└───IndexMapContainer
+    │ (map highlight in Redux store to props)
+    │
+    IndexMap
+      (change the style of highlighted business icon)
+```
 
 ### Business show
-### Session form
+![busienss_show](docs/business_show.png)
+The path for the business show page is '/businesses/:id'. After the component mounts, it fetches business and its reviews from the backend.
+### Forms
+General pattern: authroute, etc.
+Note that business form and review form are rendered by `ProtectedRoute`, which means the user needes to log in to view these components. The session form is rendered by `AuthRoute`, which can only be viewed if no user is logged in.
 
-### Business form
-
-### Review form
+#### Session form
+Session form is rendered
+Two React routes lead
+talk about user avatar
+#### Business form
+talk about business image
+#### Review form
 
 ### 1. Overview
 #### React router (frontend)
@@ -124,36 +166,8 @@ Redux Store
   <Route component={FourZeroFour} />
 </Switch>
 ```
-Note that business form and review form are rendered by `ProtectedRoute`, which means the user needes to log in to view these components. The session form is rendered by `AuthRoute`, which can only be viewed if no user is logged in.
-#### Rails (backend) api routes
-|  Verb  |       URI pattern       |             Usage           |
-| ------ | ----------------------- | --------------------------- |
-| GET    | /                       | static page root            |
-| POST   | /api/users              | create a user (sign up)     |
-| GET    | /api/users/:id          | get a user's information    |
-| POST   | /api/session            | create a session (log in)   |
-| DELETE | /api/session            | delete a session (log out)  |
-| GET    | /api/businesses/feature | get featured businesses     |
-| GET    | /api/businesses         | get searched businesses     |
-| POST   | /api/businesses         | create a business           |
-| GET    | /api/businesses/:id     | get a business' information |
-| PATCH  | /api/businesses/:id     | edit a business             |
-| PUT    | /api/businesses/:id     | edit a business             |
-| DELETE | /api/businesses/:id     | delete a business           |
-| POST   | /api/reviews/           | create a review             |
-| GET    | /api/reviews/:id        | get a review's information  |
-| PATCH  | /api/reviews/:id        | edit a review               |
-| PUT    | /api/reviews/:id        | edit a review               |
-| DELETE | /api/reviews/:id        | delete a review             |
-#### Redux store
-Since each React component fetch information from the backend, the Redux store does not store information of businesses or reviews. It stores two things:
-1. Current user. This information is needed by a lot of components, including `ProtectedRoute` and `AuthRoute`.
-2. Highlight of the business search page. Storing this information greatly simplifies the code of relavant components. See details below.
-
-
 ### Misc
 404?
-
 
 ## Possible Future Directions
 
@@ -188,7 +202,6 @@ On the business index page, the user can filter the businesses by the price rang
 
 ### 3. Business show page
 Business show page contains details, a map, an edit link, and reviews for a business. Reviews are ordered reversely by their creation time.
-![busienss show page](docs/business-show.png)
 
 ### 4. Business form
 When a business is created, Bara sends the full address (combines the `address`, `city`, `state` columns in the `businesses` table) to the Google Maps Geocoding API, which returns the latitude and longitude. The `lat` and `lng` columns are then updated. The coordinates are then used to set up the center of the map and to place a marker on it.
