@@ -18,46 +18,30 @@ address     | string    | not null, indexed
 city        | string    | not null, indexed
 state       | string    | not null, indexed
 zipcode     | integer   | not null, indexed
-price       | integer   | not null, indexed
+price       | integer   | not null, indexed, [1-4]
 phone       | string    |
 url         | string    |
+lat         | float     |
+lng         | float     |
 
-## business_tags
+## tags
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
+label       | string    | not null, indexed, unique
 
-## business_taggings
+## taggings
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-business_id | integer   | not null, foreign key (references businesses), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
+business_id | integer   | not null, foreign key (references businesses), indexed
+tag_id      | integer   | not null, foreign key (references tags), indexed, unique [business_id]
 
 ## reviews
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 rating      | integer   | not null, [1-5]
-body        | text      | not null
+body        | text      |
 author_id   | integer   | not null, foreign key (references users), indexed
-business_id | integer   | not null, foreign key (references businesses), indexed
-
-## review_tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
-
-## review_taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-review_id   | integer   | not null, foreign key (references reviews), indexed, unique [tag_id, author_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
-
-## user-friendships
-TBD
+business_id | integer   | not null, foreign key (references businesses), indexed, unique [author_id]
