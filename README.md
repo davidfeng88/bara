@@ -51,6 +51,7 @@ end
 The homepage also contains a search bar component, which is the same search bar component in the header of other pages (business search, business show, etc.) See details in the next section.
 
 \>\> Return to [Implementation Details](#implementation-details)
+
 ### Business search
 
 #### Search bar
@@ -246,6 +247,8 @@ If the user is created successfully, it will be assigned to a default avatar (ha
 
 Bara has a 404 page if the URL does not match the routes of previous components.
 
+\>\> Return to [Implementation Details](#implementation-details)
+
 ### More Docs
 
 * [Frontend: React Component Hierarchy](docs/component-hierarchy.md)
@@ -253,37 +256,6 @@ Bara has a 404 page if the URL does not match the routes of previous components.
 * [Backend: Rails API Endpoints](docs/api-endpoints.md)
 * [Database: Schema](docs/schema.md)
 
-\>\> Return to [Implementation Details](#implementation-details)
-
-#### Frontend React routes
-```javascript
-<Switch>
-  // Business form: create a business
-  <ProtectedRoute path="/businesses/new"
-    component={BusinessFormContainer} />
-  // Business form: edit a business
-  <ProtectedRoute path="/businesses/:id/edit"
-    component={BusinessFormContainer} />
-  // Review form: create a review
-  <ProtectedRoute path="/businesses/:business_id/reviews/new"
-    component={ReviewFormContainer} />
-  // Review form: create a review
-  <ProtectedRoute path="/reviews/:id/edit"
-    component={ReviewFormContainer} />
-  // Session form: create a session (log in)
-  <AuthRoute path="/login" component={SessionFormContainer} />
-  // Session form: create a user (sign up)
-  <AuthRoute path="/signup" component={SessionFormContainer} />
-  // Business show page
-  <Route path='/businesses/:id' component={BusinessShowContainer} />
-  // Business search page
-  <Route path='/businesses' component={SearchContainer} />
-  // Homepage
-  <Route exact path='/' component={Home} />
-  // 404 page
-  <Route component={FourZeroFour} />
-</Switch>
-```
 \>\> Return to [Implementation Details](#implementation-details)
 
 ## Possible Extension Directions

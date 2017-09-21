@@ -1,47 +1,62 @@
-## Component Hierarchy
+# Component Hierarchy
 
-**AuthFormContainer**
-- AuthForm
+**HeaderRouter**
+* SessionHeader
+* BusinessHeaderContainer
+  * BusinessHeader
+    * SearchBar
+    * BusinessHeaderLinks
+    * Dropdown
 
-**HomeContainer**
-- BusinessSearch
-  * BusinessSearchBar
-- BusinessCategoryIndex
-  * BusinessCategoryIndexItem
+**BusinessFormContainer**
+* BusinessForm
+  * FormMap
+* ErrorList
 
-**NewBusinessContainer**
-- BusinessForm
-  - ReviewForm (optional)
+**ReviewFormContainer**
+* ReviewForm
+  * ReviewFormCore
+  * ErrorList
 
-**BusinessContainer**
-- Map
-- Gallery
-  * Picture
-- ReviewForm
-- ReviewIndex
-  * ReviewIndexItem
-- BusinessDetail
+**SessionFormContainer**
+* SessionForm
+  * ErrorList
 
-**SearchResultContainer**
-- BusinessSearchResult
-  * BusinessSearchResultItem
-- Map
+**BusinessShowContainer**
+* BusinessShow
+  * BusinessShowCore
+    * ReviewIndex
+      * ReviewIndexItemContainer
+        * ReviewIndexItem
+    * ShowMap
+* ErrorList
 
-**NewReviewContainer**
-- ReviewCreation
-  * BusinessInformation
-  * ReviewForm
-- ReviewIndex
-  * ReviewIndexItem
+**SearchContainer**
+* Search
+  * BusinessIndex
+    * BusinessIndexItemContainer
+      * BusinessIndexItem
+  * IndexMapContainer
+    * IndexMap
 
-## Routes
+**Home**
+* HomeBarContainer
+  * HomeBar
+    * Dropdown
+  * SearchBar
+  * HomeLinks
 
-|Path   | Component   |
-|-------|-------------|
-| "/sign-up" | "AuthFormContainer" |
-| "/log-in" | "AuthFormContainer" |
-| "/home" | "HomeContainer" |
-| "/businesses/new" | "NewBusinessContainer" |
-| "/search-results" | "SearchResultContainer" |
-| "/businesses/:id" | "BusinessContainer" |
-| "/businesses/:id/reviews/new" | "NewReviewContainer" |
+# Routes
+
+| Path    | Component     | Note |
+| ------- | ------------- | ---- |
+| `/businesses/new` | `BusinessFormContainer` | createBusiess form, ProtectedRoute |
+| `/businesses/:id/edit` | `BusinessFormContainer` | editBusiess form, ProtectedRoute |
+| `/businesses/:business_id/reviews/new` | `ReviewFormContainer` | createReview form, ProtectedRoute |
+| `/reviews/:id/edit` | `ReviewFormContainer` | editReview form, ProtectedRoute |
+| `/login` | `SessionFormContainer` | login form, AuthRoute |
+| `/signup` | `SessionFormContainer` | signup form, AuthRoute |
+| `/businesses/:id` | `BusinessShowContainer` | |
+| `/businesses` | `SearchContainer` | |
+| `/` | `Home` | |
+| anything else | `FourZeroFour` |  |
