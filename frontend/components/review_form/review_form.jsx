@@ -118,6 +118,7 @@ export default class ReviewForm extends React.Component {
           } else {
             this.setState( {
               errors: [ 'Only the author can edit the review' ],
+              loaded: true,
             } );
           }
         },

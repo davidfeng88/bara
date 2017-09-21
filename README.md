@@ -22,12 +22,12 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 * [Business show](#business-show)
 * [Forms](#forms)
   * [Business form](#busienss-form)
+    * [Latitude and longitude](#latitude-and-longitude)
   * [Review form](#review-form)
+    * [Review constraints](#review-constraints)
   * [Session form](#session-form)
 * [404](#404)
-* [Routes](#routes)
-  * [Frontend React routes](#frontend-react-routes)
-  * [Backend Rails api routes](#backend-rails-api-routes)
+* [More docs](#more-docs)
 
 ### Homepage
 The homepage contains a `Featured Businesses` section, which displays three random businesses. Clicking on the bara logo updates them. To implements this feature, I added collection route called `feature` and set up corresponding controller and view. Clicking the bara logo sends a GET request to `/api/businesses/feature`, which will send back the information of three random businesses.
@@ -50,6 +50,7 @@ end
 ```
 The homepage also contains a search bar component, which is the same search bar component in the header of other pages (business search, business show, etc.) See details in the next section.
 
+\>\> Return to [Implementation Details](#implementation-details)
 ### Business search
 
 #### Search bar
@@ -58,11 +59,15 @@ The homepage also contains a search bar component, which is the same search bar 
 The search bar has two fields, `name` and `location`, which are filled based on query string (`?name=bur&location=19th`) in the URL (e.g. `https://bara.davidfeng.us/#/businesses/?name=bur&location=19th`) in the `constructor` and `componentWillReceiveProps`. Therefore in a search page, the search bar input fields are filled with those queries.
 Upon submission, the search bar pushes `/businesses/?name=${nameEncoded}&location=${locationEncoded}` to the history. Notice that the two fields are encoded using `encodeURIComponent`.
 
+\>\> Return to [Implementation Details](#implementation-details)
+
 #### Sample searches and price filters
 ![sample_searches](docs/sample_searches.png)
 
 Sample searches provides some links for the user to try the search functionality.
 The price filters fetches all the current filters (`name`, `location`, `tag`, current `prices[]`) from the URL, and adds/removes a specific `prices[]` value when the user clicks on the dollar sign buttons. The updated search result will show up after the click. No need to click the submit button. Also, it is possible to select multiple `prices[]` values (e.g. "$" and "$$$$", which translates to `prices[]=1&prices[]=4` in the query string).
+
+\>\> Return to [Implementation Details](#implementation-details)
 
 #### Search component
 ![search](docs/search.png)
@@ -103,10 +108,10 @@ def index
   render 'api/businesses/index'
 end
 ```
-
+\>\> Return to [Implementation Details](#implementation-details)
 #### Business tags
 Businesses and tags (e.g. `Chinese`, `Japanese`, `Nightlife`) have a many-to-many relationship. Thus the database has a `taggings` joint table to handle it. In the search result entries, the tag links of each business are shown next to its price range (dollar sign). Click on the tag link would fire a new search to fetch all the businesses with that tag.
-
+\>\> Return to [Implementation Details](#implementation-details)
 #### Index map
 The index map is wrapped in a div, which has a `sticky` CSS position property, so that when scrolling down the page, the map is always on the page.
 When a business index entry is hovered, the business is *highlighted*, and the corresponding icon on the map should change to a different style. Instead of passing the highlighted business' id and the `highlightBusiness` action amongst all the relavant components, Redux is used to store the highlight. See the graph below for details.
@@ -132,20 +137,24 @@ Search
     IndexMap
       (change the style of highlighted business icon)
 ```
+\>\> Return to [Implementation Details](#implementation-details)
 
 ### Business show
 ![busienss_show](docs/business_show.png)
 
 The path for the business show page is `/businesses/:id`. In `componentDidMount` and `componentWillReceiveProps`, the component fetches business and its reviews from the backend, and displays them. Right now each business has one image, and the business show page displays that imgae with two other default images. If something goes wrong, it displays the errors instead.
 
+\>\> Return to [Implementation Details](#implementation-details)
+
 ### Forms
-Bara has three form components: business form for create/edit businesses, review form for create/edit reviews, and session form for sign up/log in.
+Bara has three form components: business form for create/edit businesses, review form for create/edit reviews, and session form for signup/login.
 The business form and review form are rendered by `ProtectedRoute`, which means the user needes to log in to view these components. The session form is rendered by `AuthRoute`, which can only be viewed if no user is logged in. At the backend, the corresponding `before_action` filters are added to those controller actions.
 Since each form has two functions, and can be accessed in two paths, the general working machanism is:
 1. Determine the form type based on the path (e.g. create or edit the business) in `componentDidMount` and `componentWillReceiveProps`. `componentWillReceiveProps` is needed because the user may go from one form to the other (e.g. signup form to login form or vice versa, or even editBusiness form for different businesses). Although such cases are relatively rare for business form and review form, they are taken care of.
 2. If needed, fetch relavant information from backend and display them on the page or populate the input fields.
 3. Upon form submission, package the data from input fields and call the corresponding util method to send the information to the backend.
 
+\>\> Return to [Implementation Details](#implementation-details)
 #### Business form
 ![busienss_form](docs/business_form.png)
 
@@ -159,9 +168,11 @@ Then for the createBusiness form, it populates the input fields with default val
 
 Upon form submission, it sends the information to the backend and redirects to the business show page. Right now newly created businesses have a default image. If anything goes wrong in this process (e.g. cannot find the business, address is invalid, etc.), errors will be shown.
 
-**About latitude and longitude**: Human generally do not know or communicate the location with latitude and longitude, but they are useful when try to place a marker for the business on the map.
+##### Latitude and longitude
+Human generally do not know or communicate the location with latitude and longitude, but they are useful when try to place a marker for the business on the map.
 When the user clicks the submit button, the form send the full address (combination of `address`, `city`, `state` fields) to the Google Maps Geocoding API, which returns the corresponding latitude and longitude if the address is valid. Then the coordinates, with other information from the input fields are sent to the backend and stored in the database.
 
+\>\> Return to [Implementation Details](#implementation-details)
 #### Review form
 ![review_form](docs/review_form.png)
 
@@ -177,33 +188,73 @@ Fetch information is a little trickier than the business form. For the createRev
 
 Upon form submission, it sends the information to the backend and redirects to the business show page.
 
-**About constraints**: I arbitrarily implemented the following two (reasonable) constraints for the reviews:
+##### Review constraints
+I arbitrarily implemented the following two (reasonable) constraints for the reviews:
 
-1. A user can only review a business once.
-**Fill details**
+###### A user can only review a business once.
+  1. The business show page
 
-2. Only the author is allowed to edit/delete a review.
-**Fill details**
+  The user access the createReview form from the 'Write a Review' link on the business show page. If the current user already reviewed this business, this link becomes 'Edit My Review' link to the editReview form.
+
+  To implement this, first, I let the the business show container passes the currentUser to the business show component. Then on the backend, in the business show views, I created a reviewers field, whose value is a JavaScript object (Ruby hash) with reviewers' id as keys and the reviews' id as values.
+
+  ```ruby
+json.reviewers Hash[@business.reviews.map { |review| [review.author_id, review.id] }]
+```
+  So after business show fetches the business information from the backend, it just checks if the currentUser's id is a key in the reviewers object. If it is, then this user has already reviewed this business, and it can have the review's id right away, which makes building the path to the editReview trivial.
+
+  Alternatively, I could have include all the reviewed businesses' ids and the reviews' ids in the user show view.
+
+  2. The createReview form
+
+  Instead of access the intended review form by clicking on the link on the business show page, if the user types the createReview form's URL in the browser, the createReview will do the same thing based on the same mechanism: it fetches the business, then if it finds that the currentUser has already reviewed this business, it redirects to the editReview form.
+
+  3. Backend: model-level validation and database-level constraints
+
+  In the `Review` class, ActiveRecord validates the `author_id` scoped uniqueness of `business_id`, and corresponding unique constraint is also added in the database migration.
+
+###### Only the author is allowed to edit/delete the review.
+  1. The business show page
+
+  The 'Edit My Review' link at the top of the business show page lead to currentUser's editReview form. The 'Edit Review' Link in the review index item only appears if currentUser exist (someone is logged in) and the currentUser is the author of the review.
+
+  2. The editReview form
+
+  Instead of access the intended editReview form by clicking on the link on the business show page, if the user types the editReview form's URL in the browser, the editReview form will fetch the review from the backend based on the URL. If the review's author_id is not the same as the currentUser's id, it will return an error message.
+
+  3. Backend: `ReviewsController`
+
+  In the `ReviewsController`, the `update` method tries to find the review from the reviews of the current user and update it. Therefore, it will not find reviews authored by other users. Thus, it will return an error to the frontend. The same applys to the `destroy` method.
+
+\>\> Return to [Implementation Details](#implementation-details)
 
 #### Session form
-**Fill details**
-Session form is rendered
-Two React routes lead
-talk about user avatar
-redirect
+![session_form](docs/session_form.png)
 
-### 1. User creation and authentication
-When a user is created, on the back-end, passwords are hashed by bcrypt and the resulting hash is stored in the database.
-If there is an error in the user creation (e.g. username has been taken), the backend will send the error messages to the front-end, which will be rendered in an ErrorList React component. The errors can be dismissed.
-If the user is created successfully, it will be assigned to a default avatar (handled by Amazon Web Services and Paperclip gem).
-After logging in, the avatar appears on the top right, which reveals a drop-down box containing more user information upon clicking.
+The session form component can be accessed by two paths:
+* `/login` for login form
+* `/signup` for signup form
 
-If no user is logged in, attempts to create/edit businesses/reviews will be redirected to the login page. The browser goes back to the previous page after logging in.
+The general pattern for the forms still holds. The container component determines the form type based on the path, and passes it to the presentational component. Upon form submission, the presentational component sends the information to the backend, logs in the user (even if you filled the signup form), and redirects to the previous page (it is likely that the user lands on the login page because he/she tries to access a `ProtectedRoute` without logging in).
+
+If the user is created successfully, it will be assigned to a default avatar (handled by Amazon Web Services and Paperclip gem). After logging in, the avatar appears on the top right, which reveals a drop-down box containing more user information upon clicking.
+
+\>\> Return to [Implementation Details](#implementation-details)
 
 ### 404
-**Fill details**
+![404](docs/404.png)
 
-### Routes
+Bara has a 404 page if the URL does not match the routes of previous components.
+
+### More Docs
+
+* [Frontend: React Component Hierarchy](#docs/component-hierarchy.md)
+* [Frontend: Redux Sample State](#docs/sample-state.md)
+* [Backend: Rails API Endpoints](#docs/api-endpoints.md)
+* [Database: Schema](#docs/schema.md)
+
+\>\> Return to [Implementation Details](#implementation-details)
+
 #### Frontend React routes
 ```javascript
 <Switch>
@@ -233,6 +284,7 @@ If no user is logged in, attempts to create/edit businesses/reviews will be redi
   <Route component={FourZeroFour} />
 </Switch>
 ```
+\>\> Return to [Implementation Details](#implementation-details)
 #### Backend Rails api routes
 |  Verb  |       URI pattern       |             Usage           |
 | ------ | ----------------------- | --------------------------- |
@@ -254,6 +306,7 @@ If no user is logged in, attempts to create/edit businesses/reviews will be redi
 | PUT    | /api/reviews/:id        | edit a review               |
 | DELETE | /api/reviews/:id        | delete a review             |
 
+\>\> Return to [Implementation Details](#implementation-details)
 ## Possible Extension Directions
 
 ### Better business search
