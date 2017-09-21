@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     render json: ['No current User to log out'], status: 401 unless current_user
   end
 
-  def require_logged_in
-    render json: { base: ['invalid credentials'] }, status: 401 unless current_user
+  def require_logged_out
+    render json: ['Please log out and try again.'], status: 403 if current_user
   end
 end

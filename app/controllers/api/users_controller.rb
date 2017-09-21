@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  before_action :require_logged_out, only: %i[create update]
   def create
     @user = User.new(user_params)
 
@@ -17,6 +18,7 @@ class Api::UsersController < ApplicationController
     render json: ["Couldn't find user with 'id'=#{params[:id]}"], status: 404
   end
 
+  # for user avatar/password update. To be implemented
   def update
     @user = User.find(params[:id])
 
