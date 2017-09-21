@@ -248,10 +248,10 @@ Bara has a 404 page if the URL does not match the routes of previous components.
 
 ### More Docs
 
-* [Frontend: React Component Hierarchy](#docs/component-hierarchy.md)
-* [Frontend: Redux Sample State](#docs/sample-state.md)
-* [Backend: Rails API Endpoints](#docs/api-endpoints.md)
-* [Database: Schema](#docs/schema.md)
+* [Frontend: React Component Hierarchy](docs/component-hierarchy.md)
+* [Frontend: Redux Sample State](docs/sample-state.md)
+* [Backend: Rails API Endpoints](docs/api-endpoints.md)
+* [Database: Schema](docs/schema.md)
 
 \>\> Return to [Implementation Details](#implementation-details)
 
@@ -285,28 +285,7 @@ Bara has a 404 page if the URL does not match the routes of previous components.
 </Switch>
 ```
 \>\> Return to [Implementation Details](#implementation-details)
-#### Backend Rails api routes
-|  Verb  |       URI pattern       |             Usage           |
-| ------ | ----------------------- | --------------------------- |
-| GET    | /                       | static page root            |
-| POST   | /api/users              | create a user (sign up)     |
-| GET    | /api/users/:id          | get a user's information    |
-| POST   | /api/session            | create a session (log in)   |
-| DELETE | /api/session            | delete a session (log out)  |
-| GET    | /api/businesses/feature | get featured businesses     |
-| GET    | /api/businesses         | get searched businesses     |
-| POST   | /api/businesses         | create a business           |
-| GET    | /api/businesses/:id     | get a business' information |
-| PATCH  | /api/businesses/:id     | edit a business             |
-| PUT    | /api/businesses/:id     | edit a business             |
-| DELETE | /api/businesses/:id     | delete a business           |
-| POST   | /api/reviews/           | create a review             |
-| GET    | /api/reviews/:id        | get a review's information  |
-| PATCH  | /api/reviews/:id        | edit a review               |
-| PUT    | /api/reviews/:id        | edit a review               |
-| DELETE | /api/reviews/:id        | delete a review             |
 
-\>\> Return to [Implementation Details](#implementation-details)
 ## Possible Extension Directions
 
 ### Better business search

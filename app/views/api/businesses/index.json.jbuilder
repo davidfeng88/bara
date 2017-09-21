@@ -11,11 +11,3 @@ json.array! @businesses do |biz|
     end
   end
 end
-#
-# @businesses.each do |biz|
-#   json.set! biz.id do
-#     json.partial! 'api/businesses/business', business: biz
-#
-#
-#   end
-# end
