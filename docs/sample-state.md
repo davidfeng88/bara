@@ -1,70 +1,11 @@
-```js
+```javascript
 {
   currentUser: {
-    id: 1,
-    username: "capybara"
+    avatar_url: "/assets/capy-b3b21cd3d74b5351e6abecd03dd1f459d1691ef23fa91b20f09ad1dcdfd18d94.jpg",
+    id: 507,
+    username: "Guest"
   },
 
-  errors: ["body can't be blank", "title can't be blank"],
-
-  businesses: {
-    1: {
-      name: "Good Pizza",
-      author_id: 1,
-      address 1: "555 W. 25th St.",
-      city: "Chicago",
-      state: "IL",
-      zip: 60637,
-      phone: "(111)111-1111",
-      price: 1,
-      business_tags: [1],
-      reviews: [1] // potentially could indicate orders of reviews (e.g. new to old)
-    },
-
-    2: {
-      name: "Great Pizza",
-      author_id: 1,
-      address 1: "666 W. 25th St.",
-      city: "Chicago",
-      state: "IL",
-      zip: 60637,
-      phone: "(222)222-2222",
-      price: 2,
-      business_tags: [1, 4],
-      reviews: [2]
-    }
-  },
-
-  business_tags: {
-    1: "Pizza",
-    2: "Chinese",
-    3: "Tacos",
-    4: "Salad"
-  },
-  businessTagFilters: [1, 3], // Used to track selected Tags for filtering of businesses
-
-  reviews: {
-    1: {
-      rating: 4,
-      body: "This place has good pizza",
-      author_id: 1,
-      business_id: 1
-      review_tags: [1, 2]
-    },
-    2: {
-      rating: 5,
-      body: "This place has great pizza",
-      author_id: 1,
-      business_id: 2
-      review_tags: [1]
-    }
-  },
-
-  review_tags: {
-    1: "Useful",
-    2: "Funny",
-    3: "Cool"
-  }
+  highlight: 473,
 }
-
 ```
