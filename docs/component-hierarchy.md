@@ -50,10 +50,10 @@
 
 | Path                   | Component               | Note |
 | ---------------------- | ----------------------- | ---- |
-| `/businesses/new`      | `BusinessFormContainer` | createBusiess form, ProtectedRoute |
-| `/businesses/:id/edit` | `BusinessFormContainer` | editBusiess form, ProtectedRoute |
-| `/businesses/:business_id/reviews/new` | `ReviewFormContainer` | createReview form, ProtectedRoute |
-| `/reviews/:id/edit`    | `ReviewFormContainer`   | editReview form, ProtectedRoute |
+| `/businesses/new`      | `BusinessFormContainer` | create busiess form, ProtectedRoute |
+| `/businesses/:id/edit` | `BusinessFormContainer` | edit busiess form, ProtectedRoute |
+| `/businesses/:business_id/reviews/new` | `ReviewFormContainer` | create review form, ProtectedRoute |
+| `/reviews/:id/edit`    | `ReviewFormContainer`   | edit review form, ProtectedRoute |
 | `/login`               | `SessionFormContainer`  | login form, AuthRoute |
 | `/signup`              | `SessionFormContainer`  | signup form, AuthRoute |
 | `/businesses/:id`      | `BusinessShowContainer` |      |
