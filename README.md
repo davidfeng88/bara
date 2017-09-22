@@ -261,7 +261,9 @@ Bara has a 404 page if the URL does not match the routes of previous components.
 ## Possible Extension Directions
 
 ### Better business search
+
 More filter options (e.g. filter by average rating) and more ways to sort search results (e.g. by created/updated time, average rating, number of reviews, price, etc.)
+
 ### Reviews tags and sorting
 
 On the business show page, reviews can be tagged (e.g. funny, cool, useful etc.) and sorted in different ways (e.g. by the number of `useful` tag).
