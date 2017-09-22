@@ -6,10 +6,23 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 ![homepage](docs/homepage.png)
 
 ## Features
-* Each React component loads data from the backend based on URL, not from the Redux store, therefore the user can directly visit a specific page (a particular business or a business search result), and users can share pages by their URLs.
+* Each React component loads data from the backend based on URL, not from the Redux store, therefore the user can directly visit a specific page (a particular business or results of a specific business search), and users can share pages by their URLs.
 * Businesses can be searched by its name, address, city, state, zipcode, price range, tags, and their combinations.
 * The business show page displays a specific business and its reviews.
 * When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality, you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review.
+
+## Implementation Overview
+Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code (details [here](#index-map)).
+
+In addition to relevant businesses and reviews, the local states of the React components usually contain `loaded` (starts as false) and `errors` (starts as an empty array) fields. The general working mechanism is:
+
+1. In `componentDidMount` and `componentWillReceiveProps` (because the user could visit the same components using different URL, e.g. different business ids), the component sets `loaded` to false, which renders a loading spinner.
+
+2. The component fetches data from the backend and sets `loaded` to true when it finishes, using JavaScript promises.
+
+3. If the fetch succeeded, It updates its local states renders the business or the reviews.
+
+4. If the fetch failed, it updates the `errors` field based on the response. If the business/review is empty, usually it means the id was wrong, so only the errors are rendered. In the case of the forms, the errors may come from invalid inputs, so the errors and the form are both displayed.
 
 ## Implementation Details
 * [Homepage](#homepage)
@@ -27,7 +40,10 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
     * [Review constraints](#review-constraints)
   * [Session form](#session-form)
 * [404](#404)
-* [More docs](#more-docs)
+* [Frontend: React Component Hierarchy](docs/component-hierarchy.md)
+* [Frontend: Redux Sample State](docs/sample-state.md)
+* [Backend: Rails API Endpoints](docs/api-endpoints.md)
+* [Database: Schema](docs/schema.md)
 
 ### Homepage
 The homepage contains a `Featured Businesses` section, which displays three random businesses. Clicking on the bara logo updates them. To implement this feature, I added collection route called `feature` and set up corresponding controller and view. Clicking the bara logo sends a GET request to `/api/businesses/feature`, which will send back the information of three random businesses.
@@ -246,15 +262,6 @@ If the user is created successfully, it will be assigned to a default avatar (ha
 ![404](docs/404.png)
 
 Bara has a 404 page if the URL does not match the routes of previous components.
-
-\>\> Return to [Implementation Details](#implementation-details)
-
-### More Docs
-
-* [Frontend: React Component Hierarchy](docs/component-hierarchy.md)
-* [Frontend: Redux Sample State](docs/sample-state.md)
-* [Backend: Rails API Endpoints](docs/api-endpoints.md)
-* [Database: Schema](docs/schema.md)
 
 \>\> Return to [Implementation Details](#implementation-details)
 
