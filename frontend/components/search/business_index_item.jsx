@@ -3,7 +3,6 @@ import Rating from 'react-rating';
 import {
   Link
 } from 'react-router-dom';
-import values from 'lodash/values';
 import {
   reviewNumber,
   price,

@@ -16,7 +16,7 @@ export default class Search extends React.Component {
   constructor( props ) {
     super( props );
     this.state = {
-      loaded: false,
+      loading: true,
       businesses: [],
     };
 
@@ -29,7 +29,7 @@ export default class Search extends React.Component {
       .then(
         businesses => {
           this.setState( {
-            loaded: true,
+            loading: false,
             businesses,
           } );
         } );
@@ -39,14 +39,14 @@ export default class Search extends React.Component {
   componentWillUpdate( newProps ) {
     if ( this.props.location.search !== newProps.location.search ) {
       this.setState( {
-        loaded: false
+        loading: true,
       } );
       this.filters = buildFilters( newProps.location.search );
       searchBusinesses( this.filters )
         .then(
           businesses => {
             this.setState( {
-              loaded: true,
+              loading: false,
               businesses,
             } );
           } );
@@ -60,7 +60,7 @@ export default class Search extends React.Component {
   handleChange( e ) {
     e.preventDefault();
     this.setState( {
-      loaded: false
+      loading: true,
     } );
     const value = e.target.checked;
     let {
@@ -113,9 +113,9 @@ export default class Search extends React.Component {
   }
 
   searchResult( businesses ) {
-    return this.state.loaded ?
-      <BusinessIndex businesses={businesses} /> :
-      <img className='spinner' src={window.staticImages.spinner} />;
+    return this.state.loading ?
+      <img className='spinner' src={window.staticImages.spinner} /> :
+      <BusinessIndex businesses={businesses} />;
   }
 
   render() {

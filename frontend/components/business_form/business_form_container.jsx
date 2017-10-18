@@ -34,7 +34,7 @@ export default class BusinessFormContainer extends React.Component {
     this.state = {
       business: emptyBusiness,
       errors: [],
-      loaded: false,
+      loading: true,
     };
 
     this.fetchBusinessToEdit = this.fetchBusinessToEdit.bind( this );
@@ -49,7 +49,7 @@ export default class BusinessFormContainer extends React.Component {
     window.scrollTo( 0, 0 );
     if ( this.props.location.pathname.slice( -3 ) === 'new' ) {
       this.setState( {
-        loaded: true,
+        loading: false,
       } );
     } else {
       this.fetchBusinessToEdit( this.props.match.params.id );
@@ -61,11 +61,11 @@ export default class BusinessFormContainer extends React.Component {
       this.setState( {
         business: emptyBusiness,
         errors: [],
-        loaded: true,
+        loading: false,
       } );
     } else if ( nextProps.match.params.id !== this.props.match.params.id ) {
       this.setState( {
-        loaded: false,
+        loading: true,
       } );
       this.fetchBusinessToEdit( nextProps.match.params.id );
     }
@@ -78,13 +78,13 @@ export default class BusinessFormContainer extends React.Component {
           this.setState( {
             business,
             errors: [],
-            loaded: true,
+            loading: false,
           } );
         },
         errors => this.setState( {
           business: emptyBusiness,
           errors: errors.responseJSON,
-          loaded: true,
+          loading: false,
         } )
       );
   }
@@ -169,9 +169,9 @@ export default class BusinessFormContainer extends React.Component {
     const {
       business,
       errors,
-      loaded,
+      loading,
     } = this.state;
-    if ( !loaded ) {
+    if ( loading ) {
       return (
         <img className='spinner' src={window.staticImages.spinner} />
       );

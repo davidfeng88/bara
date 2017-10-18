@@ -16,7 +16,7 @@ export default class Home extends React.Component {
     super( props );
     this.state = {
       defaultBackground: true,
-      loaded: false,
+      loading: true,
       businesses: [],
     };
 
@@ -31,7 +31,7 @@ export default class Home extends React.Component {
     fetchFeaturedBusinesses()
       .then( ( businesses ) => {
         this.setState( prevState => ( {
-          loaded: true,
+          loading: false,
           businesses,
           defaultBackground: !prevState.defaultBackground
         } ) );
@@ -63,9 +63,9 @@ export default class Home extends React.Component {
   }
 
   featuredBusinesses() {
-    return this.state.loaded ?
-      <FeaturedBusinesses businesses={this.state.businesses} /> :
-      <img className='spinner' src={window.staticImages.spinner} />;
+    return this.state.loading ?
+      <img className='spinner' src={window.staticImages.spinner} /> :
+      <FeaturedBusinesses businesses={this.state.businesses} />;
   }
 
   render() {

@@ -16,7 +16,7 @@ export default class BusinessShow extends React.Component {
       business: null,
       errors: [],
       reviewId: null,
-      loaded: false,
+      loading: true,
     } );
 
     this.fetchBusiness = this.fetchBusiness.bind( this );
@@ -33,7 +33,7 @@ export default class BusinessShow extends React.Component {
         business: null,
         errors: [],
         reviewId: null,
-        loaded: false,
+        loading: true,
       } );
       this.fetchBusiness( nextProps );
     }
@@ -52,14 +52,14 @@ export default class BusinessShow extends React.Component {
             business,
             reviewId,
             errors: [],
-            loaded: true,
+            loading: false,
           } );
         },
         errors => this.setState( {
           business: null,
           reviewId: null,
           errors: errors.responseJSON,
-          loaded: true,
+          loading: false,
         } )
       );
     window.scrollTo( 0, 0 );
@@ -75,10 +75,10 @@ export default class BusinessShow extends React.Component {
     const {
       business,
       errors,
-      loaded,
+      loading,
       reviewId,
     } = this.state;
-    if ( !loaded ) {
+    if ( loading ) {
       return (
         <img className='spinner' src={window.staticImages.spinner} />
       );

@@ -24,7 +24,7 @@ export default class ReviewForm extends React.Component {
       business: {},
       review: {},
       errors: [],
-      loaded: false,
+      loading: true,
     };
 
     this.fetchInfo = this.fetchInfo.bind( this );
@@ -64,7 +64,7 @@ export default class ReviewForm extends React.Component {
       business: {},
       review: {},
       errors: [],
-      loaded: false
+      loading: true,
     } );
     if ( props.formType === 'createReview' ) {
       this.fetchBusiness( props );
@@ -86,7 +86,7 @@ export default class ReviewForm extends React.Component {
               business,
               review: {},
               errors: [],
-              loaded: true,
+              loading: false,
             } );
           }
         },
@@ -94,7 +94,7 @@ export default class ReviewForm extends React.Component {
           business: {},
           review: {},
           errors: errors.responseJSON,
-          loaded: true,
+          loading: false,
         } )
       );
   }
@@ -111,14 +111,14 @@ export default class ReviewForm extends React.Component {
                     business,
                     review,
                     errors: [],
-                    loaded: true,
+                    loading: false,
                   } );
                 }
               );
           } else {
             this.setState( {
               errors: [ 'Only the author can edit the review' ],
-              loaded: true,
+              loading: false,
             } );
           }
         },
@@ -126,7 +126,7 @@ export default class ReviewForm extends React.Component {
           business: {},
           review: {},
           errors: errors.responseJSON,
-          loaded: true,
+          loading: false,
         } )
       );
   }
@@ -207,12 +207,12 @@ export default class ReviewForm extends React.Component {
       business,
       review,
       errors,
-      loaded,
+      loading,
     } = this.state;
     const {
       formType
     } = this.props;
-    if ( !loaded ) {
+    if ( loading ) {
       return (
         <img className='spinner' src={window.staticImages.spinner} />
       );

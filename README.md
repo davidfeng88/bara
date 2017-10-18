@@ -14,11 +14,11 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 ## Implementation Overview
 Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code (details [here](#index-map)).
 
-In addition to relevant businesses and reviews, the local states of the React components usually contain `loaded` (starts as false) and `errors` (starts as an empty array) fields. The general working mechanism is:
+In addition to relevant businesses and reviews, the local states of the React components usually contain `loading` (starts as true) and `errors` (starts as an empty array) fields. The general working mechanism is:
 
-1. In `componentDidMount` and `componentWillReceiveProps` (because the user could visit the same components using different URL, e.g. different business ids), the component sets `loaded` to false, which renders a loading spinner.
+1. In `componentDidMount` and `componentWillReceiveProps` (because the user could visit the same components using different URL, e.g. different business ids), the component sets `loading` to true, which renders a loading spinner.
 
-2. The component fetches data from the backend and sets `loaded` to true when it finishes, using JavaScript promises.
+2. The component fetches data from the backend and sets `loading` to false when it finishes, using JavaScript promises.
 
 3. If the fetch succeeded, It updates its local states renders the business or the reviews.
 
@@ -89,7 +89,7 @@ The price filter fetches all the current filters (`name`, `location`, `tag`, cur
 #### Search component
 ![search](docs/search.png)
 
-The search component first set the `loaded` field in its state to be `false`, which displays the loading spinner. Then it gets all the filters (`name`, `location`, `tag`, `prices[]`) from the URL, send them to the backend, and the business index route handles the search and sends back the information of matched businesses (see below). Then the search component displays those businesses.
+The search component first set the `loading` field in its state to be `true`, which displays the loading spinner. Then it gets all the filters (`name`, `location`, `tag`, `prices[]`) from the URL, send them to the backend, and the business index route handles the search and sends back the information of matched businesses (see below). Then the search component displays those businesses.
 ```ruby
 def index
   businesses = Business.all.includes(:reviews, :tags)
