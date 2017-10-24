@@ -136,23 +136,23 @@ When a business index entry is hovered, the business is *highlighted*, and the c
 SearchContainer
 │ (map highlightBusiness action to props)
 │
-Search
-│ (change the highlight to -1 before unmounting)
-│
-└───BusinessIndex
-│   │
-│   └───BusinessIndexItemContainer
-│       │ (map highlightBusiness action to props)
-│       │
-│       BusinessIndexItem
-│         (change the highlight to the business.id onMouseEnter,
-│          change it to -1 onMouseLeave)
-│
-└───IndexMapContainer
-    │ (map highlight in Redux store to props)
+└───Search
+    │ (change the highlight to -1 before unmounting)
     │
-    IndexMap
-      (change the style of highlighted business icon)
+    └───BusinessIndex
+    │   │
+    │   └───BusinessIndexItemContainer
+    │       │ (map highlightBusiness action to props)
+    │       │
+    │       └───BusinessIndexItem
+    │           (change the highlight to the business.id onMouseEnter,
+    │           change it to -1 onMouseLeave)
+    │
+    └───IndexMapContainer
+        │ (map highlight in Redux store to props)
+        │
+        └───IndexMap
+            (change the style of highlighted business icon)
 ```
 \>\> Return to [Implementation Details](#implementation-details)
 
