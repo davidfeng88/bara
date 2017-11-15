@@ -12,7 +12,7 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 * The business form fetches the latitude and longitude based on address using the Google Maps Geocoding API. ([Details](#latitude-and-longitude))
 * Clicking on the bara logo on the homepage changes the background and the "featured" businesses. ([Details](#homepage))
 * The business show page displays a specific business and its reviews. ([Details](#business-show))
-* Bara has a 404 page. ([Details](#404))
+* A 404 page shows that the URL does not match the routes of any components. ([Details](#404))
 
 ## Implementation Overview
 Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code ([details](#index-map)).
@@ -131,10 +131,11 @@ end
 \>\> Return to [Implementation Details](#implementation-details)
 #### Business tags
 Businesses and tags (e.g. `Chinese`, `Japanese`, `Nightlife`) have a many-to-many relationship. Thus the database has a `taggings` joint table to handle it. In the search result entries, the tag links of each business are shown next to its price range (dollar sign). Click on the tag link would fire a new search to fetch all the businesses with that tag.
+
 \>\> Return to [Implementation Details](#implementation-details)
 #### Index map
 The index map is wrapped in a div, which has a `sticky` CSS position property so that when scrolling down the page, the map is always on the page.
-When a business index entry is hovered, the business is *highlighted*, and the corresponding icon on the map should change to a different style. Instead of passing the highlighted business' id and the `highlightBusiness` action amongst all the relevant components, Redux is used to store the highlight. See the graph below for details.
+When a business index entry (sender) is hovered, the business is *highlighted*, and the corresponding icon on the map (receiver) should change to a different style. Instead of passing the highlighted business' id and the `highlightBusiness` action amongst all the relevant components, Redux is used to store the highlight. See the graph below for details.
 ```
 SearchContainer
 │ (map highlightBusiness action to props)
@@ -147,14 +148,14 @@ SearchContainer
     │   └───BusinessIndexItemContainer
     │       │ (map highlightBusiness action to props)
     │       │
-    │       └───BusinessIndexItem
+    │       └───BusinessIndexItem (Sender)
     │           (change the highlight to the business.id onMouseEnter,
     │           change it to -1 onMouseLeave)
     │
     └───IndexMapContainer
         │ (map highlight in Redux store to props)
         │
-        └───IndexMap
+        └───IndexMap (Receiver)
             (change the style of highlighted business icon)
 ```
 \>\> Return to [Implementation Details](#implementation-details)
@@ -172,7 +173,7 @@ The business form and review form are rendered by `ProtectedRoute`, which means 
 Since each form has two functions and can be accessed in two paths, the general working mechanism is:
 1. Determine the form type based on the path (e.g. create or edit the business) in `componentDidMount` and `componentWillReceiveProps`. `componentWillReceiveProps` is needed because the user may go from one form to the other (e.g. signup form to login form or vice versa, or even edit business form for different businesses). Although such cases are relatively rare for business form and review form, they are taken care of.
 2. If needed, fetch relevant information from backend and display them on the page or populate the input fields.
-3. Upon form submission, package the data from input fields and call the corresponding util method to send the information to the backend.
+3. Upon form submission, package the data from input fields and send  to the backend.
 
 \>\> Return to [Implementation Details](#implementation-details)
 #### Business form
