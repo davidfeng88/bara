@@ -5,14 +5,17 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 
 ![homepage](docs/homepage.png)
 
-## Features
-* Each React component loads data from the backend based on URL, not from the Redux store, therefore the user can directly visit a specific page (a particular business or results of a specific business search), and users can share pages by their URLs.
-* Businesses can be searched by its name, address, city, state, zipcode, price range, tags, and their combinations.
-* The business show page displays a specific business and its reviews.
-* When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality, you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review.
+## Main Features
+* Each React component loads data from the backend based on URL, not from the Redux store, therefore the user can directly visit a specific page by its URL (the business search page with certain filters or the business show page of a particular business), and users can share pages by their URLs. ([Details](#implementation-overview))
+* Businesses can be searched by its name, address, city, state, zipcode, price range, tags, and their combinations. ([Details](#business-search))
+* When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality, you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review. ([Details](#review-constraints))
+* The business form fetches the latitude and longitude based on address using the Google Maps Geocoding API. ([Details](#latitude-and-longitude))
+* Clicking on the bara logo on the homepage changes the background and the "featured" businesses. ([Details](#homepage))
+* The business show page displays a specific business and its reviews. ([Details](#business-show))
+* Bara has a 404 page. ([Details](#404))
 
 ## Implementation Overview
-Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code (details [here](#index-map)).
+Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code ([details](#index-map)).
 
 In addition to relevant businesses and reviews, the local states of the React components usually contain `loading` (starts as true) and `errors` (starts as an empty array) fields. The general working mechanism is:
 
@@ -195,7 +198,7 @@ When the user clicks the submit button, the form sends the full address (combina
 
 The review form component can be accessed by two paths:
 * `/businesses/:business_id/reviews/new` for create review form
-* `/businesses/:business_id/reviews/new` for edit review form
+* `/reviews/:id/edit` for edit review form
 
 The general pattern is the same as the business form.
 
