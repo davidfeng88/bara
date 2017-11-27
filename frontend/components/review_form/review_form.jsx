@@ -28,7 +28,7 @@ export default class ReviewForm extends React.Component {
     };
 
     this.fetchInfo = this.fetchInfo.bind( this );
-    this.fetchBusiness = this.fetchBusiness.bind( this );
+    this.loadBusiness = this.loadBusiness.bind( this );
     this.fetchReviewToEdit = this.fetchReviewToEdit.bind( this );
     this.clearErrors = this.clearErrors.bind( this );
 
@@ -67,13 +67,13 @@ export default class ReviewForm extends React.Component {
       loading: true,
     } );
     if ( props.formType === 'createReview' ) {
-      this.fetchBusiness( props );
+      this.loadBusiness( props );
     } else {
       this.fetchReviewToEdit( props.match.params.id );
     }
   }
 
-  fetchBusiness( props ) {
+  loadBusiness( props ) {
     fetchBusiness( props.match.params.business_id )
       .then(
         business => {

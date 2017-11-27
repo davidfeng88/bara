@@ -37,7 +37,7 @@ export default class BusinessFormContainer extends React.Component {
       loading: true,
     };
 
-    this.fetchBusinessToEdit = this.fetchBusinessToEdit.bind( this );
+    this.loadBusiness = this.loadBusiness.bind( this );
     this.clearErrors = this.clearErrors.bind( this );
     this.handleChange = this.handleChange.bind( this );
     this.handleDelete = this.handleDelete.bind( this );
@@ -52,7 +52,7 @@ export default class BusinessFormContainer extends React.Component {
         loading: false,
       } );
     } else {
-      this.fetchBusinessToEdit( this.props.match.params.id );
+      this.loadBusiness( this.props.match.params.id );
     }
   }
 
@@ -67,11 +67,11 @@ export default class BusinessFormContainer extends React.Component {
       this.setState( {
         loading: true,
       } );
-      this.fetchBusinessToEdit( nextProps.match.params.id );
+      this.loadBusiness( nextProps.match.params.id );
     }
   }
 
-  fetchBusinessToEdit( id ) {
+  loadBusiness( id ) {
     fetchBusiness( id )
       .then(
         business => {

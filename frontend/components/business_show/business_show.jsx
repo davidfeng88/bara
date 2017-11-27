@@ -19,12 +19,12 @@ export default class BusinessShow extends React.Component {
       loading: true,
     } );
 
-    this.fetchBusiness = this.fetchBusiness.bind( this );
+    this.loadBusiness = this.loadBusiness.bind( this );
     this.clearErrors = this.clearErrors.bind( this );
   }
 
   componentDidMount() {
-    this.fetchBusiness( this.props );
+    this.loadBusiness( this.props );
   }
 
   componentWillReceiveProps( nextProps ) {
@@ -35,11 +35,11 @@ export default class BusinessShow extends React.Component {
         reviewId: null,
         loading: true,
       } );
-      this.fetchBusiness( nextProps );
+      this.loadBusiness( nextProps );
     }
   }
 
-  fetchBusiness( props ) {
+  loadBusiness( props ) {
     fetchBusiness( props.match.params.id )
       .then(
         business => {
