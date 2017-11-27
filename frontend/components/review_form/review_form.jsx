@@ -29,7 +29,7 @@ export default class ReviewForm extends React.Component {
 
     this.fetchInfo = this.fetchInfo.bind( this );
     this.loadBusiness = this.loadBusiness.bind( this );
-    this.fetchReviewToEdit = this.fetchReviewToEdit.bind( this );
+    this.loadReview = this.loadReview.bind( this );
     this.clearErrors = this.clearErrors.bind( this );
 
     this.handleReviewRatingChange = this.handleReviewRatingChange.bind( this );
@@ -69,7 +69,7 @@ export default class ReviewForm extends React.Component {
     if ( props.formType === 'createReview' ) {
       this.loadBusiness( props );
     } else {
-      this.fetchReviewToEdit( props.match.params.id );
+      this.loadReview( props.match.params.id );
     }
   }
 
@@ -99,7 +99,7 @@ export default class ReviewForm extends React.Component {
       );
   }
 
-  fetchReviewToEdit( reviewId ) {
+  loadReview( reviewId ) {
     fetchReview( reviewId )
       .then(
         review => {
