@@ -8,9 +8,7 @@ import {
 import HomeHeaderContainer from '../header/home_header_container';
 import SearchBar from '../header/search_bar';
 import HomeLinks from './home_links';
-import {
-  FeaturedBusinesses,
-} from './home_util';
+import FeaturedBusinesses from './featured_businesses';
 
 export default class Home extends React.Component {
   constructor( props ) {
