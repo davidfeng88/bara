@@ -2,8 +2,8 @@ import {
   connect
 } from 'react-redux';
 import {
-  login,
-  logout
+  demoLogin,
+  logout,
 } from '../../actions/session_actions';
 import HomeBar from './home_bar';
 
@@ -15,10 +15,7 @@ const mapStateToProps = ( {
 
 const mapDispatchToProps = dispatch => ( {
   logout: () => dispatch( logout() ),
-  demoLogin: () => dispatch( login( {
-    username: 'Guest',
-    password: 'password'
-  } ) ),
+  demoLogin: () => dispatch( demoLogin() ),
 } );
 
 export default connect(

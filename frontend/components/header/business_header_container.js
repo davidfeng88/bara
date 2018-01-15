@@ -2,7 +2,7 @@ import {
   connect
 } from 'react-redux';
 import {
-  login,
+  demoLogin,
   logout
 } from '../../actions/session_actions';
 import BusinessHeader from './business_header';
@@ -15,10 +15,7 @@ const mapStateToProps = ( {
 
 const mapDispatchToProps = dispatch => ( {
   logout: () => dispatch( logout() ),
-  demoLogin: () => dispatch( login( {
-    username: 'Guest',
-    password: 'password'
-  } ) ),
+  demoLogin: () => dispatch( demoLogin() ),
 } );
 
 export default connect(

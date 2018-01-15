@@ -14,6 +14,11 @@ export const login = user => dispatch => (
   )
 );
 
+export const demoLogin = () => login( {
+  username: 'Guest',
+  password: 'password'
+} );
+
 export const logout = () => dispatch => (
   SessionAPIUtil.logout()
   .then(
