@@ -3,7 +3,7 @@ import {
   fetchFeaturedBusinesses
 } from '../../util/business_api_util';
 
-import HomeBarContainer from './home_bar_container';
+import HomeHeaderContainer from '../header/home_header_container';
 import SearchBar from '../header/search_bar';
 import HomeLinks from './home_links';
 import {
@@ -38,10 +38,10 @@ export default class Home extends React.Component {
       } );
   }
 
-  homeHeader() {
-    let homeBarContent = (
+  homeHero() {
+    let homeHeroContent = (
       <div>
-        <HomeBarContainer />
+        <HomeHeaderContainer />
         <div className='logo' onClick={this.handleClick}>
           <img src={window.staticImages.homeLogo} />
         </div>
@@ -51,13 +51,13 @@ export default class Home extends React.Component {
         <HomeLinks />
       </div>
     );
+    let backgroundCSSClassName =
+      this.state.defaultBackground ?
+      'home-hero-bg-1' :
+      'home-hero-bg-2';
     return (
-      <div
-        className={this.state.defaultBackground
-          ? 'home-header-1'
-          : 'home-header-2'}
-      >
-        {homeBarContent}
+      <div className={backgroundCSSClassName}>
+        {homeHeroContent}
       </div>
     );
   }
@@ -71,7 +71,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <div>
-        {this.homeHeader()}
+        {this.homeHero()}
         <div className='center'>
           {this.featuredBusinesses()}
         </div>

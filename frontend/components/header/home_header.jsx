@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import Dropdown from '../header/dropdown';
 
-export default class HomeBar extends React.Component {
+export default class HomeHeader extends React.Component {
   constructor( props ) {
     super( props );
     this.state = {

@@ -1,5 +1,5 @@
-// home header background
-.home-header-1 {
+// home hero background
+.home-hero-bg-1 {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-url("home.jpeg");
   background-size:     cover;
   background-repeat:   no-repeat;
@@ -8,7 +8,7 @@
   height: 600px;
 }
 
-.home-header-2 {
+.home-hero-bg-2 {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), asset-url("home2.jpeg");
   background-size:     cover;
   background-repeat:   no-repeat;

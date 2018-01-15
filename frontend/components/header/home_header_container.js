@@ -5,7 +5,7 @@ import {
   demoLogin,
   logout,
 } from '../../actions/session_actions';
-import HomeBar from './home_bar';
+import HomeHeader from './home_header';
 
 const mapStateToProps = ( {
   currentUser
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => ( {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)( HomeBar );
+)( HomeHeader );
