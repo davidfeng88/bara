@@ -7,19 +7,19 @@ import {
   AuthRoute,
   ProtectedRoute
 } from '../util/route_util';
-// header
+
 import HeaderRouter from './header/header_router';
-// forms
+
 import BusinessFormContainer from './business_form/business_form_container';
 import ReviewFormContainer from './review_form/review_form_container';
 import SessionFormContainer from './session_form/session_form_container';
-// business show, search, home pages
+
 import BusinessShowContainer from './business_show/business_show_container';
 import SearchContainer from './search/search_container';
 import Home from './home/home';
-// 404
+
 import FourZeroFour from './four_zero_four';
-// footer
+
 import Footer from './footer';
 
 const App = () => (

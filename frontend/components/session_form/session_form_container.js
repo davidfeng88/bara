@@ -3,7 +3,8 @@ import {
 } from 'react-redux';
 import {
   login,
-  signup
+  demoLogin,
+  signup,
 } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
@@ -16,6 +17,7 @@ const mapDispatchToProps = ( dispatch, {
     processForm: user => dispatch( processForm( user ) ),
     formType,
     login: user => dispatch( login( user ) ),
+    demoLogin: () => dispatch( demoLogin() ),
   };
 };
 
