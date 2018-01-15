@@ -18,3 +18,8 @@ const HighlightReducer = ( state = defaultState, action ) => {
 };
 
 export default HighlightReducer;
+
+// Sample State
+// {
+//     highlight: -1,
+// }

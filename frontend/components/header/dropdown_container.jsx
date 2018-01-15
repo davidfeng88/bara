@@ -52,18 +52,30 @@ const Dropdown = ( {
   currentUser,
   logout,
   toggleDropdown,
+} ) => (
+  <div>
+    <DropdownBackground toggleDropdown={toggleDropdown} />
+    <DropdownBox currentUser={currentUser} logout={logout} />
+  </div>
+);
+
+const DropdownContainer = ( {
+  currentUser,
+  logout,
+  toggleDropdown,
   showDropdown,
 } ) => {
   if ( showDropdown ) {
     return (
-      <div>
-        <DropdownBackground toggleDropdown={toggleDropdown} />
-        <DropdownBox currentUser={currentUser} logout={logout} />
-      </div>
+      <Dropdown
+        currentUser={currentUser}
+        logout={logout}
+        toggleDropdown={toggleDropdown}
+      />
     );
   } else {
     return null;
   }
 };
 
-export default Dropdown;
+export default DropdownContainer;

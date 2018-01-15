@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Link
 } from 'react-router-dom';
-import Dropdown from '../header/dropdown';
+import DropdownContainer from '../header/dropdown_container';
 
 export default class HomeHeader extends React.Component {
   constructor( props ) {
@@ -13,6 +13,7 @@ export default class HomeHeader extends React.Component {
 
     this.toggleDropdown = this.toggleDropdown.bind( this );
     this.handleLogout = this.handleLogout.bind( this );
+    this.closeDropdown = this.closeDropdown.bind( this );
   }
 
   toggleDropdown() {
@@ -22,10 +23,14 @@ export default class HomeHeader extends React.Component {
   }
 
   handleLogout() {
+    this.closeDropdown();
+    this.props.logout();
+  }
+
+  closeDropdown() {
     this.setState( () => ( {
       showDropdown: false,
     } ) );
-    this.props.logout();
   }
 
   render() {
@@ -44,7 +49,7 @@ export default class HomeHeader extends React.Component {
             <i className='fa fa-caret-down'
               id='down-arrow' aria-hidden="true"></i>
           </div>
-          <Dropdown
+          <DropdownContainer
             currentUser={currentUser}
             logout={this.handleLogout}
             toggleDropdown={this.toggleDropdown}

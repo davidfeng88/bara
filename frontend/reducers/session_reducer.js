@@ -19,8 +19,9 @@ const SessionReducer = ( state = nullUser, action ) => {
 
 export default SessionReducer;
 
-// Sample State Shape
+// Sample State
 // {
 //     id: 1,
-//     username: "bara"
+//     username: "bara",
+//     avatar_url: "/assets/capy.jpg"
 // }
