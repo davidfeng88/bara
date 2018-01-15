@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeHeaderContainer from '../header/home_header_container';
+import HomeHeaderContainer from './home_header_container';
 import SearchBar from '../header/search_bar';
 import HomeLinks from './home_links';
 
