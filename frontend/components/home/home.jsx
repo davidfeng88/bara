@@ -9,6 +9,7 @@ import HomeHeaderContainer from '../header/home_header_container';
 import SearchBar from '../header/search_bar';
 import HomeLinks from './home_links';
 import FeaturedBusinesses from './featured_businesses';
+import Categories from './categories';
 
 export default class Home extends React.Component {
   constructor( props ) {
@@ -100,57 +101,14 @@ export default class Home extends React.Component {
     );
   }
 
-  generateCategories() {
-    const categoriesTitle = <h2>Browse Businesses by Category</h2>;
-    const categoryCards = this.generateCategoryCards();
-    return (
-      <div className='center home-categories'>
-        {categoriesTitle}
-        {categoryCards}
-      </div>
-    );
-  }
-
-  generateCategoryCards() {
-    const restaurantCategory = this.generateRestaurantCategory();
-    const nightlifeCategory = this.generateNightlifeCategory();
-    return (
-      <div className='category-cards'>
-        {restaurantCategory}
-        {nightlifeCategory}
-      </div>
-    );
-  }
-
-  generateRestaurantCategory() {
-    return (
-      <Link className='category-card'
-        to="/businesses/?name=&location=New%20York">
-        <img src={window.staticImages.restaurants} />
-        <p>Restaurants</p>
-      </Link>
-    );
-  }
-
-  generateNightlifeCategory() {
-    return (
-      <Link className='category-card'
-      to="/businesses/?name=&location=New%20York&tag=nightlife">
-      <img src={window.staticImages.nightlife} />
-      <p>Nightlife</p>
-    </Link>
-    );
-  }
-
   render() {
     const homeHero = this.generateHomeHero();
     const featuredBusinesses = this.generateFeaturedBusinesses();
-    const categories = this.generateCategories();
     return (
       <div>
         {homeHero}
         {featuredBusinesses}
-        {categories}
+        <Categories />
       </div>
     );
   }
