@@ -33,13 +33,6 @@ export default class HomeHeader extends React.Component {
       currentUser,
       demoLogin,
     } = this.props;
-    let dropdownBox = this.state.showDropdown ? (
-      <Dropdown
-        currentUser={currentUser}
-        logout={this.handleLogout}
-        toggleDropdown={this.toggleDropdown}
-      />
-    ) : null;
 
     return currentUser ? (
       <nav className='home-bar'>
@@ -51,7 +44,12 @@ export default class HomeHeader extends React.Component {
             <i className='fa fa-caret-down'
               id='down-arrow' aria-hidden="true"></i>
           </div>
-          {dropdownBox}
+          <Dropdown
+            currentUser={currentUser}
+            logout={this.handleLogout}
+            toggleDropdown={this.toggleDropdown}
+            showDropdown={this.state.showDropdown}
+          />
         </div>
       </nav>
     ) : (

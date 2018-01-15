@@ -51,12 +51,19 @@ const LogoutLink = ( {
 const Dropdown = ( {
   currentUser,
   logout,
-  toggleDropdown
-} ) => (
-  <div>
-    <DropdownBackground toggleDropdown={toggleDropdown} />
-    <DropdownBox currentUser={currentUser} logout={logout} />
-  </div>
-);
+  toggleDropdown,
+  showDropdown,
+} ) => {
+  if ( showDropdown ) {
+    return (
+      <div>
+        <DropdownBackground toggleDropdown={toggleDropdown} />
+        <DropdownBox currentUser={currentUser} logout={logout} />
+      </div>
+    );
+  } else {
+    return null;
+  }
+};
 
 export default Dropdown;
