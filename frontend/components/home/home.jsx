@@ -20,62 +20,95 @@ export default class Home extends React.Component {
       businesses: [],
     };
 
-    this.handleClick = this.handleClick.bind( this );
+    this.handleHomeLogoClick = this.handleHomeLogoClick.bind( this );
+    this.updateFeaturedBusinessesInState = this.updateFeaturedBusinessesInState.bind( this );
+    this.updateHomeHeroBackground = this.updateHomeHeroBackground.bind( this );
   }
 
   componentDidMount() {
-    this.handleClick();
+    this.configureFeaturedBusinesses();
   }
 
-  handleClick() {
+  handleHomeLogoClick() {
+    this.configureFeaturedBusinesses();
+    this.updateHomeHeroBackground();
+  }
+
+  configureFeaturedBusinesses() {
     fetchFeaturedBusinesses()
-      .then( ( businesses ) => {
-        this.setState( prevState => ( {
-          loading: false,
-          businesses,
-          defaultBackground: !prevState.defaultBackground
-        } ) );
+      .then( businesses => {
+        this.updateFeaturedBusinessesInState( businesses );
       } );
   }
 
-  homeHero() {
-    let homeHeroContent = (
-      <div>
+  updateFeaturedBusinessesInState( businesses ) {
+    this.setState( {
+      loading: false,
+      businesses,
+    } );
+  }
+
+  updateHomeHeroBackground() {
+    this.setState( prevState => ( {
+      defaultBackground: !prevState.defaultBackground
+    } ) );
+  }
+
+  showHomeLogo() {
+    return (
+      <div className='logo' onClick={this.handleHomeLogoClick}>
+        <img src={window.staticImages.homeLogo} />
+      </div>
+    );
+  }
+
+  showHomeSearch() {
+    return (
+      <div className='home-search'>
+        <SearchBar />
+      </div>
+    );
+  }
+
+  getHomeHeroBackgroundCSSClassName() {
+    return this.state.defaultBackground ?
+      'home-hero-bg-1' :
+      'home-hero-bg-2';
+  }
+
+  showHomeHero() {
+    const homeLogo = this.showHomeLogo();
+    const homeSearch = this.showHomeSearch();
+    let homeHeroBackgroundCSSClassName = this.getHomeHeroBackgroundCSSClassName();
+    return (
+      <div className={homeHeroBackgroundCSSClassName}>
         <HomeHeaderContainer />
-        <div className='logo' onClick={this.handleClick}>
-          <img src={window.staticImages.homeLogo} />
-        </div>
-        <div className='home-search'>
-          <SearchBar />
-        </div>
+        {homeLogo}
+        {homeSearch}
         <HomeLinks />
       </div>
     );
-    let backgroundCSSClassName =
-      this.state.defaultBackground ?
-      'home-hero-bg-1' :
-      'home-hero-bg-2';
+  }
+
+  showFeaturedBusinesses() {
+    let featuredBusinesses = this.state.loading ?
+      <img className='spinner' src={window.staticImages.spinner} /> :
+      <FeaturedBusinesses businesses={this.state.businesses} />;
     return (
-      <div className={backgroundCSSClassName}>
-        {homeHeroContent}
+      <div className='center'>
+        {featuredBusinesses}
       </div>
     );
   }
 
-  featuredBusinesses() {
-    return this.state.loading ?
-      <img className='spinner' src={window.staticImages.spinner} /> :
-      <FeaturedBusinesses businesses={this.state.businesses} />;
-  }
-
   render() {
+    const homeHero = this.showHomeHero();
+    const featuredBusinesses = this.showFeaturedBusinesses();
     return (
       <div>
-        {this.homeHero()}
-        <div className='center'>
-          {this.featuredBusinesses()}
-        </div>
-          <Categories />
+        {homeHero}
+        {featuredBusinesses}
+        <Categories />
       </div>
     );
   }
