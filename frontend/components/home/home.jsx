@@ -1,14 +1,15 @@
 import React from 'react';
 import {
+  Link
+} from 'react-router-dom';
+import {
   fetchFeaturedBusinesses
 } from '../../util/business_api_util';
-
 import HomeHeaderContainer from '../header/home_header_container';
 import SearchBar from '../header/search_bar';
 import HomeLinks from './home_links';
 import {
   FeaturedBusinesses,
-  Categories
 } from './home_util';
 
 export default class Home extends React.Component {
@@ -21,27 +22,27 @@ export default class Home extends React.Component {
     };
 
     this.handleHomeLogoClick = this.handleHomeLogoClick.bind( this );
-    this.updateFeaturedBusinessesInState = this.updateFeaturedBusinessesInState.bind( this );
+    this.SaveFeaturedBusinesses = this.SaveFeaturedBusinesses.bind( this );
     this.updateHomeHeroBackground = this.updateHomeHeroBackground.bind( this );
   }
 
   componentDidMount() {
-    this.configureFeaturedBusinesses();
+    this.fetchAndSaveFeaturedBusinesses();
   }
 
   handleHomeLogoClick() {
-    this.configureFeaturedBusinesses();
+    this.fetchAndSaveFeaturedBusinesses();
     this.updateHomeHeroBackground();
   }
 
-  configureFeaturedBusinesses() {
+  fetchAndSaveFeaturedBusinesses() {
     fetchFeaturedBusinesses()
       .then( businesses => {
-        this.updateFeaturedBusinessesInState( businesses );
+        this.SaveFeaturedBusinesses( businesses );
       } );
   }
 
-  updateFeaturedBusinessesInState( businesses ) {
+  SaveFeaturedBusinesses( businesses ) {
     this.setState( {
       loading: false,
       businesses,
@@ -54,7 +55,21 @@ export default class Home extends React.Component {
     } ) );
   }
 
-  showHomeLogo() {
+  generateHomeHero() {
+    const homeLogo = this.generateHomeLogo();
+    const homeSearch = this.generateHomeSearch();
+    let homeHeroBackgroundCSSClassName = this.getHomeHeroBackgroundCSSClassName();
+    return (
+      <div className={homeHeroBackgroundCSSClassName}>
+        <HomeHeaderContainer />
+        {homeLogo}
+        {homeSearch}
+        <HomeLinks />
+      </div>
+    );
+  }
+
+  generateHomeLogo() {
     return (
       <div className='logo' onClick={this.handleHomeLogoClick}>
         <img src={window.staticImages.homeLogo} />
@@ -62,7 +77,7 @@ export default class Home extends React.Component {
     );
   }
 
-  showHomeSearch() {
+  generateHomeSearch() {
     return (
       <div className='home-search'>
         <SearchBar />
@@ -76,21 +91,7 @@ export default class Home extends React.Component {
       'home-hero-bg-2';
   }
 
-  showHomeHero() {
-    const homeLogo = this.showHomeLogo();
-    const homeSearch = this.showHomeSearch();
-    let homeHeroBackgroundCSSClassName = this.getHomeHeroBackgroundCSSClassName();
-    return (
-      <div className={homeHeroBackgroundCSSClassName}>
-        <HomeHeaderContainer />
-        {homeLogo}
-        {homeSearch}
-        <HomeLinks />
-      </div>
-    );
-  }
-
-  showFeaturedBusinesses() {
+  generateFeaturedBusinesses() {
     let featuredBusinesses = this.state.loading ?
       <img className='spinner' src={window.staticImages.spinner} /> :
       <FeaturedBusinesses businesses={this.state.businesses} />;
@@ -101,14 +102,57 @@ export default class Home extends React.Component {
     );
   }
 
+  generateCategories() {
+    const categoriesTitle = <h2>Browse Businesses by Category</h2>;
+    const categoryCards = this.generateCategoryCards();
+    return (
+      <div className='center home-categories'>
+        {categoriesTitle}
+        {categoryCards}
+      </div>
+    );
+  }
+
+  generateCategoryCards() {
+    const restaurantCategory = this.generateRestaurantCategory();
+    const nightlifeCategory = this.generateNightlifeCategory();
+    return (
+      <div className='category-cards'>
+        {restaurantCategory}
+        {nightlifeCategory}
+      </div>
+    );
+  }
+
+  generateRestaurantCategory() {
+    return (
+      <Link className='category-card'
+        to="/businesses/?name=&location=New%20York">
+        <img src={window.staticImages.restaurants} />
+        <p>Restaurants</p>
+      </Link>
+    );
+  }
+
+  generateNightlifeCategory() {
+    return (
+      <Link className='category-card'
+      to="/businesses/?name=&location=New%20York&tag=nightlife">
+      <img src={window.staticImages.nightlife} />
+      <p>Nightlife</p>
+    </Link>
+    );
+  }
+
   render() {
-    const homeHero = this.showHomeHero();
-    const featuredBusinesses = this.showFeaturedBusinesses();
+    const homeHero = this.generateHomeHero();
+    const featuredBusinesses = this.generateFeaturedBusinesses();
+    const categories = this.generateCategories();
     return (
       <div>
         {homeHero}
         {featuredBusinesses}
-        <Categories />
+        {categories}
       </div>
     );
   }

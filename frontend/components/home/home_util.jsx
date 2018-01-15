@@ -46,23 +46,3 @@ export const FeaturedBusinesses = ( {
     </div>
   </div>
 );
-
-export const Categories = () => (
-  <div className='center'>
-    <div className='home-categories'>
-      <h2>Browse Businesses by Category</h2>
-      <div className='category-cards'>
-        <Link className='category-card'
-          to="/businesses/?name=&location=New%20York">
-          <img src={window.staticImages.restaurants} />
-          <p>Restaurants</p>
-        </Link>
-        <Link className='category-card'
-          to="/businesses/?name=&location=New%20York&tag=nightlife">
-          <img src={window.staticImages.nightlife} />
-          <p>Nightlife</p>
-        </Link>
-      </div>
-    </div>
-  </div>
-);
