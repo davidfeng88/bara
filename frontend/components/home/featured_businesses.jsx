@@ -9,16 +9,27 @@ import {
   tagContent,
 } from '../../util/business_info_util';
 
+const LoadingSpinner = () => (
+  <div className='center'>
+    <img className='spinner' src={window.staticImages.spinner} />
+  </div>
+);
+
 const FeaturedBusinesses = ( {
-  businesses
+  businesses,
+  loading,
 } ) => {
-  const title = <h2>Featured Businesses</h2>;
-  return (
-    <div className='home-businesses'>
-      {title}
-      <FeaturedBusinessesList businesses={businesses} />
-    </div>
-  );
+  if ( loading ) {
+    return <LoadingSpinner />;
+  } else {
+    const title = <h2>Featured Businesses</h2>;
+    return (
+      <div className='center home-businesses'>
+        {title}
+        <FeaturedBusinessesList businesses={businesses} />
+      </div>
+    );
+  }
 };
 
 const FeaturedBusinessesList = ( {
