@@ -10,13 +10,13 @@ export default class Home extends React.Component {
   constructor( props ) {
     super( props );
     this.state = {
-      defaultBackground: true,
+      showDefaultBackground: true,
       loading: true,
-      businesses: [],
+      featuredBusinesses: [],
     };
 
     this.handleHomeLogoClick = this.handleHomeLogoClick.bind( this );
-    this.SaveFeaturedBusinesses = this.SaveFeaturedBusinesses.bind( this );
+    this.saveFeaturedBusinesses = this.saveFeaturedBusinesses.bind( this );
     this.updateHomeHeroBackground = this.updateHomeHeroBackground.bind( this );
   }
 
@@ -31,21 +31,21 @@ export default class Home extends React.Component {
 
   fetchAndSaveFeaturedBusinesses() {
     fetchFeaturedBusinesses()
-      .then( businesses => {
-        this.SaveFeaturedBusinesses( businesses );
+      .then( featuredBusinesses => {
+        this.saveFeaturedBusinesses( featuredBusinesses );
       } );
   }
 
-  SaveFeaturedBusinesses( businesses ) {
+  saveFeaturedBusinesses( featuredBusinesses ) {
     this.setState( {
       loading: false,
-      businesses,
+      featuredBusinesses,
     } );
   }
 
   updateHomeHeroBackground() {
     this.setState( prevState => ( {
-      defaultBackground: !prevState.defaultBackground
+      showDefaultBackground: !prevState.showDefaultBackground
     } ) );
   }
 
@@ -54,10 +54,10 @@ export default class Home extends React.Component {
       <div>
         <HomeHero
           handleHomeLogoClick={this.handleHomeLogoClick}
-          defaultBackground={this.state.defaultBackground}
+          showDefaultBackground={this.state.showDefaultBackground}
         />
         <FeaturedBusinesses
-          businesses={this.state.businesses}
+          businesses={this.state.featuredBusinesses}
           loading = {this.state.loading}
         />;
         <Categories />

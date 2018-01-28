@@ -19,10 +19,10 @@ const HomeSearch = () => (
 
 const HomeHero = ( {
   handleHomeLogoClick,
-  defaultBackground
+  showDefaultBackground
 } ) => {
   const homeHeroBackgroundCSSClassName =
-    defaultBackground ?
+    showDefaultBackground ?
     'home-hero-bg-1' :
     'home-hero-bg-2';
   return (
