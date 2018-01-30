@@ -7,61 +7,52 @@ import FeaturedBusinesses from './featured_businesses';
 import Categories from './categories';
 
 export default class Home extends React.Component {
-  constructor( props ) {
-    super( props );
-    this.state = {
-      showDefaultBackground: true,
-      loading: true,
-      featuredBusinesses: [],
-    };
+  state = {
+    showDefaultBackground: true,
+    loading: true,
+    featuredBusinesses: [],
+  };
 
-    this.handleHomeLogoClick = this.handleHomeLogoClick.bind( this );
-    this.saveFeaturedBusinesses = this.saveFeaturedBusinesses.bind( this );
-    this.updateHomeHeroBackground = this.updateHomeHeroBackground.bind( this );
-  }
-
-  componentDidMount() {
+  componentDidMount = () => {
     this.fetchAndSaveFeaturedBusinesses();
-  }
+  };
 
-  handleHomeLogoClick() {
-    this.fetchAndSaveFeaturedBusinesses();
-    this.updateHomeHeroBackground();
-  }
-
-  fetchAndSaveFeaturedBusinesses() {
+  fetchAndSaveFeaturedBusinesses = () => {
     fetchFeaturedBusinesses()
       .then( featuredBusinesses => {
         this.saveFeaturedBusinesses( featuredBusinesses );
       } );
-  }
+  };
 
-  saveFeaturedBusinesses( featuredBusinesses ) {
+  saveFeaturedBusinesses = ( featuredBusinesses ) => {
     this.setState( {
       loading: false,
       featuredBusinesses,
     } );
-  }
+  };
 
-  updateHomeHeroBackground() {
+  handleHomeLogoClick = () => {
+    this.fetchAndSaveFeaturedBusinesses();
+    this.updateHomeHeroBackground();
+  };
+
+  updateHomeHeroBackground = () => {
     this.setState( prevState => ( {
       showDefaultBackground: !prevState.showDefaultBackground
     } ) );
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <HomeHero
-          handleHomeLogoClick={this.handleHomeLogoClick}
-          showDefaultBackground={this.state.showDefaultBackground}
-        />
-        <FeaturedBusinesses
-          businesses={this.state.featuredBusinesses}
-          loading = {this.state.loading}
-        />;
-        <Categories />
-      </div>
-    );
-  }
+  render = () => (
+    <div>
+      <HomeHero
+        handleHomeLogoClick={this.handleHomeLogoClick}
+        showDefaultBackground={this.state.showDefaultBackground}
+      />
+      <FeaturedBusinesses
+        businesses={this.state.featuredBusinesses}
+        loading = {this.state.loading}
+      />;
+      <Categories />
+    </div>
+  );
 }
