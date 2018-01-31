@@ -43,7 +43,7 @@ export default class Home extends React.Component {
   };
 
   render = () => (
-    <div>
+    <>
       <HomeHero
         handleHomeLogoClick={this.handleHomeLogoClick}
         showDefaultBackground={this.state.showDefaultBackground}
@@ -53,6 +53,6 @@ export default class Home extends React.Component {
         loading = {this.state.loading}
       />;
       <Categories />
-    </div>
+    </>
   );
 }
