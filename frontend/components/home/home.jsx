@@ -19,9 +19,7 @@ export default class Home extends React.Component {
 
   fetchAndSaveFeaturedBusinesses = () => {
     fetchFeaturedBusinesses()
-      .then( featuredBusinesses => {
-        this.saveFeaturedBusinesses( featuredBusinesses );
-      } );
+      .then( this.saveFeaturedBusinesses );
   };
 
   saveFeaturedBusinesses = ( featuredBusinesses ) => {
@@ -43,16 +41,16 @@ export default class Home extends React.Component {
   };
 
   render = () => (
-    <>
+    <div>
       <HomeHero
         handleHomeLogoClick={this.handleHomeLogoClick}
         showDefaultBackground={this.state.showDefaultBackground}
       />
       <FeaturedBusinesses
-        businesses={this.state.featuredBusinesses}
-        loading = {this.state.loading}
-      />;
-      <Categories />
-    </>
+        businesses = {this.state.featuredBusinesses}
+      loading = {this.state.loading}
+      />
+      <Categories/>
+    </div>
   );
 }
