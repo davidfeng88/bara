@@ -6,7 +6,6 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.39",
     "@babel/preset-es2015": "^7.0.0-beta.39",
     "@babel/preset-react": "^7.0.0-beta.39",
-    "babel-eslint": "^7.2.3",
     "babel-loader": "^8.0.0-beta.0",
     "immutability-helper": "^2.3.1",
     "query-string": "^5.0.0",
@@ -21,6 +20,7 @@
     "webpack": "^3.10.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "redux-logger": "^3.0.6"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
