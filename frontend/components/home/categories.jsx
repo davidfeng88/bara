@@ -1,12 +1,13 @@
 import React from 'react';
+
 import {
-  Link
+  Link,
 } from 'react-router-dom';
 
 const Categories = () => {
   const categoriesTitle = <h2>Browse Businesses by Category</h2>;
   return (
-    <div className='center home-categories'>
+    <div className="center home-categories">
       {categoriesTitle}
       <CategoryCards />
     </div>
