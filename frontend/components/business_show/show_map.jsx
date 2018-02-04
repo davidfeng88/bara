@@ -18,15 +18,15 @@ export default class ShowMap extends React.Component {
       zoom: 14,
       disableDefaultUI: true
     };
-    this.map = new google.maps.Map( map, mapOptions );
-    const position = new google.maps.LatLng( lat, lng );
-    const marker = new google.maps.Marker( {
+    this.map = new google.maps.Map(map, mapOptions);
+    const position = new google.maps.LatLng(lat, lng);
+    const marker = new google.maps.Marker({
       position,
       map: this.map,
       icon: {
         url: window.staticImages.normalIcon,
       }
-    } );
+    });
   }
 
   render() {

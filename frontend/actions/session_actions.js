@@ -10,7 +10,7 @@ const updateCurrentUserInStore = currentUser => ({
 
 export const asyncLogin = user => dispatch => (
   SessionAPIUtil.BackendLogin(user)
-  .then(userDataFromBackend => dispatch(updateCurrentUserInStore(userDataFromBackend)))
+    .then(userDataFromBackend => dispatch(updateCurrentUserInStore(userDataFromBackend)))
 );
 
 export const demoLogin = asyncLogin({
@@ -20,10 +20,10 @@ export const demoLogin = asyncLogin({
 
 export const asyncLogout = () => dispatch => (
   SessionAPIUtil.BackendLogout()
-  .then(() => dispatch(updateCurrentUserInStore(nullUser)))
+    .then(() => dispatch(updateCurrentUserInStore(nullUser)))
 );
 
 export const asyncSignup = user => dispatch => (
   SessionAPIUtil.BackendSignup(user)
-  .then(userDataFromBackend => dispatch(updateCurrentUserInStore(userDataFromBackend)))
+    .then(userDataFromBackend => dispatch(updateCurrentUserInStore(userDataFromBackend)))
 );

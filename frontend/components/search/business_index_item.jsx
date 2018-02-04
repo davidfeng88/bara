@@ -12,7 +12,7 @@ import {
 const topReview = business => {
   let picture = null;
   let reviewBody = 'No review for this business yet';
-  if ( business.latest_review ) {
+  if (business.latest_review) {
     let review = business.latest_review;
     const url = `${review.author.avatar_url}`;
     picture = <img src={url} />;
@@ -30,10 +30,10 @@ const topReview = business => {
   );
 };
 
-const BusinessIndexItem = ( {
+const BusinessIndexItem = ({
   business,
   highlightBusiness
-} ) => (
+}) => (
   <div
     onMouseEnter={() =>
       highlightBusiness(business.id)}
@@ -49,7 +49,8 @@ const BusinessIndexItem = ( {
           <li>
             <Link to={`/businesses/${business.id}`}>{business.name}</Link>
           </li>
-          <Rating className='rating'
+          <Rating
+            className='rating'
             empty="fa fa-star-o fa-lg"
             full="fa fa-star fa-lg"
             initialRate={parseFloat(business.average_rating)}

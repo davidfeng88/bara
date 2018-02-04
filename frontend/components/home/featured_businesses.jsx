@@ -15,11 +15,11 @@ const LoadingSpinner = () => (
   </div>
 );
 
-const FeaturedBusinesses = ( {
+const FeaturedBusinesses = ({
   businesses,
   loading,
-} ) => {
-  if ( loading ) {
+}) => {
+  if (loading) {
     return <LoadingSpinner />;
   } else {
     const title = <h2>Featured Businesses</h2>;
@@ -32,9 +32,9 @@ const FeaturedBusinesses = ( {
   }
 };
 
-const FeaturedBusinessesList = ( {
+const FeaturedBusinessesList = ({
   businesses
-} ) => (
+}) => (
   <div className='home-businesses-list'>
     {businesses.map( business =>
       <FeaturedBusinessListItem key={business.id} business={business} />
@@ -42,26 +42,26 @@ const FeaturedBusinessesList = ( {
   </div>
 );
 
-const FeaturedBusinessListItem = ( {
+const FeaturedBusinessListItem = ({
   business
-} ) => (
+}) => (
   <div className='home-business-item'>
     <Pic business = {business} />
     <FeatureTextInfo business = {business} />
   </div>
 );
 
-const Pic = ( {
+const Pic = ({
   business
-} ) => (
+}) => (
   <Link to={`/businesses/${business.id}`}>
     <img src={business.image_url} />
   </Link>
 );
 
-const FeatureTextInfo = ( {
+const FeatureTextInfo = ({
   business
-} ) => (
+}) => (
   <div className='card-content'>
     <BusinessNameLink business={business} />
     <RatingInfo business={business} />
@@ -70,19 +70,20 @@ const FeatureTextInfo = ( {
   </div>
 );
 
-const BusinessNameLink = ( {
+const BusinessNameLink = ({
   business
-} ) => (
+}) => (
   <Link to={`/businesses/${business.id}`}>
     <strong>{business.name}</strong>
   </Link>
 );
 
-const RatingInfo = ( {
+const RatingInfo = ({
   business
-} ) => (
+}) => (
   <div>
-    <Rating className='rating'
+    <Rating
+      className="rating"
       empty="fa fa-star-o fa-lg"
       full="fa fa-star fa-lg"
       initialRate={parseFloat(business.average_rating)}

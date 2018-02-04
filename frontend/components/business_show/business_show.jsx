@@ -1,8 +1,5 @@
 import React from 'react';
 import {
-  Link
-} from 'react-router-dom';
-import {
   fetchBusiness,
 } from '../../util/business_api_util';
 
@@ -10,87 +7,100 @@ import ErrorList from '../error_list';
 import BusinessShowCore from './business_show_core';
 
 export default class BusinessShow extends React.Component {
-  constructor( props ) {
-    super( props );
-    this.state = ( {
+  state = {
+    business: null,
+    errors: [],
+    reviewId: null,
+    loading: true,
+  };
+
+  componentDidMount = () => {
+    console.log("%c this.props.match.params.id = ", this.props.match.params.id, 'font-size :30px; color: red;');
+    this.fetchAndSaveBusiness(this.props);
+  };
+
+  componentWillReceiveProps = (nextProps) => {
+    console.log("%c this.props.match.params.id = ", this.props.match.params.id, 'font-size :30px; color: red;');
+    console.log("nextProps.match.params.id = ", nextProps.match.params.id);
+    if (this.businessChanged(nextProps)) {
+      this.resetState();
+      this.fetchAndSaveBusiness(nextProps);
+    }
+  };
+
+  businessChanged = nextProps => (
+    nextProps.match.params.id !== this.props.match.params.id
+  );
+
+  resetState = () => {
+    this.setState({
       business: null,
       errors: [],
       reviewId: null,
       loading: true,
-    } );
+    });
+  };
 
-    this.loadBusiness = this.loadBusiness.bind( this );
-    this.clearErrors = this.clearErrors.bind( this );
-  }
-
-  componentDidMount() {
-    this.loadBusiness( this.props );
-  }
-
-  componentWillReceiveProps( nextProps ) {
-    if ( nextProps.match.params.id !== this.props.match.params.id ) {
-      this.setState( {
-        business: null,
-        errors: [],
-        reviewId: null,
-        loading: true,
-      } );
-      this.loadBusiness( nextProps );
-    }
-  }
-
-  loadBusiness( props ) {
-    fetchBusiness( props.match.params.id )
+  fetchAndSaveBusiness = (props) => {
+    fetchBusiness(props.match.params.id)
       .then(
-        business => {
-          let reviewId = null;
-          if ( props.currentUser &&
-            business.reviewers[ props.currentUser.id ] ) {
-            reviewId = business.reviewers[ props.currentUser.id ];
-          }
-          this.setState( {
-            business,
-            reviewId,
-            errors: [],
-            loading: false,
-          } );
-        },
-        errors => this.setState( {
-          business: null,
-          reviewId: null,
-          errors: errors.responseJSON,
-          loading: false,
-        } )
+        this.saveBusiness(props),
+        this.recordErrors,
       );
-    window.scrollTo( 0, 0 );
-  }
+    window.scrollTo(0, 0);
+  };
 
-  clearErrors() {
-    this.setState( {
+  saveBusiness = props => (business) => {
+    let reviewId = null;
+    if (props.currentUser &&
+      business.reviewers[props.currentUser.id]) {
+      reviewId = business.reviewers[props.currentUser.id];
+    }
+    this.setState({
+      business,
+      reviewId,
       errors: [],
-    } );
-  }
+      loading: false,
+    });
+  };
 
-  render() {
+  clearErrors = () => {
+    this.setState({
+      errors: [],
+    });
+  };
+
+  recordErrors = (errors) => {
+    this.setState({
+      business: null,
+      reviewId: null,
+      errors: errors.responseJSON,
+      loading: false,
+    });
+  };
+
+  render = () => {
     const {
       business,
       errors,
       loading,
       reviewId,
     } = this.state;
-    if ( loading ) {
+    if (loading) {
       return (
-        <img className='spinner' src={window.staticImages.spinner} />
+        <img alt="" className="spinner" src={window.staticImages.spinner} />
       );
     }
-    if ( !business ) {
+    if (!business) {
       return (
-        <div className='center'>
-          <ErrorList errors={errors}
-            clearErrors={this.clearErrors} />
-          <Link to="/" className='link-as-button'>
+        <div className="center">
+          <ErrorList
+            errors={errors}
+            clearErrors={this.clearErrors}
+          />
+          <a href="#/" className="link-as-button">
             Go Home
-          </Link>
+          </a>
         </div>
       );
     }
@@ -100,5 +110,5 @@ export default class BusinessShow extends React.Component {
         reviewId={reviewId}
       />
     );
-  }
+  };
 }

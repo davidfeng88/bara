@@ -4,12 +4,12 @@ import {
 } from 'react-router-dom';
 import Rating from 'react-rating';
 
-const ReviewIndexItem = ( {
+const ReviewIndexItem = ({
   currentUser,
   review
-} ) => {
+}) => {
   const editReviewString = `/reviews/${review.id}/edit`;
-  const editLink = ( currentUser && currentUser.id === review.author_id ) ?
+  const editLink = (currentUser && currentUser.id === review.author_id) ?
     <Link to={editReviewString}>Edit Review</Link> :
     null;
   return (
@@ -24,7 +24,8 @@ const ReviewIndexItem = ( {
         </div>
       </div>
       <div className='review-index-right'>
-        <Rating className='rating'
+        <Rating
+          className="rating"
           empty="fa fa-star-o fa-lg"
           full="fa fa-star fa-lg"
           initialRate={review.rating}

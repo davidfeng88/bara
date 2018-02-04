@@ -8,7 +8,7 @@ import {
   tagContent
 } from '../../util/business_info_util';
 
-const ReviewFormCore = ( {
+const ReviewFormCore = ({
   formType,
   business,
   review,
@@ -16,7 +16,7 @@ const ReviewFormCore = ( {
   handleReviewBodyChange,
   handleDelete,
   handleSubmit,
-} ) => {
+}) => {
 
   let {
     rating = 0,
@@ -40,37 +40,37 @@ const ReviewFormCore = ( {
       <button onClick={handleDelete} >Delete Review</button>
     </div>;
 
-  const ratingTooltip = ( {
+  const ratingTooltip = ({
     0: 'Select your rating.',
     1: 'Eek! Methinks not.',
     2: 'Meh. I\'ve experinced better.',
     3: 'A-OK.',
     4: 'Yay! I\'m a fan.',
     5: 'Woohoo! As good as it gets!',
-  } );
+  });
 
   const handleRate = rate => {
     let tooltip = '';
-    switch ( rate ) {
-      case 1:
-        tooltip = 'Eek! Methinks not.';
-        break;
-      case 2:
-        tooltip = 'Meh. I\'ve experinced better.';
-        break;
-      case 3:
-        tooltip = 'A-OK.';
-        break;
-      case 4:
-        tooltip = 'Yay! I\'m a fan.';
-        break;
-      case 5:
-        tooltip = 'Woohoo! As good as it gets!';
-        break;
-      default:
-        tooltip = ratingTooltip[ review.rating ] || 'Select your rating.';
+    switch (rate) {
+    case 1:
+      tooltip = 'Eek! Methinks not.';
+      break;
+    case 2:
+      tooltip = 'Meh. I\'ve experinced better.';
+      break;
+    case 3:
+      tooltip = 'A-OK.';
+      break;
+    case 4:
+      tooltip = 'Yay! I\'m a fan.';
+      break;
+    case 5:
+      tooltip = 'Woohoo! As good as it gets!';
+      break;
+    default:
+      tooltip = ratingTooltip[review.rating] || 'Select your rating.';
     }
-    document.getElementById( 'rating-tooltip' )
+    document.getElementById('rating-tooltip')
       .innerHTML = tooltip;
   };
 
@@ -143,9 +143,9 @@ const ReviewFormCore = ( {
 
 export default ReviewFormCore;
 
-const ReviewFormBusienssShow = ( {
+const ReviewFormBusienssShow = ({
   business
-} ) => (
+}) => (
   <div className='flex-left review-form-business'>
     <Link to={`/businesses/${business.id}`}>
       <img src={business.image_url} />
@@ -160,19 +160,19 @@ const ReviewFormBusienssShow = ( {
     </div>
   </div>
 );
-const ReviewFormReviewIndex = ( {
+const ReviewFormReviewIndex = ({
   business
-} ) => {
-  let reviews = business.reviews.slice( 0, 5 );
+}) => {
+  let reviews = business.reviews.slice(0, 5);
   // if business has less than 5 reviews,
   // it will take whatever is in the array
   let reviewsEntries = reviews.length > 0 ? (
-    reviews.map( review => (
+    reviews.map(review => (
       <ReviewFormReviewIndexItem
         key={ review.id }
         review={ review }
       />
-    ) )
+    ))
   ) : (
     <div className='review-form-review-placehoder'>
       No review for this business yet.
@@ -190,15 +190,16 @@ const ReviewFormReviewIndex = ( {
   );
 };
 
-const ReviewFormReviewIndexItem = ( {
+const ReviewFormReviewIndexItem = ({
   review
-} ) => (
+}) => (
   <div className='review-form-index-item'>
     <div className='flex-left'>
       <img src={review.author.avatar_url} />
       {review.author.username}
     </div>
-    <Rating className='rating'
+    <Rating
+      className='rating'
       empty="fa fa-star-o fa-lg"
       full="fa fa-star fa-lg"
       initialRate={review.rating}
