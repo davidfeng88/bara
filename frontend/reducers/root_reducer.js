@@ -7,7 +7,7 @@ import HighlightReducer from './highlight_reducer';
 
 const RootReducer = combineReducers({
   currentUser: SessionReducer,
-  highlight: HighlightReducer,
+  highlightedBusinessId: HighlightReducer,
 });
 
 export default RootReducer;

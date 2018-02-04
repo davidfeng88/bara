@@ -1,15 +1,16 @@
 import * as SessionAPIUtil from '../util/session_api_util';
 
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const UPDATE_CURRENT_USER_IN_STORE = 'UPDATE_CURRENT_USER_IN_STORE';
+export const nullUser = null;
 
-const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
+const updateCurrentUserInStore = currentUser => ({
+  type: UPDATE_CURRENT_USER_IN_STORE,
   currentUser,
 });
 
 export const login = user => dispatch => (
-  SessionAPIUtil.login(user)
-    .then(userData => dispatch(receiveCurrentUser(userData)))
+  SessionAPIUtil.BackendLogin(user)
+  .then(userData => dispatch(updateCurrentUserInStore(userData)))
 );
 
 export const demoLogin = () => login({
@@ -18,11 +19,11 @@ export const demoLogin = () => login({
 });
 
 export const logout = () => dispatch => (
-  SessionAPIUtil.logout()
-    .then(() => dispatch(receiveCurrentUser(null)))
+  SessionAPIUtil.BackendLogout()
+  .then(() => dispatch(updateCurrentUserInStore(nullUser)))
 );
 
 export const signup = user => dispatch => (
-  SessionAPIUtil.signup(user)
-    .then(userData => dispatch(receiveCurrentUser(userData)))
+  SessionAPIUtil.BackendSignup(user)
+  .then(userData => dispatch(updateCurrentUserInStore(userData)))
 );

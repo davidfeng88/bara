@@ -1,18 +1,17 @@
 import {
-  RECEIVE_CURRENT_USER,
+  UPDATE_CURRENT_USER_IN_STORE,
+  nullUser,
 } from '../actions/session_actions';
-
-const nullUser = null;
 
 const SessionReducer = (state = nullUser, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return action.currentUser;
+  case UPDATE_CURRENT_USER_IN_STORE:
+    return action.currentUser;
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 

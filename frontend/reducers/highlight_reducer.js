@@ -1,5 +1,5 @@
 import {
-  HIGHLIGHT_BUSINESS,
+  UPDATE_HIGHLIGHTED_BUSINESS_ID_IN_STORE,
 } from '../actions/highlight_actions';
 
 const defaultState = -1;
@@ -8,11 +8,11 @@ const HighlightReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case HIGHLIGHT_BUSINESS:
-      return action.hightlightBusinessId;
+  case UPDATE_HIGHLIGHTED_BUSINESS_ID_IN_STORE:
+    return action.highlightedBusinessId;
 
-    default:
-      return state;
+  default:
+    return state;
   }
 };
 
