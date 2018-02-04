@@ -1,5 +1,5 @@
 import {
-  connect
+  connect,
 } from 'react-redux';
 import {
   demoLogin,
@@ -7,18 +7,18 @@ import {
 } from '../../actions/session_actions';
 import HomeHeader from './home_header';
 
-const mapStateToProps = ( {
-  currentUser
-} ) => ( {
-  currentUser
-} );
+const mapStateToProps = ({
+  currentUser,
+}) => ({
+  currentUser,
+});
 
-const mapDispatchToProps = dispatch => ( {
-  logout: () => dispatch( logout() ),
-  demoLogin: () => dispatch( demoLogin() ),
-} );
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+  demoLogin: () => dispatch(demoLogin()),
+});
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)( HomeHeader );
+  mapDispatchToProps,
+)(HomeHeader);

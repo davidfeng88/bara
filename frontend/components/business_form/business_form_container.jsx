@@ -28,8 +28,8 @@ const emptyBusiness = {
 };
 
 export default class BusinessFormContainer extends React.Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
 
     this.state = {
       business: emptyBusiness,
@@ -37,126 +37,126 @@ export default class BusinessFormContainer extends React.Component {
       loading: true,
     };
 
-    this.loadBusiness = this.loadBusiness.bind( this );
-    this.clearErrors = this.clearErrors.bind( this );
-    this.handleChange = this.handleChange.bind( this );
-    this.handleDelete = this.handleDelete.bind( this );
-    this.handleSubmit = this.handleSubmit.bind( this );
+    this.loadBusiness = this.loadBusiness.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
   componentDidMount() {
-    window.scrollTo( 0, 0 );
-    if ( this.props.location.pathname.slice( -3 ) === 'new' ) {
-      this.setState( {
+    window.scrollTo(0, 0);
+    if (this.props.location.pathname.slice(-3) === 'new') {
+      this.setState({
         loading: false,
-      } );
+      });
     } else {
-      this.loadBusiness( this.props.match.params.id );
+      this.loadBusiness(this.props.match.params.id);
     }
   }
 
-  componentWillReceiveProps( nextProps ) {
-    if ( nextProps.location.pathname.slice( -3 ) === 'new' ) {
-      this.setState( {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname.slice(-3) === 'new') {
+      this.setState({
         business: emptyBusiness,
         errors: [],
         loading: false,
-      } );
-    } else if ( nextProps.match.params.id !== this.props.match.params.id ) {
-      this.setState( {
+      });
+    } else if (nextProps.match.params.id !== this.props.match.params.id) {
+      this.setState({
         loading: true,
-      } );
-      this.loadBusiness( nextProps.match.params.id );
+      });
+      this.loadBusiness(nextProps.match.params.id);
     }
   }
 
-  loadBusiness( id ) {
-    fetchBusiness( id )
+  loadBusiness(id) {
+    fetchBusiness(id)
       .then(
         business => {
-          this.setState( {
+          this.setState({
             business,
             errors: [],
             loading: false,
-          } );
+          });
         },
-        errors => this.setState( {
+        errors => this.setState({
           business: emptyBusiness,
           errors: errors.responseJSON,
           loading: false,
-        } )
+        })
       );
   }
 
   clearErrors() {
-    this.setState( {
+    this.setState({
       errors: []
-    } );
+    });
   }
 
-  handleChange( field ) {
+  handleChange(field) {
     return (
       e => {
         e.preventDefault();
         let {
           business
         } = this.state;
-        const updatedBusiness = update( business, {
-          [ field ]: {
+        const updatedBusiness = update(business, {
+          [field]: {
             $set: e.currentTarget.value
           }
-        } );
-        this.setState( {
+        });
+        this.setState({
           business: updatedBusiness
-        } );
+        });
       }
     );
   }
 
-  handleDelete( e ) {
+  handleDelete(e) {
     e.preventDefault();
-    deleteBusiness( this.props.match.params.id )
-      .then( () => this.props.history.push( "/" ) );
+    deleteBusiness(this.props.match.params.id)
+      .then(() => this.props.history.push("/"));
   }
 
-  handleSubmit( e ) {
+  handleSubmit(e) {
     e.preventDefault();
-    window.scrollTo( 0, 0 );
-    let biz = Object.assign( {}, this.state.business );
-    fetchLatlng( biz )
+    window.scrollTo(0, 0);
+    let biz = Object.assign({}, this.state.business);
+    fetchLatlng(biz)
       .then(
         response => {
-          if ( response.status === 'OK' ) {
+          if (response.status === 'OK') {
             let {
               lat,
               lng
-            } = response.results[ 0 ].geometry.location;
+            } = response.results[0].geometry.location;
             biz.lat = lat;
             biz.lng = lng;
-            if ( this.props.location.pathname.slice( -3 ) === 'new' ) {
-              createBusiness( biz )
+            if (this.props.location.pathname.slice(-3) === 'new') {
+              createBusiness(biz)
                 .then(
                   business =>
-                  this.props.history.push( `/businesses/${business.id}` ),
-                  errors => this.setState( {
+                  this.props.history.push(`/businesses/${business.id}`),
+                  errors => this.setState({
                     errors: errors.responseJSON,
-                  } )
+                  })
                 );
             } else {
-              editBusiness( biz )
+              editBusiness(biz)
                 .then(
                   business =>
-                  this.props.history.push( `/businesses/${business.id}` ),
-                  errors => this.setState( {
+                  this.props.history.push(`/businesses/${business.id}`),
+                  errors => this.setState({
                     errors: errors.responseJSON,
-                  } )
+                  })
                 );
             }
           } else {
-            this.setState( {
-              errors: [ 'Invalid Address' ]
-            } );
+            this.setState({
+              errors: ['Invalid Address']
+            });
           }
         }
       );
@@ -164,19 +164,19 @@ export default class BusinessFormContainer extends React.Component {
 
   render() {
     const formType =
-      this.props.location.pathname.slice( -3 ) === 'new' ?
+      this.props.location.pathname.slice(-3) === 'new' ?
       'createBusiness' : 'editBusiness';
     const {
       business,
       errors,
       loading,
     } = this.state;
-    if ( loading ) {
+    if (loading) {
       return (
         <img className='spinner' src={window.staticImages.spinner} />
       );
     }
-    if ( formType === 'editBusiness' && !business.id ) {
+    if (formType === 'editBusiness' && !business.id) {
       // business is not found
       return (
         <div className='center'>

@@ -2,20 +2,20 @@ import React from 'react';
 
 export default class FormMap extends React.Component {
   componentDidMount() {
-    this.drawMap( this.props );
+    this.drawMap(this.props);
   }
 
-  componentWillReceiveProps( nextProps ) {
-    if ( nextProps.formType !== this.props.formType ) {
-      this.drawMap( nextProps );
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.formType !== this.props.formType) {
+      this.drawMap(nextProps);
     }
   }
 
-  drawMap( props ) {
-    if ( props.formType === 'createBusiness' ) {
+  drawMap(props) {
+    if (props.formType === 'createBusiness') {
       this.drawMapForCreateForm();
     } else {
-      this.drawMapForEditForm( props );
+      this.drawMapForEditForm(props);
     }
   }
 
@@ -34,10 +34,10 @@ export default class FormMap extends React.Component {
         position: google.maps.ControlPosition.TOP_LEFT,
       },
     };
-    this.map = new google.maps.Map( this.refs.map, mapOptions );
+    this.map = new google.maps.Map(this.refs.map, mapOptions);
   }
 
-  drawMapForEditForm( props ) {
+  drawMapForEditForm(props) {
     let {
       lat,
       lng
@@ -50,15 +50,15 @@ export default class FormMap extends React.Component {
       zoom: 14,
       disableDefaultUI: true
     };
-    this.map = new google.maps.Map( this.refs.map, mapOptions );
-    const position = new google.maps.LatLng( lat, lng );
-    const marker = new google.maps.Marker( {
+    this.map = new google.maps.Map(this.refs.map, mapOptions);
+    const position = new google.maps.LatLng(lat, lng);
+    const marker = new google.maps.Marker({
       position,
       map: this.map,
       icon: {
         url: window.staticImages.normalIcon,
       }
-    } );
+    });
   }
 
   render() {
