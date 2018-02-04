@@ -5,21 +5,21 @@ import {
 import DropdownContainer from '../header/dropdown_container';
 
 export default class HomeHeader extends React.Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       showDropdown: false,
     };
 
-    this.toggleDropdown = this.toggleDropdown.bind( this );
-    this.handleLogout = this.handleLogout.bind( this );
-    this.closeDropdown = this.closeDropdown.bind( this );
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
   toggleDropdown() {
-    this.setState( prevState => ( {
+    this.setState(prevState => ({
       showDropdown: !prevState.showDropdown
-    } ) );
+    }));
   }
 
   handleLogout() {
@@ -28,13 +28,13 @@ export default class HomeHeader extends React.Component {
   }
 
   closeDropdown() {
-    this.setState( () => ( {
+    this.setState(() => ({
       showDropdown: false,
-    } ) );
+    }));
   }
 
   render() {
-    let {
+    const {
       currentUser,
       demoLogin,
     } = this.props;
