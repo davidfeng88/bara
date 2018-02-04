@@ -2,9 +2,9 @@ import {
   connect,
 } from 'react-redux';
 import {
-  login,
+  asyncLogin,
   demoLogin,
-  signup,
+  asyncSignup,
 } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
@@ -12,11 +12,11 @@ const mapDispatchToProps = (dispatch, {
   location,
 }) => {
   const formType = location.pathname.slice(1);
-  const processForm = (formType === 'login') ? login : signup;
+  const processForm = (formType === 'login') ? asyncLogin : asyncSignup;
   return {
     processForm: user => dispatch(processForm(user)),
     formType,
-    login: user => dispatch(login(user)),
+    login: user => dispatch(asyncLogin(user)),
     demoLogin: () => dispatch(demoLogin()),
   };
 };

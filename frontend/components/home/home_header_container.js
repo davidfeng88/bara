@@ -3,7 +3,7 @@ import {
 } from 'react-redux';
 import {
   demoLogin,
-  logout,
+  asyncLogout,
 } from '../../actions/session_actions';
 import HomeHeader from './home_header';
 
@@ -14,7 +14,7 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
+  logout: () => dispatch(asyncLogout()),
   demoLogin: () => dispatch(demoLogin()),
 });
 

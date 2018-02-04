@@ -8,22 +8,22 @@ const updateCurrentUserInStore = currentUser => ({
   currentUser,
 });
 
-export const login = user => dispatch => (
+export const asyncLogin = user => dispatch => (
   SessionAPIUtil.BackendLogin(user)
   .then(userData => dispatch(updateCurrentUserInStore(userData)))
 );
 
-export const demoLogin = () => login({
+export const demoLogin = () => asyncLogin({
   username: 'Guest',
   password: 'password',
 });
 
-export const logout = () => dispatch => (
+export const asyncLogout = () => dispatch => (
   SessionAPIUtil.BackendLogout()
   .then(() => dispatch(updateCurrentUserInStore(nullUser)))
 );
 
-export const signup = user => dispatch => (
+export const asyncSignup = user => dispatch => (
   SessionAPIUtil.BackendSignup(user)
   .then(userData => dispatch(updateCurrentUserInStore(userData)))
 );
