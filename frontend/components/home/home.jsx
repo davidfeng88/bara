@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  fetchFeaturedBusinesses
+  fetchFeaturedBusinesses,
 } from '../../util/business_api_util';
 import HomeHero from './home_hero';
 import FeaturedBusinesses from './featured_businesses';
@@ -19,14 +19,14 @@ export default class Home extends React.Component {
 
   fetchAndSaveFeaturedBusinesses = () => {
     fetchFeaturedBusinesses()
-      .then( this.saveFeaturedBusinesses );
+      .then(this.saveFeaturedBusinesses);
   };
 
-  saveFeaturedBusinesses = ( featuredBusinesses ) => {
-    this.setState( {
+  saveFeaturedBusinesses = (featuredBusinesses) => {
+    this.setState({
       loading: false,
       featuredBusinesses,
-    } );
+    });
   };
 
   handleHomeLogoClick = () => {
@@ -35,22 +35,22 @@ export default class Home extends React.Component {
   };
 
   updateHomeHeroBackground = () => {
-    this.setState( prevState => ( {
-      showDefaultBackground: !prevState.showDefaultBackground
-    } ) );
+    this.setState(prevState => ({
+      showDefaultBackground: !prevState.showDefaultBackground,
+    }));
   };
 
   render = () => (
-    <>
+    <div>
       <HomeHero
         handleHomeLogoClick={this.handleHomeLogoClick}
         showDefaultBackground={this.state.showDefaultBackground}
       />
       <FeaturedBusinesses
-        businesses = {this.state.featuredBusinesses}
-      loading = {this.state.loading}
+        businesses={this.state.featuredBusinesses}
+        loading={this.state.loading}
       />
-      <Categories/>
-    </>
+      <Categories />
+    </div>
   );
 }

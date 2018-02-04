@@ -1,60 +1,60 @@
 import React from 'react';
 import {
-  Link
+  Link,
 } from 'react-router-dom';
 import ErrorList from '../error_list';
 
 export default class SessionForm extends React.Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password: '',
       errors: [],
     };
 
-    this.handleSubmit = this.handleSubmit.bind( this );
-    this.demoLogin = this.demoLogin.bind( this );
-    this.clearErrors = this.clearErrors.bind( this );
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
-  componentWillReceiveProps( nextProps ) {
+  componentWillReceiveProps(nextProps) {
     // click 'Sign Up' from the login page or vice versa
-    if ( nextProps.formType !== this.props.formType ) {
-      this.setState( {
+    if (nextProps.formType !== this.props.formType) {
+      this.setState({
         username: '',
         password: '',
         errors: [],
-      } );
+      });
     }
   }
 
-  update( field ) {
-    return e => this.setState( {
-      [ field ]: e.currentTarget.value
-    } );
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value,
+    });
   }
 
-  handleSubmit( e ) {
+  handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm( user )
+    this.props.processForm(user)
       .then(
         () => this.props.history.goBack(),
-        ( errors ) => this.setState( {
+        (errors) => this.setState({
           errors: errors.responseJSON,
-        } )
+        })
       );
   }
 
-  demoLogin( e ) {
+  demoLogin(e) {
     e.preventDefault();
     const guestUser = {
       username: 'Guest',
-      password: 'password'
+      password: 'password',
     };
-    this.props.login( guestUser )
-      .then( () => this.props.history.goBack() );
+    this.props.login(guestUser)
+      .then(() => this.props.history.goBack());
   }
 
   titleText() {
@@ -65,11 +65,11 @@ export default class SessionForm extends React.Component {
 
   subheadingText() {
     return this.props.formType === 'login' ? (
-      <p className='subheading'>New to Bara?&nbsp;
-        <Link to='/signup'>Sign up</Link>
+      <p className="subheading">New to Bara?&nbsp;
+        <Link to="/signup">Sign up</Link>
       </p>
     ) : (
-      <p className='subheading'>Connect with great local businesses</p>
+      <p className="subheading">Connect with great local businesses</p>
     );
   }
 
@@ -79,26 +79,26 @@ export default class SessionForm extends React.Component {
 
   endText() {
     return this.props.formType === 'login' ? (
-      <p className='subtle-text'>New to Bara?&nbsp;
-        <Link to='/signup'>Sign up</Link>
+      <p className="subtle-text">New to Bara?&nbsp;
+        <Link to="/signup">Sign up</Link>
       </p>
     ) : (
-      <p className='subtle-text'>Already on Bara?&nbsp;
-        <Link to='/login'>Log in</Link>
+      <p className="subtle-text">Already on Bara?&nbsp;
+        <Link to="/login">Log in</Link>
       </p>
     );
   }
 
   clearErrors() {
-    this.setState( {
-      errors: []
-    } );
+    this.setState({
+      errors: [],
+    });
   }
 
   render() {
     return (
       <div>
-      <ErrorList errors={ this.state.errors }
+      <ErrorList errors={this.state.errors}
         clearErrors={this.clearErrors} />
         <div className='center flex-box'>
           <div className='col-1-2'>
@@ -107,13 +107,13 @@ export default class SessionForm extends React.Component {
                 <h2>{this.titleText()}</h2>
                 {this.subheadingText()}
                 <div className="session-form">
-                  <div className='input-wrapper'>
-                    <label htmlFor='username'
-                      className='hidden'>Username</label>
+                  <div className="input-wrapper">
+                    <label htmlFor="username"
+                      className="hidden">Username</label>
                     <input type="text"
                       id="username"
                       value={this.state.username}
-                      onChange={this.update('username')}
+                      onChange={this.update("username")}
                       className="login-input"
                       placeholder="Username"
                     />
@@ -129,10 +129,10 @@ export default class SessionForm extends React.Component {
                       placeholder="Password"
                     />
                   </div>
-                  <div className='input-wrapper'>
+                  <div className="input-wrapper">
                     <button type="submit" >{this.submitText()}</button>
                   </div>
-                  <div className='input-wrapper'>
+                  <div className="input-wrapper">
                     <button onClick={this.demoLogin} >
                       Demo Login
                     </button>
@@ -142,7 +142,7 @@ export default class SessionForm extends React.Component {
               </form>
             </div>
           </div>
-          <div className='col-1-2 session-pic'>
+          <div className="col-1-2 session-pic">
             <img src={window.staticImages.sessionPic} />
           </div>
         </div>

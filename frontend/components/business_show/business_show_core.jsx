@@ -1,20 +1,20 @@
 import React from 'react';
 import Rating from 'react-rating';
 import {
-  Link
+  Link,
 } from 'react-router-dom';
 import {
   reviewNumber,
   price,
-  tagContent
+  tagContent,
 } from '../../util/business_info_util';
 import ShowMap from './show_map';
 import ReviewIndex from '../review_index/review_index';
 
-const BusinessShowCore = ( {
+const BusinessShowCore = ({
   business,
   reviewId,
-} ) => (
+}) => (
   <div>
     <div className='business-show-title'>
       <div className='center'>
@@ -47,17 +47,17 @@ const BusinessShowCore = ( {
 
 export default BusinessShowCore;
 
-const textInfo = business => {
-  let {
+const textInfo = (business) => {
+  const {
     address,
     city,
     state,
-    zipcode
+    zipcode,
   } = business;
   const editBusinessLink = `/businesses/${business.id}/edit`;
-  let addressLine = (
-    <div className='address-info'>
-      <div className='addresss-info-col1'>
+  const addressLine = (
+    <div className="address-info">
+      <div className="addresss-info-col1">
         <strong>
           <i className="fa fa-map-marker" aria-hidden="true"></i>
           &nbsp;&nbsp;&nbsp;{address}<br/>
@@ -69,22 +69,23 @@ const textInfo = business => {
         <i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;
         <Link to={editBusinessLink} >Edit</Link>
       </div>
-    </div> );
-  let phoneLine = business.phone ? (
+    </div>);
+  const phoneLine = business.phone ? (
     <div>
       <i className="fa fa-phone" aria-hidden="true"></i>
       &nbsp;&nbsp;{business.phone}
     </div>
   ) : null;
-  let urlLine = business.url ? (
+  const urlLine = business.url ? (
     <div>
       <i className="fa fa-external-link" aria-hidden="true"></i>
-      &nbsp;<a href={`http://${business.url}`} target='_blank'>
-        {business.url}</a>
+      &nbsp;<a href={`http://${business.url}`} target="_blank">
+        {business.url}
+      </a>
     </div>
   ) : null;
   return (
-    <div className='text-info'>
+    <div className="text-info">
       {addressLine}
       {phoneLine}
       {urlLine}
@@ -92,9 +93,9 @@ const textInfo = business => {
   );
 };
 
-const businessShowTitle = ( business, reviewId ) => {
+const businessShowTitle = (business, reviewId) => {
   let reviewButton = null;
-  if ( reviewId ) {
+  if (reviewId) {
     const editReviewLink =
       `/reviews/${reviewId}/edit`;
     reviewButton = (

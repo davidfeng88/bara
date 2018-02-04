@@ -1,9 +1,5 @@
 import React from 'react';
 
-import {
-  Link,
-} from 'react-router-dom';
-
 const Categories = () => {
   const categoriesTitle = <h2>Browse Businesses by Category</h2>;
   return (
@@ -15,26 +11,30 @@ const Categories = () => {
 };
 
 const CategoryCards = () => (
-  <div className='category-cards'>
+  <div className="category-cards">
     <RestaurantCategory />
     <NightlifeCategory />
   </div>
 );
 
 const RestaurantCategory = () => (
-  <Link className='category-card'
-    to="/businesses/?name=&location=New%20York">
-    <img src={window.staticImages.restaurants} />
+  <a
+    className="category-card"
+    href="#/businesses/?name=&location=New%20York"
+  >
+    <img alt="" src={window.staticImages.restaurants} />
     <p>Restaurants</p>
-  </Link>
+  </a>
 );
 
 const NightlifeCategory = () => (
-  <Link className='category-card'
-    to="/businesses/?name=&location=New%20York&tag=nightlife">
-    <img src={window.staticImages.nightlife} />
+  <a
+    className="category-card"
+    href="#/businesses/?name=&location=New%20York&tag=nightlife"
+  >
+    <img alt="" src={window.staticImages.nightlife} />
     <p>Nightlife</p>
-  </Link>
+  </a>
 );
 
 export default Categories;
