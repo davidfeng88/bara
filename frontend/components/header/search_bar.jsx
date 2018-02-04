@@ -5,18 +5,18 @@ import {
 import queryString from 'query-string';
 
 class SearchBar extends React.Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
 
-    if ( props.location.search !== '' ) {
+    if (props.location.search !== '') {
       let {
         name,
         location
-      } = queryString.parse( props.location.search );
+      } = queryString.parse(props.location.search);
       name = name ? name : '';
       location = location ? location : '';
-      let nameDecoded = decodeURIComponent( name );
-      let locationDecoded = decodeURIComponent( location );
+      let nameDecoded = decodeURIComponent(name);
+      let locationDecoded = decodeURIComponent(location);
       this.state = {
         name: nameDecoded,
         location: locationDecoded,
@@ -28,45 +28,45 @@ class SearchBar extends React.Component {
       };
     }
 
-    this.handleSubmit = this.handleSubmit.bind( this );
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps( newProps ) {
-    if ( newProps.location.search !== this.props.location.search ) {
+  componentWillReceiveProps(newProps) {
+    if (newProps.location.search !== this.props.location.search) {
       let {
         name,
         location
-      } = queryString.parse( newProps.location.search );
+      } = queryString.parse(newProps.location.search);
       name = name ? name : '';
       location = location ? location : '';
-      let nameDecoded = decodeURIComponent( name );
-      let locationDecoded = decodeURIComponent( location );
-      this.setState( {
+      let nameDecoded = decodeURIComponent(name);
+      let locationDecoded = decodeURIComponent(location);
+      this.setState({
         name: nameDecoded,
         location: locationDecoded,
-      } );
+      });
     } else {
-      this.setState( {
+      this.setState({
         name: '',
         location: '',
-      } );
+      });
     }
   }
 
-  update( field ) {
-    return e => this.setState( {
-      [ field ]: e.currentTarget.value
-    } );
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
+    });
   }
 
-  handleSubmit( e ) {
+  handleSubmit(e) {
     e.preventDefault();
     let name = this.state.name ? this.state.name : '';
     let location = this.state.location ? this.state.location : '';
-    let nameEncoded = encodeURIComponent( name );
-    let locationEncoded = encodeURIComponent( location );
+    let nameEncoded = encodeURIComponent(name);
+    let locationEncoded = encodeURIComponent(location);
     this.props.history
-      .push( `/businesses/?name=${nameEncoded}&location=${locationEncoded}` );
+      .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}`);
   }
 
   render() {
@@ -94,12 +94,12 @@ class SearchBar extends React.Component {
             />
           </div>
         </div>
-        <button type='submit' className='submit'>
-          <i className="fa fa-search fa-lg" aria-hidden="true"></i>
+        <button type="submit" className="submit">
+          <i className="fa fa-search fa-lg" aria-hidden="true" />
         </button>
       </form>
     );
   }
 }
 
-export default withRouter( SearchBar );
+export default withRouter(SearchBar);

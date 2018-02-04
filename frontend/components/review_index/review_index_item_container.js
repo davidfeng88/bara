@@ -1,18 +1,18 @@
 import {
-  connect
+  connect,
 } from 'react-redux';
 import ReviewIndexItem from './review_index_item';
 
-const mapStateToProps = ( {
-  currentUser
+const mapStateToProps = ({
+  currentUser,
 }, {
-  review
-} ) => ( {
+  review,
+}) => ({
   currentUser,
   review,
-} );
+});
 
 export default connect(
   mapStateToProps,
-  null
-)( ReviewIndexItem );
+  null,
+)(ReviewIndexItem);

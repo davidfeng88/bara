@@ -15,7 +15,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(asyncLogout()),
-  demoLogin: () => dispatch(demoLogin()),
+  demoLogin: () => dispatch(demoLogin),
 });
 
 export default connect(

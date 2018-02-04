@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch, {
     processForm: user => dispatch(processForm(user)),
     formType,
     login: user => dispatch(asyncLogin(user)),
-    demoLogin: () => dispatch(demoLogin()),
+    demoLogin: () => dispatch(demoLogin),
   };
 };
 
