@@ -1,39 +1,38 @@
 import {
   createStore,
-  applyMiddleware
+  applyMiddleware,
 } from 'redux';
+import {
+  createLogger,
+} from 'redux-logger';
 import thunk from 'redux-thunk';
 import RootReducer from '../reducers/root_reducer';
 
+const addReduxLoggerToMiddleware = (middlewares) => {
+  middlewares.push(createLogger());
+};
+
 const configureMiddlewares = () => {
-  const middlewares = [ thunk ];
-  if ( process.env.NODE_ENV !== 'production' ) {
-    addReduxLoggerToMiddleware( middlewares );
+  const middlewares = [thunk];
+  if (process.env.NODE_ENV !== 'production') {
+    addReduxLoggerToMiddleware(middlewares);
   }
   return middlewares;
 };
 
-const addReduxLoggerToMiddleware = ( middlewares ) => {
-  // must use 'require' (import only allowed at top of file)
-  const {
-    createLogger
-  } = require( 'redux-logger' );
-  middlewares.push( createLogger() );
+const bootstrapCurrentUser = () => {
+  const preloadedState = {
+    currentUser: window.currentUser,
+  };
+  delete window.currentUser;
+  return preloadedState;
 };
 
 const configurePreloadedState = () => {
   let preloadedState = {};
-  if ( window.currentUser ) {
+  if (window.currentUser) {
     preloadedState = bootstrapCurrentUser();
   }
-  return preloadedState;
-};
-
-const bootstrapCurrentUser = () => {
-  const preloadedState = {
-    currentUser: window.currentUser
-  };
-  delete window.currentUser;
   return preloadedState;
 };
 
@@ -44,7 +43,7 @@ const configureStore = () => {
     createStore(
       RootReducer,
       preloadedState,
-      applyMiddleware( ...middlewares )
+      applyMiddleware(...middlewares),
     )
   );
 };

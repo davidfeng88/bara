@@ -1,15 +1,15 @@
 import React from 'react';
-import App from './app';
 import {
-  Provider
+  Provider,
 } from 'react-redux';
 import {
-  HashRouter
+  HashRouter,
 } from 'react-router-dom';
+import App from './app';
 
-const Root = ( {
-  store
-} ) => (
+const Root = ({
+  store,
+}) => (
   <Provider store={store}>
     <HashRouter>
       <App />
