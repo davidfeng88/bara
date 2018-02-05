@@ -1,39 +1,56 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class ShowMap extends React.Component {
-  componentDidMount() {
-    const map = this.refs.map;
-    let {
-      business
-    } = this.props;
-    let {
+  componentDidMount = () => {
+    const map = this.mapDiv;
+    const {
       lat,
-      lng
-    } = business;
+      lng,
+    } = this.props.business;
     const mapOptions = {
       center: {
-        lat: lat,
-        lng: lng
-      }, // Business coords
+        lat,
+        lng,
+      },
       zoom: 14,
-      disableDefaultUI: true
+      disableDefaultUI: true,
     };
-    this.map = new google.maps.Map(map, mapOptions);
-    const position = new google.maps.LatLng(lat, lng);
-    const marker = new google.maps.Marker({
+    this.map = new window.google.maps.Map(map, mapOptions);
+    const position = new window.google.maps.LatLng(lat, lng);
+    const marker = new window.google.maps.Marker({
       position,
-      map: this.map,
       icon: {
         url: window.staticImages.normalIcon,
-      }
+      },
     });
-  }
+    marker.setMap(this.map);
+  };
 
-  render() {
-    return (
-      <div className="show-map" ref="map">
-        Map
-      </div>
-    );
-  }
+  render = () => (
+    <div
+      className="show-map"
+      ref={
+        (div) => {
+          this.mapDiv = div;
+        }
+      }
+    >
+      Map
+    </div>
+  );
 }
+
+ShowMap.propTypes = {
+  business: PropTypes.shape({
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+  }),
+};
+
+ShowMap.defaultProps = {
+  business: {
+    lat: 0,
+    lng: 0,
+  },
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   fetchBusiness,
 } from '../../util/business_api_util';
@@ -15,30 +16,14 @@ export default class BusinessShow extends React.Component {
   };
 
   componentDidMount = () => {
-    console.log("%c this.props.match.params.id = ", this.props.match.params.id, 'font-size :30px; color: red;');
     this.fetchAndSaveBusiness(this.props);
   };
 
   componentWillReceiveProps = (nextProps) => {
-    console.log("%c this.props.match.params.id = ", this.props.match.params.id, 'font-size :30px; color: red;');
-    console.log("nextProps.match.params.id = ", nextProps.match.params.id);
     if (this.businessChanged(nextProps)) {
       this.resetState();
       this.fetchAndSaveBusiness(nextProps);
     }
-  };
-
-  businessChanged = nextProps => (
-    nextProps.match.params.id !== this.props.match.params.id
-  );
-
-  resetState = () => {
-    this.setState({
-      business: null,
-      errors: [],
-      reviewId: null,
-      loading: true,
-    });
   };
 
   fetchAndSaveBusiness = (props) => {
@@ -51,16 +36,36 @@ export default class BusinessShow extends React.Component {
   };
 
   saveBusiness = props => (business) => {
-    let reviewId = null;
-    if (props.currentUser &&
-      business.reviewers[props.currentUser.id]) {
-      reviewId = business.reviewers[props.currentUser.id];
-    }
+    const reviewId = this.getReviewId(props, business);
     this.setState({
       business,
       reviewId,
       errors: [],
       loading: false,
+    });
+  };
+
+  getReviewId = (props, business) => {
+    if (this.currentUserHasReviewedBusiness(props, business)) {
+      return business.reviewers[props.currentUser.id];
+    }
+    return null;
+  };
+
+  currentUserHasReviewedBusiness = (props, business) => (
+    props.currentUser && business.reviewers[props.currentUser.id]
+  );
+
+  businessChanged = nextProps => (
+    nextProps.match.params.id !== this.props.match.params.id
+  );
+
+  resetState = () => {
+    this.setState({
+      business: null,
+      errors: [],
+      reviewId: null,
+      loading: true,
     });
   };
 
@@ -91,7 +96,7 @@ export default class BusinessShow extends React.Component {
         <img alt="" className="spinner" src={window.staticImages.spinner} />
       );
     }
-    if (!business) {
+    if (errors.length > 0) {
       return (
         <div className="center">
           <ErrorList
@@ -112,3 +117,19 @@ export default class BusinessShow extends React.Component {
     );
   };
 }
+
+BusinessShow.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }),
+};
+
+BusinessShow.defaultProps = {
+  match: {
+    params: {
+      id: -1,
+    },
+  },
+};

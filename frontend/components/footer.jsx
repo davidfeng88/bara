@@ -1,15 +1,39 @@
 import React from 'react';
 
+const FooterLinkTemplate = ({
+  url,
+  text,
+}) => (
+  <p>
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      {text}
+    </a>
+  </p>
+);
+
+
+
 const AboutBara = () => (
-  <div className='footer-links-col'>
+  <div className="footer-links-col">
     <h3>About Bara</h3>
-      <p><a href="https://github.com/davidfeng88/bara" target="_blank">
-      GitHub Repo</a></p>
+    <p>
+      <a
+        href="https://github.com/davidfeng88/bara"
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        GitHub Repo
+      </a>
+    </p>
   </div>
 );
 
 const AboutMe = () => (
-  <div className='footer-links-col'>
+  <div className="footer-links-col">
     <h3>About Me</h3>
       <p><a href="https://davidfeng.us/" target="_blank">
       Portfolio Site</a></p>
@@ -23,7 +47,7 @@ const AboutMe = () => (
 );
 
 const Credits = () => (
-  <div className='footer-links-col'>
+  <div className="footer-links-col">
     <h3>Credits</h3>
       <p>Design: <a href="https://www.yelp.com/nyc" target="_blank">
       Yelp</a></p>
@@ -37,7 +61,7 @@ const Credits = () => (
 );
 
 const FooterLinks = () => (
-  <div className='footer-links'>
+  <div className="footer-links">
     <AboutBara />
     <AboutMe />
     <Credits />

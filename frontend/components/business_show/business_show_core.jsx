@@ -16,15 +16,15 @@ const BusinessShowCore = ({
   reviewId,
 }) => (
   <div>
-    <div className='business-show-title'>
-      <div className='center'>
+    <div className="business-show-title">
+      <div className="center">
         {businessShowTitle(business, reviewId)}
-        <div className='business-show-title-row2'>
-          <div className='info'>
+        <div className="business-show-title-row2">
+          <div className="info">
             <ShowMap business={business} />
             {textInfo(business)}
           </div>
-          <div className='pictures'>
+          <div className="pictures">
             <img src={window.staticImages.businessDefault1} />
             <img src={business.image_url} />
             <img src={window.staticImages.businessDefault2} />
@@ -32,11 +32,11 @@ const BusinessShowCore = ({
         </div>
       </div>
     </div>
-    <div className='review-index-main'>
-      <div className='center index-grid show-grid'>
-        <div className='index-grid-col1 show-grid-col1'>
+    <div className="review-index-main">
+      <div className="center index-grid show-grid">
+        <div className="index-grid-col1 show-grid-col1">
           <h2>Reviews for
-          <span className='normal black'> {business.name}</span></h2>
+          <span className="normal black"> {business.name}</span></h2>
           <ReviewIndex reviews={business.reviews} />
         </div>
         {extraInfo(business)}
@@ -59,26 +59,26 @@ const textInfo = (business) => {
     <div className="address-info">
       <div className="addresss-info-col1">
         <strong>
-          <i className="fa fa-map-marker" aria-hidden="true"></i>
-          &nbsp;&nbsp;&nbsp;{address}<br/>
+          <i className="fa fa-map-marker" aria-hidden="true" />
+          &nbsp;&nbsp;&nbsp;{address}<br />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           {`${city}, ${state} ${zipcode}`}
         </strong>
       </div>
-      <div className='address-info-col2'>
-        <i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+      <div className="address-info-col2">
+        <i className="fa fa-pencil" aria-hidden="true" />&nbsp;
         <Link to={editBusinessLink} >Edit</Link>
       </div>
     </div>);
   const phoneLine = business.phone ? (
     <div>
-      <i className="fa fa-phone" aria-hidden="true"></i>
+      <i className="fa fa-phone" aria-hidden="true" />
       &nbsp;&nbsp;{business.phone}
     </div>
   ) : null;
   const urlLine = business.url ? (
     <div>
-      <i className="fa fa-external-link" aria-hidden="true"></i>
+      <i className="fa fa-external-link" aria-hidden="true" />
       &nbsp;<a href={`http://${business.url}`} target="_blank">
         {business.url}
       </a>
@@ -99,9 +99,9 @@ const businessShowTitle = (business, reviewId) => {
     const editReviewLink =
       `/reviews/${reviewId}/edit`;
     reviewButton = (
-      <div className='add-review-link business-show-title-col'>
+      <div className="add-review-link business-show-title-col">
         <Link to={editReviewLink}>
-          <i className="fa fa-star fa-lg" aria-hidden="true"></i>
+          <i className="fa fa-star fa-lg" aria-hidden="true" />
           &nbsp;Edit My Review</Link>
         </div>
     );
@@ -109,26 +109,26 @@ const businessShowTitle = (business, reviewId) => {
     const newReviewLink =
       `/businesses/${business.id}/reviews/new`;
     reviewButton = (
-      <div className='add-review-link business-show-title-col'>
+      <div className="add-review-link business-show-title-col">
         <Link to={newReviewLink}>
-          <i className="fa fa-star fa-lg" aria-hidden="true"></i>
+          <i className="fa fa-star fa-lg" aria-hidden="true" />
           &nbsp;Write a Review</Link>
       </div>
     );
   }
 
   return (
-    <div className='business-show-title-row1'>
-      <div className='business-show-title-col'>
+    <div className="business-show-title-row1">
+      <div className="business-show-title-col">
         <h1>{business.name}</h1>
-        <Rating className='rating'
+        <Rating className="rating"
           empty="fa fa-star-o fa-lg"
           full="fa fa-star fa-lg"
           initialRate={parseFloat(business.average_rating)}
           fractions={1}
           readonly
         />
-        {reviewNumber(business)}<br/>
+        {reviewNumber(business)}<br />
         {price[business.price]}{tagContent(business)}
       </div>
       {reviewButton}
@@ -136,47 +136,47 @@ const businessShowTitle = (business, reviewId) => {
   );
 };
 
-const extraInfo = business => {
+const extraInfo = (business) => {
   const editBusinessLink =
     `/businesses/${business.id}/edit`;
   return (
-    <div className='show-grid-col2'>
+    <div className="show-grid-col2">
       <h3>Hours</h3>
-      <table id='hours'>
+      <table id="hours">
         <tbody>
-        <tr>
+          <tr>
             <th>Mon</th>
             <td>Closed</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Tue</th>
             <td>11:30 am - 2:00 am</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Wed</th>
             <td>11:30 am - 2:00 am</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Thu</th>
             <td>11:30 am - 2:00 am</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Fri</th>
             <td>11:30 am - 2:00 am</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Sat</th>
             <td>11:30 am - 2:00 am</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Sun</th>
             <td>11:30 am - 2:00 am</td>
-        </tr>
+          </tr>
         </tbody>
       </table>
-      <div className='edit-business-link'>
-        &nbsp;<i className="fa fa-pencil" aria-hidden="true"></i>&nbsp;
-        <Link to={editBusinessLink} >Edit business info</Link>
+      <div className="edit-business-link">
+        &nbsp;<i className="fa fa-pencil" aria-hidden="true" />&nbsp;
+        <Link to={editBusinessLink}>Edit business info</Link>
       </div>
 
       <h3>More business info</h3>
