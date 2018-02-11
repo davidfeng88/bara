@@ -5,7 +5,8 @@ import {
 } from '../../util/business_api_util';
 
 import ErrorList from '../error_list';
-import BusinessShowCore from './business_show_core';
+import BusinessInfoAndPictures from './business_info_and_pictures';
+import ReviewIndexAndExtraInfo from './review_index_and_extra_info';
 
 export default class BusinessShow extends React.Component {
   state = {
@@ -110,10 +111,15 @@ export default class BusinessShow extends React.Component {
       );
     }
     return (
-      <BusinessShowCore
-        business={business}
-        reviewId={reviewId}
-      />
+      <div>
+        <BusinessInfoAndPictures
+          business={business}
+          reviewId={reviewId}
+        />
+        <ReviewIndexAndExtraInfo
+          business={business}
+        />
+      </div>
     );
   };
 }
