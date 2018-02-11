@@ -1,47 +1,44 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
-
-const homeRestaurantsLink = (
-  <span className='home-header-link'>
-    <i className="fa fa-cutlery" aria-hidden="true"></i>
-    <Link to="/businesses/?name=&location=New%20York">
-      Restaurants
-    </Link>
-  </span>
-);
-
-const homeNightlifeLink = (
-  <span className='home-header-link'>
-    <i className="fa fa-glass" aria-hidden="true"></i>
-    <Link to="/businesses/?name=&location=New%20York&tag=nightlife">
-      Nightlife
-    </Link>
-  </span>
-);
-
-const searchExample = (
-  <p>Search Example:&nbsp;
-    <Link to="/businesses/?name=burger&location=19th%20St">
-      find "burger" near "19th St"
-    </Link>
-  </p>
-);
-
-const logoInstruction = (
-  <p>
-    Click on bara logo for new random featured businesses
-  </p>
-);
 
 const HomeLinks = () => (
-  <div className='home-header-links'>
-    {homeRestaurantsLink}
-    {homeNightlifeLink}
-    {searchExample}
-    {logoInstruction}
+  <div className="home-header-links">
+    <HomeRestaurantLink />
+    <HomeNightlifeLink />
+    <SearchExample />
+    <LogoInstruction />
   </div>
 );
 
 export default HomeLinks;
+
+const HomeRestaurantLink = () => (
+  <span className="home-header-link">
+    <i className="fa fa-cutlery" aria-hidden="true" />
+    <a href="#/businesses/?name=&location=New%20York">
+      Restaurants
+    </a>
+  </span>
+);
+
+const HomeNightlifeLink = () => (
+  <span className="home-header-link">
+    <i className="fa fa-glass" aria-hidden="true" />
+    <a href="#/businesses/?name=&location=New%20York&tag=nightlife">
+      Nightlife
+    </a>
+  </span>
+);
+
+const SearchExample = () => (
+  <p>Search Example:&nbsp;
+    <a href="#/businesses/?name=burger&location=19th%20St">
+      find &#34;burger&#34; near &#34;19th St&#34;
+    </a>
+  </p>
+);
+
+const LogoInstruction = () => (
+  <p>
+    Click on bara logo for new random featured businesses
+  </p>
+);
