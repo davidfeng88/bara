@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Link
+  Link,
 } from 'react-router-dom';
 import Rating from 'react-rating';
 import {
@@ -10,8 +10,8 @@ import {
 } from '../../util/business_info_util';
 
 const LoadingSpinner = () => (
-  <div className='center'>
-    <img className='spinner' src={window.staticImages.spinner} />
+  <div className="center">
+    <img alt="" className="spinner" src={window.staticImages.spinner} />
   </div>
 );
 
@@ -21,48 +21,46 @@ const FeaturedBusinesses = ({
 }) => {
   if (loading) {
     return <LoadingSpinner />;
-  } else {
-    const title = <h2>Featured Businesses</h2>;
-    return (
-      <div className='center home-businesses'>
-        {title}
-        <FeaturedBusinessesList businesses={businesses} />
-      </div>
-    );
   }
+  const title = <h2>Featured Businesses</h2>;
+  return (
+    <div className="center home-businesses">
+      {title}
+      <FeaturedBusinessesList businesses={businesses} />
+    </div>
+  );
 };
 
 const FeaturedBusinessesList = ({
-  businesses
+  businesses,
 }) => (
-  <div className='home-businesses-list'>
-    {businesses.map( business =>
-      <FeaturedBusinessListItem key={business.id} business={business} />
-    )}
+  <div className="home-businesses-list">
+    {businesses.map(business =>
+      <FeaturedBusinessListItem key={business.id} business={business} />)}
   </div>
 );
 
 const FeaturedBusinessListItem = ({
-  business
+  business,
 }) => (
-  <div className='home-business-item'>
-    <Pic business = {business} />
-    <FeatureTextInfo business = {business} />
+  <div className="home-business-item">
+    <Pic business={business} />
+    <FeatureTextInfo business={business} />
   </div>
 );
 
 const Pic = ({
-  business
+  business,
 }) => (
   <Link to={`/businesses/${business.id}`}>
-    <img src={business.image_url} />
+    <img alt="" src={business.image_url} />
   </Link>
 );
 
 const FeatureTextInfo = ({
-  business
+  business,
 }) => (
-  <div className='card-content'>
+  <div className="card-content">
     <BusinessNameLink business={business} />
     <RatingInfo business={business} />
     {price[business.price]}
@@ -71,7 +69,7 @@ const FeatureTextInfo = ({
 );
 
 const BusinessNameLink = ({
-  business
+  business,
 }) => (
   <Link to={`/businesses/${business.id}`}>
     <strong>{business.name}</strong>
@@ -79,7 +77,7 @@ const BusinessNameLink = ({
 );
 
 const RatingInfo = ({
-  business
+  business,
 }) => (
   <div>
     <Rating
