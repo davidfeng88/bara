@@ -1,3 +1,14 @@
 {
-  "presets": [ "env", "react" ]
+  "presets": [
+    "env",
+    "react"
+  ],
+
+  "plugins": ["syntax-dynamic-import", "transform-class-properties"],
+
+  "env": {
+    "test": {
+      "plugins": ["dynamic-import-node", "syntax-dynamic-import"]
+    }
+  }
 }
