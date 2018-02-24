@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Categories correctly 1`] = `
+<div
+  className="center home-categories"
+>
+  <h2>
+    Browse Businesses by Category
+  </h2>
+  <div
+    className="category-cards"
+  >
+    <a
+      className="category-card"
+      href="#/businesses/?name=&location=New%20York"
+    >
+      <img
+        alt=""
+        src={undefined}
+      />
+      <p>
+        Restaurants
+      </p>
+    </a>
+    <a
+      className="category-card"
+      href="#/businesses/?name=&location=New%20York&tag=nightlife"
+    >
+      <img
+        alt=""
+        src={undefined}
+      />
+      <p>
+        Nightlife
+      </p>
+    </a>
+  </div>
+</div>
+`;

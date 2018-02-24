@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Link,
-} from 'react-router-dom';
 import Rating from 'react-rating';
 import {
   reviewNumber,
@@ -52,9 +49,9 @@ const FeaturedBusinessListItem = ({
 const Pic = ({
   business,
 }) => (
-  <Link to={`/businesses/${business.id}`}>
+  <a href={`#/businesses/${business.id}`}>
     <img alt="" src={business.image_url} />
-  </Link>
+  </a>
 );
 
 const FeatureTextInfo = ({
@@ -71,9 +68,9 @@ const FeatureTextInfo = ({
 const BusinessNameLink = ({
   business,
 }) => (
-  <Link to={`/businesses/${business.id}`}>
+  <a href={`#/businesses/${business.id}`}>
     <strong>{business.name}</strong>
-  </Link>
+  </a>
 );
 
 const RatingInfo = ({
