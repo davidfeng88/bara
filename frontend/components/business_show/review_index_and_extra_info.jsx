@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 import ReviewIndex from '../review_index/review_index';
@@ -14,7 +12,8 @@ const ReviewIndexAndExtraInfo = ({
     <div className="center index-grid show-grid">
       <div className="index-grid-col1 show-grid-col1">
         <h2>Reviews for
-        <span className="normal black"> {business.name}</span></h2>
+          <span className="normal black"> {business.name}</span>
+        </h2>
         <ReviewIndex reviews={business.reviews} />
       </div>
       {extraInfo(business)}

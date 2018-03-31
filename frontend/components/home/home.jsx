@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  fetchFeaturedBusinesses,
-} from '../../util/business_api_util';
+import { fetchFeaturedBusinesses } from '../../util/business_api_util';
 import HomeHero from './home_hero';
 import FeaturedBusinesses from './featured_businesses';
 import Categories from './categories';

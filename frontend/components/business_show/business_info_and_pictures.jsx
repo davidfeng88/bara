@@ -1,8 +1,6 @@
 import React from 'react';
 import Rating from 'react-rating';
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   reviewNumber,
   price,
@@ -42,8 +40,9 @@ const BusinessShowTitle = ({
       <div className="add-review-link business-show-title-col">
         <Link to={editReviewLink}>
           <i className="fa fa-star fa-lg" aria-hidden="true" />
-          &nbsp;Edit My Review</Link>
-        </div>
+          &nbsp;Edit My Review
+        </Link>
+      </div>
     );
   } else {
     const newReviewLink =
@@ -52,7 +51,8 @@ const BusinessShowTitle = ({
       <div className="add-review-link business-show-title-col">
         <Link to={newReviewLink}>
           <i className="fa fa-star fa-lg" aria-hidden="true" />
-          &nbsp;Write a Review</Link>
+          &nbsp;Write a Review
+        </Link>
       </div>
     );
   }

@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  withRouter
-} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import IndexMapMarkerManager from './index_map_marker_manager';
 
 class IndexMap extends React.Component {
@@ -9,7 +7,7 @@ class IndexMap extends React.Component {
     const mapOptions = {
       center: {
         lat: 40.732663,
-        lng: -73.993479
+        lng: -73.993479,
       }, // NYC coords
       zoom: 12,
       maxZoom: 16,
@@ -42,7 +40,7 @@ class IndexMap extends React.Component {
 
   render() {
     return (
-      <div className='css-sticky'>
+      <div className="css-sticky">
         <div className="index-map" ref="map">
           Map
         </div>

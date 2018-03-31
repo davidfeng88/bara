@@ -1,17 +1,14 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FormMap from './form_map';
 
-const BusinessForm = ( {
+const BusinessForm = ({
   business,
   formType,
   handleChange,
   handleDelete,
   handleSubmit,
-} ) => {
-
+}) => {
   const {
     name,
     address,
@@ -31,30 +28,31 @@ const BusinessForm = ( {
 
   const deleteButton = formType === 'createBusiness' ?
     null :
-    <div className='input-wrapper'>
+    (<div className="input-wrapper">
       <button onClick={handleDelete} >Delete Business</button>
-    </div>;
+     </div>);
 
   let cancelButton;
-  if ( formType === 'createBusiness' ) {
+  if (formType === 'createBusiness') {
     cancelButton = (
-      <Link to="/" className='link-as-button-no-margin'>Go Home</Link>
+      <Link to="/" className="link-as-button-no-margin">Go Home</Link>
     );
   } else {
-    let businessLink = `/businesses/${business.id}`;
+    const businessLink = `/businesses/${business.id}`;
     cancelButton = (
-      <Link to={businessLink} className='link-as-button-no-margin'>Cancel</Link>
+      <Link to={businessLink} className="link-as-button-no-margin">Cancel</Link>
     );
   }
 
   return (
     <div>
       {titleText}
-      <div className='form-inner-wrapper'>
+      <div className="form-inner-wrapper">
         <form onSubmit={handleSubmit} className="business-form">
-          <label htmlFor='name'>Business Name</label>
-          <div className='input-wrapper'>
-            <input type="text"
+          <label htmlFor="name">Business Name</label>
+          <div className="input-wrapper">
+            <input
+              type="text"
               id="name"
               value={name}
               onChange={handleChange('name')}
@@ -63,9 +61,10 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='address'>Address</label>
-          <div className='input-wrapper'>
-            <input type="text"
+          <label htmlFor="address">Address</label>
+          <div className="input-wrapper">
+            <input
+              type="text"
               id="address"
               value={address}
               onChange={handleChange('address')}
@@ -74,9 +73,10 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='city'>City</label>
-          <div className='input-wrapper'>
-            <input type="text"
+          <label htmlFor="city">City</label>
+          <div className="input-wrapper">
+            <input
+              type="text"
               id="city"
               value={city}
               onChange={handleChange('city')}
@@ -85,9 +85,10 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='state'>State</label>
-          <div className='input-wrapper'>
-            <input type="text"
+          <label htmlFor="state">State</label>
+          <div className="input-wrapper">
+            <input
+              type="text"
               id="state"
               value={state}
               onChange={handleChange('state')}
@@ -96,9 +97,10 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='zipcode'>ZIP</label>
-          <div className='input-wrapper'>
-            <input type="number"
+          <label htmlFor="zipcode">ZIP</label>
+          <div className="input-wrapper">
+            <input
+              type="number"
               id="zipcode"
               value={zipcode}
               onChange={handleChange('zipcode')}
@@ -107,9 +109,10 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='phone'>Phone</label>
-          <div className='input-wrapper'>
-            <input id="phone"
+          <label htmlFor="phone">Phone</label>
+          <div className="input-wrapper">
+            <input
+              id="phone"
               value={phone}
               onChange={handleChange('phone')}
               className="login-input"
@@ -117,9 +120,10 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='url'>Web Address</label>
-          <div className='input-wrapper'>
-            <input id="url"
+          <label htmlFor="url">Web Address</label>
+          <div className="input-wrapper">
+            <input
+              id="url"
               value={url}
               onChange={handleChange('url')}
               className="login-input"
@@ -127,18 +131,21 @@ const BusinessForm = ( {
             />
           </div>
 
-          <label htmlFor='price'>Price</label>
-          <select className='input-wrapper'
-            id="price" value={price}
-            onChange={handleChange('price')} >
-            <option value='1' >$    Inexpensive</option>
-            <option value='2' >$$   Moderate</option>
-            <option value='3' >$$$  Pricey</option>
-            <option value='4' >$$$$ Ultra High-End</option>
+          <label htmlFor="price">Price</label>
+          <select
+            className="input-wrapper"
+            id="price"
+            value={price}
+            onChange={handleChange('price')}
+          >
+            <option value="1" >$    Inexpensive</option>
+            <option value="2" >$$   Moderate</option>
+            <option value="3" >$$$  Pricey</option>
+            <option value="4" >$$$$ Ultra High-End</option>
           </select>
           <br />
 
-          <div className='input-wrapper'>
+          <div className="input-wrapper">
             <button type="submit" >{submitText}</button>
           </div>
           {deleteButton}

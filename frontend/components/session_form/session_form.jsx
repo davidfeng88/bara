@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ErrorList from '../error_list';
 
 export default class SessionForm extends React.Component {
@@ -41,9 +39,9 @@ export default class SessionForm extends React.Component {
     this.props.processForm(user)
       .then(
         () => this.props.history.goBack(),
-        (errors) => this.setState({
+        errors => this.setState({
           errors: errors.responseJSON,
-        })
+        }),
       );
   }
 
@@ -98,30 +96,40 @@ export default class SessionForm extends React.Component {
   render() {
     return (
       <div>
-      <ErrorList errors={this.state.errors}
-        clearErrors={this.clearErrors} />
-        <div className='center flex-box'>
-          <div className='col-1-2'>
+        <ErrorList
+          errors={this.state.errors}
+          clearErrors={this.clearErrors}
+        />
+        <div className="center flex-box">
+          <div className="col-1-2">
             <div className="session-form-container">
               <form onSubmit={this.handleSubmit} className="session-form-box">
                 <h2>{this.titleText()}</h2>
                 {this.subheadingText()}
                 <div className="session-form">
                   <div className="input-wrapper">
-                    <label htmlFor="username"
-                      className="hidden">Username</label>
-                    <input type="text"
+                    <label
+                      htmlFor="username"
+                      className="hidden"
+                    >Username
+                    </label>
+                    <input
+                      type="text"
                       id="username"
                       value={this.state.username}
-                      onChange={this.update("username")}
+                      onChange={this.update('username')}
                       className="login-input"
                       placeholder="Username"
                     />
                   </div>
-                  <div className='input-wrapper'>
-                    <label htmlFor='password'
-                      className='hidden'>Password</label>
-                    <input type="password"
+                  <div className="input-wrapper">
+                    <label
+                      htmlFor="password"
+                      className="hidden"
+                    >Password
+                    </label>
+                    <input
+                      type="password"
                       id="password"
                       value={this.state.password}
                       onChange={this.update('password')}

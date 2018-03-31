@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 
 import {
@@ -10,16 +8,14 @@ import {
   editReview,
   deleteReview,
 } from '../../util/review_api_util';
-import {
-  fetchBusiness,
-} from '../../util/business_api_util';
+import { fetchBusiness } from '../../util/business_api_util';
 
 import ErrorList from '../error_list';
 import ReviewFormCore from './review_form_core';
 
 export default class ReviewForm extends React.Component {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
     this.state = {
       business: {},
       review: {},
@@ -27,177 +23,175 @@ export default class ReviewForm extends React.Component {
       loading: true,
     };
 
-    this.fetchInfo = this.fetchInfo.bind( this );
-    this.loadBusiness = this.loadBusiness.bind( this );
-    this.loadReview = this.loadReview.bind( this );
-    this.clearErrors = this.clearErrors.bind( this );
+    this.fetchInfo = this.fetchInfo.bind(this);
+    this.loadBusiness = this.loadBusiness.bind(this);
+    this.loadReview = this.loadReview.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
 
-    this.handleReviewRatingChange = this.handleReviewRatingChange.bind( this );
-    this.handleReviewBodyChange = this.handleReviewBodyChange.bind( this );
-    this.handleDelete = this.handleDelete.bind( this );
-    this.handleSubmit = this.handleSubmit.bind( this );
+    this.handleReviewRatingChange = this.handleReviewRatingChange.bind(this);
+    this.handleReviewBodyChange = this.handleReviewBodyChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.fetchInfo( this.props );
+    this.fetchInfo(this.props);
   }
 
-  componentWillReceiveProps( nextProps ) {
-    if ( nextProps.formType !== this.props.formType ) {
-      this.fetchInfo( nextProps );
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.formType !== this.props.formType) {
+      this.fetchInfo(nextProps);
     } else if (
       this.props.formType === 'createReview' &&
       this.props.match.params.business_id !== nextProps.match.params.business_id
     ) {
-      this.fetchInfo( nextProps );
+      this.fetchInfo(nextProps);
     } else if (
       this.props.formType === 'editReview' &&
       this.props.match.params.id !== nextProps.match.params.id
     ) {
-      this.fetchInfo( nextProps );
+      this.fetchInfo(nextProps);
     }
   }
 
-  fetchInfo( props ) {
-    window.scrollTo( 0, 0 );
-    this.setState( {
+  fetchInfo(props) {
+    window.scrollTo(0, 0);
+    this.setState({
       business: {},
       review: {},
       errors: [],
       loading: true,
-    } );
-    if ( props.formType === 'createReview' ) {
-      this.loadBusiness( props );
+    });
+    if (props.formType === 'createReview') {
+      this.loadBusiness(props);
     } else {
-      this.loadReview( props.match.params.id );
+      this.loadReview(props.match.params.id);
     }
   }
 
-  loadBusiness( props ) {
-    fetchBusiness( props.match.params.business_id )
+  loadBusiness(props) {
+    fetchBusiness(props.match.params.business_id)
       .then(
-        business => {
-          if ( props.currentUser &&
-            business.reviewers[ props.currentUser.id ] ) {
-            let reviewId = business.reviewers[ props.currentUser.id ];
-            this.props.history.push( `/reviews/${reviewId}/edit` );
+        (business) => {
+          if (props.currentUser &&
+            business.reviewers[props.currentUser.id]) {
+            const reviewId = business.reviewers[props.currentUser.id];
+            this.props.history.push(`/reviews/${reviewId}/edit`);
           } else {
-            this.setState( {
+            this.setState({
               business,
               review: {},
               errors: [],
               loading: false,
-            } );
+            });
           }
         },
-        errors => this.setState( {
+        errors => this.setState({
           business: {},
           review: {},
           errors: errors.responseJSON,
           loading: false,
-        } )
+        }),
       );
   }
 
-  loadReview( reviewId ) {
-    fetchReview( reviewId )
+  loadReview(reviewId) {
+    fetchReview(reviewId)
       .then(
-        review => {
-          if ( this.props.currentUser.id === review.author_id ) {
-            fetchBusiness( review.business_id )
-              .then(
-                business => {
-                  this.setState( {
-                    business,
-                    review,
-                    errors: [],
-                    loading: false,
-                  } );
-                }
-              );
+        (review) => {
+          if (this.props.currentUser.id === review.author_id) {
+            fetchBusiness(review.business_id)
+              .then((business) => {
+                this.setState({
+                  business,
+                  review,
+                  errors: [],
+                  loading: false,
+                });
+              });
           } else {
-            this.setState( {
-              errors: [ 'Only the author can edit the review' ],
+            this.setState({
+              errors: ['Only the author can edit the review'],
               loading: false,
-            } );
+            });
           }
         },
-        errors => this.setState( {
+        errors => this.setState({
           business: {},
           review: {},
           errors: errors.responseJSON,
           loading: false,
-        } )
+        }),
       );
   }
 
   clearErrors() {
-    this.setState( {
-      errors: []
-    } );
+    this.setState({
+      errors: [],
+    });
   }
 
-  handleReviewRatingChange( rate ) {
-    let {
-      review
+  handleReviewRatingChange(rate) {
+    const {
+      review,
     } = this.state;
-    const updatedReview = update( review, {
+    const updatedReview = update(review, {
       rating: {
-        $set: rate
-      }
-    } );
-    this.setState( {
+        $set: rate,
+      },
+    });
+    this.setState({
       review: updatedReview,
-    } );
+    });
   }
 
-  handleReviewBodyChange( e ) {
+  handleReviewBodyChange(e) {
     e.preventDefault();
-    let {
-      review
+    const {
+      review,
     } = this.state;
-    const updatedReview = update( review, {
+    const updatedReview = update(review, {
       body: {
-        $set: e.currentTarget.value
-      }
-    } );
-    this.setState( {
+        $set: e.currentTarget.value,
+      },
+    });
+    this.setState({
       review: updatedReview,
-    } );
+    });
   }
 
 
-  handleDelete( e ) {
+  handleDelete(e) {
     e.preventDefault();
-    deleteReview( this.props.match.params.id )
-      .then( () => {
+    deleteReview(this.props.match.params.id)
+      .then(() => {
         this.props.history
-          .push( `/businesses/${this.state.review.business_id}` );
-      } );
+          .push(`/businesses/${this.state.review.business_id}`);
+      });
   }
 
-  handleSubmit( e ) {
+  handleSubmit(e) {
     e.preventDefault();
-    window.scrollTo( 0, 0 );
-    const reviewData = Object.assign( {}, this.state.review );
+    window.scrollTo(0, 0);
+    const reviewData = Object.assign({}, this.state.review);
     reviewData.business_id = this.state.business.id;
-    if ( this.props.formType === 'createReview' ) {
-      createReview( reviewData )
+    if (this.props.formType === 'createReview') {
+      createReview(reviewData)
         .then(
           review =>
-          this.props.history.push( `/businesses/${review.business_id}` ),
-          errors => this.setState( {
+            this.props.history.push(`/businesses/${review.business_id}`),
+          errors => this.setState({
             errors: errors.responseJSON,
-          } )
+          }),
         );
     } else {
-      editReview( reviewData )
+      editReview(reviewData)
         .then(
           review =>
-          this.props.history.push( `/businesses/${review.business_id}` ),
-          errors => this.setState( {
+            this.props.history.push(`/businesses/${review.business_id}`),
+          errors => this.setState({
             errors: errors.responseJSON,
-          } )
+          }),
         );
     }
   }
@@ -210,28 +204,32 @@ export default class ReviewForm extends React.Component {
       loading,
     } = this.state;
     const {
-      formType
+      formType,
     } = this.props;
-    if ( loading ) {
+    if (loading) {
       return (
-        <img className='spinner' src={window.staticImages.spinner} />
+        <img className="spinner" src={window.staticImages.spinner} />
       );
     }
-    if ( !business.id || ( formType === 'editReview' && !review.id ) ) {
+    if (!business.id || (formType === 'editReview' && !review.id)) {
       return (
-        <div className='center'>
-          <ErrorList errors={errors}
-            clearErrors={this.clearErrors} />
-          <Link to="/" className='link-as-button'>
+        <div className="center">
+          <ErrorList
+            errors={errors}
+            clearErrors={this.clearErrors}
+          />
+          <Link to="/" className="link-as-button">
             Go Home
           </Link>
         </div>
       );
     }
     return (
-      <div className='center review-form'>
-        <ErrorList errors={ this.state.errors }
-          clearErrors={this.clearErrors} />
+      <div className="center review-form">
+        <ErrorList
+          errors={this.state.errors}
+          clearErrors={this.clearErrors}
+        />
         <ReviewFormCore
           formType={formType}
           business={business}

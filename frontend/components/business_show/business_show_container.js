@@ -1,6 +1,4 @@
-import {
-  connect,
-} from 'react-redux';
+import { connect } from 'react-redux';
 import BusinessShow from './business_show';
 
 const mapStateToProps = ({

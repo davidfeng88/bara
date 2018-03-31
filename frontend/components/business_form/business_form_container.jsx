@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import update from 'immutability-helper';
 
@@ -42,7 +40,6 @@ export default class BusinessFormContainer extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   componentDidMount() {
@@ -74,7 +71,7 @@ export default class BusinessFormContainer extends React.Component {
   loadBusiness(id) {
     fetchBusiness(id)
       .then(
-        business => {
+        (business) => {
           this.setState({
             business,
             errors: [],
@@ -85,30 +82,30 @@ export default class BusinessFormContainer extends React.Component {
           business: emptyBusiness,
           errors: errors.responseJSON,
           loading: false,
-        })
+        }),
       );
   }
 
   clearErrors() {
     this.setState({
-      errors: []
+      errors: [],
     });
   }
 
   handleChange(field) {
     return (
-      e => {
+      (e) => {
         e.preventDefault();
-        let {
-          business
+        const {
+          business,
         } = this.state;
         const updatedBusiness = update(business, {
           [field]: {
-            $set: e.currentTarget.value
-          }
+            $set: e.currentTarget.value,
+          },
         });
         this.setState({
-          business: updatedBusiness
+          business: updatedBusiness,
         });
       }
     );
@@ -117,55 +114,53 @@ export default class BusinessFormContainer extends React.Component {
   handleDelete(e) {
     e.preventDefault();
     deleteBusiness(this.props.match.params.id)
-      .then(() => this.props.history.push("/"));
+      .then(() => this.props.history.push('/'));
   }
 
   handleSubmit(e) {
     e.preventDefault();
     window.scrollTo(0, 0);
-    let biz = Object.assign({}, this.state.business);
+    const biz = Object.assign({}, this.state.business);
     fetchLatlng(biz)
-      .then(
-        response => {
-          if (response.status === 'OK') {
-            let {
-              lat,
-              lng
-            } = response.results[0].geometry.location;
-            biz.lat = lat;
-            biz.lng = lng;
-            if (this.props.location.pathname.slice(-3) === 'new') {
-              createBusiness(biz)
-                .then(
-                  business =>
+      .then((response) => {
+        if (response.status === 'OK') {
+          const {
+            lat,
+            lng,
+          } = response.results[0].geometry.location;
+          biz.lat = lat;
+          biz.lng = lng;
+          if (this.props.location.pathname.slice(-3) === 'new') {
+            createBusiness(biz)
+              .then(
+                business =>
                   this.props.history.push(`/businesses/${business.id}`),
-                  errors => this.setState({
-                    errors: errors.responseJSON,
-                  })
-                );
-            } else {
-              editBusiness(biz)
-                .then(
-                  business =>
-                  this.props.history.push(`/businesses/${business.id}`),
-                  errors => this.setState({
-                    errors: errors.responseJSON,
-                  })
-                );
-            }
+                errors => this.setState({
+                  errors: errors.responseJSON,
+                }),
+              );
           } else {
-            this.setState({
-              errors: ['Invalid Address']
-            });
+            editBusiness(biz)
+              .then(
+                business =>
+                  this.props.history.push(`/businesses/${business.id}`),
+                errors => this.setState({
+                  errors: errors.responseJSON,
+                }),
+              );
           }
+        } else {
+          this.setState({
+            errors: ['Invalid Address'],
+          });
         }
-      );
+      });
   }
 
   render() {
     const formType =
       this.props.location.pathname.slice(-3) === 'new' ?
-      'createBusiness' : 'editBusiness';
+        'createBusiness' : 'editBusiness';
     const {
       business,
       errors,
@@ -173,25 +168,29 @@ export default class BusinessFormContainer extends React.Component {
     } = this.state;
     if (loading) {
       return (
-        <img className='spinner' src={window.staticImages.spinner} />
+        <img className="spinner" src={window.staticImages.spinner} />
       );
     }
     if (formType === 'editBusiness' && !business.id) {
       // business is not found
       return (
-        <div className='center'>
-          <ErrorList errors={errors}
-            clearErrors={this.clearErrors} />
-          <Link to="/" className='link-as-button'>
+        <div className="center">
+          <ErrorList
+            errors={errors}
+            clearErrors={this.clearErrors}
+          />
+          <Link to="/" className="link-as-button">
             Go Home
           </Link>
         </div>
       );
     }
     return (
-      <div className='center form-outer-wrapper'>
-        <ErrorList errors={ this.state.errors }
-          clearErrors={this.clearErrors} />
+      <div className="center form-outer-wrapper">
+        <ErrorList
+          errors={this.state.errors}
+          clearErrors={this.clearErrors}
+        />
         <BusinessForm
           business={business}
           formType={formType}

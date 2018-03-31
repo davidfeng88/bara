@@ -20,10 +20,10 @@ export default class FormMap extends React.Component {
   }
 
   drawMapForCreateForm() {
-    let mapOptions = {
+    const mapOptions = {
       center: {
         lat: 40.712775,
-        lng: -74.006182
+        lng: -74.006182,
       }, // NYC City Hall Coordinates
       zoom: 15,
       mapTypeControl: false,
@@ -38,17 +38,17 @@ export default class FormMap extends React.Component {
   }
 
   drawMapForEditForm(props) {
-    let {
+    const {
       lat,
-      lng
+      lng,
     } = props;
-    let mapOptions = {
+    const mapOptions = {
       center: {
-        lat: lat,
-        lng: lng
+        lat,
+        lng,
       }, // Business coords
       zoom: 14,
-      disableDefaultUI: true
+      disableDefaultUI: true,
     };
     this.map = new google.maps.Map(this.refs.map, mapOptions);
     const position = new google.maps.LatLng(lat, lng);
@@ -57,7 +57,7 @@ export default class FormMap extends React.Component {
       map: this.map,
       icon: {
         url: window.staticImages.normalIcon,
-      }
+      },
     });
   }
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  fetchBusiness,
-} from '../../util/business_api_util';
+import { fetchBusiness } from '../../util/business_api_util';
 
 import ErrorList from '../error_list';
 import BusinessInfoAndPictures from './business_info_and_pictures';

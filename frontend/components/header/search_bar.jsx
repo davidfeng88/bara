@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  withRouter
-} from 'react-router';
+import { withRouter } from 'react-router';
 import queryString from 'query-string';
 
 class SearchBar extends React.Component {
@@ -11,12 +9,12 @@ class SearchBar extends React.Component {
     if (props.location.search !== '') {
       let {
         name,
-        location
+        location,
       } = queryString.parse(props.location.search);
-      name = name ? name : '';
-      location = location ? location : '';
-      let nameDecoded = decodeURIComponent(name);
-      let locationDecoded = decodeURIComponent(location);
+      name = name || '';
+      location = location || '';
+      const nameDecoded = decodeURIComponent(name);
+      const locationDecoded = decodeURIComponent(location);
       this.state = {
         name: nameDecoded,
         location: locationDecoded,
@@ -35,12 +33,12 @@ class SearchBar extends React.Component {
     if (newProps.location.search !== this.props.location.search) {
       let {
         name,
-        location
+        location,
       } = queryString.parse(newProps.location.search);
-      name = name ? name : '';
-      location = location ? location : '';
-      let nameDecoded = decodeURIComponent(name);
-      let locationDecoded = decodeURIComponent(location);
+      name = name || '';
+      location = location || '';
+      const nameDecoded = decodeURIComponent(name);
+      const locationDecoded = decodeURIComponent(location);
       this.setState({
         name: nameDecoded,
         location: locationDecoded,
@@ -55,27 +53,28 @@ class SearchBar extends React.Component {
 
   update(field) {
     return e => this.setState({
-      [field]: e.currentTarget.value
+      [field]: e.currentTarget.value,
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let name = this.state.name ? this.state.name : '';
-    let location = this.state.location ? this.state.location : '';
-    let nameEncoded = encodeURIComponent(name);
-    let locationEncoded = encodeURIComponent(location);
+    const name = this.state.name ? this.state.name : '';
+    const location = this.state.location ? this.state.location : '';
+    const nameEncoded = encodeURIComponent(name);
+    const locationEncoded = encodeURIComponent(location);
     this.props.history
       .push(`/businesses/?name=${nameEncoded}&location=${locationEncoded}`);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='search-bar'>
-        <div className='input'>
-          <div className='find'>
-            <label htmlFor='name'>Find</label>
-            <input type="text"
+      <form onSubmit={this.handleSubmit} className="search-bar">
+        <div className="input">
+          <div className="find">
+            <label htmlFor="name">Find</label>
+            <input
+              type="text"
               id="name"
               value={this.state.name}
               onChange={this.update('name')}
@@ -83,9 +82,10 @@ class SearchBar extends React.Component {
               placeholder="Shanghai, Burrito"
             />
           </div>
-          <div className='near'>
-            <label htmlFor='location'>Near</label>
-            <input type="text"
+          <div className="near">
+            <label htmlFor="location">Near</label>
+            <input
+              type="text"
               id="location"
               value={this.state.location}
               onChange={this.update('location')}

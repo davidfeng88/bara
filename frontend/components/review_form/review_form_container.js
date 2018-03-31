@@ -1,21 +1,19 @@
-import {
-  connect
-} from 'react-redux';
+import { connect } from 'react-redux';
 
 import ReviewForm from './review_form';
 
-const mapStateToProps = ( state, ownProps ) => {
+const mapStateToProps = (state, ownProps) => {
   const formType =
-    ownProps.location.pathname.slice( -3 ) === 'new' ?
-    'createReview' : 'editReview';
+    ownProps.location.pathname.slice(-3) === 'new' ?
+      'createReview' : 'editReview';
 
-  return ( {
+  return ({
     currentUser: state.currentUser,
     formType,
-  } );
+  });
 };
 
 export default connect(
   mapStateToProps,
-  null
-)( ReviewForm );
+  null,
+)(ReviewForm);

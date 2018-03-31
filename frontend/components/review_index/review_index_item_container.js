@@ -1,6 +1,4 @@
-import {
-  connect,
-} from 'react-redux';
+import { connect } from 'react-redux';
 import ReviewIndexItem from './review_index_item';
 
 const mapStateToProps = ({
