@@ -1,0 +1,11 @@
+"parser": "babel-eslint"
+"plugins":
+  ["babel"]
+"rules":
+  "strict": 0
+  "babel/semi": 1
+  "react/sort-comp": "off"
+"env":
+  "browser": true
+  "jquery": true
+"extends": "airbnb"
