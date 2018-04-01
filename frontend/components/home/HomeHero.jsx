@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HomeHeaderContainer from './HomeHeaderContainer';
+import HomeHeaderContainer from './home_header/HomeHeaderContainer';
 import SearchBar from '../header/SearchBar';
 import HomeLinks from './HomeLinks';
 
