@@ -1,5 +1,9 @@
 import React from 'react';
 
+export const LoadingSpinner = () => (
+  <img alt="" className="spinner" src={window.staticImages.spinner} />
+);
+
 export const priceToDollarSign = {
   1: '$',
   2: '$$',

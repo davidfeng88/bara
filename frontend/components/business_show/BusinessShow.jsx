@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { fetchBusiness } from '../../util/BusinessAPIUtil';
-
+import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
 import BusinessInfoAndPictures from './BusinessInfoAndPictures';
 import ReviewIndexAndExtraInfo from './ReviewIndexAndExtraInfo';
@@ -92,7 +92,7 @@ export default class BusinessShow extends React.Component {
     } = this.state;
     if (loading) {
       return (
-        <img alt="" className="spinner" src={window.staticImages.spinner} />
+        <LoadingSpinner />
       );
     }
     if (errors.length > 0) {

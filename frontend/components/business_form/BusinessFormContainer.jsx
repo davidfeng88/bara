@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import update from 'immutability-helper';
-
 import {
   createBusiness,
   fetchBusiness,
@@ -10,7 +8,7 @@ import {
   deleteBusiness,
   fetchLatlng,
 } from '../../util/BusinessAPIUtil';
-
+import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
 import BusinessForm from './BusinessForm';
 
@@ -168,7 +166,7 @@ export default class BusinessFormContainer extends React.Component {
     } = this.state;
     if (loading) {
       return (
-        <img className="spinner" src={window.staticImages.spinner} />
+        <LoadingSpinner />
       );
     }
     if (formType === 'editBusiness' && !business.id) {

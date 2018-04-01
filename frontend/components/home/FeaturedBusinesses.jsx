@@ -5,13 +5,8 @@ import {
   nReviewsString,
   priceToDollarSign,
   tagContent,
+  LoadingSpinner,
 } from '../../util/BusinessInfoUtil';
-
-const LoadingSpinner = () => (
-  <div className="center">
-    <img alt="" className="spinner" src={window.staticImages.spinner} />
-  </div>
-);
 
 const FeaturedBusinesses = ({
   featuredBusinesses,

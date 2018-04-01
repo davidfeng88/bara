@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { searchBusinesses } from '../../util/BusinessAPIUtil';
+import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import {
   SampleSearch,
   PriceButton,
@@ -130,7 +131,7 @@ export default class Search extends React.Component {
 
   searchResult(businesses) {
     return this.state.loading ?
-      <img className="spinner" src={window.staticImages.spinner} /> :
+      <LoadingSpinner /> :
       <BusinessIndex businesses={businesses} />;
   }
 

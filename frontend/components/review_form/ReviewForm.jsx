@@ -9,7 +9,7 @@ import {
   deleteReview,
 } from '../../util/ReviewAPIUtil';
 import { fetchBusiness } from '../../util/BusinessAPIUtil';
-
+import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
 import ReviewFormCore from './ReviewFormCore';
 
@@ -208,7 +208,7 @@ export default class ReviewForm extends React.Component {
     } = this.props;
     if (loading) {
       return (
-        <img className="spinner" src={window.staticImages.spinner} />
+        <LoadingSpinner />
       );
     }
     if (!business.id || (formType === 'editReview' && !review.id)) {
