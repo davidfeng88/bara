@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchFeaturedBusinesses } from '../../util/BusinessAPIUtil';
+
 import Home from './Home';
 
 export default class HomeContainer extends React.Component {
@@ -15,7 +16,10 @@ export default class HomeContainer extends React.Component {
 
   fetchAndSaveFeaturedBusinesses = () => {
     fetchFeaturedBusinesses()
-      .then(this.saveFeaturedBusinesses);
+      .then(
+        this.saveFeaturedBusinesses,
+        this.handleError,
+      );
   };
 
   saveFeaturedBusinesses = (featuredBusinesses) => {
@@ -23,6 +27,11 @@ export default class HomeContainer extends React.Component {
       isLoading: false,
       featuredBusinesses,
     });
+  };
+
+  handleError = (e) => {
+    console.log('Error in fetchFeaturedBusinesses');
+    console.log(e.message);
   };
 
   handleHomeLogoClick = () => {

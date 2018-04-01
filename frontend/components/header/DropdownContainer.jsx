@@ -62,9 +62,9 @@ const DropdownContainer = ({
   currentUser,
   logout,
   toggleDropdown,
-  showDropdown,
+  isDropdownShown,
 }) => {
-  if (showDropdown) {
+  if (isDropdownShown) {
     return (
       <Dropdown
         currentUser={currentUser}

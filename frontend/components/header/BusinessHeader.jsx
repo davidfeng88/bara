@@ -9,7 +9,7 @@ export default class BusinessHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDropdown: false,
+      isDropdownShown: false,
     };
 
     this.toggleDropdown = this.toggleDropdown.bind(this);
@@ -19,7 +19,7 @@ export default class BusinessHeader extends React.Component {
 
   toggleDropdown() {
     this.setState(prevState => ({
-      showDropdown: !prevState.showDropdown,
+      isDropdownShown: !prevState.isDropdownShown,
     }));
   }
 
@@ -30,7 +30,7 @@ export default class BusinessHeader extends React.Component {
 
   closeDropdown() {
     this.setState(() => ({
-      showDropdown: false,
+      isDropdownShown: false,
     }));
   }
 
@@ -54,7 +54,7 @@ export default class BusinessHeader extends React.Component {
           currentUser={currentUser}
           logout={this.handleLogout}
           toggleDropdown={this.toggleDropdown}
-          showDropdown={this.state.showDropdown}
+          isDropdownShown={this.state.isDropdownShown}
         />
       </div>
     ) : (
