@@ -1,5 +1,5 @@
 import React from 'react';
-import DropdownContainer from '../header/dropdown_container';
+import DropdownContainer from '../header/DropdownContainer';
 
 export default class HomeHeader extends React.Component {
   state = {

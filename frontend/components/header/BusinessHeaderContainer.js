@@ -3,7 +3,7 @@ import {
   demoLogin,
   asyncLogout,
 } from '../../actions/session_actions';
-import BusinessHeader from './business_header';
+import BusinessHeader from './BusinessHeader';
 
 const mapStateToProps = ({
   currentUser,

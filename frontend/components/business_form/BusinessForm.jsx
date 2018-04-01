@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FormMap from './form_map';
+import FormMap from './FormMap';
 
 const BusinessForm = ({
   business,

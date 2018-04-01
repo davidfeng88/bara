@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SearchBar from './search_bar';
-import BusinessHeaderLinks from './business_links';
-import DropdownContainer from './dropdown_container';
+import SearchBar from './SearchBar';
+import BusinessHeaderLinks from './BusinessHeaderLinks';
+import DropdownContainer from './DropdownContainer';
 
 export default class BusinessHeader extends React.Component {
   constructor(props) {

@@ -9,10 +9,10 @@ import {
   editBusiness,
   deleteBusiness,
   fetchLatlng,
-} from '../../util/business_api_util';
+} from '../../util/BusinessAPIUtil';
 
-import ErrorList from '../error_list';
-import BusinessForm from './business_form';
+import ErrorList from '../ErrorList';
+import BusinessForm from './BusinessForm';
 
 const emptyBusiness = {
   name: '',

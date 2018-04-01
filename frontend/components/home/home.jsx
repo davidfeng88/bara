@@ -1,8 +1,8 @@
 import React from 'react';
-import { fetchFeaturedBusinesses } from '../../util/business_api_util';
-import HomeHero from './home_hero';
-import FeaturedBusinesses from './featured_businesses';
-import Categories from './categories';
+import { fetchFeaturedBusinesses } from '../../util/BusinessAPIUtil';
+import HomeHero from './HomeHero';
+import FeaturedBusinesses from './FeaturedBusinesses';
+import Categories from './Categories';
 
 export default class Home extends React.Component {
   state = {

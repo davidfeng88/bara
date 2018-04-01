@@ -1,16 +1,13 @@
 import { connect } from 'react-redux';
-import ReviewIndexItem from './review_index_item';
+import BusinessShow from './BusinessShow';
 
 const mapStateToProps = ({
   currentUser,
-}, {
-  review,
 }) => ({
   currentUser,
-  review,
 });
 
 export default connect(
   mapStateToProps,
   null,
-)(ReviewIndexItem);
+)(BusinessShow);

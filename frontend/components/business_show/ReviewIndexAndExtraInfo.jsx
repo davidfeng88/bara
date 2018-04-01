@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-import ReviewIndex from '../review_index/review_index';
+import ReviewIndex from '../review_index/ReviewIndex';
 
 const ReviewIndexAndExtraInfo = ({
   business,

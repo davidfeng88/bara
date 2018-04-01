@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   price,
   tagContent,
-} from '../../util/business_info_util';
+} from '../../util/BusinessInfoUtil';
 
 const ReviewFormCore = ({
   formType,

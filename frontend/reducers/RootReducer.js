@@ -1,9 +1,7 @@
-import {
-  combineReducers,
-} from 'redux';
+import { combineReducers } from 'redux';
 
-import SessionReducer from './session_reducer';
-import HighlightReducer from './highlight_reducer';
+import SessionReducer from './SessionReducer';
+import HighlightReducer from './HighlightReducer';
 
 const RootReducer = combineReducers({
   currentUser: SessionReducer,

@@ -6,21 +6,21 @@ import {
 import {
   AuthRoute,
   ProtectedRoute,
-} from '../util/route_util';
+} from '../util/RouteUtil';
 
-import HeaderRouter from './header/header_router';
+import HeaderRouter from './header/HeaderRouter';
 
-import BusinessFormContainer from './business_form/business_form_container';
-import ReviewFormContainer from './review_form/review_form_container';
-import SessionFormContainer from './session_form/session_form_container';
+import BusinessFormContainer from './business_form/BusinessFormContainer';
+import ReviewFormContainer from './review_form/ReviewFormContainer';
+import SessionFormContainer from './session_form/SessionFormContainer';
 
-import BusinessShowContainer from './business_show/business_show_container';
-import SearchContainer from './search/search_container';
-import Home from './home/home';
+import BusinessShowContainer from './business_show/BusinessShowContainer';
+import SearchContainer from './search/SearchContainer';
+import Home from './home/Home';
 
-import FourZeroFour from './four_zero_four';
+import FourZeroFour from './FourZeroFour';
 
-import Footer from './footer';
+import Footer from './Footer';
 
 const App = () => (
   <div className="page-container">

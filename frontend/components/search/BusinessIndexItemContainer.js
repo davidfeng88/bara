@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { highlightBusiness } from '../../actions/highlight_actions';
-import BusinessIndexItem from './business_index_item';
+import BusinessIndexItem from './BusinessIndexItem';
 
 const mapDispatchToProps = dispatch => ({
   highlightBusiness: id => dispatch(highlightBusiness(id)),

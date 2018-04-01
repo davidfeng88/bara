@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { fetchBusiness } from '../../util/business_api_util';
+import { fetchBusiness } from '../../util/BusinessAPIUtil';
 
-import ErrorList from '../error_list';
-import BusinessInfoAndPictures from './business_info_and_pictures';
-import ReviewIndexAndExtraInfo from './review_index_and_extra_info';
+import ErrorList from '../ErrorList';
+import BusinessInfoAndPictures from './BusinessInfoAndPictures';
+import ReviewIndexAndExtraInfo from './ReviewIndexAndExtraInfo';
 
 export default class BusinessShow extends React.Component {
   state = {

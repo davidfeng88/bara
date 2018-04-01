@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { searchBusinesses } from '../../util/business_api_util';
+import { searchBusinesses } from '../../util/BusinessAPIUtil';
 import {
   SampleSearch,
   PriceButton,
   AddBusiness,
   buildFilters,
-} from './search_util';
-import BusinessIndex from './business_index';
-import IndexMapContainer from './index_map_container';
+} from './SearchUtil';
+import BusinessIndex from './BusinessIndex';
+import IndexMapContainer from './IndexMapContainer';
 
 export default class Search extends React.Component {
   constructor(props) {

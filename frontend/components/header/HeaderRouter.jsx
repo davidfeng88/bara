@@ -4,8 +4,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import SessionHeader from './session_header';
-import BusinessHeaderContainer from './business_header_container';
+import SessionHeader from './SessionHeader';
+import BusinessHeaderContainer from './BusinessHeaderContainer';
 
 const HeaderRouter = () => (
   <header>

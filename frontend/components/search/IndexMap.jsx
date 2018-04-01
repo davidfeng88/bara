@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import IndexMapMarkerManager from './index_map_marker_manager';
+import IndexMapMarkerManager from './IndexMapMarkerManager';
 
 class IndexMap extends React.Component {
   componentDidMount() {

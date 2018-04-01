@@ -5,7 +5,7 @@ import {
   reviewNumber,
   price,
   tagContent,
-} from '../../util/business_info_util';
+} from '../../util/BusinessInfoUtil';
 
 const topReview = (business) => {
   let picture = null;

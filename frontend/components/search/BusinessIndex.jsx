@@ -1,5 +1,5 @@
 import React from 'react';
-import BusinessIndexItemContainer from './business_index_item_container';
+import BusinessIndexItemContainer from './BusinessIndexItemContainer';
 
 const BusinessIndex = ({
   businesses,

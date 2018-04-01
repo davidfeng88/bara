@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ReviewForm from './review_form';
+import ReviewForm from './ReviewForm';
 
 const mapStateToProps = (state, ownProps) => {
   const formType =

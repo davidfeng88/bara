@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReviewIndexItemContainer from './review_index_item_container';
+import ReviewIndexItemContainer from './ReviewIndexItemContainer';
 
 const ReviewIndex = ({
   reviews,

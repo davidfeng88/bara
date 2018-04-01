@@ -4,7 +4,7 @@ import {
   reviewNumber,
   price,
   tagContent,
-} from '../../util/business_info_util';
+} from '../../util/BusinessInfoUtil';
 
 const LoadingSpinner = () => (
   <div className="center">

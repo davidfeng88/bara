@@ -5,9 +5,9 @@ import {
   reviewNumber,
   price,
   tagContent,
-} from '../../util/business_info_util';
+} from '../../util/BusinessInfoUtil';
 
-import ShowMap from './show_map';
+import ShowMap from './ShowMap';
 
 const BusinessInfoAndPictures = ({
   business,

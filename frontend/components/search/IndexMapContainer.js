@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import IndexMap from './index_map';
+import IndexMap from './IndexMap';
 
 const mapStateToProps = (state, {
   businesses,

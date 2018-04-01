@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const price = {
   1: '$',
@@ -10,20 +8,20 @@ export const price = {
   4: '$$$$',
 };
 
-export const reviewNumber = business => {
+export const reviewNumber = (business) => {
   switch (business.number_of_reviews) {
-  case 0:
-    return "No reviews yet";
-  case 1:
-    return "1 review";
-  default:
-    return `${business.number_of_reviews.toString()} reviews`;
+    case 0:
+      return 'No reviews yet';
+    case 1:
+      return '1 review';
+    default:
+      return `${business.number_of_reviews.toString()} reviews`;
   }
 };
 
-const tagEntry = tag => {
-  let label = encodeURIComponent(tag.label);
-  let tagLink = `/businesses/?tag=${label}`;
+const tagEntry = (tag) => {
+  const label = encodeURIComponent(tag.label);
+  const tagLink = `/businesses/?tag=${label}`;
   return (
     <a key={label} href={tagLink}>
       {tag.label}
@@ -32,10 +30,10 @@ const tagEntry = tag => {
 };
 
 export const tagContent = ({
-  tags
+  tags,
 }) => {
   if (tags) {
-    let tagsArray = [];
+    const tagsArray = [];
     tags.forEach((tag, index) => {
       if (index === 0) {
         tagsArray.push(' • ');
@@ -45,7 +43,6 @@ export const tagContent = ({
       tagsArray.push(tagEntry(tag));
     });
     return tagsArray;
-  } else {
-    return null;
   }
+  return null;
 };

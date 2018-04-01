@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HomeHeaderContainer from './home_header_container';
-import SearchBar from '../header/search_bar';
-import HomeLinks from './home_links';
+import HomeHeaderContainer from './HomeHeaderContainer';
+import SearchBar from '../header/SearchBar';
+import HomeLinks from './HomeLinks';
 
 const HomeLogo = ({
   handleHomeLogoClick,

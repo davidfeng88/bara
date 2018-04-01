@@ -7,11 +7,11 @@ import {
   fetchReview,
   editReview,
   deleteReview,
-} from '../../util/review_api_util';
-import { fetchBusiness } from '../../util/business_api_util';
+} from '../../util/ReviewAPIUtil';
+import { fetchBusiness } from '../../util/BusinessAPIUtil';
 
-import ErrorList from '../error_list';
-import ReviewFormCore from './review_form_core';
+import ErrorList from '../ErrorList';
+import ReviewFormCore from './ReviewFormCore';
 
 export default class ReviewForm extends React.Component {
   constructor(props) {

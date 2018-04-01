@@ -1,4 +1,4 @@
-import * as SessionAPIUtil from '../util/session_api_util';
+import * as SessionAPIUtil from '../util/SessionAPIUtil';
 
 export const UPDATE_CURRENT_USER_IN_STORE = 'UPDATE_CURRENT_USER_IN_STORE';
 export const nullUser = null;
