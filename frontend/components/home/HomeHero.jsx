@@ -30,10 +30,10 @@ const HomeSearch = () => (
 
 const HomeHero = ({
   handleHomeLogoClick,
-  showDefaultBackground,
+  hasDefaultBackground,
 }) => {
   const homeHeroBackgroundCSSClassName =
-    showDefaultBackground ?
+    hasDefaultBackground ?
       'home-hero-bg-1' :
       'home-hero-bg-2';
   return (
@@ -48,7 +48,7 @@ const HomeHero = ({
 
 HomeHero.propTypes = {
   handleHomeLogoClick: PropTypes.func.isRequired,
-  showDefaultBackground: PropTypes.bool.isRequired,
+  hasDefaultBackground: PropTypes.bool.isRequired,
 };
 
 export default HomeHero;

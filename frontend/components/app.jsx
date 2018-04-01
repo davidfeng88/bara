@@ -16,7 +16,7 @@ import SessionFormContainer from './session_form/SessionFormContainer';
 
 import BusinessShowContainer from './business_show/BusinessShowContainer';
 import SearchContainer from './search/SearchContainer';
-import Home from './home/Home';
+import HomeContainer from './home/HomeContainer';
 
 import FourZeroFour from './FourZeroFour';
 
@@ -47,7 +47,7 @@ const App = () => (
         <AuthRoute path="/signup" component={SessionFormContainer} />
         <Route path="/businesses/:id" component={BusinessShowContainer} />
         <Route path="/businesses" component={SearchContainer} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={HomeContainer} />
         <Route component={FourZeroFour} />
       </Switch>
     </div>
