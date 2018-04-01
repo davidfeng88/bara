@@ -14,17 +14,17 @@ Below is the original README. It contains a lot of details. However, good code d
 * Cleaner Code. (References: [1](https://codeburst.io/clean-code-in-react-fe11372f331c))
 * Maybe I'll write some tests.
 
-### Completed
-None :sob:
-### In Progress
-Homepage
-### ToDo
-- [ ] BusinessSearch
-- [ ] BusinessShow
-- [ ] BusinessForm
-- [ ] ReviewForm
-- [ ] SessionForm
-- [ ] Miscellaneous
+### Progress
+| Component      | Seperation | Babel's class | ESLint | Clean code | Test |
+| -------------- | ---------- | ------------- | ------ | ---------- | ---- |
+| Homepage       |            |               |        |            |      |
+| BusinessSearch |            |               |        |            |      |
+| BusinessShow   |            |               |        |            |      |
+| BusinessForm   |            |               |        |            |      |
+| ReviewForm     |            |               |        |            |      |
+| SessionForm    |            |               |        |            |      |
+| Miscellaneous  |            |               |        |            |      |
+
 ***
 ## Main Features
 * Each React component loads data from the backend based on URL, not from the Redux store, therefore the user can directly visit a specific page by its URL (the business search page with certain filters or the business show page of a particular business), and users can share pages by their URLs. ([Details](#implementation-overview))
