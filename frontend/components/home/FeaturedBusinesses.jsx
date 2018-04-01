@@ -2,8 +2,8 @@ import React from 'react';
 import Rating from 'react-rating';
 import PropTypes from 'prop-types';
 import {
-  reviewNumber,
-  price,
+  nReviewsString,
+  priceToDollarSign,
   tagContent,
 } from '../../util/BusinessInfoUtil';
 
@@ -55,55 +55,124 @@ FeaturedBusinessesList.propTypes = {
 
 const FeaturedBusinessListItem = ({
   business,
-}) => (
-  <div className="home-business-item">
-    <Pic business={business} />
-    <FeatureTextInfo business={business} />
-  </div>
-);
+}) => {
+  const {
+    id,
+    imageUrl,
+    name,
+    averageRating,
+    numberOfReviews,
+    price,
+    tags,
+  } = business;
+  return (
+    <div className="home-business-item">
+      <Pic
+        id={id}
+        imageUrl={imageUrl}
+      />
+      <FeatureTextInfo
+        id={id}
+        name={name}
+        averageRating={averageRating}
+        numberOfReviews={numberOfReviews}
+        price={price}
+        tags={tags}
+      />
+    </div>
+  );
+};
 
 FeaturedBusinessListItem.propTypes = {
-  business: PropTypes.arrayOf(PropTypes.object).isRequired,
+  business: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    averageRating: PropTypes.string,
+    numberOfReviews: PropTypes.number,
+    price: PropTypes.number,
+  }).isRequired,
 };
 
 const Pic = ({
-  business,
+  id,
+  imageUrl,
 }) => (
-  <a href={`#/businesses/${business.id}`}>
-    <img alt="" src={business.image_url} />
+  <a href={`#/businesses/${id}`}>
+    <img alt="" src={imageUrl} />
   </a>
 );
 
+Pic.propTypes = {
+  id: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+};
+
 const FeatureTextInfo = ({
-  business,
+  id,
+  name,
+  averageRating,
+  numberOfReviews,
+  price,
+  tags,
 }) => (
   <div className="card-content">
-    <BusinessNameLink business={business} />
-    <RatingInfo business={business} />
-    {price[business.price]}
-    {tagContent(business)}
+    <BusinessNameLink
+      id={id}
+      name={name}
+    />
+    <RatingInfo
+      averageRating={averageRating}
+      numberOfReviews={numberOfReviews}
+    />
+    {priceToDollarSign[price]}
+    {tagContent(tags)}
   </div>
 );
 
+FeatureTextInfo.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  averageRating: PropTypes.string.isRequired,
+  numberOfReviews: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.object),
+};
+
+FeatureTextInfo.defaultProps = {
+  tags: null,
+};
+
 const BusinessNameLink = ({
-  business,
+  id,
+  name,
 }) => (
-  <a href={`#/businesses/${business.id}`}>
-    <strong>{business.name}</strong>
+  <a href={`#/businesses/${id}`}>
+    <strong>{name}</strong>
   </a>
 );
 
+BusinessNameLink.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
 const RatingInfo = ({
-  business,
+  averageRating,
+  numberOfReviews,
 }) => (
   <div>
     <Rating
       className="rating"
       empty="fa fa-star-o fa-lg"
       full="fa fa-star fa-lg"
-      initialRate={parseFloat(business.average_rating)}
+      initialRate={parseFloat(averageRating)}
       readonly
     />
-    {reviewNumber(business)}
+    {nReviewsString(numberOfReviews)}
   </div>
 );
+
+RatingInfo.propTypes = {
+  averageRating: PropTypes.string.isRequired,
+  numberOfReviews: PropTypes.number.isRequired,
+};

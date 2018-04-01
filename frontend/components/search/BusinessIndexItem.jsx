@@ -2,8 +2,8 @@ import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import {
-  reviewNumber,
-  price,
+  nReviewsString,
+  priceToDollarSign,
   tagContent,
 } from '../../util/BusinessInfoUtil';
 
@@ -41,7 +41,7 @@ const BusinessIndexItem = ({
   >
     <div className="index-item-row1">
       <div className="index-pic">
-        <img src={business.image_url} />
+        <img src={business.imageUrl} />
       </div>
       <div className="index-li">
         <div className="col1">
@@ -52,12 +52,12 @@ const BusinessIndexItem = ({
             className="rating"
             empty="fa fa-star-o fa-lg"
             full="fa fa-star fa-lg"
-            initialRate={parseFloat(business.average_rating)}
+            initialRate={parseFloat(business.averageRating)}
             readonly
           />
-          {reviewNumber(business)}
+          {nReviewsString(business.numberOfReviews)}
           <br />
-          {price[business.price]}{tagContent(business)}
+          {priceToDollarSign[business.price]}{tagContent(business.tags)}
         </div>
         <div className="col2">
           {business.address}<br />

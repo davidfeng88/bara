@@ -1,21 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export const price = {
+export const priceToDollarSign = {
   1: '$',
   2: '$$',
   3: '$$$',
   4: '$$$$',
 };
 
-export const reviewNumber = (business) => {
-  switch (business.number_of_reviews) {
+export const nReviewsString = (numberOfReviews) => {
+  switch (numberOfReviews) {
     case 0:
       return 'No reviews yet';
     case 1:
       return '1 review';
     default:
-      return `${business.number_of_reviews.toString()} reviews`;
+      return `${numberOfReviews.toString()} reviews`;
   }
 };
 
@@ -29,9 +28,7 @@ const tagEntry = (tag) => {
   );
 };
 
-export const tagContent = ({
-  tags,
-}) => {
+export const tagContent = (tags) => {
   if (tags) {
     const tagsArray = [];
     tags.forEach((tag, index) => {

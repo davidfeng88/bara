@@ -2,7 +2,7 @@ import React from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import {
-  price,
+  priceToDollarSign,
   tagContent,
 } from '../../util/BusinessInfoUtil';
 
@@ -145,13 +145,13 @@ const ReviewFormBusienssShow = ({
 }) => (
   <div className="flex-left review-form-business">
     <Link to={`/businesses/${business.id}`}>
-      <img src={business.image_url} />
+      <img src={business.imageUrl} />
     </Link>
     <div>
       <Link className="business-name-link" to={`/businesses/${business.id}`}>
         {business.name}
       </Link><br />
-      {price[business.price]}{tagContent(business)}<br />
+      {priceToDollarSign[business.price]}{tagContent(business.tags)}<br />
       {business.address}<br />
       {`${business.city}, ${business.state} ${business.zipcode}`}
     </div>
