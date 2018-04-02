@@ -3,17 +3,15 @@
 
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Provider } from 'react-redux';
-import Home from '../home/Home';
-import configureStore from '../../store/store';
-import FeaturedBusinesses from '../home/featured_businesses';
-import Categories from '../home/categories';
+import HomeHero from '../home/HomeHero';
+import FeaturedBusinesses from '../home/FeaturedBusinesses';
+import Categories from '../home/Categories';
 
-const store = configureStore();
+jest.mock('react-rating');
+jest.mock('../header/SearchBar', () => ('SearchBar Mock'));
+jest.mock('../home/home_header/HomeHeaderContainer', () => ('HomeHeaderContainer Mock'));
 
-window.staticImages = {
-  homeLogo: '',
-};
+window.staticImages = {};
 
 const businesses = [{
   id: 464,
@@ -107,14 +105,25 @@ const businesses = [{
 },
 ];
 
-const Rating = () => <div />;
+it('renders HomeHero correctly', () => {
+  const tree = renderer
+    .create(<HomeHero
+      handleHomeLogoClick={() => {}}
+      hasDefaultBackground
+    />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
-// it('renders FeaturedBusinesses correctly', () => {
-//   const tree = renderer
-//     .create(<FeaturedBusinesses businesses={businesses} loading={false} />)
-//     .toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+it('renders FeaturedBusinesses correctly', () => {
+  const tree = renderer
+    .create(<FeaturedBusinesses
+      featuredBusinesses={businesses}
+      isLoading={false}
+    />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
 it('renders Categories correctly', () => {
   const tree = renderer

@@ -82,7 +82,7 @@ const BusinessInfo = ({
 }) => (
   <div className="business-show-title-row2">
     <div className="info">
-      {/* <ShowMap business={business} /> */}
+      <ShowMap business={business} />
       <BusinessTextInfo
         business={business}
       />
