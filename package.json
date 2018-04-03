@@ -43,8 +43,8 @@
     "test": "test"
   },
   "engines": {
-    "node": "8.11.1",
-    "npm": "5.8.0"
+    "node": "6.10.1",
+    "npm": "3.10.10"
   },
   "scripts": {
     "test": "jest",
