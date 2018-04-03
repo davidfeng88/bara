@@ -1,5 +1,5 @@
 ## Implementation Overview
-Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code ([details](#index-map)).
+Since I would like the React components to load data from the backend based on URL, without relying on Redux store, the Redux state is very small ([here](/docs/sample-state.md) is a sample Redux state). It does not store any information about the businesses or reviews, which would be in the components' local state. It does store the current user's information, which is used in almost every component, and the id of highlighted business in the index map, since it greatly simplifies the code ([details](#index-map)).
 
 In addition to relevant businesses and reviews, the local states of the React components usually contain `loading` (starts as true) and `errors` (starts as an empty array) fields. The general working mechanism is:
 
@@ -54,7 +54,7 @@ The homepage also contains a search bar component, which is the same search bar 
 ### Business search
 
 #### Search bar
-![search_bar](docs/search_bar.png)
+![search_bar](/docs/search_bar.png)
 
 The search bar has two fields, `name` and `location`, which are filled based on query string (`?name=bur&location=19th`) in the URL (e.g. `https://bara.davidfeng.us/#/businesses/?name=bur&location=19th`) in the `constructor` and `componentWillReceiveProps`. Therefore in a search page, the search bar input fields are filled with those queries.
 Upon submission, the search bar pushes `/businesses/?name=${nameEncoded}&location=${locationEncoded}` to the history. Notice that the two fields are encoded using `encodeURIComponent`.
@@ -62,7 +62,7 @@ Upon submission, the search bar pushes `/businesses/?name=${nameEncoded}&locatio
 \>\> Return to [Implementation Details](#implementation-details)
 
 #### Sample searches and price filter
-![sample_searches](docs/sample_searches.png)
+![sample_searches](/docs/sample_searches.png)
 
 Some links are provided for the user to try the search functionality.
 The price filter fetches all the current filters (`name`, `location`, `tag`, current `prices[]`) from the URL, and adds/removes `prices[]` values when the user clicks on the dollar sign buttons. The updated search result will show up after the click. No need to click the submit button. Also, it is possible to select multiple `prices[]` values (e.g. "$" and "$$$$", which translates to `prices[]=1&prices[]=4` in the query string).
@@ -141,7 +141,7 @@ SearchContainer
 \>\> Return to [Implementation Details](#implementation-details)
 
 ### Business show
-![busienss_show](docs/business_show.png)
+![busienss_show](/docs/business_show.png)
 
 The path for the business show page is `/businesses/:id`. In `componentDidMount` and `componentWillReceiveProps`, the component fetches business and its reviews from the backend and displays them. Right now each business has one image, and the business show page displays that image with two other default images. If something goes wrong, it displays the errors instead.
 
@@ -157,7 +157,7 @@ Since each form has two functions and can be accessed in two paths, the general 
 
 \>\> Return to [Implementation Details](#implementation-details)
 #### Business form
-![busienss_form](docs/business_form.png)
+![busienss_form](/docs/business_form.png)
 
 The business form component can be accessed by two paths:
 * `/businesses/new` for create business form
@@ -175,7 +175,7 @@ When the user clicks the submit button, the form sends the full address (combina
 
 \>\> Return to [Implementation Details](#implementation-details)
 #### Review form
-![review_form](docs/review_form.png)
+![review_form](/docs/review_form.png)
 
 The review form component can be accessed by two paths:
 * `/businesses/:business_id/reviews/new` for create review form
@@ -230,7 +230,7 @@ json.reviewers Hash[@business.reviews.map { |review| [review.author_id, review.i
 \>\> Return to [Implementation Details](#implementation-details)
 
 #### Session form
-![session_form](docs/session_form.png)
+![session_form](/docs/session_form.png)
 
 The session form component can be accessed by two paths:
 * `/login` for login form
