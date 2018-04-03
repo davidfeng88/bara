@@ -8,7 +8,7 @@ const devPlugins = []; // if using any plugins for development
 const prodPlugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      'NODE_ENV': JSON.stringify('production'),
+      NODE_ENV: JSON.stringify('production'),
     },
   }),
   new webpack.optimize.UglifyJsPlugin({
@@ -18,9 +18,7 @@ const prodPlugins = [
   }),
 ];
 
-plugins = plugins.concat(
-  process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins
-);
+plugins = plugins.concat(process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins);
 
 module.exports = {
   context: __dirname,
@@ -36,18 +34,18 @@ module.exports = {
   devtool: 'source-maps',
   module: {
     loaders: [{
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['env', 'react'],
-          plugins: ['transform-class-properties'],
-        },
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel-loader',
+      query: {
+        presets: ['env', 'react'],
+        plugins: ['transform-class-properties'],
       },
-      {
-        test: /\.node$/,
-        loader: 'node-loader',
-      },
+    },
+    {
+      test: /\.node$/,
+      loader: 'node-loader',
+    },
     ],
   },
 };
