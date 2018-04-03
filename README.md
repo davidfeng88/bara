@@ -6,7 +6,7 @@ Bara is a Yelp-inspired single-page web app where users can CRUD businesses and 
 ![homepage](/docs/homepage.png)
 
 ## Update 4/2/2018: refactored homepage
-I have completely refactored the frontend React code for the homepage ([Take a look!](/frontend/components/home/HomeContainer.jsx) [Here](https://codeburst.io/clean-code-in-react-fe11372f331c) is a Medium story about the process). Compared to the original version, now the code is easier to read, has no ESLint errors, and we have some snapshot tests (`npm test`). However, currently I do not have time to work on other parts of the frontend. Hopefully I can get back to it in the future.
+I have completely refactored the frontend React code for the homepage ([Take a look!](/frontend/components/home/) [Here](https://codeburst.io/clean-code-in-react-fe11372f331c) is a Medium story about the process). Compared to the original version, now the code is easier to read, has no ESLint errors, and we have some snapshot tests (`npm test`). However, currently I do not have time to work on other parts of the frontend. Hopefully I can get back to it in the future.
 
 ## Features
 * Each React component loads data from the backend based on URL, not from the Redux store, therefore the user can directly visit a specific page by its URL (the business search page with certain filters or the business show page of a particular business), and users can share pages by their URLs.

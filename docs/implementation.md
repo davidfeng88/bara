@@ -29,6 +29,8 @@ In addition to relevant businesses and reviews, the local states of the React co
 * [404](#404)
 
 ### Homepage
+![homepage](/docs/homepage.png)
+
 The homepage contains a `Featured Businesses` section, which displays three random businesses. Clicking on the bara logo updates them. To implement this feature, I added collection route called `feature` and set up corresponding controller and view. Clicking the bara logo sends a GET request to `/api/businesses/feature`, which will send back the information of three random businesses.
 ```ruby
 # config/routes.rb
