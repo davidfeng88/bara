@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchFeaturedBusinesses } from '../../util/BusinessAPIUtil';
-
 import Home from './Home';
 
 export default class HomeContainer extends React.Component {
