@@ -16,7 +16,7 @@ I have completely refactored the frontend React code for the homepage ([Take a l
 
 ## Implementation
 * [Overview and Details](/docs/implementation.md)
-* [Frontend: React Component Hierarchy](/docs/component-hierarchy.md)
+* [Frontend: React Component Hierarchy and Routes](/docs/component-hierarchy.md)
 * [Frontend: Redux Sample State](/docs/sample-state.md)
 * [Backend: Rails API Endpoints](/docs/api-endpoints.md)
 * [Database: Schema](/docs/schema.md)

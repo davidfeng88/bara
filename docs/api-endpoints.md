@@ -1,4 +1,4 @@
-# API Endpoints
+# Backend: Rails API Endpoints
 
 ## HTML API
 

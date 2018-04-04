@@ -1,37 +1,21 @@
-# Component Hierarchy
+# Frontend: React Component Hierarchy and Routes
 
-**HeaderRouter**
-* SessionHeader
-* BusinessHeaderContainer
-  * BusinessHeader
+## HomeContainer
+Route: `/`
+* Home
+  * HomeHero
+    * HomeHeaderContainer
+      * HomeHeader
+        * HomeHeaderWithUserContainer
+          * HomeHeaderWithUser
+        * HomeHeaderWithoutUser
     * SearchBar
-    * BusinessHeaderLinks
-    * Dropdown
+    * HomeLinks
+  * FeaturedBusinesses
+  * Categories
 
-**BusinessFormContainer**
-* BusinessForm
-  * FormMap
-* ErrorList
-
-**ReviewFormContainer**
-* ReviewForm
-  * ReviewFormCore
-  * ErrorList
-
-**SessionFormContainer**
-* SessionForm
-  * ErrorList
-
-**BusinessShowContainer**
-* BusinessShow
-  * BusinessShowCore
-    * ReviewIndex
-      * ReviewIndexItemContainer
-        * ReviewIndexItem
-    * ShowMap
-* ErrorList
-
-**SearchContainer**
+## SearchContainer
+Route: `/businesses`
 * Search
   * BusinessIndex
     * BusinessIndexItemContainer
@@ -39,32 +23,54 @@
   * IndexMapContainer
     * IndexMap
 
-**Home**
-* HomeBarContainer
-  * HomeBar
-    * Dropdown
-  * SearchBar
-  * HomeLinks
+## BusinessShowContainer
+Route: `/businesses/:id`
+* BusinessShow
+  * BusinessInfoAndPictures
+    * ShowMap
+  * ReviewIndexAndExtraInfo
+    * ReviewIndex
+      * ReviewIndexItemContainer
+        * ReviewIndexItem
 
-# Routes
+## BusinessFormContainer
+ProtectedRoute: only accessible when logged in.
 
-| Path                   | Component               | Note |
-| ---------------------- | ----------------------- | ---- |
-| `/businesses/new`      | `BusinessFormContainer` | create busiess form, ProtectedRoute |
-| `/businesses/:id/edit` | `BusinessFormContainer` | edit busiess form, ProtectedRoute |
-| `/businesses/:business_id/reviews/new` | `ReviewFormContainer` | create review form, ProtectedRoute |
-| `/reviews/:id/edit`    | `ReviewFormContainer`   | edit review form, ProtectedRoute |
-| `/login`               | `SessionFormContainer`  | login form, AuthRoute |
-| `/signup`              | `SessionFormContainer`  | signup form, AuthRoute |
-| `/businesses/:id`      | `BusinessShowContainer` |      |
-| `/businesses`          | `SearchContainer`       |      |
-| `/`                    | `Home`                  |      |
-| anything else          | `FourZeroFour`          |      |
+| Form Type            | Route                  |
+| -------------------- | ---------------------- |
+| create business form | `/businesses/new`      |
+| edit busiess form    | `/businesses/:id/edit` |
+
+* BusinessForm
+  * FormMap
+
+## ReviewFormContainer
+ProtectedRoute: only accessible when logged in.
+
+| Form Type          | Route                                  |
+| ------------------ | -------------------------------------- |
+| create review form | `/businesses/:business_id/reviews/new` |
+| edit review form   | `/reviews/:id/edit`                    |
+
+* ReviewForm
+  * ReviewFormCore
+
+## SessionFormContainer
+AuthRoute: only accessible when no one is logged in.
+
+| Form Type   | Route     |
+| ----------- | --------- |
+| signup form | `/signup` |
+| login form  | `/login`  |
+* SessionForm
+
+## FourZeroFour
+Route: anything else
 
 ## Header Routes
-| Path          | Component                 |
-| ------------- | ------------------------- |
-| `/`           | null                      |
-| `/businesses` | `BusinessHeaderContainer` |
-| `/reviews`    | `BusinessHeaderContainer` |
-| anything else | `SessionHeader`           |
+| Path          | Component                              |
+| ------------- | -------------------------------------- |
+| `/`           | `null` (HomeHeader is in Home Component) |
+| `/businesses` | `BusinessHeaderContainer`              |
+| `/reviews`    | `BusinessHeaderContainer`              |
+| anything else | `SessionHeader`                        |

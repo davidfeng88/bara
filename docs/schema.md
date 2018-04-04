@@ -1,4 +1,4 @@
-# Schema Information
+# Database: Schema
 
 ## users
 column name     | data type | details
@@ -18,7 +18,7 @@ address     | string    | not null, indexed
 city        | string    | not null, indexed
 state       | string    | not null, indexed
 zipcode     | integer   | not null, indexed
-price       | integer   | not null, indexed, [1-4]
+price       | integer   | not null, indexed, in the range of [1-4]
 phone       | string    |
 url         | string    |
 lat         | float     |

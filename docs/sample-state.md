@@ -1,3 +1,4 @@
+# Frontend: Redux Sample State
 ```javascript
 {
   currentUser: {
@@ -6,6 +7,6 @@
     username: "Guest"
   },
 
-  highlight: 473,
+  highlightedBusinessId: 473,
 }
 ```
