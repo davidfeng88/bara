@@ -14,6 +14,13 @@ I have completely refactored the frontend React code for the homepage ([Take a l
 * When logged in, a user can create/update/delete businesses and reviews. For demonstration purposes, there are no constraints for operations on businesses, i.e. any user can add businesses and edit/delete any existing businesses. (In reality, you probably do not want to allow that!) On the other hand, a user can only review a business once, and only the author is allowed to edit/delete a review.
 * The business form fetches the latitude and longitude based on address using the Google Maps Geocoding API.
 
+## Development on localhost
+* Make sure you have all the dependencies installed.
+* Turn on the Rails server in a terminal window: `rails s`.
+* Turn on webpack watching in a second terminal window: `npm start`.
+* Visit `http://localhost:3000/#/` in browser.
+* Now you can modify your frontend files, save them, wait for webpack to update the bundle file, then refresh you browser to see the changes.
+
 ## Implementation
 * [Overview and Details](/docs/implementation.md)
 * [Frontend: React Component Hierarchy and Routes](/docs/component-hierarchy.md)
