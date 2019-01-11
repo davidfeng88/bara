@@ -24,7 +24,7 @@ export const nReviewsString = (numberOfReviews) => {
 
 const tagEntry = (tag) => {
   const label = encodeURIComponent(tag.label);
-  const tagLink = `/businesses/?tag=${label}`;
+  const tagLink = `/#/businesses/?tag=${label}`;
   return (
     <a key={label} href={tagLink}>
       {tag.label}
