@@ -15,7 +15,30 @@ I have completely refactored the frontend React code for the homepage ([Take a l
 * The business form fetches the latitude and longitude based on address using the Google Maps Geocoding API.
 
 ## Development on localhost
-* Make sure you have all the dependencies installed.
+
+* Make sure you have Ruby, Node.js, and PostgreSQL installed on your machine.
+* Install dependencies.
+    + `gem install bundler`
+    + `bundle install`
+    + `npm install`
+* Setup the database.
+    + We use gem Figaro to get AWS credentials from `config/application.yml`. The file is ignored by git, so that the credentials are not uploaded to GitHub. We use AWS S3 to store user avatars.
+    + `bundle exec rake db:setup`
+
+Sample `application.yml`:
+
+```yml
+s3_region: "region"
+s3_access_key_id: "ABCDEFG"
+s3_secret_access_key: "12345678"
+
+development:
+  s3_bucket: "dev"
+
+production:
+  s3_bucket: "prod"
+```
+
 * Turn on the Rails server in a terminal window: `rails s`.
 * Turn on webpack watching in a second terminal window: `npm start`.
 * Visit `http://localhost:3000/#/` in browser.
