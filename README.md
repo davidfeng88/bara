@@ -1,5 +1,5 @@
 # Bara
-[Live](https://bara.davidfeng.us/#/)
+[Live](http://bara.davidfeng.us/#/)
 
 Bara is a Yelp-inspired single-page web app where users can CRUD businesses and reviews. It is built with React.js, Redux, Ruby on Rails, and a PostgreSQL database.
 
