@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 # add these lines to the end of application.js as well
 # //= require jquery
-# //= require jquery_ujs
 
 gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
