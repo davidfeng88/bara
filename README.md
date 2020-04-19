@@ -18,12 +18,13 @@ I have completely refactored the frontend React code for the homepage ([Take a l
 
 * Make sure you have Ruby, Node.js, and PostgreSQL installed on your machine.
 * Install dependencies.
-    + `gem install bundler`
+    + `gem install bundler` (if you see open ssl errors, try `brew switch openssl 1.0.2s` [ref](https://stackoverflow.com/questions/59006602/dyld-library-not-loaded-usr-local-opt-openssl-lib-libssl-1-0-0-dylib))
     + `bundle install`
     + `npm install`
 * Setup the database.
-    + We use gem Figaro to get AWS credentials from `config/application.yml`. The file is ignored by git, so that the credentials are not uploaded to GitHub. We use AWS S3 to store user avatars.
+    + For local development, download and run PostgreSQL on your local machine.
     + `bundle exec rake db:setup`
+    + We use gem Figaro to get AWS credentials from `config/application.yml`. The file is ignored by git, so that the credentials are not uploaded to GitHub. We use AWS S3 to store user avatars.
 
 Sample `application.yml`:
 
