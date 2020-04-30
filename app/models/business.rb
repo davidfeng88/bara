@@ -41,14 +41,8 @@ class Business < ActiveRecord::Base
              class_name: :User
 
   has_many :reviews,
-           primary_key: :id,
-           foreign_key: :business_id,
-           class_name: :Review,
-           dependent: :destroy
-
-  has_many :latest_reviews,
-           -> { order('updated_at desc').limit(1) },
-           class_name: 'Review'
+          -> { order(updated_at: :desc) },
+          dependent: :destroy
 
   has_many :taggings, dependent: :destroy, inverse_of: :business
   has_many :tags, through: :taggings

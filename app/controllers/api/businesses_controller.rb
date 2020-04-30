@@ -37,7 +37,7 @@ class Api::BusinessesController < ApplicationController
       businesses = businesses.where(price: prices_numbers)
     end
 
-    @businesses = businesses.includes(latest_reviews: [:author]).order(updated_at: :desc)
+    @businesses = businesses
     render 'api/businesses/index'
   end
 
