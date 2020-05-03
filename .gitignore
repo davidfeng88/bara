@@ -74,5 +74,9 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore application configuration
+# Ignore application configuration - Figaro
 /config/application.yml
+
+# Ignore master.key (Rails 5 way of storing secrets)
+# copy the key to Heroku ENV["RAILS_MASTER_KEY"]
+/config/master.key
