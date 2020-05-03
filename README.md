@@ -47,6 +47,8 @@ development:
 
 production:
   s3_bucket: "prod"
+
+GOOGLE_MAPS_API_KEY: "AIzaSyB42USxCYSP5SVIAjZz3hGSmWglUma3zok"
 ```
 
 * Turn on the Rails server in a terminal window: `rails s`.
