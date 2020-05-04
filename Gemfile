@@ -30,7 +30,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
 gem 'aws-sdk'
 gem "paperclip", "~> 6.1.0"
-gem 'figaro'
 gem 'faker'
 
 group :development, :test do

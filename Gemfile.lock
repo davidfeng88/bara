@@ -977,8 +977,6 @@ GEM
     faker (2.11.0)
       i18n (>= 1.6, < 2)
     ffi (1.12.2)
-    figaro (1.1.1)
-      thor (~> 0.14)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
@@ -1124,7 +1122,6 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   faker
-  figaro
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
