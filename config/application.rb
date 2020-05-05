@@ -18,7 +18,7 @@ module Bara
       :storage => :s3,
       :s3_protocol => :https,
       :s3_credentials => {
-        :bucket => Rails.application.credentials.send(Rails.env)[:s3_bucket],
+        :bucket => Rails.application.credentials[Rails.env.to_sym][:s3_bucket],
         :access_key_id => Rails.application.credentials.s3_access_key_id,
         :secret_access_key => Rails.application.credentials.s3_secret_access_key,
         :s3_region => Rails.application.credentials.s3_region,
