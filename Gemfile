@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.0'
+gem 'pg', '~> 0.20'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -17,7 +17,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
@@ -28,7 +28,7 @@ gem 'jquery-rails'
 
 gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3', require: false
 gem "paperclip", "~> 6.1.0"
 gem 'faker'
 
