@@ -29,7 +29,6 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
 gem 'aws-sdk-s3', require: false
-gem "paperclip", "~> 6.1.0"
 gem 'faker'
 gem 'image_processing'
 
