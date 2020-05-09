@@ -21,8 +21,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: :true
 
-  has_attached_file :avatar, default_url: 'capy.jpg'
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  has_one_attached :avatar
 
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness

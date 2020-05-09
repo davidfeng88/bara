@@ -31,6 +31,7 @@ gem "font-awesome-rails"
 gem 'aws-sdk-s3', require: false
 gem "paperclip", "~> 6.1.0"
 gem 'faker'
+gem 'image_processing'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -47,8 +47,7 @@ class Business < ActiveRecord::Base
   has_many :taggings, dependent: :destroy, inverse_of: :business
   has_many :tags, through: :taggings
 
-  has_attached_file :image, default_url: 'business-default.jpg'
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  has_one_attached :image
 
   def average_rating
     reviews.average(:rating)
