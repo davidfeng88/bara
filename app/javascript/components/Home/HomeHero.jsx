@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HomeHeaderContainer from './home_header/HomeHeaderContainer';
-import SearchBar from '../header/SearchBar';
+import HomeHeaderContainer from './HomeHeader/HomeHeaderContainer';
+import SearchBar from '../Header/SearchBar';
 import HomeLinks from './HomeLinks';
 
 const HomeLogo = ({

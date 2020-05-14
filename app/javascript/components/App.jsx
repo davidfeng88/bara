@@ -8,15 +8,15 @@ import {
   ProtectedRoute,
 } from '../util/RouteUtil';
 
-import HeaderRouter from './header/HeaderRouter';
+import HeaderRouter from './Header/HeaderRouter';
 
-import BusinessFormContainer from './business_form/BusinessFormContainer';
-import ReviewFormContainer from './review_form/ReviewFormContainer';
-import SessionFormContainer from './session_form/SessionFormContainer';
+import BusinessFormContainer from './BusinessForm/BusinessFormContainer';
+import ReviewFormContainer from './ReviewForm/ReviewFormContainer';
+import SessionFormContainer from './SessionForm/SessionFormContainer';
 
-import BusinessShowContainer from './business_show/BusinessShowContainer';
-import SearchContainer from './search/SearchContainer';
-import HomeContainer from './home/HomeContainer';
+import BusinessShowContainer from './BusinessShow/BusinessShowContainer';
+import SearchContainer from './Search/SearchContainer';
+import HomeContainer from './Home/HomeContainer';
 
 import FourZeroFour from './FourZeroFour';
 

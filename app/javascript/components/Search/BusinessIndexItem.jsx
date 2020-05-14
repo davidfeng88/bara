@@ -50,9 +50,9 @@ const BusinessIndexItem = ({
           </li>
           <Rating
             className="rating"
-            empty="fa fa-star-o fa-lg"
-            full="fa fa-star fa-lg"
-            initialRate={parseFloat(business.averageRating)}
+            emptySymbol="fa fa-star-o fa-lg"
+            fullSymbol="fa fa-star fa-lg"
+            initialRating={parseFloat(business.averageRating)}
             readonly
           />
           {nReviewsString(business.numberOfReviews)}

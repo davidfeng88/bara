@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ReviewIndex from '../review_index/ReviewIndex';
+import ReviewIndex from './ReviewIndex/ReviewIndex';
 
 const ReviewIndexAndExtraInfo = ({
   business,

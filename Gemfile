@@ -21,11 +21,9 @@ gem 'coffee-rails', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-# the following gems were added during development
-gem 'jquery-rails'
-# add these lines to the end of application.js as well
-# //= require jquery
+gem 'webpacker', '~> 5.x'
 
+# the following gems were added during development
 gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
 gem 'aws-sdk-s3', require: false

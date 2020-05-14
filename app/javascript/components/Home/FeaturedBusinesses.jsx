@@ -158,9 +158,9 @@ const RatingInfo = ({
   <div>
     <Rating
       className="rating"
-      empty="fa fa-star-o fa-lg"
-      full="fa fa-star fa-lg"
-      initialRate={parseFloat(averageRating)}
+      emptySymbol="fa fa-star-o fa-lg"
+      fullSymbol="fa fa-star fa-lg"
+      initialRating={parseFloat(averageRating)}
       readonly
     />
     {nReviewsString(numberOfReviews)}

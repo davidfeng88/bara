@@ -80,3 +80,9 @@ bower.json
 # Ignore master.key (Rails 5 way of storing secrets)
 # copy the key to Heroku ENV["RAILS_MASTER_KEY"]
 /config/master.key
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

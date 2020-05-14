@@ -90,11 +90,11 @@ const ReviewFormCore = ({
                 <Rating
                   id="review-rating"
                   className="rating"
-                  empty="fa fa-star-o fa-lg"
-                  full="fa fa-star fa-lg"
-                  initialRate={rating}
+                  emptySymbol="fa fa-star-o fa-lg"
+                  fullSymbol="fa fa-star fa-lg"
+                  initialRating={rating}
                   onChange={handleReviewRatingChange}
-                  onRate={handleRate}
+                  onHover={handleRate}
                 />
               </span>
               <div id="rating-tooltip">
@@ -197,9 +197,9 @@ const ReviewFormReviewIndexItem = ({
     </div>
     <Rating
       className="rating"
-      empty="fa fa-star-o fa-lg"
-      full="fa fa-star fa-lg"
-      initialRate={review.rating}
+      emptySymbol="fa fa-star-o fa-lg"
+      fullSymbol="fa fa-star fa-lg"
+      initialRating={review.rating}
       readonly
     />
     <div>{review.body}</div>

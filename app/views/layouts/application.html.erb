@@ -4,9 +4,9 @@
     <title>Bara</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'bara' %>
+    <%= javascript_pack_tag 'application' %>
 
     <%= render 'application/favicon' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google_maps_api_key}&language=en" %>
