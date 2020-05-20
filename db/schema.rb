@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_020722) do
+ActiveRecord::Schema.define(version: 2020_05_20_005217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_020722) do
   end
 
   create_table "businesses", force: :cascade do |t|
-    t.integer "author_id", null: false
     t.string "name", null: false
     t.string "address", null: false
     t.string "city", null: false
@@ -48,14 +47,9 @@ ActiveRecord::Schema.define(version: 2020_05_05_020722) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.float "lat"
     t.float "lng"
     t.index ["address"], name: "index_businesses_on_address"
-    t.index ["author_id"], name: "index_businesses_on_author_id"
     t.index ["city"], name: "index_businesses_on_city"
     t.index ["name"], name: "index_businesses_on_name"
     t.index ["price"], name: "index_businesses_on_price"
@@ -66,13 +60,13 @@ ActiveRecord::Schema.define(version: 2020_05_05_020722) do
   create_table "reviews", force: :cascade do |t|
     t.integer "rating", null: false
     t.text "body"
-    t.integer "author_id", null: false
+    t.integer "user_id", null: false
     t.integer "business_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_reviews_on_author_id"
-    t.index ["business_id", "author_id"], name: "index_reviews_on_business_id_and_author_id", unique: true
+    t.index ["business_id", "user_id"], name: "index_reviews_on_business_id_and_user_id", unique: true
     t.index ["business_id"], name: "index_reviews_on_business_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -82,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_020722) do
     t.datetime "updated_at", null: false
     t.index ["business_id", "tag_id"], name: "index_taggings_on_business_id_and_tag_id", unique: true
     t.index ["business_id"], name: "index_taggings_on_business_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -97,10 +92,6 @@ ActiveRecord::Schema.define(version: 2020_05_05_020722) do
     t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

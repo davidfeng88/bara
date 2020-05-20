@@ -3,7 +3,7 @@ User.destroy_all
 
 User.create(username: 'Guest', password: 'password')
 
-default_users = [
+user_names = [
   'David Feng',
 
   'William Shakespeare', 'Du Fu', 'Li Bai',
@@ -25,11 +25,10 @@ default_users = [
   'Bill Gates', 'Steve Jobs', 'Mark Zuckerberg'
 ]
 
-default_users.each do |username|
-  password = username.delete(' ')
-  avatar_path = "app/assets/images/avatar/#{username}.jpg"
-  avatar = File.open(avatar_path)
-  User.create(username: username, password: password, avatar: avatar)
+user_names.each do |username|
+  password = 'password'
+  user = User.create!(username: username, password: password)
+  user.avatar.attach(io: File.open("app/assets/images/avatar/#{username}.jpg"), filename: "#{username}.jpg")
 end
 
 user_ids = (User.first.id..User.last.id).to_a
@@ -37,23 +36,22 @@ user_ids = (User.first.id..User.last.id).to_a
 # Tags
 Tag.destroy_all
 
-default_tags = [
+tag_labels = [
   'Mexican', 'Nightlife', 'Chinese', 'Japanese', 'Seafood',
   'American', 'French', 'Asian Fusion', 'Korean', 'Irish',
   'Italian'
 ]
 
-default_tags.each do |label|
+tag_labels.each do |label|
   Tag.create(label: label)
 end
 
-tag_ids = (Tag.first.id..Tag.last.id).to_a
+# tag_ids = (Tag.first.id..Tag.last.id).to_a
 
 # Businesses
 Business.destroy_all
 
 Business.create(
-  author_id: user_ids.sample,
   name: "Conmigo",
   address: "1685 1st Ave",
   lat: 40.777917,
@@ -64,10 +62,17 @@ Business.create(
   price: 3,
   url: "conmigonyc.com",
   phone: "(212) 256-0056",
-  image: File.open("app/assets/images/business/Mexican.jpg"),
-  tag_ids: [tag_ids[0], tag_ids[1]],
+  # image: File.open("app/assets/images/business/Mexican.jpg"),
 )
 
+Business.all.each do |business|
+  # business.images.attach random image files?
+  number_of_tags = rand(4) # 0-3 tags for a business
+  business.tags = Tag.limit(number_of_tags).order("RANDOM()")
+end
+
+
+=begin
 Business.create(
   author_id: user_ids.sample,
   name: "Shanghai",
@@ -368,3 +373,5 @@ Review.destroy_all
     body: body,
   )
 end
+
+=end

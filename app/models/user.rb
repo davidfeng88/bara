@@ -2,16 +2,12 @@
 #
 # Table name: users
 #
-#  id                  :integer          not null, primary key
-#  username            :string           not null
-#  password_digest     :string           not null
-#  session_token       :string           not null
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  avatar_file_name    :string
-#  avatar_content_type :string
-#  avatar_file_size    :integer
-#  avatar_updated_at   :datetime
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class User < ActiveRecord::Base
@@ -26,17 +22,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
 
-  has_many :created_businesses,
-           primary_key: :id,
-           foreign_key: :author_id,
-           class_name: :Business,
-           dependent: :destroy
-
-  has_many :reviews,
-           primary_key: :id,
-           foreign_key: :author_id,
-           class_name: :Review,
-           dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   def password=(arg)
     @password = arg
