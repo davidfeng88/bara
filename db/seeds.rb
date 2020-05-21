@@ -1,4 +1,3 @@
-# Users
 User.destroy_all
 
 User.create(username: 'Guest', password: 'password')
@@ -43,10 +42,8 @@ tag_labels = [
 ]
 
 tag_labels.each do |label|
-  Tag.create(label: label)
+  Tag.create!(label: label)
 end
-
-# tag_ids = (Tag.first.id..Tag.last.id).to_a
 
 # Businesses
 Business.destroy_all
@@ -62,12 +59,28 @@ Business.create(
   price: 3,
   url: "conmigonyc.com",
   phone: "(212) 256-0056",
-  # image: File.open("app/assets/images/business/Mexican.jpg"),
 )
 
+business_image_names = [
+  "American",
+  "Chinese",
+  "French",
+  "HighEnd",
+  "Italian",
+  "Japanese",
+  "Korean",
+  "Mexican",
+  "Noodles",
+  "Salmon",
+  "Seafood",
+]
+
 Business.all.each do |business|
-  # business.images.attach random image files?
-  number_of_tags = rand(4) # 0-3 tags for a business
+  random_image_names = business_image_names.sample(3)
+  random_image_names.each do |image_name|
+    business.images.attach(io: File.open("app/assets/images/business/#{image_name}.jpg"), filename: "#{image_name}.jpg")
+  end
+  number_of_tags = rand(1..3) # 1-3 tags for a business
   business.tags = Tag.limit(number_of_tags).order("RANDOM()")
 end
 
