@@ -14,7 +14,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(username: "Example User",
-                      password: "foobar")
+                    password: "foobar")
   end
 
   test "should be valid" do
@@ -42,13 +42,17 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  # https://github.com/mhartl/sample_app_6th_ed/blob/master/test/models/user_test.rb
-  # test "associated reviews should be destroyed" do
-  #   @user.save
-  #   foo_biz = businesses(:foo_biz)
-  #   @user.reviews.create!(rating: 4, business_id: foo_biz.id)
-  #   assert_difference 'Review.count', -1 do
-  #     @user.destroy
-  #   end
-  # end
+  test "session token should be generated" do
+    @user.save
+    assert_not_nil @user.session_token
+  end
+
+  test "associated reviews should be destroyed" do
+    @user.save
+    foo_biz = businesses(:foo_biz)
+    @user.reviews.create!(rating: 4, business: foo_biz)
+    assert_difference 'Review.count', -1 do
+      @user.destroy
+    end
+  end
 end
