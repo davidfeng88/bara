@@ -12,20 +12,11 @@
 #
 
 class Review < ActiveRecord::Base
-  validates :author, :business, :rating, presence: true
+  validates :user, :business, :rating, presence: true
 
-  validates :business_id, uniqueness: { scope: :author_id,
+  validates :business_id, uniqueness: { scope: :user_id,
                                         message: 'can only be reviewed by a user once' }
 
-  belongs_to :author,
-             primary_key: :id,
-             foreign_key: :author_id,
-             class_name: :User
-
-  belongs_to :business,
-             primary_key: :id,
-             foreign_key: :business_id,
-             class_name: :Business
-
-  scope :latest, -> { order('updated_at DESC').limit(1) }
+  belongs_to :user
+  belongs_to :business
 end
