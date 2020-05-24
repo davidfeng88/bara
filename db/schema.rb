@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_005217) do
+ActiveRecord::Schema.define(version: 2020_05_22_020705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_05_20_005217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_id", "user_id"], name: "index_reviews_on_business_id_and_user_id", unique: true
-    t.index ["business_id"], name: "index_reviews_on_business_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -75,7 +74,6 @@ ActiveRecord::Schema.define(version: 2020_05_20_005217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_id", "tag_id"], name: "index_taggings_on_business_id_and_tag_id", unique: true
-    t.index ["business_id"], name: "index_taggings_on_business_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 

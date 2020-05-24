@@ -1,3 +1,5 @@
+ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+
 User.destroy_all
 
 User.create(username: 'Guest', password: 'password')
@@ -306,8 +308,8 @@ end
 Review.destroy_all
 
 270.times do
-  Review.create(
-    user: User.limit(1).order("RANDOM()")[0],
+  user = User.limit(1).order("RANDOM()")[0]
+  user.reviews.create(
     business: Business.limit(1).order("RANDOM()")[0],
     rating: rand(1..5),
     body: Faker::Lorem.sentences(number: 1),
