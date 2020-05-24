@@ -28,6 +28,9 @@ class TagTest < ActiveSupport::TestCase
   test "associated taggings should be destroyed" do
     @tag.save
     foo_biz = businesses(:foo_biz)
-    foo
-
+    foo_biz.tags = [@tag]
+    assert_difference 'Tagging.count', -1 do
+      @tag.destroy
+    end
+  end
 end

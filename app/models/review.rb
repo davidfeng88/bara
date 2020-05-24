@@ -15,7 +15,8 @@ class Review < ActiveRecord::Base
   validates :user, :business, :rating, presence: true
   validates :business_id, uniqueness: { scope: :user_id,
                                         message: 'can only be reviewed by a user once' }
-  validates :rating, inclusion: 1..5
+  validates :rating, inclusion: {in: 1..5,
+    message: 'should be an integer between 1 and 5' }
   belongs_to :user
   belongs_to :business
 end

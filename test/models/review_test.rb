@@ -26,12 +26,12 @@ class ReviewTest < ActiveSupport::TestCase
     assert @review.valid?
   end
 
-  test "user should be present" do
+  test "user association should be present" do
     @review.user = nil
     assert_not @review.valid?
   end
 
-  test "business should be present" do
+  test "business association should be present" do
     @review.business = nil
     assert_not @review.valid?
   end
