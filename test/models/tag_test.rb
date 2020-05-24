@@ -33,4 +33,13 @@ class TagTest < ActiveSupport::TestCase
       @tag.destroy
     end
   end
+
+  test "associated businesses should not be destroyed" do
+    @tag.save
+    foo_biz = businesses(:foo_biz)
+    foo_biz.tags = [@tag]
+    assert_no_difference 'Business.count' do
+      @tag.destroy
+    end
+  end
 end
