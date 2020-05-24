@@ -10,7 +10,24 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @tag = Tag.new(
+      label: "foo",
+    )
+  end
+
+  test "should be valid" do
+    assert @tag.valid?
+  end
+
+  test "label should be present" do
+    @tag.label = ""
+    assert_not @tag.valid?
+  end
+
+  test "associated taggings should be destroyed" do
+    @tag.save
+    foo_biz = businesses(:foo_biz)
+    foo
+
 end

@@ -15,7 +15,7 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(
       username: "Example User",
-      password: "foobar"
+      password: "foobar",
     )
   end
 
