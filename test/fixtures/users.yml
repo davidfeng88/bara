@@ -10,12 +10,10 @@
 #  updated_at      :datetime         not null
 #
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-# one: {}
-# column: value
-#
-# two: {}
-# column: value
+# fixtures do not use callbacks. Have to set session_token manually here.
+# https://stackoverflow.com/questions/1223101/do-fixtures-trigger-model-callbacks
+
+foo_user:
+  username: foo_user
+  password_digest: <%= BCrypt::Password.create('password') %>
+  session_token: <%= User.generate_session_token %>
