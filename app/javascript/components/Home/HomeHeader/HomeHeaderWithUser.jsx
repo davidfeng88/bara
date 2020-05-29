@@ -18,7 +18,7 @@ const HomeHeaderWithUser = ({
         role="button"
         tabIndex={0}
       >
-        <img alt="user home avatar" className="home-avatar" src={currentUser.avatar_url} />
+        <img alt="user home avatar" className="home-avatar" src={currentUser.avatar} />
         <i className="fa fa-caret-down" id="down-arrow" aria-hidden="true" />
       </div>
       <DropdownContainer
@@ -35,7 +35,7 @@ export default HomeHeaderWithUser;
 
 HomeHeaderWithUser.propTypes = {
   currentUser: PropTypes.shape({
-    avatar_url: PropTypes.string,
+    avatar: PropTypes.string,
     id: PropTypes.number,
     username: PropTypes.string,
   }).isRequired,

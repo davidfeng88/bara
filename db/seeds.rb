@@ -29,7 +29,7 @@ user_names = [
 user_names.each do |username|
   password = 'password'
   user = User.create!(username: username, password: password)
-  user.avatar.attach(io: File.open("app/assets/images/avatar/#{username}.jpg"), filename: "#{username}.jpg")
+  user.avatar.attach(io: File.open("app/assets/images/user/#{username}.jpg"), filename: "#{username}.jpg")
 end
 
 user_ids = (User.first.id..User.last.id).to_a
@@ -312,6 +312,6 @@ Review.destroy_all
   user.reviews.create(
     business: Business.limit(1).order("RANDOM()")[0],
     rating: rand(1..5),
-    body: Faker::Lorem.sentences(number: 1),
+    body: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
   )
 end

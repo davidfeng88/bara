@@ -146,8 +146,8 @@ const BusinessPictures = ({
   business,
 }) => (
   <div className="pictures">
-    <img alt="" src={window.staticImages.businessDefault1} />
-    <img alt="" src={business.imageUrl} />
-    <img alt="" src={window.staticImages.businessDefault2} />
+    <img alt="" src={business.images[0]} />
+    <img alt="" src={business.images[1]} />
+    <img alt="" src={business.images[2]} />
   </div>
 );

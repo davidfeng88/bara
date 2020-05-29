@@ -21,5 +21,5 @@ export default SessionReducer;
 // {
 //     id: 1,
 //     username: "bara",
-//     avatar_url: "/assets/capy.jpg"
+//     avatar: "/assets/capy.jpg"
 // }

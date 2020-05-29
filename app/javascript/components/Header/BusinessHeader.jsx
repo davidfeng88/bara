@@ -43,7 +43,7 @@ export default class BusinessHeader extends React.Component {
     return currentUser ? (
       <div className="home-bar-right">
         <div onClick={this.toggleDropdown} className="dropdown" >
-          <img className="home-avatar" src={currentUser.avatar_url} />
+          <img className="home-avatar" src={currentUser.avatar} />
           <i
             className="fa fa-caret-down"
             id="down-arrow"

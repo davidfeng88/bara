@@ -145,7 +145,7 @@ const ReviewFormBusienssShow = ({
 }) => (
   <div className="flex-left review-form-business">
     <Link to={`/businesses/${business.id}`}>
-      <img src={business.imageUrl} />
+      <img src={business.images[0]} />
     </Link>
     <div>
       <Link className="business-name-link" to={`/businesses/${business.id}`}>
@@ -192,8 +192,8 @@ const ReviewFormReviewIndexItem = ({
 }) => (
   <div className="review-form-index-item">
     <div className="flex-left">
-      <img src={review.author.avatar_url} />
-      {review.author.username}
+      <img src={review.user.avatar} />
+      {review.user.username}
     </div>
     <Rating
       className="rating"

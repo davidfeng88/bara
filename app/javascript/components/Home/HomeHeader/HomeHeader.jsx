@@ -23,7 +23,7 @@ export default HomeHeader;
 
 HomeHeader.propTypes = {
   currentUser: PropTypes.shape({
-    avatar_url: PropTypes.string,
+    avatar: PropTypes.string,
     id: PropTypes.number,
     username: PropTypes.string,
   }),

@@ -7,17 +7,17 @@ const ReviewIndexItem = ({
   review,
 }) => {
   const editReviewString = `/reviews/${review.id}/edit`;
-  const editLink = (currentUser && currentUser.id === review.author_id) ?
+  const editLink = (currentUser && currentUser.id === review.user.id) ?
     <Link to={editReviewString}>Edit Review</Link> :
     null;
   return (
     <div className="review-index-item">
       <div className="review-index-left" >
         <div className="review-index-pic">
-          <img src={review.author.avatar_url} />
+          <img src={review.user.avatar} />
         </div>
         <div className="review-index-col2">
-          <div className="review-author">{review.author.username}</div>
+          <div className="review-author">{review.user.username}</div>
           {editLink}
         </div>
       </div>

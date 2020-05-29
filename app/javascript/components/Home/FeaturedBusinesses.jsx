@@ -53,7 +53,7 @@ const FeaturedBusinessListItem = ({
 }) => {
   const {
     id,
-    imageUrl,
+    images,
     name,
     averageRating,
     numberOfReviews,
@@ -64,7 +64,7 @@ const FeaturedBusinessListItem = ({
     <div className="home-business-item">
       <Pic
         id={id}
-        imageUrl={imageUrl}
+        image={images[0]}
       />
       <FeatureTextInfo
         id={id}
@@ -90,16 +90,16 @@ FeaturedBusinessListItem.propTypes = {
 
 const Pic = ({
   id,
-  imageUrl,
+  image,
 }) => (
   <a href={`#/businesses/${id}`}>
-    <img alt="" src={imageUrl} />
+    <img alt="" src={image} />
   </a>
 );
 
 Pic.propTypes = {
   id: PropTypes.number.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 const FeatureTextInfo = ({

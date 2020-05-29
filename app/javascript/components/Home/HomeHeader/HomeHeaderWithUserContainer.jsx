@@ -44,7 +44,7 @@ export default class HomeHeaderWithUserContainer extends React.Component {
 
 HomeHeaderWithUserContainer.propTypes = {
   currentUser: PropTypes.shape({
-    avatar_url: PropTypes.string,
+    avatar: PropTypes.string,
     id: PropTypes.number,
     username: PropTypes.string,
   }).isRequired,

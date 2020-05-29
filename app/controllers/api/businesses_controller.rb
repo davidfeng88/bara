@@ -42,7 +42,7 @@ class Api::BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.includes(reviews: [:author]).find(params[:id])
+    @business = Business.includes(reviews: [:user]).find(params[:id])
     render 'api/businesses/show'
   rescue ActiveRecord::RecordNotFound
     render json: ["Couldn't find business with 'id'=#{params[:id]}"], status: 404

@@ -29,7 +29,7 @@ const UserAvatar = ({
   currentUser,
 }) => (
   <div className="dropdown-avatar-wrapper">
-    <img className="dropdown-avatar" src={currentUser.avatar_url} />
+    <img className="dropdown-avatar" src={currentUser.avatar} />
   </div>
 );
 

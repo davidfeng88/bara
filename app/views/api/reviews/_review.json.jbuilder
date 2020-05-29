@@ -1,5 +1,2 @@
-json.extract! review, :id, :author_id, :business_id, :rating, :body, :updated_at
-
-json.author do
-  json.partial! 'api/users/user', user: review.author
-end
+json.extract! review, :id, :user, :business_id, :rating, :body, :updated_at
+json.user_avatar url_for(review.user.avatar)
