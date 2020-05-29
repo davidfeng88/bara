@@ -1,5 +1,6 @@
 json.partial! 'api/businesses/business', business: @business
-
+json.partial! 'api/businesses/business-images', business: @business
+json.extract! @business, :url
 json.reviews do
   json.array! @business.reviews.order(updated_at: :desc) do |review|
     json.partial! 'api/reviews/review', review: review

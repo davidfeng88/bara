@@ -12,7 +12,7 @@ const topReview = (business) => {
   let reviewBody = 'No review for this business yet';
   if (business.latest_review) {
     const review = business.latest_review;
-    const url = `${review.user.avatar}`;
+    const url = `${review.avatar}`;
     picture = <img src={url} />;
     reviewBody = review.body;
   }
@@ -41,7 +41,7 @@ const BusinessIndexItem = ({
   >
     <div className="index-item-row1">
       <div className="index-pic">
-        <img src={business.images[0]} />
+        <img src={business.image} />
       </div>
       <div className="index-li">
         <div className="col1">

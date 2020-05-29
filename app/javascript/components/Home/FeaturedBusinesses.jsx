@@ -53,7 +53,7 @@ const FeaturedBusinessListItem = ({
 }) => {
   const {
     id,
-    images,
+    image,
     name,
     averageRating,
     numberOfReviews,
@@ -64,7 +64,7 @@ const FeaturedBusinessListItem = ({
     <div className="home-business-item">
       <Pic
         id={id}
-        image={images[0]}
+        image={image}
       />
       <FeatureTextInfo
         id={id}

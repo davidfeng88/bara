@@ -14,7 +14,7 @@ const ReviewIndexItem = ({
     <div className="review-index-item">
       <div className="review-index-left" >
         <div className="review-index-pic">
-          <img src={review.user.avatar} />
+          <img src={review.avatar} />
         </div>
         <div className="review-index-col2">
           <div className="review-author">{review.user.username}</div>
