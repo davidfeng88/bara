@@ -40,7 +40,7 @@ export default class SessionForm extends React.Component {
       .then(
         () => this.props.history.goBack(),
         errors => this.setState({
-          errors: errors.responseJSON,
+          errors: errors.responseJSON ? errors.responseJSON : [errors.responseText],
         }),
       );
   }

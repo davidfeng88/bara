@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  rescue_from ActionController::InvalidAuthenticityToken do |exception|
-    logout
-  end
-
   helper_method :current_user, :logged_in?
 
   private
