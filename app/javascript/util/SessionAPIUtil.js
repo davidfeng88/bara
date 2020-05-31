@@ -1,3 +1,4 @@
+import { csrfToken } from './constants';
 export const BackendSignup = user => (
   $.ajax({
     method: 'POST',
@@ -8,19 +9,4 @@ export const BackendSignup = user => (
   })
 );
 
-export const BackendLogin = user => (
-  $.ajax({
-    method: 'POST',
-    url: '/api/session',
-    data: {
-      user,
-    },
-  })
-);
 
-export const BackendLogout = () => (
-  $.ajax({
-    method: 'DELETE',
-    url: '/api/session',
-  })
-);

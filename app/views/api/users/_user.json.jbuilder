@@ -1,2 +1,2 @@
 json.extract! user, :id, :username
-json.partial! 'api/users/user-avatar', user: user
+# json.partial! 'api/users/user-avatar', user: user

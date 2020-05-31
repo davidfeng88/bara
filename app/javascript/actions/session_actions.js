@@ -1,5 +1,5 @@
 import * as SessionAPIUtil from '../util/SessionAPIUtil';
-
+import { csrfToken } from '../util/constants';
 export const UPDATE_CURRENT_USER_IN_STORE = 'UPDATE_CURRENT_USER_IN_STORE';
 export const nullUser = null;
 
@@ -9,8 +9,22 @@ const updateCurrentUserInStore = currentUser => ({
 });
 
 export const asyncLogin = user => dispatch => (
-  SessionAPIUtil.BackendLogin(user)
-    .then(userDataFromBackend => dispatch(updateCurrentUserInStore(userDataFromBackend)))
+  fetch('/api/session', {
+    method: 'POST',
+    headers: {
+      'X-CSRF-Token': csrfToken,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      user,
+    }),
+  })
+  .then(response => response.json())
+  .then(userDataFromBackend => dispatch(updateCurrentUserInStore(userDataFromBackend)))
+  .catch( e => {
+    console.log('Error in asyncLogin');
+    console.log(e);
+  })
 );
 
 export const demoLogin = asyncLogin({
@@ -19,8 +33,17 @@ export const demoLogin = asyncLogin({
 });
 
 export const asyncLogout = () => dispatch => (
-  SessionAPIUtil.BackendLogout()
-    .then(() => dispatch(updateCurrentUserInStore(nullUser)))
+  fetch('/api/session', {
+    method: 'DELETE',
+    headers: {
+      'X-CSRF-Token': csrfToken,
+    },
+  })
+  .then(() => dispatch(updateCurrentUserInStore(nullUser)))
+  .catch( e => {
+    console.log('Error in asyncLogout');
+    console.log(e);
+  })
 );
 
 export const asyncSignup = user => dispatch => (
