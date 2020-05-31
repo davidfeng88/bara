@@ -1,5 +1,4 @@
 import React from 'react';
-import { fetchFeaturedBusinesses } from '../../util/BusinessAPIUtil';
 import Home from './Home';
 
 export default class HomeContainer extends React.Component {
@@ -13,19 +12,22 @@ export default class HomeContainer extends React.Component {
     this.fetchAndSaveFeaturedBusinesses();
   };
 
-  fetchAndSaveFeaturedBusinesses = () => {
-    fetchFeaturedBusinesses()
-      .then(
-        this.saveFeaturedBusinesses,
-        this.handleError,
-      );
-  };
-
-  saveFeaturedBusinesses = (featuredBusinesses) => {
-    this.setState({
-      isLoading: false,
-      featuredBusinesses,
-    });
+  fetchAndSaveFeaturedBusinesses = async () => {
+    try {
+      const response = await fetch('/api/businesses/feature', {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const featuredBusinesses = await response.json();
+      this.setState({
+        isLoading: false,
+        featuredBusinesses,
+      });
+    } catch (e) {
+      this.handleError(e);
+    }
   };
 
   handleError = (e) => {
