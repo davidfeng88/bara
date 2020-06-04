@@ -9,13 +9,16 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.author = current_user
+    business = Business.find(params[:business_id])
+    @review = business.reviews.new(review_params)
+    @review.user = current_user
     if @review.save
       render 'api/reviews/show'
     else
       render json: @review.errors.full_messages, status: 422
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: ["Couldn't find business with 'id'=#{params[:business_id]}"], status: 404
   end
 
   # only the author can edit/delete the review
@@ -41,6 +44,6 @@ class Api::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :body, :business_id)
+    params.require(:review).permit(:rating, :body)
   end
 end

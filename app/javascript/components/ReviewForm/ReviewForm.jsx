@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 
 import {
-  createReview,
   fetchReview,
-  editReview,
   deleteReview,
 } from '../../util/ReviewAPIUtil';
+import { csrfToken } from '../../util/constants';
 import { fetchBusiness } from '../../util/BusinessAPIUtil';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
@@ -99,8 +98,8 @@ export default class ReviewForm extends React.Component {
     fetchReview(reviewId)
       .then(
         (review) => {
-          if (this.props.currentUser.id === review.author_id) {
-            fetchBusiness(review.business_id)
+          if (this.props.currentUser.id === review.user.id) {
+            fetchBusiness(review.business.id)
               .then((business) => {
                 this.setState({
                   business,
@@ -161,40 +160,55 @@ export default class ReviewForm extends React.Component {
   }
 
 
-  handleDelete(e) {
+  handleDelete = async (e) => {
     e.preventDefault();
-    deleteReview(this.props.match.params.id)
-      .then(() => {
-        this.props.history
-          .push(`/businesses/${this.state.review.business_id}`);
+    try {
+      const response = await fetch(`/api/reviews/${this.props.match.params.id}`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': csrfToken,
+        },
       });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    window.scrollTo(0, 0);
-    const reviewData = Object.assign({}, this.state.review);
-    reviewData.business_id = this.state.business.id;
-    if (this.props.formType === 'createReview') {
-      createReview(reviewData)
-        .then(
-          review =>
-            this.props.history.push(`/businesses/${review.business_id}`),
-          errors => this.setState({
-            errors: errors.responseJSON,
-          }),
-        );
-    } else {
-      editReview(reviewData)
-        .then(
-          review =>
-            this.props.history.push(`/businesses/${review.business_id}`),
-          errors => this.setState({
-            errors: errors.responseJSON,
-          }),
-        );
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      this.props.history.push(`/businesses/${this.state.review.business.id}`);
+    } catch (e) {
+      this.handleError(e);
     }
   }
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    window.scrollTo(0, 0);
+    const { review } = this.state;
+    const apiEndpoint = this.props.formType === 'createReview' ? `/api/businesses/${this.state.business.id}/reviews` : `/api/reviews/${review.id}`;
+    const method = this.props.formType === 'createReview' ? 'POST' : 'PATCH';
+    try {
+      const response = await fetch(apiEndpoint, {
+        method,
+        headers: {
+          'X-CSRF-Token': csrfToken,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          review,
+        })
+      });
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      this.props.history.push(`/businesses/${this.state.business.id}`);
+    } catch (e) {
+      this.handleError(e);
+    }
+  };
+
+  handleError = (e) => {
+    this.setState({
+      errors: e.responseJSON,
+    })
+  };
 
   render() {
     const {
