@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 
-import {
-  fetchReview,
-  deleteReview,
-} from '../../util/ReviewAPIUtil';
 import { csrfToken } from '../../util/constants';
 import { fetchBusiness } from '../../util/BusinessAPIUtil';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
@@ -21,16 +17,6 @@ export default class ReviewForm extends React.Component {
       errors: [],
       loading: true,
     };
-
-    this.fetchInfo = this.fetchInfo.bind(this);
-    this.loadBusiness = this.loadBusiness.bind(this);
-    this.loadReview = this.loadReview.bind(this);
-    this.clearErrors = this.clearErrors.bind(this);
-
-    this.handleReviewRatingChange = this.handleReviewRatingChange.bind(this);
-    this.handleReviewBodyChange = this.handleReviewBodyChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -53,7 +39,7 @@ export default class ReviewForm extends React.Component {
     }
   }
 
-  fetchInfo(props) {
+  fetchInfo = (props) => {
     window.scrollTo(0, 0);
     this.setState({
       business: {},
@@ -66,9 +52,9 @@ export default class ReviewForm extends React.Component {
     } else {
       this.loadReview(props.match.params.id);
     }
-  }
+  };
 
-  loadBusiness(props) {
+  loadBusiness = (props) => {
     fetchBusiness(props.match.params.business_id)
       .then(
         (business) => {
@@ -92,45 +78,45 @@ export default class ReviewForm extends React.Component {
           loading: false,
         }),
       );
-  }
+  };
 
-  loadReview(reviewId) {
-    fetchReview(reviewId)
-      .then(
-        (review) => {
-          if (this.props.currentUser.id === review.user.id) {
-            fetchBusiness(review.business.id)
-              .then((business) => {
-                this.setState({
-                  business,
-                  review,
-                  errors: [],
-                  loading: false,
-                });
-              });
-          } else {
+  loadReview = async (reviewId) => {
+    try {
+      const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const review = await response.json();
+      if (this.props.currentUser.id === review.user.id) {
+        fetchBusiness(review.business.id)
+          .then((business) => {
             this.setState({
-              errors: ['Only the author can edit the review'],
+              business,
+              review,
+              errors: [],
               loading: false,
             });
-          }
-        },
-        errors => this.setState({
-          business: {},
-          review: {},
-          errors: errors.responseJSON,
+          });
+      } else {
+        this.setState({
+          errors: ['Only the author can edit the review'],
           loading: false,
-        }),
-      );
-  }
+        });
+      }
+    } catch (e) {
+      this.handleError(e);
+    }
+  };
 
-  clearErrors() {
+  clearErrors = () => {
     this.setState({
       errors: [],
     });
-  }
+  };
 
-  handleReviewRatingChange(rate) {
+  handleReviewRatingChange = (rate) => {
     const {
       review,
     } = this.state;
@@ -142,9 +128,9 @@ export default class ReviewForm extends React.Component {
     this.setState({
       review: updatedReview,
     });
-  }
+  };
 
-  handleReviewBodyChange(e) {
+  handleReviewBodyChange = (e) => {
     e.preventDefault();
     const {
       review,
@@ -157,8 +143,7 @@ export default class ReviewForm extends React.Component {
     this.setState({
       review: updatedReview,
     });
-  }
-
+  };
 
   handleDelete = async (e) => {
     e.preventDefault();
@@ -206,8 +191,11 @@ export default class ReviewForm extends React.Component {
 
   handleError = (e) => {
     this.setState({
+      business: {},
+      review: {},
       errors: e.responseJSON,
-    })
+      loading: false,
+    });
   };
 
   render() {
