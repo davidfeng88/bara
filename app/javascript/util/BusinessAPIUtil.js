@@ -1,11 +1,3 @@
-export const searchBusinesses = filters => (
-  $.ajax({
-    method: 'GET',
-    url: '/api/businesses',
-    data: filters,
-  })
-);
-
 export const createBusiness = business => (
   $.ajax({
     method: 'POST',

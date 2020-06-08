@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { searchBusinesses } from '../../util/BusinessAPIUtil';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import {
   SampleSearch,
@@ -20,35 +19,52 @@ export default class Search extends React.Component {
     };
 
     this.filters = buildFilters(props.location.search);
+    this.filterString = props.location.search;
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    searchBusinesses(this.filters)
-      .then((businesses) => {
-        this.setState({
-          loading: false,
-          businesses,
-        });
+  componentDidMount = async () => {
+    try {
+      const response = await fetch(`/api/businesses${this.filterString}`, {
+        method: 'GET',
       });
-    window.scrollTo(0, 0);
-  }
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      const businesses = await response.json();
+      this.setState({
+        loading: false,
+        businesses,
+      });
+      window.scrollTo(0, 0);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  componentWillUpdate(newProps) {
+  componentWillUpdate = async (newProps) => {
     if (this.props.location.search !== newProps.location.search) {
       this.setState({
         loading: true,
       });
       this.filters = buildFilters(newProps.location.search);
-      searchBusinesses(this.filters)
-        .then((businesses) => {
-          this.setState({
-            loading: false,
-            businesses,
-          });
+      try {
+        const response = await fetch(`/api/businesses${newProps.location.search}`, {
+          method: 'GET',
         });
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        const businesses = await response.json();
+        this.setState({
+          loading: false,
+          businesses,
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
-  }
+  };
 
   componentWillUnmount() {
     this.props.highlightBusiness(-1);
