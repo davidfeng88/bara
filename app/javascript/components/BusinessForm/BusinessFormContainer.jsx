@@ -2,12 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 import {
-  createBusiness,
   fetchBusiness,
-  editBusiness,
-  deleteBusiness,
-  fetchLatlng,
 } from '../../util/BusinessAPIUtil';
+import { csrfToken } from '../../util/constants';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
 import BusinessForm from './BusinessForm';
@@ -109,53 +106,73 @@ export default class BusinessFormContainer extends React.Component {
     );
   }
 
-  handleDelete(e) {
+  handleDelete = async (e) => {
     e.preventDefault();
-    deleteBusiness(this.props.match.params.id)
-      .then(() => this.props.history.push('/'));
-  }
+    try {
+      const response = await fetch(`/api/businesses/${this.props.match.params.id}`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-Token': csrfToken,
+        },
+      });
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      this.props.history.push('/');
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
-  handleSubmit(e) {
+  handleSubmit = async (e) => {
     e.preventDefault();
     window.scrollTo(0, 0);
     const biz = Object.assign({}, this.state.business);
-    fetchLatlng(biz)
-      .then((response) => {
-        if (response.status === 'OK') {
-          const {
-            lat,
-            lng,
-          } = response.results[0].geometry.location;
-          biz.lat = lat;
-          biz.lng = lng;
-          if (this.props.location.pathname.slice(-3) === 'new') {
-            createBusiness(biz)
-              .then(
-                business =>
-                  this.props.history.push(`/businesses/${business.id}`),
-                errors => this.setState({
-                  errors: errors.responseJSON,
-                }),
-              );
-          } else {
-            editBusiness(biz)
-              .then(
-                business =>
-                  this.props.history.push(`/businesses/${business.id}`),
-                errors => this.setState({
-                  errors: errors.responseJSON,
-                }),
-              );
-          }
-        } else {
-          this.setState({
-            errors: ['Invalid Address'],
-          });
-        }
+    try {
+      const addressParameters = `address=${blah.address},${biz.city}, ${biz.state}`;
+      const key = 'AIzaSyB42USxCYSP5SVIAjZz3hGSmWglUma3zok';
+      const addressRawResponse = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?${addressParameters}&key=${key}`, {
+        method: 'GET',
       });
-  }
+      if (!addressRawResponse.ok) {
+        throw Error('Invalid Address');
+      }
+      const addressReponse = await addressRawResponse.json();
+      const {
+        lat,
+        lng,
+      } = addressReponse.results[0].geometry.location;
+      biz.lat = lat;
+      biz.lng = lng;
+      const apiEndpoint = this.props.location.pathname.slice(-3) === 'new' ? '/api/businesses' : `/api/businesses/${biz.id}`;
+      const method = this.props.location.pathname.slice(-3) === 'new' ? 'POST' : 'PATCH';
+      const response = await fetch(apiEndpoint, {
+        method,
+        headers: {
+          'X-CSRF-Token': csrfToken,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          business: biz,
+        })
+      });
+      if (!response.ok) {
+        const errors = await response.json();
+        throw errors;
+      }
+      const business = await response.json();
+      this.props.history.push(`/businesses/${business.id}`);
+    } catch (errors) {
+      if (typeof errors.map !== 'function') {
+        errors = [errors.message];
+      }
+      this.setState({
+        errors,
+      });
+    }
+  };
 
-  render() {
+  render = () => {
     const formType =
       this.props.location.pathname.slice(-3) === 'new' ?
         'createBusiness' : 'editBusiness';
@@ -198,5 +215,5 @@ export default class BusinessFormContainer extends React.Component {
         />
       </div>
     );
-  }
+  };
 }

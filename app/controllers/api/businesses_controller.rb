@@ -50,7 +50,6 @@ class Api::BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
-    @business.author = current_user
     if @business.save
       render 'api/businesses/show'
     else
