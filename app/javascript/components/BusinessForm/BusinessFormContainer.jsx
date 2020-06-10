@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
-import {
-  fetchBusiness,
-} from '../../util/BusinessAPIUtil';
 import { csrfToken } from '../../util/constants';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
@@ -63,23 +60,29 @@ export default class BusinessFormContainer extends React.Component {
     }
   }
 
-  loadBusiness(id) {
-    fetchBusiness(id)
-      .then(
-        (business) => {
-          this.setState({
-            business,
-            errors: [],
-            loading: false,
-          });
-        },
-        errors => this.setState({
-          business: emptyBusiness,
-          errors: errors.responseJSON,
-          loading: false,
-        }),
-      );
-  }
+  loadBusiness = async(id) => {
+    try {
+      const response = await fetch(`/api/businesses/${id}`, {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        const errors = await response.json();
+        throw errors;
+      }
+      const business = await response.json();
+      this.setState({
+        business,
+        errors: [],
+        loading: false,
+      });
+    } catch (errors) {
+      this.setState({
+        business: emptyBusiness,
+        errors,
+        loading: false,
+      });
+    }
+  };
 
   clearErrors() {
     this.setState({

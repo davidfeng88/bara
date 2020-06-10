@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 
 import { csrfToken } from '../../util/constants';
-import { fetchBusiness } from '../../util/BusinessAPIUtil';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
 import ReviewFormCore from './ReviewFormCore';
@@ -54,30 +53,39 @@ export default class ReviewForm extends React.Component {
     }
   };
 
-  loadBusiness = (props) => {
-    fetchBusiness(props.match.params.business_id)
-      .then(
-        (business) => {
-          if (props.currentUser &&
-            business.reviewers[props.currentUser.id]) {
-            const reviewId = business.reviewers[props.currentUser.id];
-            this.props.history.push(`/reviews/${reviewId}/edit`);
-          } else {
-            this.setState({
-              business,
-              review: {},
-              errors: [],
-              loading: false,
-            });
-          }
-        },
-        errors => this.setState({
-          business: {},
+  loadBusiness = async (props) => {
+    try {
+      const response = await fetch(`/api/businesses/${props.match.params.business_id}`, {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        const errors = await response.json();
+        throw errors;
+      }
+      const business = await response.json();
+      if (props.currentUser &&
+        business.reviewers[props.currentUser.id]) {
+        const reviewId = business.reviewers[props.currentUser.id];
+        this.props.history.push(`/reviews/${reviewId}/edit`);
+      } else {
+        this.setState({
+          business,
           review: {},
-          errors: errors.responseJSON,
+          errors: [],
           loading: false,
-        }),
-      );
+        });
+      };
+    } catch (errors) {
+      if (typeof errors.map !== 'function') {
+        errors = [errors.message];
+      }
+      this.setState({
+        business: {},
+        review: {},
+        errors,
+        loading: false,
+      });
+    }
   };
 
   loadReview = async (reviewId) => {
@@ -86,25 +94,31 @@ export default class ReviewForm extends React.Component {
         method: 'GET',
       });
       if (!response.ok) {
-        throw Error(response.statusText);
+        const errors = await response.json();
+        throw errors;
       }
       const review = await response.json();
-      if (this.props.currentUser.id === review.user.id) {
-        fetchBusiness(review.business.id)
-          .then((business) => {
-            this.setState({
-              business,
-              review,
-              errors: [],
-              loading: false,
-            });
-          });
-      } else {
+      if (this.props.currentUser.id !== review.user.id) {
         this.setState({
           errors: ['Only the author can edit the review'],
           loading: false,
         });
+        return;
       }
+      const response2 = await fetch(`/api/businesses/${review.business.id}`, {
+        method: 'GET',
+      });
+      if (!response2.ok) {
+        const errors2 = await response2.json();
+        throw errors2;
+      }
+      const business = await response2.json();
+      this.setState({
+        business,
+        review,
+        errors: [],
+        loading: false,
+      });
     } catch (e) {
       this.handleError(e);
     }
@@ -155,7 +169,8 @@ export default class ReviewForm extends React.Component {
         },
       });
       if (!response.ok) {
-        throw Error(response.statusText);
+        const errors = await response.json();
+        throw errors;
       }
       this.props.history.push(`/businesses/${this.state.review.business.id}`);
     } catch (e) {
@@ -181,7 +196,8 @@ export default class ReviewForm extends React.Component {
         })
       });
       if (!response.ok) {
-        throw Error(response.statusText);
+        const errors = await response.json();
+        throw errors;
       }
       this.props.history.push(`/businesses/${this.state.business.id}`);
     } catch (e) {
@@ -189,11 +205,11 @@ export default class ReviewForm extends React.Component {
     }
   };
 
-  handleError = (e) => {
+  handleError = (errors) => {
     this.setState({
       business: {},
       review: {},
-      errors: e.responseJSON,
+      errors,
       loading: false,
     });
   };

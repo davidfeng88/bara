@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { fetchBusiness } from '../../util/BusinessAPIUtil';
 import { LoadingSpinner } from '../../util/BusinessInfoUtil';
 import ErrorList from '../ErrorList';
 import BusinessInfoAndPictures from './BusinessInfoAndPictures';
@@ -25,16 +24,23 @@ export default class BusinessShow extends React.Component {
     }
   };
 
-  fetchAndSaveBusiness = (props) => {
-    fetchBusiness(props.match.params.id)
-      .then(
-        this.saveBusiness(props),
-        this.recordErrors,
-      );
-    window.scrollTo(0, 0);
+  fetchAndSaveBusiness = async (props) => {
+    try {
+      const response = await fetch(`/api/businesses/${props.match.params.id}`, {
+        method: 'GET',
+      });
+      if (!response.ok) {
+        const errors = await response.json();
+        throw errors;
+      }
+      const business = await response.json();
+      this.saveBusiness(props, business);
+    } catch (errors) {
+      this.recordErrors(errors);
+    }
   };
 
-  saveBusiness = props => (business) => {
+  saveBusiness = (props, business) => {
     const reviewId = this.getReviewId(props, business);
     this.setState({
       business,
@@ -78,7 +84,7 @@ export default class BusinessShow extends React.Component {
     this.setState({
       business: null,
       reviewId: null,
-      errors: errors.responseJSON,
+      errors,
       loading: false,
     });
   };
