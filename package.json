@@ -4,7 +4,6 @@
     "@rails/webpacker": "5.1.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "immutability-helper": "^3.0.2",
-    "jquery": "^3.5.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.12.1",
     "react": "^16.13.1",
