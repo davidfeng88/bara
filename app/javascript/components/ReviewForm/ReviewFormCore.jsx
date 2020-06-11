@@ -192,7 +192,7 @@ const ReviewFormReviewIndexItem = ({
 }) => (
   <div className="review-form-index-item">
     <div className="flex-left">
-      <img src={review.user.avatar} />
+      <img src={review.avatar} />
       {review.user.username}
     </div>
     <Rating
