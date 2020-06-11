@@ -1,2 +1,6 @@
 json.extract! user, :id, :username
-# json.partial! 'api/users/user-avatar', user: user
+if user.avatar.attached?
+  json.avatar url_for(user.avatar)
+else
+  json.avatar asset_path('user/default/capy.jpg')
+end

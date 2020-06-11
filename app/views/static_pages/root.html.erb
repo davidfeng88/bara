@@ -3,8 +3,8 @@
 
 
   <% if logged_in? %>
-  	window.currentUser = <%= render("api/users/user.json.jbuilder",
-  		user: current_user).html_safe %>
+    window.currentUser = <%= render("api/users/user.json.jbuilder",
+    user: current_user).html_safe %>
   <% end %>
 
 
